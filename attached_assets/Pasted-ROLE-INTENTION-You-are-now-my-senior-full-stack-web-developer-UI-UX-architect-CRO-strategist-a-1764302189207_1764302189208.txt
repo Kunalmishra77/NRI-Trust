@@ -1,0 +1,159 @@
+ROLE & INTENTION
+You are now my senior full-stack web developer, UI/UX architect, CRO strategist, and niche specialist for NRI-focused service websites. 
+You will rebuild and redesign the entire NRI Trust landing page shown in the uploaded screenshot. 
+Your execution must follow Replit Agent best practices: structured steps, incremental commits, focused tasks, and validated output.
+
+PROJECT CONTEXT
+- Current landing page screenshot uploaded: “screencapture-2542dc29-…png”
+- The UI/UX feels outdated, cluttered, and confusing.
+- Header & footer buttons do not have clear purpose or correct redirections.
+- CTA hierarchy is broken, spacing inconsistent, UX psychological flow weak.
+- Forms are not optimized for trust building or conversion.
+- The website must match the expectations of NRI families looking for parent care services, with high emotional trust, clarity, and smooth navigation.
+
+DESIGN GOAL
+Rebuild the landing page into a highly professional, trust-optimized, mobile-first, psychological-conversion-based website with:
+- Clear storytelling for NRI users
+- Strong emotional reassurance
+- Simple flows
+- High readability
+- Clean UI hierarchy
+- Smooth navigation
+- Perfectly functioning header/footer buttons
+- Streamlined CTAs
+- A reliable booking/consultation form
+
+TECH STACK
+Use React + TailwindCSS + React Router.
+Follow atomic component architecture.
+Accessibility must meet WCAG AA.
+Performance scores should target 90+ Lighthouse.
+
+==========
+PHASE 1 — FULL AUDIT (CHECKPOINT: “audit-complete”)
+==========
+1. Analyze the screenshot deeply:
+   - Identify the top 15 UX issues.
+   - Identify trust gaps for NRI families.
+   - Identify visual hierarchy problems.
+   - Identify text clarity issues.
+   - Identify CTA confusion.
+   - Identify spacing, layout, contrast issues.
+   - Identify responsiveness failures.
+
+2. Produce:
+   - A complete header navigation blueprint:
+       Button label → Purpose → Correct URL/section anchor
+   - A footer link blueprint
+   - A flowchart of the ideal user journey from Hero → Why → Pricing → Testimonials → Booking Form.
+
+3. Deliver: `/audit/ux-report.md`
+
+==========
+PHASE 2 — DESIGN BLUEPRINT (CHECKPOINT: “design-blueprint-ready”)
+==========
+1. Produce UI/UX design specs:
+   - Color system
+   - Typography scale (desktop/tablet/mobile)
+   - Section spacing tokens
+   - CTA hierarchy rules (Primary / Secondary / Tertiary)
+   - Emotional UX elements tailored for NRIs
+   - Trust-building patterns
+
+2. Provide component-ready wireframes for:
+   - Header (sticky, mobile menu)
+   - Hero section
+   - Pain points section
+   - Services section
+   - Pricing (3-tier)
+   - Testimonials (carousel or grid)
+   - Before/After NRI Trust comparison section
+   - Call-to-Action strip
+   - Footer
+   - Booking form
+
+3. Deliver: `/design/wireframes.md` + component breakdown.
+
+==========
+PHASE 3 — IMPLEMENTATION (MULTIPLE BRANCHES)
+==========
+For each section below, create a SEPARATE branch → build → commit → open PR → test → summarize.
+
+1. `feat/header-footer`
+   - Rebuild header and footer
+   - Mobile navigation with focus trap
+   - Correct all button destinations
+   - Add sticky header
+   - Fix footer link structure + accessibility
+
+2. `feat/hero`
+   - New clean hero layout with strong emotional NRI messaging
+   - Two CTAs: “Book Free Consultation”, “Explore Services”
+
+3. `feat/sections`
+   - Rebuild all homepage sections using reusable components:
+     * Pain points section
+     * Why NRI Trust section
+     * Comparison section
+     * Process/steps section
+     * Pricing cards
+     * Testimonials
+     * Trust-proof metrics
+
+4. `feat/forms`
+   - Rebuild consultation form with:
+     * Name
+     * Email
+     * Country
+     * Phone
+     * Message
+     * Consent checkbox
+     * Honeypot field
+     * Basic spam block
+   - Create serverless API endpoint `/api/submit`
+   - On success → redirect to /thank-you
+   - Add event tracking hooks
+
+5. `feat/accessibility-performance`
+   - Add semantic HTML, ARIA, labels, alt text
+   - Improve performance (lazy-loading, code-splitting)
+   - Optimize Lighthouse scores
+
+6. `feat/analytics`
+   - Add Google Tag Manager dev setup
+   - Add tracking events: CTA clicks, form submits, pricing interactions
+
+==========
+PHASE 4 — TESTING (CHECKPOINT: “tests-complete”)
+==========
+- Write Jest + RTL tests for core components
+- Write one E2E test for the booking flow
+- Provide test results
+
+==========
+PHASE 5 — FINAL DELIVERY (CHECKPOINT: “final-build-ready”)
+==========
+Provide:
+- README.md with complete documentation
+- CHANGELOG.md
+- Deployment checklist
+- Final Lighthouse report (desktop + mobile)
+- Summary of all PRs + links (or logs if offline)
+- Before vs After UX comparison
+
+==========
+WORKFLOW RULES (IMPORTANT)
+==========
+- Always ask clarifying questions ONLY if absolutely necessary.
+- Never merge code silently.
+- Every PR must include:
+  * What changed?
+  * Why?
+  * Screenshot or GIF
+  * Testing checklist
+
+==========
+NOW EXECUTE
+==========
+Start with:
+“Step 1: I am analyzing the uploaded screenshot now. Generating full UX audit.”
