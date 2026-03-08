@@ -96,26 +96,26 @@ export default function HeroSection() {
      </motion.div>
 
      {/* ─── IMAGE COMPOSITION (5 Cols) ─── */}
-     <div className="lg:col-span-5 relative h-[600px] hidden lg:block perspective-container">
+     <div className="lg:col-span-5 relative h-[550px] hidden lg:block perspective-container">
       <motion.div 
        initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
        animate={{ opacity: 1, scale: 1, rotateY: 0 }}
        transition={{ duration: 1.2, ease: "easeOut" }}
-       className="relative w-full h-full preserve-3d"
+       className="relative w-full h-full preserve-3d flex items-center justify-center"
       >
-       <div className="absolute inset-0 rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(207,160,82,0.15)] group">
+       {/* Image Wrapper - Made smaller with w-[85%] */}
+       <div className="relative w-[85%] h-[85%] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(207,160,82,0.1)] group">
         <img 
          src="/hero-parents.png" 
          alt="Elderly Parents in India" 
          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
         />
-        {/* Subtle vignette for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
        </div>
        
-       {/* Floating UI Elements - Repositioned and Scaled for a cleaner look */}
-       <FloatingLegalDoc className="absolute -top-8 -right-8 z-20 scale-80" delay={0.2} />
-       <ComplianceCard title="Parent Profile" status="Secure" className="absolute -bottom-12 -left-8 z-30 scale-80" delay={0.5} />
+       {/* Floating UI Elements - Moved further out and scaled down */}
+       <FloatingLegalDoc className="absolute top-0 -right-4 z-20 scale-75 origin-top-right" delay={0.2} />
+       <ComplianceCard title="Parent Profile" status="Secure" className="absolute bottom-0 -left-4 z-30 scale-75 origin-bottom-left" delay={0.5} />
       </motion.div>
      </div>
     </div>
