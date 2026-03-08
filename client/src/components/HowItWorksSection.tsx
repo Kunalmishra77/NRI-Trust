@@ -1,5 +1,4 @@
-import { Calendar, FileText, Handshake, Smartphone } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CalendarCheck, FileSearch, UserCheck, ShieldCheck, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { elegantFadeUp, luxuryStagger } from "@/motion/variants";
@@ -7,126 +6,130 @@ import { elegantFadeUp, luxuryStagger } from "@/motion/variants";
 export default function HowItWorksSection() {
   const steps = [
     {
-      icon: Calendar,
+      icon: CalendarCheck,
       number: "01",
-      title: "Free Review Session",
-      description: "30-minute video call in your time zone. We assess your financial and legal situation — no sales pressure, no commitment.",
+      title: "Complimentary Review Session",
+      description: "We assess your parents’ financial and legal situation to understand the scope of support needed.",
     },
     {
-      icon: FileText,
+      icon: FileSearch,
       number: "02",
       title: "Tier Recommendation",
-      description: "Within 24 hours, receive a personalized proposal. Choose Essential, Comprehensive, or Premium Legacy.",
+      description: "Based on the review, we recommend the most suitable service tier (Essential, Comprehensive, or Premium Legacy).",
     },
     {
-      icon: Handshake,
+      icon: UserCheck,
       number: "03",
       title: "Onboarding",
-      description: "Meet your relationship manager via WhatsApp and video. Share documents and get first actions within 7 days.",
+      description: "We collect necessary documents, establish points of contact, and set up your parents’ care profile.",
     },
     {
-      icon: Smartphone,
+      icon: ShieldCheck,
       number: "04",
       title: "Ongoing Support",
-      description: "Regular review calls, proactive compliance tracking, and a 24/7 emergency team on standby.",
+      description: "Regular reviews as per your tier, plus emergency response whenever a financial or legal crisis arises.",
     },
   ];
 
   return (
     <section
       id="how-it-works"
-      className="relative bg-[hsl(180,50%,8%)] overflow-hidden py-24 md:py-32"
+      className="py-32 md:py-48 bg-[#070b09] relative overflow-hidden border-y border-white/[0.05]"
     >
-      {/* Radial atmosphere */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,hsl(180_45%_16%_/_0.35)_0%,transparent_60%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_100%,hsl(38_85%_55%_/_0.04)_0%,transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 noise-overlay opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(160_30%_15%_/_0.2)_0%,transparent_60%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Heading */}
+      <div className="max-container relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={elegantFadeUp}
-          className="text-center mb-16 md:mb-24"
+          className="text-center mb-24 md:mb-32"
         >
-          <span className="font-mono text-xs tracking-[0.3em] uppercase text-amber-500/50 block mb-4">
-            The Process
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight text-white">
-            From Overwhelmed to{" "}
-            <span className="text-amber-400">Organized</span> in 4 Steps
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-[1px] w-10 bg-accent/40" />
+            <span className="accent-label !mb-0 text-accent">Our Process</span>
+            <div className="h-[1px] w-10 bg-accent/40" />
+          </div>
+          <h2 className="section-title text-white mb-8">
+            How We Secure Your <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light">Parents' Well-Being.</span>
           </h2>
-          <p className="text-lg md:text-xl text-white/40 max-w-2xl mx-auto font-light">
-            Getting started is simple. We handle the complexity so you don't have to.
+          <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
+            A structured, 4-step journey to transition from fragmented handling to institutional-grade care.
           </p>
         </motion.div>
 
-        {/* Steps grid */}
+        {/* Steps Stack */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           variants={luxuryStagger}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04] rounded-2xl overflow-hidden border border-white/5"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative perspective-container"
         >
+          {/* Connector line background (desktop) */}
+          <div className="hidden lg:block absolute top-[110px] left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-white/[0.05] via-accent/20 to-white/[0.05]" />
+
           {steps.map((step, idx) => {
             const IconComponent = step.icon;
             return (
               <motion.div
                 key={step.number}
                 variants={elegantFadeUp}
-                className="bg-[hsl(180,50%,8%)] p-8 md:p-10 flex flex-col relative group hover:bg-white/[0.02] transition-colors duration-500"
+                className="group p-10 lg:p-12 flex flex-col relative transition-all duration-500 rounded-[2.5rem] border border-white/[0.03] hover:border-accent/20 bg-white/[0.01] hover:bg-[#0A0F0D] hover:-translate-y-2"
               >
-                {/* Step number + amber line above */}
-                <div className="mb-8">
-                  <div className="w-8 h-px bg-amber-500/30 mb-4 group-hover:bg-amber-500/70 group-hover:w-14 transition-all duration-500" />
-                  <span className="font-mono text-4xl font-bold text-white/[0.06] leading-none select-none">
+                {/* Visual marker */}
+                <div className="mb-10 relative z-10 flex justify-between items-start">
+                  <span className="font-mono text-5xl lg:text-6xl font-bold text-white/[0.03] leading-none select-none group-hover:text-accent/10 transition-colors">
                     {step.number}
                   </span>
+                  
+                  {/* Icon block */}
+                  <div className="w-14 h-14 rounded-2xl bg-background border border-white/10 flex items-center justify-center shadow-inner group-hover:border-accent/40 transition-all duration-500">
+                    <IconComponent className="w-6 h-6 text-accent/70 group-hover:text-accent transition-colors" />
+                  </div>
                 </div>
 
-                {/* Icon */}
-                <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mb-6 group-hover:border-amber-500/20 group-hover:bg-amber-500/5 transition-all duration-500">
-                  <IconComponent className="w-5 h-5 text-amber-400/60 group-hover:text-amber-400 transition-colors duration-500" />
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className="w-10 h-[1px] bg-accent/20 mb-6 group-hover:bg-accent group-hover:w-16 transition-all duration-500" />
+                  <h3 className="text-xl lg:text-2xl font-serif font-medium text-white mb-4 group-hover:text-accent transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-[14px] text-muted-foreground font-light leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
-
-                {/* Text */}
-                <h3 className="font-serif font-bold text-lg text-white mb-3 leading-snug">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-white/35 leading-relaxed flex-1">
-                  {step.description}
-                </p>
-
-                {/* Step connector line (not on last) */}
-                {idx < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-[4.5rem] right-0 w-px h-8 bg-white/[0.04]" />
-                )}
+                
+                {/* Subtle Hover Glow */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(207,160,82,0.05)_0%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* CTA */}
+        {/* Final Engagement CTA */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={elegantFadeUp}
-          className="text-center mt-16"
+          className="text-center mt-24 md:mt-32"
         >
           <Link href="/contact">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-accent to-amber-500 text-white px-10 py-7 text-base font-bold shadow-xl shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all rounded-xl"
-            >
-              Get Started Today — It's Free
-            </Button>
+            <button className="btn-premium-primary min-w-[320px] group">
+              <span className="relative z-10">Book Review Session</span>
+              <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform inline-block" />
+            </button>
           </Link>
-          <p className="text-sm text-white/25 mt-4 font-medium">
-            No commitment required. Cancel anytime.
-          </p>
+          <div className="mt-12 flex items-center justify-center gap-4 opacity-30">
+            <ShieldCheck className="w-4 h-4 text-accent" />
+            <p className="text-[10px] font-mono font-bold tracking-[0.2em] uppercase text-white">
+              Strictly Financial & Legal • Non-Medical
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

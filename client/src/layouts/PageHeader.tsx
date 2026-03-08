@@ -16,31 +16,32 @@ interface PageHeaderProps {
 
 export default function PageHeader({ title, subtitle, breadcrumbs }: PageHeaderProps) {
   return (
-    <section className="relative bg-gradient-to-br from-[hsl(180,50%,10%)] via-[hsl(180,45%,14%)] to-[hsl(180,50%,12%)] pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
-      {/* Amber radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_100%,hsl(38_85%_55%_/_0.08)_0%,transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.04)_0%,transparent_60%)]" />
+    <section className="relative bg-[#050806] pt-32 pb-16 md:pt-48 md:pb-24 overflow-hidden border-b border-white/[0.05]">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 noise-overlay opacity-20 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] mesh-glow-emerald opacity-20 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] mesh-glow-gold opacity-10 blur-[100px] pointer-events-none" />
 
       <motion.div
         variants={luxuryStagger}
         initial="hidden"
         animate="visible"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        className="max-container relative z-10"
       >
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <motion.nav variants={elegantFadeUp} className="flex items-center gap-1.5 text-white/40 mb-6">
-            <Link href="/" className="font-mono text-xs tracking-wider hover:text-amber-400 transition-colors">
+          <motion.nav variants={elegantFadeUp} className="flex flex-wrap items-center gap-2 text-white/40 mb-10">
+            <Link href="/" className="font-mono text-[10px] tracking-[0.2em] hover:text-accent transition-colors uppercase font-bold">
               Home
             </Link>
             {breadcrumbs.map((crumb, i) => (
-              <span key={i} className="flex items-center gap-1.5">
-                <ChevronRight className="w-3.5 h-3.5 text-amber-500/40" />
+              <span key={i} className="flex items-center gap-2">
+                <ChevronRight className="w-3 h-3 text-accent/40" />
                 {crumb.href ? (
-                  <Link href={crumb.href} className="font-mono text-xs tracking-wider hover:text-amber-400 transition-colors">
+                  <Link href={crumb.href} className="font-mono text-[10px] tracking-[0.2em] hover:text-accent transition-colors uppercase font-bold">
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className="font-mono text-xs tracking-wider text-white/70">{crumb.label}</span>
+                  <span className="font-mono text-[10px] tracking-[0.2em] text-white/80 uppercase font-bold">{crumb.label}</span>
                 )}
               </span>
             ))}
@@ -49,7 +50,7 @@ export default function PageHeader({ title, subtitle, breadcrumbs }: PageHeaderP
 
         <motion.h1
           variants={elegantFadeUp}
-          className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white leading-tight mb-4"
+          className="display-title !text-5xl md:!text-6xl lg:!text-7xl mb-8"
         >
           {title}
         </motion.h1>
@@ -57,19 +58,19 @@ export default function PageHeader({ title, subtitle, breadcrumbs }: PageHeaderP
         {subtitle && (
           <motion.p
             variants={elegantFadeUp}
-            className="text-lg md:text-xl text-white/50 max-w-2xl font-light"
+            className="text-lg md:text-xl text-muted-foreground max-w-3xl font-light leading-relaxed"
           >
             {subtitle}
           </motion.p>
         )}
       </motion.div>
 
-      {/* Bottom amber gradient line */}
+      {/* Bottom gradient line */}
       <motion.div
         variants={lineDraw}
         initial="hidden"
         animate="visible"
-        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent origin-center"
+        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent origin-center"
       />
     </section>
   );

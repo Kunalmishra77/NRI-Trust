@@ -6,97 +6,111 @@ export default function WhyNRITrustSection() {
   const comparisons = [
     {
       icon: Users,
-      title: "Integrated Solution",
-      others: "Separate CA + lawyer + property manager + insurance agent = coordination chaos",
-      nriTrust: "ONE team handles all 5 service areas = seamless communication, zero gaps",
+      title: "Consolidated Expertise",
+      others: "Coordinating separate CAs, lawyers, agents, and managers — resulting in communication gaps.",
+      nriTrust: "One unified advisor managing all domains with a single, high-trust relationship manager.",
     },
     {
       icon: Shield,
-      title: "Verified & Insured",
-      others: "No insurance, no accountability, no audit trail",
-      nriTrust: "₹5 Crore liability coverage + fully documented processes",
+      title: "Professional Indemnity",
+      others: "Zero accountability or insurance for local 'help' or family-friend referrals.",
+      nriTrust: "Full professional liability coverage with a documented, audited trail for every action.",
     },
     {
       icon: FileCheck,
-      title: "Transparent Reporting",
-      others: "Vague updates, no documentation, months without communication",
-      nriTrust: "Regular review calls, detailed reports, photo evidence for property",
+      title: "Strategic Transparency",
+      others: "Opaque updates, verbal promises, and a lack of formal documentation or photo evidence.",
+      nriTrust: "Secure client portal, monthly data-driven reports, and on-ground verified documentation.",
     },
     {
       icon: Clock,
-      title: "24/7 Emergency Response",
-      others: "Call different people, hope someone picks up at midnight IST",
-      nriTrust: "Dedicated emergency team — frozen accounts, legal notices, property emergencies",
+      title: "Emergency Readiness",
+      others: "No guaranteed response. Relying on someone's availability during Indian business hours.",
+      nriTrust: "A dedicated 24/7 Rapid Response team for legal, financial, or property emergencies.",
     },
   ];
 
   return (
-    <section className="relative bg-[hsl(180,50%,8%)] overflow-hidden py-24 md:py-32">
-      {/* Atmosphere */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,hsl(180_45%_14%_/_0.3)_0%,transparent_55%)] pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="section-padding bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-noise pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(160_30%_15%_/_0.15)_0%,transparent_60%)] pointer-events-none" />
+      
+      <div className="max-container relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={elegantFadeUp}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-24 md:mb-32"
         >
-          <span className="font-mono text-xs tracking-[0.3em] uppercase text-amber-500/50 block mb-4">
-            Why NRI Trust
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white mb-6 leading-tight">
-            Why NRIs Choose Us Over{" "}
-            <span className="text-amber-400">DIY or Local Agents</span>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-[2px] w-10 bg-gradient-to-r from-transparent to-accent/50" />
+            <span className="accent-label !mb-0 tracking-[0.25em]">Market Distinction</span>
+            <div className="h-[2px] w-10 bg-gradient-to-l from-transparent to-accent/50" />
+          </div>
+          <h2 className="section-title text-white mb-8">
+            Why Discerning Families <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light drop-shadow-md">Choose NRI Trust</span>
           </h2>
-          <p className="text-lg md:text-xl text-white/40 max-w-2xl mx-auto font-light">
-            The difference between stress and peace of mind is choosing the right partner.
+          <p className="body-large max-w-3xl mx-auto text-muted-foreground">
+            We operate as a private family office for NRIs. 
+            While others provide fragmented services, we provide stewardship, accountability, and absolute discretion.
           </p>
         </motion.div>
 
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           variants={luxuryStagger}
-          className="space-y-3"
+          className="space-y-8 relative"
         >
+          <div className="absolute top-0 bottom-0 left-[18%] md:left-[25%] lg:left-[25%] w-px bg-gradient-to-b from-transparent via-white/5 to-transparent hidden md:block" />
+
           {comparisons.map((item, index) => {
             const IconComponent = item.icon;
             return (
               <motion.div
                 key={index}
                 variants={elegantFadeUp}
-                className="rounded-xl border border-white/[0.05] bg-white/[0.02] hover:bg-white/[0.035] transition-colors duration-500 overflow-hidden"
+                className="group glass-card overflow-hidden hover:border-accent/20 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(207,160,82,0.1)] border border-white/[0.03] bg-white/[0.01]"
               >
-                <div className="grid md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-white/[0.04]">
-                  {/* Label column */}
-                  <div className="md:col-span-3 p-6 md:p-8 flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center flex-shrink-0">
-                      <IconComponent className="w-5 h-5 text-amber-400/60" />
+                <div className="grid md:grid-cols-12 items-stretch">
+                  {/* Category */}
+                  <div className="md:col-span-3 p-8 lg:p-10 border-b md:border-b-0 md:border-r border-white/[0.05] flex flex-col justify-center relative bg-[#0A0F0D]/50 group-hover:bg-[#0A0F0D] transition-colors">
+                    <div className="w-12 h-12 rounded-xl bg-[#0A0F0D] border border-white/10 flex items-center justify-center mb-6 shadow-inner group-hover:scale-110 group-hover:border-accent/30 transition-all duration-500">
+                      <IconComponent className="w-6 h-6 text-accent/70 group-hover:text-accent transition-colors" />
                     </div>
-                    <h3 className="font-serif font-bold text-white/80 text-base leading-snug">{item.title}</h3>
+                    <h3 className="text-xl font-serif font-medium text-white leading-tight group-hover:text-accent transition-colors">
+                      {item.title}
+                    </h3>
                   </div>
 
-                  {/* Others column */}
-                  <div className="md:col-span-4 p-6 md:p-8">
-                    <div className="flex items-start gap-3">
-                      <XCircle className="w-4 h-4 text-red-400/50 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <span className="font-mono text-[10px] text-red-400/50 uppercase tracking-[0.2em] block mb-2">Others</span>
-                        <p className="text-sm text-white/30 leading-relaxed">{item.others}</p>
+                  {/* Competitive Landscape */}
+                  <div className="md:col-span-4 p-8 lg:p-10 bg-black/20">
+                    <div className="flex flex-col h-full">
+                      <span className="caption-text !text-red-400/30 uppercase tracking-[0.2em] font-bold mb-4">Market Standard</span>
+                      <div className="flex gap-4">
+                        <XCircle className="w-5 h-5 text-red-400/20 flex-shrink-0 mt-1" />
+                        <p className="text-[14px] lg:text-[15px] text-muted-foreground/50 font-light leading-relaxed italic">
+                          {item.others}
+                        </p>
                       </div>
                     </div>
                   </div>
 
-                  {/* NRI Trust column */}
-                  <div className="md:col-span-5 p-6 md:p-8 bg-amber-500/[0.02]">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-4 h-4 text-amber-400/70 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <span className="font-mono text-[10px] text-amber-400/60 uppercase tracking-[0.2em] block mb-2">NRI Trust</span>
-                        <p className="text-sm text-white/70 font-medium leading-relaxed">{item.nriTrust}</p>
+                  {/* Our Standard */}
+                  <div className="md:col-span-5 p-8 lg:p-10 relative overflow-hidden group-hover:bg-accent/[0.02] transition-colors border-l border-white/[0.02]">
+                    <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-accent/30 to-transparent group-hover:via-accent/60 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(207,160,82,0.05)_0%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                    
+                    <div className="flex flex-col h-full relative z-10">
+                      <span className="caption-text !text-accent/60 uppercase tracking-[0.2em] font-bold mb-4">Our Standard</span>
+                      <div className="flex gap-4">
+                        <CheckCircle2 className="w-5 h-5 text-accent mt-1 flex-shrink-0 shadow-[0_0_10px_rgba(207,160,82,0.5)] rounded-full" />
+                        <p className="text-[15px] lg:text-[16px] text-white/90 font-medium leading-relaxed group-hover:text-white transition-colors">
+                          {item.nriTrust}
+                        </p>
                       </div>
                     </div>
                   </div>

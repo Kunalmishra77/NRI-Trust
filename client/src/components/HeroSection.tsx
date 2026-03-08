@@ -1,163 +1,120 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { Link } from "wouter";
-import heroImage from "@assets/generated_images/Elderly_Indian_parents_at_home_c0cf334b.png";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { elegantFadeUp, luxuryStagger, useCountUp } from "@/motion/variants";
+import { ArrowRight, ChevronDown, Lock, ShieldAlert } from "lucide-react";
+import { Link } from "wouter";
 import { useRef } from "react";
-
-function CountUpStat({ end, suffix = "", label }: { end: number; suffix?: string; label: string }) {
-  const { ref, display } = useCountUp(end, 2);
-  return (
-    <div className="text-center">
-      <div className="text-2xl md:text-3xl font-mono font-bold text-white mb-1">
-        <span ref={ref}>{display}</span>{suffix}
-      </div>
-      <div className="text-xs text-white/40 font-medium tracking-wide uppercase">{label}</div>
-    </div>
-  );
-}
+import { FloatingLegalDoc, ComplianceCard, VaultMotif } from "./ui/three-d-elements";
+import { elegantFadeUp, luxuryStagger } from "@/motion/variants";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLElement>(null);
-  const { scrollY } = useScroll();
-  const imgY = useTransform(scrollY, [0, 800], ["0%", "15%"]);
+  const { scrollY } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen overflow-hidden bg-[hsl(180,50%,8%)]"
-      aria-label="Hero section"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden perspective-container"
     >
-      {/* Background ambient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,hsl(38_85%_55%_/_0.06)_0%,transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_80%,hsl(180_50%_20%_/_0.15)_0%,transparent_50%)]" />
+      {/* ─── CINEMATIC BACKGROUND ─── */}
+      <div className="absolute inset-0 bg-background z-0" />
+      <div className="absolute inset-0 noise-overlay opacity-20 z-[1]" />
+      
+      {/* Animated Light Streaks */}
+      <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none">
+        <motion.div 
+          animate={{ x: ["-100%", "200%"] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[20%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/20 to-transparent rotate-[15deg]" 
+        />
+      </div>
 
-      {/* Main content: Editorial split */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      {/* Depth Glows */}
+      <div className="absolute top-1/4 left-1/4 w-[50vw] h-[50vw] mesh-glow-emerald blur-[120px] opacity-30 pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[40vw] h-[40vw] mesh-glow-gold blur-[100px] opacity-20 pointer-events-none" />
 
-          {/* LEFT column (text) — 7 of 12 cols */}
+      <div className="max-container relative z-10 pt-20">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          
+          {/* ─── CONTENT (7 Cols) ─── */}
           <motion.div
+            style={{ y: y1, opacity }}
             variants={luxuryStagger}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 order-2 lg:order-1"
+            className="lg:col-span-7 text-center lg:text-left"
           >
-            <motion.span
-              variants={elegantFadeUp}
-              className="font-mono text-xs tracking-[0.3em] uppercase text-amber-500/60 block mb-4"
-            >
-              Financial & Legal Advisory for NRIs
-            </motion.span>
+            <motion.div variants={elegantFadeUp} className="flex items-center justify-center lg:justify-start gap-4 mb-8">
+              <div className="h-px w-12 bg-accent/40" />
+              <span className="accent-label !mb-0">Elderly Financial & Legal Care</span>
+            </motion.div>
 
             <motion.h1
               variants={elegantFadeUp}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.1] mb-8 tracking-tight"
+              className="display-title mb-8"
             >
-              You're Building Your Life Abroad.{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500">
-                We're Protecting Your Legacy at Home.
-              </span>
+              Protecting Your <br />
+              <span className="text-gradient-gold italic">Parents' Well-Being</span> <br />
+              While You're Away.
             </motion.h1>
 
             <motion.p
               variants={elegantFadeUp}
-              className="text-lg md:text-xl text-white/50 mb-10 max-w-xl leading-relaxed font-light"
+              className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8 font-light"
             >
-              Banking compliance, legal succession, property management, insurance claims, and tax filings —{" "}
-              <span className="font-medium text-amber-300/80">one trusted team handles it all</span> so you don't have to.
+              A dedicated stewardship service for NRIs with aging parents in India. We handle the complexities of banking, legal, and property compliance so you can focus on your life abroad.
             </motion.p>
+
+            <motion.div 
+              variants={elegantFadeUp}
+              className="inline-flex items-center gap-3 bg-accent/5 border border-accent/20 px-5 py-3 rounded-2xl mb-12"
+            >
+              <ShieldAlert className="w-4 h-4 text-accent" />
+              <span className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">Purely Financial & Legal • No Medical Services</span>
+            </motion.div>
 
             <motion.div
               variants={elegantFadeUp}
-              className="flex flex-col sm:flex-row items-start gap-4"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6"
             >
               <Link href="/contact">
-                <Button
-                  size="lg"
-                  className="group relative overflow-hidden text-base px-8 py-6 bg-gradient-to-r from-accent to-amber-500 text-white shadow-2xl shadow-amber-500/20 transition-all hover:shadow-amber-500/40 hover:-translate-y-0.5"
-                >
-                  <span className="relative z-10 font-bold tracking-wide">Book Your Free Review Session</span>
-                  <div className="absolute inset-0 bg-white/20 transform -translate-x-full skew-x-12 transition-transform group-hover:translate-x-full duration-700 ease-out" />
-                </Button>
+                <button className="btn-premium-primary min-w-[240px] flex items-center justify-center gap-3 group">
+                  Book Review Session
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
               </Link>
               <Link href="/services">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-base px-8 py-6 border-white/15 text-white hover:bg-white/5 transition-all hover:-translate-y-0.5"
-                >
-                  Explore Services
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
+                <button className="btn-premium-outline min-w-[240px]">
+                  Our Services
+                </button>
               </Link>
             </motion.div>
           </motion.div>
 
-          {/* RIGHT column (image) — 5 of 12 cols */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            className="lg:col-span-5 order-1 lg:order-2"
-          >
-            <div className="relative">
-              <motion.div
-                style={{ y: imgY }}
-                className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/30"
-              >
-                <img
-                  src={heroImage}
-                  alt="Happy elderly Indian parents at home"
-                  className="w-full h-auto object-cover aspect-[4/5] lg:aspect-[3/4]"
-                />
-              </motion.div>
-              {/* Decorative amber glow behind image */}
-              <div className="absolute -inset-4 bg-amber-500/5 rounded-3xl blur-2xl -z-10" />
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Trust Stats Bar — full width, separated */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 border-t border-white/5"
-      >
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <CountUpStat end={200} suffix="+" label="NRI Families" />
-            <CountUpStat end={40} suffix="+" label="Countries Served" />
-            <CountUpStat end={5} suffix="" label="Service Areas" />
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-mono font-bold text-white mb-1">Since 2020</div>
-              <div className="text-xs text-white/40 font-medium tracking-wide uppercase">5+ Years</div>
+          {/* ─── 3D COMPOSITION (5 Cols) ─── */}
+          <div className="lg:col-span-5 relative h-[600px] hidden lg:block perspective-container">
+            <div className="relative w-full h-full preserve-3d text-center">
+              <VaultMotif className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125 opacity-20" />
+              <FloatingLegalDoc className="absolute top-10 right-0 z-20" delay={0.2} />
+              <ComplianceCard title="Parent Profile" status="Secure" className="absolute bottom-20 left-0 z-30" delay={0.5} />
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll Indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4 cursor-pointer"
+        onClick={() => containerRef.current?.nextElementSibling?.scrollIntoView({ behavior: 'smooth' })}
       >
-        <button
-          onClick={() => {
-            const el = document.querySelector("#problems");
-            if (el) el.scrollIntoView({ behavior: "smooth" });
-          }}
-          className="flex flex-col items-center gap-2 text-white/30 hover:text-amber-400 transition-colors"
-          aria-label="Scroll down to learn more"
-        >
-          <span className="text-[10px] font-mono tracking-[0.3em] uppercase">Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-amber-400 to-transparent animate-pulse" />
-        </button>
+        <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-accent opacity-40">Scroll to Explore</span>
+        <ChevronDown className="w-5 h-5 text-accent opacity-40" />
       </motion.div>
     </section>
   );

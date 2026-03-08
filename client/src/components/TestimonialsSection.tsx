@@ -9,11 +9,11 @@ import { elegantFadeUp, luxuryStagger, useCountUp } from "@/motion/variants";
 function StatCounter({ end, suffix, label }: { end: number; suffix: string; label: string }) {
   const { ref, display } = useCountUp(end, 2.5);
   return (
-    <div className="text-center">
-      <div className="text-3xl md:text-4xl font-mono font-bold text-amber-400 mb-1">
+    <div className="text-center group flex flex-col items-center">
+      <div className="text-4xl md:text-5xl lg:text-6xl mb-3 font-serif font-medium text-white group-hover:text-accent transition-colors duration-500">
         <span ref={ref}>{display}</span>{suffix}
       </div>
-      <div className="text-xs md:text-sm text-white/40 font-medium uppercase tracking-wider">{label}</div>
+      <div className="text-[10px] md:text-[11px] font-mono text-muted-foreground uppercase tracking-[0.25em] font-semibold">{label}</div>
     </div>
   );
 }
@@ -22,111 +22,125 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       name: "Priya Krishnamurthy",
-      role: "Software Engineer",
+      role: "Software Architect",
       location: "San Francisco, USA",
       image: testimonial1,
-      quote: "My father received a tax notice for unreported rental income. NRI Trust handled everything — compiled documents, filed revised returns, and resolved the demand within 3 weeks. I didn't miss a single day of work.",
-      outcome: "₹4.5L tax notice resolved",
+      quote: "Managing my father's taxation from 8,000 miles away used to be a source of constant anxiety. NRI Trust's advisory team took over the entire communication with the IT department. The result was a resolution that saved us months of paperwork and significant potential penalties.",
+      outcome: "Resolved ₹4.5L complex tax demand",
     },
     {
       name: "Rajesh Sharma",
-      role: "Investment Banker",
+      role: "VP, Investment Banking",
       location: "Singapore",
       image: testimonial2,
-      quote: "My mother's ₹8 lakh insurance claim was denied 3 times citing 'pre-existing condition.' NRI Trust gathered the right medical evidence, filed an appeal, and got it approved in 2 weeks. Game changer.",
-      outcome: "₹8L insurance claim approved",
+      quote: "When my mother's health insurance claim was rejected for the fourth time, I felt helpless. NRI Trust intervened as our professional advocate, compiled the medical records correctly, and secured a full reimbursement within 14 days. This is the peace of mind money can't buy.",
+      outcome: "Reversed ₹8L insurance rejection",
     },
     {
       name: "Anita Menon",
-      role: "Management Consultant",
+      role: "Strategy Consultant",
       location: "London, UK",
       image: testimonial3,
-      quote: "A neighbor had encroached on our family property in Chennai. NRI Trust documented everything, filed the police complaint, and coordinated with our advocate. The encroachment was removed within 2 months.",
-      outcome: "Property dispute settled",
+      quote: "Property encroachment is every NRI's worst nightmare. NRI Trust didn't just 'monitor' our family estate; they handled the legal coordination, police liaison, and on-ground verification that settled a multi-year dispute in months.",
+      outcome: "Secured family estate in Chennai",
     },
   ];
 
   const stats = [
-    { number: 200, suffix: "+", label: "Happy Families" },
-    { number: 40, suffix: "+", label: "Countries Served" },
-    { number: 50, suffix: "Cr+", label: "Assets Managed" },
-    { number: 4.9, suffix: "/5", label: "Average Rating" },
+    { number: 200, suffix: "+", label: "Global Families" },
+    { number: 40, suffix: "+", label: "Countries" },
+    { number: 50, suffix: "Cr+", label: "Assets Protected" },
+    { number: 4.9, suffix: "/5", label: "Family Rating" },
   ];
 
   return (
-    <section id="testimonials" className="py-24 md:py-32 bg-[hsl(180,50%,8%)] relative overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,hsl(180_50%_15%_/_0.1)_0%,transparent_60%)]" />
+    <section id="testimonials" className="section-padding bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-noise pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(160_30%_15%_/_0.15)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section heading */}
+      <div className="max-container relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={elegantFadeUp}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-24 md:mb-32"
         >
-          <span className="font-mono text-xs tracking-[0.3em] uppercase text-amber-500/60 block mb-3">
-            Client Stories
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight">
-            Real NRI Families. <span className="text-amber-400">Real Results.</span>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-[2px] w-10 bg-gradient-to-r from-transparent to-accent/50" />
+            <span className="accent-label !mb-0 tracking-[0.25em]">Trust & Reputation</span>
+            <div className="h-[2px] w-10 bg-gradient-to-l from-transparent to-accent/50" />
+          </div>
+          <h2 className="section-title text-white mb-8">
+            The Families We <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light">Privately Advise</span>
           </h2>
         </motion.div>
 
-        {/* Stacked pull-quote testimonials */}
+        {/* Testimonials Stack */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           variants={luxuryStagger}
-          className="space-y-0"
+          className="space-y-16 lg:space-y-24 max-w-5xl mx-auto"
         >
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
               variants={elegantFadeUp}
-              className={`py-12 md:py-16 text-center ${
-                index < testimonials.length - 1 ? "border-b border-white/5" : ""
+              className={`flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16 ${
+                index < testimonials.length - 1 ? "pb-16 lg:pb-24 border-b border-white/[0.05]" : ""
               }`}
             >
-              {/* Large serif italic quote */}
-              <p className="text-xl sm:text-2xl md:text-[1.75rem] text-white/60 italic font-serif leading-relaxed mb-8 max-w-3xl mx-auto">
-                &ldquo;{testimonial.quote}&rdquo;
-              </p>
-
-              {/* Attribution */}
-              <div className="flex flex-col items-center gap-3">
-                <Avatar className="w-12 h-12 border-2 border-white/10">
-                  <AvatarImage src={testimonial.image} />
-                  <AvatarFallback className="bg-primary text-white">{testimonial.name[0]}</AvatarFallback>
+              {/* Profile Image */}
+              <div className="flex-shrink-0 relative group perspective-1000">
+                <Avatar className="w-24 h-24 lg:w-36 lg:h-36 border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.8)] transform-gpu group-hover:scale-105 group-hover:rotate-y-6 transition-all duration-700 rounded-3xl">
+                  <AvatarImage src={testimonial.image} className="object-cover" />
+                  <AvatarFallback className="bg-[#0A0F0D] text-accent text-3xl font-serif rounded-3xl">{testimonial.name[0]}</AvatarFallback>
                 </Avatar>
-                <div>
-                  <div className="text-white font-semibold text-sm">{testimonial.name}</div>
-                  <div className="text-white/30 font-mono text-xs uppercase tracking-wider">
-                    {testimonial.role} &middot; {testimonial.location}
-                  </div>
+                <div className="absolute -inset-6 bg-accent/20 blur-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-1000 -z-10 rounded-full" />
+              </div>
+
+              {/* Quote Content */}
+              <div className="flex-1 text-center md:text-left">
+                <div className="mb-6 opacity-20">
+                  <span className="text-6xl font-serif text-accent leading-none">&ldquo;</span>
                 </div>
-                {/* Outcome badge */}
-                <div className="inline-flex items-center gap-1.5 text-xs font-semibold bg-amber-500/10 text-amber-400 px-3 py-1.5 rounded-full border border-amber-500/20 mt-1">
-                  <Check className="w-3 h-3" />
-                  {testimonial.outcome}
+                <p className="text-xl md:text-2xl lg:text-[28px] text-white/90 italic font-serif leading-relaxed mb-10 tracking-tight">
+                  {testimonial.quote}
+                </p>
+
+                <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 bg-white/[0.01] p-6 rounded-2xl border border-white/[0.03]">
+                  <div>
+                    <div className="text-[17px] font-medium text-white mb-1">{testimonial.name}</div>
+                    <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
+                      {testimonial.role} <span className="mx-2 text-accent/40">&middot;</span> {testimonial.location}
+                    </div>
+                  </div>
+
+                  <div className="hidden md:block w-px h-12 bg-white/10" />
+
+                  <div className="inline-flex items-center justify-center md:justify-start gap-4 bg-accent/[0.05] border border-accent/20 px-6 py-3 rounded-xl shadow-inner ml-auto md:ml-0">
+                    <Check className="w-4 h-4 text-accent" />
+                    <span className="text-[13px] font-medium text-accent tracking-wide">{testimonial.outcome}</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Stats row */}
+        {/* Global Statistics */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={elegantFadeUp}
-          className="mt-16 pt-12 border-t border-white/5"
+          className="mt-32 pt-20 border-t border-white/[0.05] relative"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20 max-w-6xl mx-auto relative z-10">
             {stats.map((stat, i) => (
               <StatCounter key={i} end={stat.number} suffix={stat.suffix} label={stat.label} />
             ))}

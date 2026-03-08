@@ -1,141 +1,131 @@
-import { Phone, Mail, ArrowRight } from "lucide-react";
+import { Phone, Mail, ArrowRight, Shield, MapPin, Linkedin, Twitter, Lock, Globe } from "lucide-react";
 import { Link } from "wouter";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
-  const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end end"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [-100, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
-    Services: [
+    Advisory: [
       { label: "Banking & KYC", href: "/services/banking-kyc" },
       { label: "Legal & Succession", href: "/services/legal-succession" },
       { label: "Property & Tenancy", href: "/services/property-tenancy" },
-      { label: "Insurance", href: "/services/insurance" },
-      { label: "Income Tax", href: "/services/income-tax" },
+      { label: "Insurance Advocacy", href: "/services/insurance" },
+      { label: "Tax Compliance", href: "/services/income-tax" },
     ],
-    Company: [
-      { label: "About Us", href: "/about" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Contact Us", href: "/contact" },
-      { label: "All Services", href: "/services" },
-    ],
-    Resources: [
-      { label: "Success Stories", href: "/about" },
-      { label: "How It Works", href: "/pricing" },
-      { label: "NRI Guides", href: "#" },
-      { label: "Blog", href: "#" },
-    ],
-    Legal: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
-      { label: "Refund Policy", href: "#" },
-    ],
+    Practice: [
+      { label: "About the Firm", href: "/about" },
+      { label: "Engagement Models", href: "/pricing" },
+      { label: "Private Consultation", href: "/contact" },
+      { label: "Practice Areas", href: "/services" },
+    ]
   };
 
   return (
-    <footer ref={containerRef} className="bg-gradient-to-b from-[hsl(180,45%,8%)] to-[hsl(180,50%,4%)] text-white relative overflow-hidden" role="contentinfo">
-      {/* Decorative amber gradient line at top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
-
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none opacity-[0.02]">
-        <h1 className="text-[20vw] font-serif font-black text-center leading-none mt-20">NRI TRUST</h1>
+    <footer className="bg-background text-foreground relative overflow-hidden border-t border-white/[0.03]">
+      <div className="absolute inset-0 noise-overlay opacity-20 pointer-events-none" />
+      
+      {/* Cinematic Watermark - Perfectly centered and scaled */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.02] select-none flex items-center justify-center p-12">
+        <h1 className="text-[10vw] lg:text-[8vw] font-serif font-black text-center leading-none tracking-[0.1em] whitespace-nowrap text-white transform-gpu uppercase opacity-50">
+          NRI TRUST
+        </h1>
       </div>
 
-      <motion.div
-        style={{ y, opacity }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-      >
-        <div className="py-20 md:py-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-16">
-            <div className="lg:col-span-2">
-              <Link href="/" className="flex items-center gap-3 mb-8">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(232,168,56,0.2)] bg-gradient-to-br from-accent to-amber-600 border border-amber-400/20">
-                  <span className="text-white font-serif font-bold text-xl">NT</span>
-                </div>
-                <div>
-                  <span className="text-2xl font-serif font-bold block leading-none mb-1 tracking-tight">NRI TRUST</span>
-                  <span className="text-xs font-mono text-white/30 uppercase tracking-[0.25em]">Global Peace of Mind</span>
-                </div>
-              </Link>
-              <p className="text-white/40 mb-10 max-w-sm leading-relaxed text-lg font-light">
-                Your trusted partner for comprehensive financial and legal advisory services.
-                Serving NRI families across 40+ countries since 2020.
-              </p>
-
-              <div className="space-y-5">
-                <a
-                  href="tel:+919876543210"
-                  className="flex items-center gap-5 text-white/50 hover:text-amber-400 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center group-hover:bg-amber-500/20 transition-all duration-300 border border-amber-500/20">
-                    <Phone className="w-5 h-5 text-amber-400" />
-                  </div>
-                  <span className="font-medium text-lg">+91 98765 43210</span>
-                </a>
-                <a
-                  href="mailto:hello@nritrust.com"
-                  className="flex items-center gap-5 text-white/50 hover:text-amber-400 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center group-hover:bg-amber-500/20 transition-all duration-300 border border-amber-500/20">
-                    <Mail className="w-5 h-5 text-amber-400" />
-                  </div>
-                  <span className="font-medium text-lg">hello@nritrust.com</span>
-                </a>
+      <div className="max-w-5xl mx-auto px-8 relative z-10 pt-20 pb-12">
+        <div className="grid lg:grid-cols-12 gap-16 mb-16">
+          
+          {/* Brand Pillar */}
+          <div className="lg:col-span-5">
+            <Link href="/" className="flex items-center gap-5 mb-8 group">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-accent to-[#8a652a] flex items-center justify-center border border-accent/20 group-hover:scale-105 transition-all duration-500 shadow-2xl">
+                <Shield className="w-6 h-6 text-[#0A0F0D]" />
               </div>
+              <div className="flex flex-col leading-none">
+                <span className="text-2xl font-serif font-medium tracking-tight text-white group-hover:text-accent transition-colors">NRI TRUST</span>
+                <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-accent/60 mt-1 font-bold">Digital Vault</span>
+              </div>
+            </Link>
+            
+            <p className="text-lg text-muted-foreground font-light mb-10 max-w-md leading-relaxed">
+              Acting as a professional fiduciary for global Indian families across 40+ countries. 
+            </p>
+
+            <div className="flex flex-col gap-5 mb-10">
+              <a href="mailto:advisory@nritrust.com" className="flex items-center gap-4 text-white/60 hover:text-accent transition-all group">
+                <Mail className="w-4 h-4 text-accent/40 group-hover:text-accent" />
+                <span className="font-mono text-xs tracking-widest font-medium">advisory@nritrust.com</span>
+              </a>
+              <a href="tel:+919876543210" className="flex items-center gap-4 text-white/60 hover:text-accent transition-all group">
+                <Phone className="w-4 h-4 text-accent/40 group-hover:text-accent" />
+                <span className="font-mono text-xs tracking-widest font-medium">+91 98765 43210</span>
+              </a>
             </div>
 
+            <div className="flex items-center gap-4">
+              <a href="#" className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center hover:bg-accent/10 hover:border-accent/30 transition-all text-white/40 hover:text-accent shadow-inner">
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center hover:bg-accent/10 hover:border-accent/30 transition-all text-white/40 hover:text-accent shadow-inner">
+                <Twitter className="w-4 h-4" />
+              </a>
+              <div className="w-px h-6 bg-white/5 mx-4" />
+              <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-white/20">
+                <Globe className="w-3 h-3" />
+                HQ: Mumbai
+              </div>
+            </div>
+          </div>
+
+          {/* Links Grid */}
+          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-10 pt-2">
             {Object.entries(footerLinks).map(([title, links]) => (
               <div key={title}>
-                <h3 className="font-mono tracking-[0.25em] text-amber-500/40 mb-8 text-xs uppercase">{title}</h3>
-                <ul className="space-y-4">
+                <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-8">{title}</h3>
+                <ul className="space-y-5">
                   {links.map((link) => (
                     <li key={link.label}>
-                      {link.href.startsWith("#") ? (
-                        <span className="text-base text-white/30 cursor-default">{link.label}</span>
-                      ) : (
-                        <Link
-                          href={link.href}
-                          className="text-base text-white/40 hover:text-amber-400 transition-colors flex items-center gap-2 group"
-                        >
-                          <span className="w-0 overflow-hidden group-hover:w-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
-                            <ArrowRight className="w-4 h-4 text-amber-400" />
-                          </span>
-                          {link.label}
-                        </Link>
-                      )}
+                      <Link href={link.href} className="text-white/60 hover:text-white transition-all flex items-center gap-3 group/link">
+                        <ArrowRight className="w-3 h-3 text-accent opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
+                        <span className="text-sm font-light tracking-wide">{link.label}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
-          </div>
-        </div>
-
-        <div className="py-10 border-t border-white/5">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="text-sm text-white/30 font-light">
-              &copy; {currentYear} NRI Trust. All rights reserved.
-            </div>
-
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span className="text-xs font-medium text-white/40">System Operational</span>
-              </div>
+            
+            <div className="md:col-span-1">
+              <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-8">Client Access</h3>
+              <button className="flex items-center gap-3 p-4 glass-panel rounded-xl border-white/5 hover:border-accent/30 transition-all w-full text-left group">
+                <Lock className="w-4 h-4 text-accent/40 group-hover:text-accent" />
+                <div className="flex flex-col leading-tight">
+                  <span className="text-[10px] font-mono font-bold text-white uppercase tracking-widest">Portal</span>
+                  <span className="text-[9px] text-muted-foreground font-light uppercase">Secure Login</span>
+                </div>
+              </button>
             </div>
           </div>
         </div>
-      </motion.div>
+
+        {/* Bottom Bar - Tightened and positioned at the very bottom */}
+        <div className="pt-8 border-t border-white/[0.03] flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-[9px] font-mono text-muted-foreground/30 tracking-[0.2em] uppercase">
+            &copy; {currentYear} NRI TRUST GLOBAL ADVISORY.
+          </div>
+          
+          <div className="flex items-center gap-8">
+            <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-[#1B332D]/20 border border-[#20B2AA]/10">
+              <div className="w-1 h-1 rounded-full bg-[#20B2AA] animate-pulse" />
+              <span className="text-[9px] font-mono font-bold text-[#20B2AA] tracking-widest uppercase text-nowrap">Encryption Active</span>
+            </div>
+            <div className="flex items-center gap-4 opacity-20 hover:opacity-100 transition-opacity">
+              <Shield className="w-3.5 h-3.5 text-accent" />
+              <span className="text-[9px] font-mono font-bold tracking-widest text-white text-nowrap uppercase">FEMA Compliant</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }
