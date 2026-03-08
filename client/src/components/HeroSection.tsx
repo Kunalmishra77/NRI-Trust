@@ -103,8 +103,8 @@ export default function HeroSection() {
        transition={{ duration: 1.2, ease: "easeOut" }}
        className="relative w-full h-full preserve-3d flex items-center justify-center"
       >
-       {/* Image Wrapper - Made smaller with w-[85%] */}
-       <div className="relative w-[85%] h-[85%] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(207,160,82,0.1)] group">
+       {/* Image Wrapper - Centered */}
+       <div className="relative w-[80%] h-[80%] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(207,160,82,0.1)] group z-10">
         <img 
          src="/hero-parents.png" 
          alt="Elderly Parents in India" 
@@ -113,9 +113,18 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
        </div>
        
-       {/* Floating UI Elements - Moved further out and scaled down */}
-       <FloatingLegalDoc className="absolute top-0 -right-4 z-20 scale-75 origin-top-right" delay={0.2} />
-       <ComplianceCard title="Parent Profile" status="Secure" className="absolute bottom-0 -left-4 z-30 scale-75 origin-bottom-left" delay={0.5} />
+       {/* Floating UI Elements - Repositioned to be relative to centered image and made clickable */}
+       <Link href="/services/legal-succession">
+        <motion.div whileHover={{ scale: 0.85, z: 50 }} className="absolute top-[5%] -right-[5%] z-20 cursor-pointer">
+         <FloatingLegalDoc className="scale-75 shadow-2xl" />
+        </motion.div>
+       </Link>
+
+       <Link href="/about">
+        <motion.div whileHover={{ scale: 0.85, z: 50 }} className="absolute bottom-[10%] -left-[5%] z-20 cursor-pointer">
+         <ComplianceCard title="Parent Profile" status="Secure" className="scale-75 shadow-2xl" />
+        </motion.div>
+       </Link>
       </motion.div>
      </div>
     </div>
