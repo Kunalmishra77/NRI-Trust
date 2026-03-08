@@ -55,7 +55,7 @@ export default function HeroSection() {
 
       <motion.h1
        variants={elegantFadeUp}
-       className="display-title mb-8 !text-5xl md:!text-7xl lg:!text-8xl"
+       className="display-title mb-8 !text-5xl md:!text-6xl lg:!text-7xl"
       >
        Protecting Your <br />
        <span className="text-gradient-gold italic">Parents' Well-Being</span> <br />
@@ -64,7 +64,7 @@ export default function HeroSection() {
 
       <motion.p
        variants={elegantFadeUp}
-       className="text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed max-w-3xl mx-auto lg:mx-0 mb-8 font-light"
+       className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8 font-light"
       >
        A dedicated stewardship service for NRIs with aging parents in India. We handle the complexities of banking, legal, and property compliance so you can focus on your life abroad.
       </motion.p>
@@ -103,19 +103,19 @@ export default function HeroSection() {
        transition={{ duration: 1.2, ease: "easeOut" }}
        className="relative w-full h-full preserve-3d"
       >
-       <div className="absolute inset-0 rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(207,160,82,0.1)] group">
+       <div className="absolute inset-0 rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(207,160,82,0.15)] group">
         <img 
          src="/hero-parents.png" 
          alt="Elderly Parents in India" 
          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
         />
-        {/* Transparent accent */}
-        <div className="absolute inset-0 bg-transparent" />
+        {/* Subtle vignette for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
        </div>
        
-       {/* Floating UI Elements for depth */}
-       <FloatingLegalDoc className="absolute -top-6 -right-6 z-20 scale-90" delay={0.2} />
-       <ComplianceCard title="Parent Profile" status="Secure" className="absolute -bottom-10 -left-10 z-30 scale-90" delay={0.5} />
+       {/* Floating UI Elements - Repositioned and Scaled for a cleaner look */}
+       <FloatingLegalDoc className="absolute -top-8 -right-8 z-20 scale-80" delay={0.2} />
+       <ComplianceCard title="Parent Profile" status="Secure" className="absolute -bottom-12 -left-8 z-30 scale-80" delay={0.5} />
       </motion.div>
      </div>
     </div>

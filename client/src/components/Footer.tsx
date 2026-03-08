@@ -32,8 +32,8 @@ export default function Footer() {
     </h1>
    </div>
 
-   <div className="max-w-5xl mx-auto px-8 relative z-10 pt-20 pb-12">
-    <div className="grid lg:grid-cols-12 gap-16 mb-16">
+   <div className="max-w-5xl mx-auto px-8 relative z-10 pt-12 pb-8">
+    <div className="grid lg:grid-cols-12 gap-12 mb-12">
      
      {/* Brand Pillar */}
      <div className="lg:col-span-5">
