@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { elegantFadeUp } from "@/motion/variants";
 import { X, Check, ArrowRight, AlertCircle } from "lucide-react";
+import { Link } from "wouter";
 
 export default function FailureMatrix() {
   const comparisons = [
