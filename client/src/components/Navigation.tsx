@@ -34,74 +34,89 @@ export default function Navigation() {
  };
 
  const navLinks = [
-  { id: "firm", label: "About Us", items: menuItems.firm },
-  { id: "practice", label: "Our Services", items: services.map(s => ({ label: s.title, href: `/services/${s.slug}`, icon: s.icon })) },
-  { id: "operations", label: "How It Works", items: menuItems.operations },
-  { id: "insights", label: "Helpful Guides", items: menuItems.insights },
+ { id: "home", label: "Home", href: "/" },
+ { id: "firm", label: "About Us", items: menuItems.firm },
+ { id: "practice", label: "Our Services", items: services.map(s => ({ label: s.title, href: `/services/${s.slug}`, icon: s.icon })) },
+ { id: "operations", label: "How It Works", items: menuItems.operations },
+ { id: "insights", label: "Helpful Guides", items: menuItems.insights },
+ { id: "contact", label: "Contact Us", href: "/contact" },
  ];
 
  return (
-  <motion.header
-   initial={{ y: -100, opacity: 0 }}
-   animate={{ y: 0, opacity: 1 }}
-   transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-   className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-    isScrolled
-     ? "bg-[#050814]/90 backdrop-blur-xl py-4 border-b border-white/[0.05] shadow-lg"
-     : "bg-transparent py-8"
-   }`}
-  >
-   <div className="max-container flex items-center justify-between">
-    {/* Brand */}
-    <Link href="/" className="flex items-center gap-4 group z-50 shrink-0">
-     <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#AA7C11] flex items-center justify-center border border-[#D4AF37]/20 group-hover:scale-105 transition-all duration-500 relative overflow-hidden shadow-[0_0_30px_rgba(212,175,55,0.2)]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.4),transparent)]" />
-      <Shield className="w-5 h-5 lg:w-6 lg:h-6 text-[#050814] relative z-10" />
-     </div>
-     <div className="flex flex-col leading-none">
-      <span className="text-xl lg:text-2xl font-serif font-medium tracking-tight text-[#F5F3EC] group-hover:text-[#D4AF37] transition-colors">NRI TRUST</span>
-      <span className="text-[8px] lg:text-[9px] font-mono tracking-[0.3em] uppercase text-[#D4AF37]/80 mt-1 font-bold">Private Advisory</span>
-     </div>
-    </Link>
+ <motion.header
+  initial={{ y: -100, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+   isScrolled
+    ? "bg-[#050814]/90 backdrop-blur-xl py-3 border-b border-white/[0.05] shadow-lg"
+    : "bg-transparent py-5"
+  }`}
+ >
+  <div className="max-container flex items-center justify-between">
+   {/* Brand */}
+   <Link href="/" className="flex items-center gap-3 group z-50 shrink-0">
+    <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#AA7C11] flex items-center justify-center border border-[#D4AF37]/20 group-hover:scale-105 transition-all duration-500 relative overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.4),transparent)]" />
+     <Shield className="w-4 h-4 lg:w-5 lg:h-5 text-[#050814] relative z-10" />
+    </div>
+    <div className="flex flex-col leading-none">
+     <span className="text-lg lg:text-xl font-serif font-medium tracking-tight text-[#F5F3EC] group-hover:text-[#D4AF37] transition-colors">NRI TRUST</span>
+     <span className="text-[7px] lg:text-[8px] font-mono tracking-[0.3em] uppercase text-[#D4AF37]/80 mt-0.5 font-bold">Private Advisory</span>
+    </div>
+   </Link>
 
-    {/* Desktop Links */}
-    <div className="hidden lg:flex items-center gap-10 xl:gap-12">
-     {navLinks.map((nav) => (
-      <div 
-       key={nav.id}
-       className="relative py-4"
-       onMouseEnter={() => setActiveDropdown(nav.id)}
-       onMouseLeave={() => setActiveDropdown(null)}
-      >
-       <button className={`font-sans text-[16px] xl:text-[18px] font-medium flex items-center gap-2 transition-all duration-300 ${
-        activeDropdown === nav.id || location.includes(nav.id) ? "text-[#D4AF37]" : "text-[#F5F3EC]/80 hover:text-[#F5F3EC]"
+   {/* Desktop Links */}
+   <div className="hidden lg:flex items-center gap-8 xl:gap-10">
+    {navLinks.map((nav) => (
+     <div 
+      key={nav.id}
+      className="relative py-2"
+      onMouseEnter={() => nav.items ? setActiveDropdown(nav.id) : null}
+      onMouseLeave={() => nav.items ? setActiveDropdown(null) : null}
+     >
+      {nav.items ? (
+       <button className={`font-sans text-[14px] xl:text-[16px] font-medium flex items-center gap-2 transition-all duration-300 ${
+        activeDropdown === nav.id || location.includes(nav.id) ? "text-[#D4AF37]" : "text-[#F5F3EC]/80 hover:text-[#D4AF37]"
        }`}>
         {nav.label}
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-500 ${activeDropdown === nav.id ? "rotate-180 text-[#D4AF37]" : ""}`} />
+        <ChevronDown className={`w-3 h-3 transition-transform duration-500 ${activeDropdown === nav.id ? "rotate-180 text-[#D4AF37]" : ""}`} />
        </button>
-       
+      ) : (
+       <Link href={nav.href || "/"}>
+        <button className={`font-sans text-[14px] xl:text-[16px] font-medium transition-all duration-300 ${
+         location === nav.href ? "text-[#D4AF37]" : "text-[#F5F3EC]/80 hover:text-[#D4AF37]"
+        }`}>
+         {nav.label}
+        </button>
+       </Link>
+      )}
        <AnimatePresence>
-        {activeDropdown === nav.id && (
+        {nav.items && activeDropdown === nav.id && (
          <motion.div
-          initial={{ opacity: 0, y: 15, scale: 0.98 }}
+          initial={{ opacity: 0, y: 25, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 10, scale: 0.98 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute top-[calc(100%-0.5rem)] left-1/2 -translate-x-1/2 pt-4 min-w-[280px]"
+          exit={{ opacity: 0, y: 15, scale: 0.95 }}
+          transition={{ 
+            duration: 0.4, 
+            ease: [0.23, 1, 0.32, 1] 
+          }}
+          className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-[100]"
          >
-          <div className="premium-card p-2 rounded-2xl overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] backdrop-blur-2xl bg-[#0B101E]/95">
-           <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
-           <div className="grid gap-1 relative z-10 p-1">
+          <div className="premium-card p-1 rounded-2xl overflow-hidden relative shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)] backdrop-blur-3xl bg-[#0B101E]/98 border border-white/10 min-w-[220px]">
+           <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
+           <div className="grid gap-0 relative z-10">
             {nav.items.map((item, idx) => (
              <Link key={idx} href={item.href}>
-              <div className="px-5 py-3.5 rounded-xl hover:bg-white/[0.04] transition-all duration-300 group/link flex gap-4 items-center cursor-pointer">
+              <div className="px-3.5 py-2 rounded-xl hover:bg-white/[0.05] transition-all duration-300 group/link flex gap-3 items-center cursor-pointer">
+               {/* @ts-ignore */}
                {item.icon && (
-                <div className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center shrink-0 group-hover/link:bg-[#D4AF37]/10 group-hover/link:border-[#D4AF37]/20 transition-all">
+                <div className="w-8 h-8 rounded-lg bg-white/[0.03] border border-white/5 flex items-center justify-center shrink-0 group-hover/link:bg-[#D4AF37]/15 group-hover/link:border-[#D4AF37]/30 transition-all">
                  {/* @ts-ignore */}
-                 <item.icon className="w-5 h-5 text-[#F5F3EC]/40 group-hover/link:text-[#D4AF37]" />
+                 <item.icon className="w-4 h-4 text-[#F5F3EC]/50 group-hover/link:text-[#D4AF37]" />
                 </div>
                )}
-               <span className="text-[15px] text-[#F5F3EC]/80 group-hover/link:text-[#D4AF37] font-medium whitespace-nowrap transition-colors">
+               <span className="text-[13.5px] text-[#F5F3EC]/80 group-hover/link:text-[#D4AF37] font-medium whitespace-nowrap transition-colors">
                 {item.label}
                </span>
               </div>
@@ -109,11 +124,11 @@ export default function Navigation() {
             ))}
            </div>
            {nav.id === "practice" && (
-            <div className="mt-2 pt-3 border-t border-white/[0.05] px-2 pb-1">
+            <div className="mt-1 pt-1.5 border-t border-white/[0.08] px-1 pb-1">
              <Link href="/services">
-              <div className="flex items-center justify-between px-5 py-3 rounded-xl bg-[#D4AF37]/5 hover:bg-[#D4AF37]/10 border border-[#D4AF37]/10 transition-colors cursor-pointer group/all">
-               <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#D4AF37]">Examine All Practices</span>
-               <ArrowRight className="w-4 h-4 text-[#D4AF37]/60 group-hover:all:translate-x-1 transition-transform" />
+              <div className="flex items-center justify-between px-3.5 py-2 rounded-lg bg-[#D4AF37]/5 hover:bg-[#D4AF37]/10 border border-[#D4AF37]/15 transition-colors cursor-pointer group/all">
+               <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#D4AF37]">Examine All Practices</span>
+               <ArrowRight className="w-3 h-3 text-[#D4AF37]/60 group-hover:all:translate-x-1 transition-transform" />
               </div>
              </Link>
             </div>
@@ -177,11 +192,15 @@ export default function Navigation() {
            {nav.label}
           </div>
           <div className="grid gap-1">
-           {nav.items.map((item, idx) => (
+           {nav.items ? nav.items.map((item, idx) => (
             <Link key={idx} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="flex items-start gap-4 py-3 px-4 rounded-xl hover:bg-white/[0.03] transition-colors">
              <div className="text-[#F5F3EC]/90 font-medium text-[16px]">{item.label}</div>
             </Link>
-           ))}
+           )) : (
+            <Link href={nav.href || "/"} onClick={() => setIsMobileMenuOpen(false)} className="flex items-start gap-4 py-3 px-4 rounded-xl hover:bg-white/[0.03] transition-colors">
+             <div className="text-[#F5F3EC]/90 font-medium text-[16px]">{nav.label}</div>
+            </Link>
+           )}
           </div>
          </div>
         ))}

@@ -20,10 +20,10 @@ function PricingPreview() {
   ];
 
   return (
-    <section className="section-padding bg-[#050814] relative overflow-hidden">
+    <section className="py-20 bg-[#050814] relative overflow-hidden">
       <div className="absolute inset-0 noise-overlay opacity-40 pointer-events-none" />
       <div className="max-container relative z-10">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={elegantFadeUp} className="text-center mb-24">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={elegantFadeUp} className="text-center mb-16">
           <span className="accent-label text-[#D4AF37]">Engagement Models</span>
           <h2 className="text-4xl md:text-6xl font-serif text-[#F5F3EC]">Private Care <span className="text-white/40 italic">Plans.</span></h2>
         </motion.div>
@@ -58,10 +58,10 @@ function PricingPreview() {
 
 function FinalCTA() {
   return (
-    <section className="py-40 md:py-60 bg-[#050814] relative overflow-hidden flex items-center justify-center border-t border-white/5">
+    <section className="py-24 md:py-32 bg-[#050814] relative overflow-hidden flex items-center justify-center border-t border-white/5">
       {/* Centered Background Globe */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.07] pointer-events-none">
-        <Globe className="w-[1000px] h-[1000px] text-accent animate-slow-spin" strokeWidth={0.3} />
+        <Globe className="w-[800px] h-[800px] text-accent animate-slow-spin" strokeWidth={0.3} />
       </div>
       
       {/* Background Glow */}
@@ -73,35 +73,37 @@ function FinalCTA() {
           whileInView="visible" 
           viewport={{ once: true }} 
           variants={elegantFadeUp} 
-          className="max-w-5xl mx-auto"
+          className="max-w-4xl mx-auto"
         >
-          <div className="flex items-center justify-center gap-4 mb-12">
-            <div className="h-px w-12 bg-accent/40" />
-            <span className="accent-label !mb-0 text-accent">Strategic Action</span>
-            <div className="h-px w-12 bg-accent/40" />
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="h-px w-10 bg-accent/40" />
+            <span className="accent-label !mb-0 text-accent text-[10px]">Strategic Action</span>
+            <div className="h-px w-10 bg-accent/40" />
           </div>
 
-          <h2 className="text-5xl md:text-8xl font-serif text-[#F5F3EC] mb-12 leading-[1.1] tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-serif text-[#F5F3EC] mb-8 leading-[1.1] tracking-tight">
             Protect Your Parents’ <br />
             <span className="text-gradient-gold italic">Financial Legacy.</span>
           </h2>
           
-          <p className="text-xl md:text-2xl text-white/50 font-light mb-20 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/50 font-light mb-12 leading-relaxed max-w-2xl mx-auto">
             Take the first step towards institutional-grade stewardship. 
             Book your private strategy audit with our executive team.
           </p>
 
-          <Link href="/contact">
-            <button className="btn-premium-primary min-w-[340px] flex items-center justify-center gap-6 group h-20 text-xl shadow-[0_0_50px_rgba(207,160,82,0.15)]">
-              <span>Book Free Consultation</span>
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-            </button>
-          </Link>
+          <div className="flex justify-center">
+            <Link href="/contact">
+              <button className="btn-premium-primary min-w-[280px] flex items-center justify-center gap-4 group h-16 text-lg shadow-[0_0_40px_rgba(207,160,82,0.12)]">
+                <span>Book Free Consultation</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              </button>
+            </Link>
+          </div>
           
-          <div className="mt-16 flex items-center justify-center gap-8 opacity-40">
-            <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-white font-bold">Absolute Discretion</div>
+          <div className="mt-12 flex items-center justify-center gap-6 opacity-40">
+            <div className="text-[9px] font-mono uppercase tracking-[0.3em] text-white font-bold">Absolute Discretion</div>
             <div className="w-1 h-1 rounded-full bg-accent" />
-            <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-white font-bold">Institutional Access</div>
+            <div className="text-[9px] font-mono uppercase tracking-[0.3em] text-white font-bold">Institutional Access</div>
           </div>
         </motion.div>
       </div>

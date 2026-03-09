@@ -97,13 +97,15 @@ export default function Footer() {
       
       <div className="md:col-span-1">
        <h3 className="font-mono text-[11px] font-bold uppercase tracking-[0.4em] text-accent mb-10">Client Access</h3>
-       <button className="flex items-center gap-4 p-6 glass-panel rounded-2xl border-white/10 hover:border-accent/30 transition-all w-full text-left group bg-white/[0.02]">
-        <Lock className="w-5 h-5 text-accent/50 group-hover:text-accent" />
-        <div className="flex flex-col leading-tight">
-         <span className="text-[11px] font-mono font-bold text-white uppercase tracking-widest">Portal</span>
-         <span className="text-[10px] text-muted-foreground font-light uppercase mt-1">Secure Login</span>
-        </div>
-       </button>
+       <Link href="/portal">
+        <button className="flex items-center gap-4 p-6 glass-panel rounded-2xl border-white/10 hover:border-accent/30 transition-all w-full text-left group bg-white/[0.02] cursor-pointer">
+         <Lock className="w-5 h-5 text-accent/50 group-hover:text-accent" />
+         <div className="flex flex-col leading-tight">
+          <span className="text-[11px] font-mono font-bold text-white uppercase tracking-widest">Portal</span>
+          <span className="text-[10px] text-muted-foreground font-light uppercase mt-1">Secure Login</span>
+         </div>
+        </button>
+       </Link>
       </div>
      </div>
     </div>
