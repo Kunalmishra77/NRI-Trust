@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/Preloader";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
  const [location] = useLocation();
@@ -15,6 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
  return (
   <div className="min-h-screen bg-background relative">
+   <Preloader />
    {/* Scroll progress bar */}
    <motion.div
     style={{ scaleX }}

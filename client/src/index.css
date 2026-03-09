@@ -4,32 +4,35 @@
 
 @layer base {
   :root {
-    --background: 160 30% 3%;
-    --foreground: 40 15% 95%;
+    /* Deep Obsidian / Navy Core */
+    --background: 222 47% 5%;
+    --foreground: 40 20% 95%;
 
-    --card: 160 25% 6%;
-    --card-foreground: 40 15% 95%;
+    --card: 222 47% 7%;
+    --card-foreground: 40 20% 95%;
 
-    --popover: 160 30% 4%;
-    --popover-foreground: 40 15% 95%;
+    --popover: 222 47% 7%;
+    --popover-foreground: 40 20% 95%;
 
-    --primary: 160 30% 12%;
-    --primary-foreground: 40 15% 95%;
+    /* Deep Emerald Secondary for trust/compliance */
+    --primary: 160 80% 15%;
+    --primary-foreground: 40 20% 95%;
 
-    --secondary: 160 25% 10%;
-    --secondary-foreground: 40 15% 95%;
+    --secondary: 222 40% 12%;
+    --secondary-foreground: 40 20% 95%;
 
-    --muted: 160 20% 12%;
-    --muted-foreground: 160 10% 65%;
+    --muted: 222 30% 15%;
+    --muted-foreground: 222 15% 65%;
 
-    --accent: 38 55% 57%;
-    --accent-foreground: 0 0% 10%;
+    /* Premium Gold Accent */
+    --accent: 45 65% 55%;
+    --accent-foreground: 222 47% 5%;
 
-    --border: 160 20% 12%;
-    --input: 160 20% 12%;
-    --ring: 38 55% 57%;
+    --border: 222 30% 15%;
+    --input: 222 30% 15%;
+    --ring: 45 65% 55%;
 
-    --radius: 1rem;
+    --radius: 1.5rem;
 
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-serif: 'Playfair Display', Georgia, serif;
@@ -49,43 +52,50 @@
 }
 
 @layer components {
-  /* Layout - Optimized for wider screens to reduce excessive side margins */
   .max-container {
-    @apply max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1440px] mx-auto px-6 md:px-10 lg:px-12;
   }
 
   .section-padding {
-    @apply py-16 md:py-24 lg:py-28;
+    @apply py-20 md:py-32 lg:py-40;
   }
 
   /* Cinematic Surfaces */
   .vault-surface {
-    @apply bg-gradient-to-br from-[#080C0A] to-[#040605] border border-white/[0.05] shadow-[0_20px_50px_rgba(0,0,0,0.5)];
+    @apply bg-gradient-to-br from-[#0B101E] to-[#050814] border border-white/[0.05] shadow-[0_20px_60px_rgba(0,0,0,0.8)];
   }
   
   .glass-panel {
-    @apply backdrop-blur-3xl bg-[#0A0F0D]/90 border border-white/[0.08] shadow-2xl;
+    @apply backdrop-blur-3xl bg-[#0B101E]/80 border border-white/[0.06] shadow-2xl;
+  }
+  
+  .premium-card {
+    @apply bg-[#0D1322] border border-white/[0.04] hover:border-accent/30 hover:bg-[#11182A] transition-all duration-700 shadow-xl hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)];
   }
 
   .mesh-glow-emerald {
-    @apply bg-[radial-gradient(circle_at_50%_50%,hsl(160_40%_15%_/_0.4)_0%,transparent_70%)];
+    @apply bg-[radial-gradient(circle_at_50%_50%,hsl(160_80%_15%_/_0.5)_0%,transparent_70%)];
   }
 
   .mesh-glow-gold {
-    @apply bg-[radial-gradient(circle_at_50%_50%,rgba(207,160,82,0.08)_0%,transparent_70%)];
+    @apply bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.12)_0%,transparent_70%)];
+  }
+
+  .mesh-glow-navy {
+    @apply bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,42,0.8)_0%,transparent_80%)];
   }
 
   /* Typography */
   .display-title {
-    @apply text-4xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] tracking-tighter;
+    @apply text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-medium leading-[1.05] tracking-tighter;
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-medium leading-tight tracking-tight;
+    @apply text-3xl md:text-5xl lg:text-6xl font-serif font-medium leading-tight tracking-tight;
   }
 
   .accent-label {
-    @apply font-mono text-[10px] md:text-[11px] tracking-[0.4em] uppercase text-accent font-bold mb-6 block;
+    @apply font-mono text-[11px] md:text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-6 block;
   }
 
   /* 3D Helpers */
@@ -99,28 +109,28 @@
 
   /* Buttons */
   .btn-premium {
-    @apply relative overflow-hidden px-8 py-4 rounded-full font-mono text-xs font-bold uppercase tracking-[0.2em] transition-all duration-500 shadow-[0_0_30px_rgba(207,160,82,0.1)];
+    @apply relative overflow-hidden px-8 py-4 rounded-full font-sans text-sm font-medium tracking-wide transition-all duration-500;
   }
   
   .btn-premium-primary {
-    @apply btn-premium bg-accent text-[#0A0F0D] hover:shadow-[0_0_50px_rgba(207,160,82,0.3)] hover:-translate-y-1 active:scale-95;
+    @apply btn-premium bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#050814] hover:shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:scale-[1.02] active:scale-95 font-semibold;
   }
 
   .btn-premium-outline {
-    @apply btn-premium border border-accent/30 text-accent hover:bg-accent/10 hover:border-accent/60;
+    @apply btn-premium border border-white/20 text-white hover:bg-white/5 hover:border-white/40 backdrop-blur-md;
   }
 }
 
 @layer utilities {
   .light-streak {
-    @apply absolute w-px bg-gradient-to-b from-transparent via-accent/20 to-transparent;
+    @apply absolute w-px bg-gradient-to-b from-transparent via-accent/30 to-transparent;
   }
   
   .noise-overlay {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
   }
 
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-[#f2d0a7] to-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37];
   }
 }

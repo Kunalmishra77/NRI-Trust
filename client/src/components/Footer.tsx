@@ -22,7 +22,7 @@ export default function Footer() {
  };
 
  return (
-  <footer className="bg-background text-foreground relative overflow-hidden border-t border-white/[0.03]">
+  <footer className="bg-[#050814] text-[#F5F3EC] relative overflow-hidden border-t border-white/[0.03]">
    <div className="absolute inset-0 noise-overlay opacity-60 pointer-events-none" />
    
    {/* Cinematic Watermark - Perfectly centered and scaled */}
