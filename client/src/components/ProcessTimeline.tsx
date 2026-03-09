@@ -61,14 +61,16 @@ export default function ProcessTimeline() {
         <div className="hidden lg:block absolute top-12 left-[65%] right-[-35%] h-[1px] bg-gradient-to-r from-[#D4AF37]/30 to-transparent z-0" />
        )}
        
-       <div className="p-10 premium-card rounded-[2.5rem] relative z-10 h-full flex flex-col items-center md:items-start text-center md:text-left">
-        <div className="w-20 h-20 rounded-3xl bg-[#050814] border border-white/5 flex items-center justify-center mb-8 group-hover:border-[#D4AF37]/30 shadow-inner transition-colors duration-500">
+       <div className="p-10 premium-card rounded-[2.5rem] relative z-10 h-full flex flex-col items-center md:items-start text-center md:text-left hover:shadow-[0_0_50px_rgba(212,175,55,0.1)] transition-all duration-700 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        
+        <div className="w-20 h-20 rounded-3xl bg-[#050814] border border-white/5 flex items-center justify-center mb-8 group-hover:border-[#D4AF37]/30 shadow-inner transition-colors duration-500 relative z-10">
          <step.icon className="w-8 h-8 text-[#D4AF37]/60 group-hover:text-[#D4AF37] group-hover:scale-110 transition-all duration-500" />
         </div>
         
-        <div className="text-[10px] font-mono text-[#D4AF37]/50 uppercase tracking-widest mb-4 font-bold">Phase 0{i + 1}</div>
-        <h3 className="text-2xl font-serif text-[#F5F3EC] mb-4 group-hover:text-[#D4AF37] transition-colors">{step.title}</h3>
-        <p className="text-sm text-white/50 font-light leading-relaxed">{step.desc}</p>
+        <div className="text-[10px] font-mono text-[#D4AF37]/50 uppercase tracking-widest mb-4 font-bold relative z-10">Phase 0{i + 1}</div>
+        <h3 className="text-2xl font-serif text-[#F5F3EC] mb-4 group-hover:text-[#D4AF37] transition-colors relative z-10">{step.title}</h3>
+        <p className="text-sm text-white/50 font-light leading-relaxed relative z-10">{step.desc}</p>
        </div>
       </motion.div>
      ))}

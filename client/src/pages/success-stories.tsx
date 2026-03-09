@@ -1,140 +1,197 @@
 import PageHeader from "@/layouts/PageHeader";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { Link } from "wouter";
-import { ArrowRight, Trophy, Target, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Trophy, Target, ShieldCheck, CheckCircle2, AlertTriangle, HelpCircle, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { elegantFadeUp, luxuryStagger } from "@/motion/variants";
-import chennaiEstateImage from "@assets/image_1764307200659.png";
-import taxShieldImage from "@assets/image_1764305789793.png";
 
 export default function SuccessStories() {
- const highlightStats = [
-  { value: "₹250Cr+", label: "Property Monitored", icon: Trophy },
-  { value: "450+", label: "Legal Disputes Prevented", icon: Target },
-  { value: "100%", label: "Client Confidentiality", icon: ShieldCheck }
- ];
+  const highlightStats = [
+    { value: "₹250Cr+", label: "Property Monitored", icon: Trophy },
+    { value: "450+", label: "Legal Disputes Prevented", icon: Target },
+    { value: "100%", label: "Client Confidentiality", icon: ShieldCheck }
+  ];
 
- const caseStudies = [
-  {
-   title: "The Chennai Estate Recovery",
-   scenario: "A multi-acre ancestral plot in suburban Chennai was being systematically encroached by local political elements while the family was based in New Jersey.",
-   outcome: "NRI Trust's Rapid Response Unit established a physical perimeter, filed a formal Title Rectification, and negotiated a clean exit for the encroachers within 180 days.",
-   stat: "₹18 Cr Asset Secured",
-   image: chennaiEstateImage
-  },
-  {
-   title: "The Singapore-Mumbai Tax Shield",
-   scenario: "An HNI family in Singapore received a major Section 148 notice for historic unreported capital gains on mutual fund transfers from 2018.",
-   outcome: "Our tax stewardship team reconstructed 6 years of financial data, established DTAA residency proof, and reduced the potential penalty by 85%.",
-   stat: "₹45L Liability Saved",
-   image: taxShieldImage
-  }
- ];
+  const outcomes = [
+    {
+      category: "Taxation",
+      title: "Tax Notice Resolved",
+      problem: "A high-value Section 148 notice was issued for transactions dating back 6 years, which the NRI client was unaware of.",
+      risk: "A potential penalty of ₹45L and the immediate freezing of all Indian NRO accounts.",
+      help: "Our tax stewardship team reconstructed 6 years of financial history, established DTAA residency proof, and represented the client before the IT department.",
+      result: "Liability reduced by 85%, and the case was closed without any bank account disruptions.",
+      icon: TrendingUp
+    },
+    {
+      category: "Property",
+      title: "Tenant Eviction Managed",
+      problem: "A long-term tenant in a Mumbai apartment stopped paying rent and refused to vacate, claiming 'local connections'.",
+      risk: "A ₹4.2 Cr prime real estate asset being occupied indefinitely, leading to massive capital loss.",
+      help: "We provided on-ground physical verification, initiated formal legal notices through our panel counsel, and negotiated a clean, documented exit.",
+      result: "Full possession of the property restored to the family in 45 days without entering lengthy litigation.",
+      icon: ShieldCheck
+    },
+    {
+      category: "Insurance",
+      title: "Insurance Claim Approved",
+      problem: "A health insurance claim for a senior parent's heart surgery was rejected three times by the TPA citing 'pre-existing conditions'.",
+      risk: "₹8.5L in urgent out-of-pocket medical expenses that the family had to bear unexpectedly.",
+      help: "Our advocacy team conducted a medical-legal audit of the policy, re-filed the claim with corrected hospital documentation, and escalated to the Ombudsman.",
+      result: "The full claim amount was credited to the client's account within 14 days of our intervention.",
+      icon: CheckCircle2
+    },
+    {
+      category: "Banking",
+      title: "Dormant Account Reactivated",
+      problem: "An elderly parent's primary pension account was flagged as 'Dormant' due to a 3-year KYC lapse, blocking all withdrawals.",
+      risk: "Complete loss of monthly liquidity for the parents and the risk of the account being transferred to the DEA fund.",
+      help: "We acted as the family's physical proxy at the base branch, managed the fresh KYC documentation, and synchronized the mobile-linkage for net-banking.",
+      result: "Account fully reactivated and digital access restored within 72 hours without the parent leaving their home.",
+      icon: Trophy
+    }
+  ];
 
- return (
-  <div className="bg-background min-h-screen">
-   <PageHeader
-    title="Success Stories"
-    subtitle="Measurable outcomes and restored peace of mind for global Indian families."
-    breadcrumbs={[{ label: "The Firm" }, { label: "Success Stories" }]}
-   />
+  return (
+    <div className="bg-background min-h-screen">
+      <PageHeader
+        title="Case Outcomes"
+        subtitle="Measurable results and restored control for global Indian families."
+        breadcrumbs={[{ label: "The Firm", href: "/why-nri-trust" }, { label: "Success Stories" }]}
+      />
 
-   {/* ─── HIGHLIGHT STATS ─── */}
-   <section className="pt-24 pb-12 bg-background relative overflow-hidden">
-    <div className="max-container">
-     <motion.div 
-      initial="hidden"
-      animate="visible"
-      variants={luxuryStagger}
-      className="grid grid-cols-1 md:grid-cols-3 gap-8"
-     >
-      {highlightStats.map((stat, i) => (
-       <motion.div key={i} variants={elegantFadeUp} className="p-10 glass-panel rounded-[2.5rem] border-white/5 text-center bg-white/[0.01] hover:border-accent/30 transition-all duration-500 group">
-        <div className="w-14 h-14 rounded-2xl bg-accent/5 border border-accent/10 flex items-center justify-center mx-auto mb-8 group-hover:border-accent/40 shadow-inner transition-all">
-         <stat.icon className="w-6 h-6 text-accent" />
+      {/* ─── HIGHLIGHT STATS ─── */}
+      <section className="section-padding bg-background relative overflow-hidden">
+        <div className="max-container">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={luxuryStagger}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {highlightStats.map((stat, i) => (
+              <motion.div key={i} variants={elegantFadeUp} className="glass-card p-10 text-center border-white/5 bg-white/[0.01] hover:border-accent/20 transition-all duration-500">
+                <div className="w-14 h-14 rounded-2xl bg-accent/5 border border-accent/10 flex items-center justify-center mx-auto mb-8">
+                  <stat.icon className="w-6 h-6 text-accent" />
+                </div>
+                <div className="text-4xl md:text-5xl font-serif text-white mb-2">{stat.value}</div>
+                <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground font-bold">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-        <div className="text-4xl md:text-5xl font-serif text-white mb-2">{stat.value}</div>
-        <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground font-bold">{stat.label}</div>
-       </motion.div>
-      ))}
-     </motion.div>
-    </div>
-   </section>
+      </section>
 
-   {/* ─── CASE STUDY NARRATIVES ─── */}
-   <section className="section-padding bg-[#050806] relative overflow-hidden">
-    <div className="absolute inset-0 noise-overlay opacity-60" />
-    <div className="max-container relative z-10">
-     <div className="space-y-32">
-      {caseStudies.map((study, i) => (
-       <motion.div 
-        key={i} 
-        initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={elegantFadeUp}
-        className={`grid lg:grid-cols-12 gap-16 lg:gap-24 items-center ${i % 2 !== 0 ? 'lg:direction-rtl' : ''}`}
-       >
-        <div className={`lg:col-span-6 ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
-         <span className="accent-label text-accent">Real-World Outcome 0{i + 1}</span>
-         <h2 className="section-title text-white mb-8">{study.title}</h2>
-         <div className="space-y-8 mb-12">
-          <div>
-           <div className="text-[10px] font-mono uppercase tracking-widest text-white/40 mb-3 font-bold">The Challenge</div>
-           <p className="text-lg text-muted-foreground font-light leading-relaxed">{study.scenario}</p>
-          </div>
-          <div>
-           <div className="text-[10px] font-mono uppercase tracking-widest text-accent mb-3 font-bold">The Stewardship Solution</div>
-           <p className="text-lg text-white/90 font-light leading-relaxed">{study.outcome}</p>
-          </div>
-         </div>
-         <div className="p-6 glass-panel rounded-2xl border-accent/20 bg-accent/5 w-fit flex items-center gap-4">
-          <CheckCircle2 className="w-6 h-6 text-accent" />
-          <span className="text-xl font-serif text-white">{study.stat}</span>
-         </div>
+      {/* ─── CASE OUTCOMES GRID ─── */}
+      <section className="section-padding bg-[#050806] border-y border-white/[0.05]">
+        <div className="max-container">
+          <motion.div 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true }} 
+            variants={luxuryStagger}
+            className="grid lg:grid-cols-2 gap-12"
+          >
+            {outcomes.map((item, i) => (
+              <motion.div 
+                key={i} 
+                variants={elegantFadeUp}
+                className="group flex flex-col h-full bg-background/40 rounded-[3rem] border border-white/5 hover:border-accent/30 transition-all duration-700 overflow-hidden"
+              >
+                <div className="p-10 md:p-16 flex flex-col h-full">
+                  <div className="flex justify-between items-start mb-12">
+                    <span className="px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-[10px] font-mono text-accent font-bold uppercase tracking-widest">
+                      {item.category}
+                    </span>
+                    <div className="w-12 h-12 rounded-2xl bg-white/[0.02] border border-white/10 flex items-center justify-center group-hover:bg-accent group-hover:text-black transition-all">
+                      <item.icon className="w-5 h-5" />
+                    </div>
+                  </div>
+
+                  <h3 className="text-3xl md:text-4xl font-serif text-white mb-12 group-hover:text-accent transition-colors duration-500">
+                    {item.title}
+                  </h3>
+
+                  <div className="space-y-10 flex-1">
+                    <div className="flex gap-6">
+                      <div className="shrink-0 w-px h-full bg-red-500/20 relative">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-red-500" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-red-500/60 block mb-2 font-bold">The Problem</span>
+                        <p className="text-sm text-muted-foreground leading-relaxed italic">"{item.problem}"</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-6">
+                      <div className="shrink-0 w-px h-full bg-orange-500/20 relative">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-orange-500" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-orange-500/60 block mb-2 font-bold">What Was At Risk</span>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.risk}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-6">
+                      <div className="shrink-0 w-px h-full bg-accent/20 relative">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-accent/60 block mb-2 font-bold">How NRI Trust Helped</span>
+                        <p className="text-sm text-white/80 font-light leading-relaxed">{item.help}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-16 pt-10 border-t border-white/5">
+                    <div className="flex items-center gap-4 text-[#10B981]">
+                      <div className="w-10 h-10 rounded-full bg-[#10B981]/10 flex items-center justify-center border border-[#10B981]/20">
+                        <CheckCircle2 className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-widest font-bold block opacity-60">Final Result</span>
+                        <span className="text-lg font-serif font-medium">{item.result}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-        <div className={`lg:col-span-6 ${i % 2 !== 0 ? 'lg:order-1' : ''}`}>
-         <div className="aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-3xl  transition-all duration-1000">
-          <img src={study.image} alt={study.title} className="w-full h-full object-cover" />
-         </div>
+      </section>
+
+      <TestimonialsSection />
+
+      {/* ─── FINAL ADVISORY CTA ─── */}
+      <section className="section-padding bg-background text-center relative overflow-hidden border-t border-white/[0.05]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(160_40%_15%_/_0.2)_0%,transparent_80%)] pointer-events-none" />
+        <div className="max-container relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={elegantFadeUp}
+            className="max-w-4xl mx-auto"
+          >
+            <span className="accent-label text-accent">Join Our Protected Families</span>
+            <h2 className="display-title mb-10">
+              Become Our Next <br />
+              <span className="text-gradient-gold italic">Success Story.</span>
+            </h2>
+            <p className="text-xl text-muted-foreground font-light mb-16 max-w-2xl mx-auto leading-relaxed">
+              Don't wait for a crisis to initiate professional stewardship. Book your private review session today.
+            </p>
+            <Link href="/contact">
+              <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group">
+                <span>Book Private Review</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+          </motion.div>
         </div>
-       </motion.div>
-      ))}
-     </div>
+      </section>
     </div>
-   </section>
-
-   <TestimonialsSection />
-
-   {/* Final CTA */}
-   <section className="section-padding bg-[#050806] relative overflow-hidden border-t border-white/[0.05] text-center">
-    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,hsl(160_30%_15%_/_0.2)_0%,transparent_70%)] pointer-events-none" />
-    <div className="max-container relative z-10">
-     <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={elegantFadeUp}
-      className="max-w-5xl mx-auto"
-     >
-      <div className="flex items-center justify-center gap-4 mb-8">
-       <div className="h-[1px] w-12 bg-accent/40" />
-       <span className="accent-label !mb-0">Join Our Families</span>
-       <div className="h-[1px] w-12 bg-accent/40" />
-      </div>
-      <h2 className="display-title mb-10">
-       Become a <br />
-       <span className="text-gradient-gold italic">Protected Portfolio.</span>
-      </h2>
-      <p className="text-xl text-muted-foreground font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-       Book a confidential 30-minute review session to discuss how we can secure your family's specific assets in India.
-      </p>
-      <Link href="/contact">
-       <button className="btn-premium-primary min-w-[320px] group">
-        <span>Book Private Review</span>
-        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-       </button>
-      </Link>
-     </motion.div>
-    </div>
-   </section>
-  </div>
- );
+  );
 }

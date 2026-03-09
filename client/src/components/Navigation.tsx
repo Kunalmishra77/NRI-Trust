@@ -20,7 +20,7 @@ export default function Navigation() {
  const menuItems = {
   firm: [
    { label: "Our Story", href: "/about" },
-   { label: "Why Choose Us", href: "/why-nri-trust" },
+   { label: "Why NRI Trust", href: "/why-nri-trust" },
    { label: "Success Stories", href: "/success-stories" },
   ],
   operations: [
@@ -128,10 +128,12 @@ export default function Navigation() {
 
     {/* CTAs */}
     <div className="flex items-center gap-6 xl:gap-8 z-50">
-     <button className="hidden xl:flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F5F3EC]/50 hover:text-[#D4AF37] transition-colors">
-      <Lock className="w-3.5 h-3.5" />
-      Client Portal
-     </button>
+     <Link href="/portal">
+      <button className="hidden xl:flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F5F3EC]/50 hover:text-[#D4AF37] transition-colors cursor-pointer">
+       <Lock className="w-3.5 h-3.5" />
+       Client Portal
+      </button>
+     </Link>
      
      <Link href="/contact" className="hidden sm:block">
       <button className="btn-premium-primary !px-7 !py-3.5 !text-[11px]">
@@ -163,6 +165,12 @@ export default function Navigation() {
        </div>
        
        <div className="flex-1 overflow-y-auto p-8 space-y-10">
+        <Link href="/portal" onClick={() => setIsMobileMenuOpen(false)}>
+         <div className="flex items-center gap-4 p-4 rounded-xl bg-accent/5 border border-accent/10 mb-6">
+          <Lock className="w-5 h-5 text-accent" />
+          <span className="text-accent font-medium">Access Client Portal</span>
+         </div>
+        </Link>
         {navLinks.map((nav) => (
          <div key={nav.id} className="space-y-5">
           <div className="text-[10px] font-mono text-[#D4AF37] uppercase tracking-[0.3em] font-bold border-b border-white/5 pb-3">

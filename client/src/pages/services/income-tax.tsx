@@ -1,156 +1,337 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Receipt, ShieldCheck, FileText, BarChart3, Calculator, Percent, History, Info, AlertTriangle } from "lucide-react";
+import { 
+  ArrowRight, 
+  Receipt, 
+  ShieldCheck, 
+  AlertTriangle, 
+  Calculator, 
+  FileText, 
+  Activity, 
+  CheckCircle2,
+  XCircle,
+  Zap,
+  TrendingUp,
+  Clock,
+  History
+} from "lucide-react";
 import { elegantFadeUp, luxuryStagger } from "@/motion/variants";
 import PageHeader from "@/layouts/PageHeader";
 import { getServiceBySlug } from "@/data/services";
 
 export default function IncomeTax() {
- const data = getServiceBySlug("income-tax")!;
+  const data = getServiceBySlug("income-tax")!;
 
- return (
-  <div className="bg-background min-h-screen">
-   <PageHeader
-    title="Income Tax Compliance"
-    subtitle="Algorithmic tax filing and global optimization for NRI family units."
-    breadcrumbs={[{ label: "Practice Areas", href: "/services" }, { label: "Income Tax" }]}
-   />
+  const challenges = [
+    {
+      title: "Rental Income",
+      desc: "Managing TDS on rent and ensuring correct reporting of property income to avoid compliance gaps.",
+      icon: TrendingUp
+    },
+    {
+      title: "Tax Notices",
+      desc: "Responding to automated scrutiny notices or show-cause orders from the Income Tax department.",
+      icon: AlertTriangle
+    },
+    {
+      title: "Refund Delays",
+      desc: "Navigating the administrative hurdles that cause significant delays in receiving legitimate tax refunds.",
+      icon: Clock
+    }
+  ];
 
-   {/* ─── UNIQUE HERO: THE PRECISION COMPLIANCE ─── */}
-   <section className="py-20 md:py-28 relative overflow-hidden border-b border-white/[0.05]">
-    <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.1)_0%,transparent_70%)] blur-[120px] pointer-events-none" />
-    
-    <div className="max-container relative z-10">
-     <div className="grid lg:grid-cols-12 gap-20 items-center">
-      <motion.div initial="hidden" animate="visible" variants={luxuryStagger} className="lg:col-span-7">
-       <motion.div variants={elegantFadeUp} className="flex items-center gap-4 mb-8">
-        <div className="h-px w-12 bg-rose-500/40" />
-        <span className="accent-label !mb-0 text-rose-400">Tax Optimization</span>
-       </motion.div>
-       <motion.h1 variants={elegantFadeUp} className="display-title mb-8 !text-5xl md:!text-7xl">
-        Algorithmic <br />
-        <span className="text-rose-400 italic">Notice Defense.</span>
-       </motion.h1>
-       <motion.p variants={elegantFadeUp} className="text-xl text-muted-foreground font-light leading-relaxed mb-12">
-        Indian taxation for NRIs is becoming increasingly automated. From scrutiny notices to complex DTAA requirements, we provide a structured, expert-led approach to ensure your filings are accurate.
-       </motion.p>
-       
-       <div className="grid grid-cols-2 gap-8 border-t border-white/5 pt-10">
-        <motion.div variants={elegantFadeUp}>
-         <div className="text-3xl font-serif text-white mb-2">2,000+</div>
-         <div className="text-[10px] font-mono text-rose-400 uppercase tracking-widest font-bold">ITRs Filed Successfully</div>
-        </motion.div>
-        <motion.div variants={elegantFadeUp}>
-         <div className="text-3xl font-serif text-white mb-2">₹4.2 Cr+</div>
-         <div className="text-[10px] font-mono text-rose-400 uppercase tracking-widest font-bold">Refunds Unlocked</div>
-        </motion.div>
-       </div>
-      </motion.div>
+  const services = [
+    { title: "ITR Filing", desc: "Precise income tax return filing covering all Indian income sources." },
+    { title: "Notice Response", desc: "Expert drafting and submission of responses to departmental inquiries." },
+    { title: "Refund Follow-up", desc: "Persistent liaison with the department to expedite blocked or delayed refunds." },
+    { title: "Capital Gains Guidance", desc: "Strategic advice on tax-efficient reporting of property or equity sales." }
+  ];
 
-      <div className="lg:col-span-5 relative h-[500px] flex items-center justify-center hidden lg:flex">
-       <div className="relative w-full h-full">
-        {/* Abstract Data Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(244,63,94,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(244,63,94,0.05)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
-        
-        <motion.div 
-         animate={{ y: [0, -20, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-80 glass-panel rounded-3xl border-rose-500/20 shadow-3xl bg-[#0A0F0D]/80 p-8 flex flex-col justify-between"
-        >
-         <div className="flex items-center justify-between">
-          <Receipt className="w-8 h-8 text-rose-400" />
-          <div className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] text-emerald-500 font-bold uppercase">Accepted</div>
-         </div>
-         <div className="space-y-4">
-          <div className="h-2 w-full bg-white/5 rounded-full" />
-          <div className="h-2 w-2/3 bg-white/5 rounded-full" />
-          <div className="h-2 w-3/4 bg-white/5 rounded-full" />
-         </div>
-         <div className="pt-6 border-t border-white/10">
-          <div className="text-xs text-muted-foreground uppercase font-bold mb-1">Tax Refund</div>
-          <div className="text-2xl font-mono text-white">₹2,45,000</div>
-         </div>
-        </motion.div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
+  const scenarios = [
+    { 
+      title: "Old Tax Notices Appearing", 
+      desc: "When a notice regarding a transaction from years ago suddenly appears in the portal, requiring immediate historical data mapping." 
+    },
+    { 
+      title: "Incorrect TDS on Rent", 
+      desc: "When tenants fail to deposit correct TDS, creating a liability that needs professional rectification with the department." 
+    }
+  ];
 
-   {/* ─── THE SCRUTINY RISK ─── */}
-   <section className="py-32 bg-[#050806] relative overflow-hidden">
-    <div className="max-container">
-     <div className="grid lg:grid-cols-2 gap-24 items-center">
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={elegantFadeUp}>
-       <span className="accent-label text-rose-400">Notice Mitigation</span>
-       <h2 className="section-title mb-8">Defending Your <br /><span className="text-white italic">Tax Status.</span></h2>
-       <p className="text-lg text-muted-foreground font-light leading-relaxed mb-12">
-        Unreported rental income, capital gains on mutual funds, or status confusion (ROR vs RNOR) are common triggers for IT scrutiny. We provide proactive defense by mapping your entire Indian income footprint.
-       </p>
-       <div className="grid grid-cols-1 gap-4">
-        {data.risks?.map((risk, i) => (
-         <div key={i} className="flex gap-4 p-5 glass-panel rounded-2xl border-white/5 bg-white/[0.01] hover:border-rose-500/20 transition-all">
-          <AlertTriangle className="w-5 h-5 text-rose-500 shrink-0" />
-          <span className="text-sm text-white/80 font-light">{risk}</span>
-         </div>
-        ))}
-       </div>
-      </motion.div>
-      <div className="relative">
-       <div className="aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-3xl">
-        <img src="/attached_assets/image_1764305789793.png" alt="Tax scrutiny" className="w-full h-full object-cover" />
-       </div>
-       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full p-12 text-center">
-        <div className="text-[10px] font-mono text-rose-500 uppercase font-bold tracking-[0.4em] mb-4">Immediate Audit Defense</div>
-        <div className="text-5xl font-serif text-white opacity-80">Section 143(1)</div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
+  const emergency = [
+    { title: "Urgent Tax Notice", desc: "Immediate representation and response filing for high-priority or time-sensitive tax notices." },
+    { title: "Filing Deadline", desc: "Rapid processing for clients who have missed or are nearing critical statutory deadlines." }
+  ];
 
-   {/* ─── SCOPE OF COMPLIANCE ─── */}
-   <section className="section-padding bg-background relative overflow-hidden border-y border-white/[0.05]">
-    <div className="max-container relative z-10">
-     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={elegantFadeUp} className="text-center mb-24">
-      <span className="accent-label text-rose-400">Strategic Filing</span>
-      <h2 className="section-title mb-8">The Stewardship <span className="text-rose-400 italic">Standard.</span></h2>
-     </motion.div>
+  return (
+    <div className="bg-background min-h-screen">
+      <PageHeader
+        title="Stay Compliant With Indian Tax Laws"
+        subtitle="Moving beyond fragmented agents to institutional-grade stewardship for NRI family units."
+        breadcrumbs={[
+          { label: "Practice Areas", href: "/services" },
+          { label: "Income Tax" },
+        ]}
+      />
 
-     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-      {data.features.map((f, i) => (
-       <motion.div 
-        key={i} 
-        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-        className="group p-10 glass-panel rounded-[2.5rem] border-white/5 hover:border-rose-500/30 transition-all duration-500 bg-white/[0.01]"
-       >
-        <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-8 group-hover:bg-rose-500/20 transition-colors">
-         <Calculator className="w-6 h-6 text-rose-400" />
+      {/* 1. Challenges Section */}
+      <section className="section-padding bg-background relative overflow-hidden">
+        <div className="max-container relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={elegantFadeUp}
+            className="text-center mb-20"
+          >
+            <span className="accent-label text-red-500/80">Compliance Risks</span>
+            <h2 className="section-title mb-6">Navigating <br /><span className="text-muted-foreground italic text-3xl md:text-4xl">Tax Complexity.</span></h2>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={luxuryStagger}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {challenges.map((c, i) => (
+              <motion.div key={i} variants={elegantFadeUp} className="glass-card p-10 border-red-500/10 hover:border-red-500/30 transition-all group bg-red-500/[0.01]">
+                <div className="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                  <c.icon className="w-6 h-6 text-red-500" />
+                </div>
+                <h3 className="text-xl font-serif text-white mb-4">{c.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed font-light">{c.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-        <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-rose-400 transition-colors">{f.title}</h3>
-        <p className="text-sm text-muted-foreground font-light leading-relaxed">{f.description}</p>
-       </motion.div>
-      ))}
-     </div>
-    </div>
-   </section>
+      </section>
 
-   {/* ─── CUSTOM CTA ─── */}
-   <section className="section-padding bg-[#050806] text-center relative overflow-hidden">
-    <div className="max-container relative z-10">
-     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={elegantFadeUp} className="max-w-4xl mx-auto">
-      <span className="accent-label text-rose-400">Secure Your Compliance</span>
-      <h2 className="display-title mb-10">Eliminate NRI <br /><span className="text-gradient-gold italic">Tax Anxiety.</span></h2>
-      <p className="text-xl text-muted-foreground font-light mb-16 leading-relaxed">
-       Don't let tax notices disrupt your family's peace of mind. Initiate a private review of your Indian tax portfolio today.
-      </p>
-      <Link href="/contact">
-       <button className="btn-premium-primary min-w-[320px] !bg-rose-600 !text-white hover:!shadow-[0_0_50px_rgba(244,63,94,0.4)]">
-        <span>Request Tax Audit</span>
-       </button>
-      </Link>
-     </motion.div>
+      {/* 2. Services Section */}
+      <section className="section-padding bg-[#050806] border-y border-white/[0.05]">
+        <div className="max-container">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={elegantFadeUp}
+            >
+              <span className="accent-label text-accent">Institutional Compliance</span>
+              <h2 className="section-title mb-8">Comprehensive <br /><span className="text-gradient-gold italic">Tax Stewardship.</span></h2>
+              <p className="body-large text-muted-foreground mb-12">
+                We replace reactive filing with proactive stewardship. Our advisors map your 
+                entire Indian income footprint to ensure complete compliance and defense 
+                against algorithmic IT scrutiny.
+              </p>
+              
+              <div className="grid sm:grid-cols-2 gap-6">
+                {services.map((item, i) => (
+                  <div key={i} className="flex gap-4 items-start p-6 glass-card border-white/5 hover:border-accent/20 transition-all group">
+                    <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-black transition-all">
+                      <Calculator className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium mb-1">{item.title}</h4>
+                      <p className="text-[11px] text-muted-foreground leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={elegantFadeUp}
+              className="relative hidden lg:block"
+            >
+              <div className="aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/5 shadow-2xl relative group">
+                <img 
+                  src="/attached_assets/image_1764305789793.png" 
+                  alt="Tax compliance support" 
+                  className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050806] via-transparent to-transparent" />
+                <div className="absolute bottom-10 left-10 right-10 p-8 glass-card border-accent/20 backdrop-blur-xl">
+                  <div className="flex items-center gap-3 mb-4">
+                    <ShieldCheck className="w-5 h-5 text-accent" />
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">Authorized Tax Protocol</span>
+                  </div>
+                  <p className="text-white text-lg font-serif italic">"Building a clean tax footprint for your Indian family legacy."</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Common Scenarios */}
+      <section className="section-padding bg-background">
+        <div className="max-container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={elegantFadeUp}
+            className="text-center mb-20"
+          >
+            <span className="accent-label">Scenarios We Resolve</span>
+            <h2 className="section-title mb-6">Complexity <br /><span className="text-gradient-gold italic">Simplified.</span></h2>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={luxuryStagger}
+            className="grid md:grid-cols-2 gap-12"
+          >
+            {scenarios.map((s, i) => (
+              <motion.div key={i} variants={elegantFadeUp} className="group glass-card p-12 border-white/5 hover:border-accent/20 transition-all flex flex-col h-full bg-white/[0.01]">
+                <div className="w-16 h-16 rounded-2xl bg-accent/5 border border-accent/10 flex items-center justify-center mb-8 group-hover:bg-accent/10 transition-colors">
+                  <History className="w-8 h-8 text-accent/60 group-hover:text-accent transition-colors" />
+                </div>
+                <h3 className="text-2xl font-serif text-white mb-6 group-hover:text-accent transition-colors">{s.title}</h3>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed flex-1">{s.desc}</p>
+                <div className="mt-8 pt-8 border-t border-white/5 flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-accent font-bold">Strategic Resolution</span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 4. Emergency Section */}
+      <section className="section-padding relative overflow-hidden bg-[#0A0F0D]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.05)_0%,transparent_70%)]" />
+        <div className="max-container relative z-10">
+          <div className="max-w-5xl mx-auto glass-card p-12 md:p-24 rounded-[4rem] border-red-500/10 shadow-[0_0_100px_rgba(239,68,68,0.05)] text-center">
+            <div className="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-10">
+              <Zap className="w-8 h-8 text-red-500 animate-pulse" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-8">Crisis <span className="text-red-500 italic">Protocols.</span></h2>
+            <p className="text-lg text-muted-foreground font-light mb-16 max-w-2xl mx-auto">
+              Urgent tax notices or account freezes require immediate expert intervention. 
+              Our response unit represents your family to restore compliance and liquidity.
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {emergency.map((e, i) => (
+                <div key={i} className="p-8 bg-white/[0.02] border border-white/5 rounded-3xl text-left group hover:border-red-500/30 transition-all">
+                  <div className="flex items-center gap-3 mb-4">
+                    <XCircle className="w-5 h-5 text-red-500/40 group-hover:text-red-500 transition-colors" />
+                    <h4 className="text-white font-medium">{e.title}</h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed italic">"{e.desc}"</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Plan Coverage */}
+      <section className="section-padding bg-background border-t border-white/[0.05]">
+        <div className="max-container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={elegantFadeUp}
+            className="text-center mb-24"
+          >
+            <span className="accent-label text-accent">Strategic Tiers</span>
+            <h2 className="section-title mb-6">Service <span className="text-gradient-gold italic">Coverage.</span></h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { 
+                tier: "Essential Care", 
+                items: data.tierCoverage.essential,
+                bestFor: "Basic income tax filing & compliance guidance."
+              },
+              { 
+                tier: "Comprehensive", 
+                items: data.tierCoverage.comprehensive,
+                bestFor: "Priority tax support & TDS reconciliation stewardship.",
+                highlight: true
+              },
+              { 
+                tier: "Premium Legacy", 
+                items: data.tierCoverage.premiumLegacy,
+                bestFor: "Full multi-asset tax management & notice resolution."
+              }
+            ].map((plan, i) => (
+              <div 
+                key={i} 
+                className={`p-10 rounded-[2.5rem] border flex flex-col h-full transition-all duration-500 ${
+                  plan.highlight 
+                    ? "bg-accent/[0.03] border-accent/40 shadow-[0_0_50px_rgba(207,160,82,0.1)] scale-105 z-10" 
+                    : "glass-card border-white/5 hover:border-accent/20"
+                }`}
+              >
+                <h3 className="text-2xl font-serif text-white mb-4">{plan.tier}</h3>
+                <p className="text-xs text-muted-foreground mb-10 leading-relaxed uppercase tracking-widest font-bold">{plan.bestFor}</p>
+                
+                <div className="space-y-6 flex-1 mb-12">
+                  {plan.items.map((item, idx) => (
+                    <div key={idx} className="flex gap-4 items-start">
+                      <CheckCircle2 className={`w-5 h-5 mt-0.5 shrink-0 ${plan.highlight ? "text-accent" : "text-white/20"}`} />
+                      <span className="text-[14px] text-white/70 font-light leading-snug">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <Link href="/pricing">
+                  <button className={`w-full py-4 text-[10px] font-mono uppercase tracking-[0.2em] font-bold rounded-full transition-all ${
+                    plan.highlight 
+                      ? "bg-accent text-black hover:shadow-[0_0_30px_rgba(207,160,82,0.4)]" 
+                      : "border border-accent/30 text-accent hover:bg-accent/5"
+                  }`}>
+                    View Details
+                  </button>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CTA Section */}
+      <section className="section-padding bg-[#0A0F0D] text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(207,160,82,0.05)_0%,transparent_70%)]" />
+        <div className="max-container relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={elegantFadeUp}
+            className="max-w-4xl mx-auto"
+          >
+            <span className="accent-label text-accent">Initiate Stewardship</span>
+            <h2 className="display-title mb-10 !text-4xl md:!text-6xl text-white">
+              Ready to Secure Your <br />
+              <span className="text-gradient-gold italic">Family's Tax Footprint?</span>
+            </h2>
+            <p className="body-large mb-16 text-muted-foreground max-w-2xl mx-auto">
+              Book a confidential 30-minute review session. We will evaluate your family's 
+              Indian tax risks and demonstrate our professional stewardship roadmap.
+            </p>
+            <Link href="/contact">
+              <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">
+                <span>Book Private Review</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
     </div>
-   </section>
-  </div>
- );
+  );
 }

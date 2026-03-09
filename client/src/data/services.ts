@@ -214,7 +214,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: "insurance",
-    title: "Insurance (Financial)",
+    title: "Insurance",
     shortTitle: "Insurance",
     tagline: "Health insurance claims and renewal assistance.",
     description: "We manage health insurance renewals, claims assistance, and financial emergencies arising from health or surgical procedures for your parents.",

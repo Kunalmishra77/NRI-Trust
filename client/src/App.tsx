@@ -22,39 +22,48 @@ import HowItWorks from "@/pages/how-it-works";
 import EmergencyResponse from "@/pages/emergency-response";
 import SuccessStories from "@/pages/success-stories";
 import Resources from "@/pages/resources";
+import ClientPortal from "@/pages/portal";
 
 function Router() {
  return (
   <WouterRouter>
-   <Layout>
-    <Switch>
-     <Route path="/" component={Home} />
-     
-     {/* The Firm */}
-     <Route path="/about" component={About} />
-     <Route path="/why-nri-trust" component={WhyNRITrust} />
-     <Route path="/success-stories" component={SuccessStories} />
-     
-     {/* Practice Areas */}
-     <Route path="/services" component={Services} />
-     <Route path="/services/banking-kyc" component={BankingKyc} />
-     <Route path="/services/legal-succession" component={LegalSuccession} />
-     <Route path="/services/property-tenancy" component={PropertyTenancy} />
-     <Route path="/services/insurance" component={Insurance} />
-     <Route path="/services/income-tax" component={IncomeTax} />
-     
-     {/* Operational Model */}
-     <Route path="/how-it-works" component={HowItWorks} />
-     <Route path="/pricing" component={Pricing} />
-     <Route path="/emergency-response" component={EmergencyResponse} />
-     
-     {/* Insights & Contact */}
-     <Route path="/resources" component={Resources} />
-     <Route path="/contact" component={Contact} />
-     
-     <Route component={NotFound} />
-    </Switch>
-   </Layout>
+   <Switch>
+    {/* Portal route - Independent of global layout */}
+    <Route path="/portal" component={ClientPortal} />
+
+    {/* Public routes - Within global layout */}
+    <Route>
+     <Layout>
+      <Switch>
+       <Route path="/" component={Home} />
+       
+       {/* The Firm */}
+       <Route path="/about" component={About} />
+       <Route path="/why-nri-trust" component={WhyNRITrust} />
+       <Route path="/success-stories" component={SuccessStories} />
+       
+       {/* Practice Areas */}
+       <Route path="/services" component={Services} />
+       <Route path="/services/banking-kyc" component={BankingKyc} />
+       <Route path="/services/legal-succession" component={LegalSuccession} />
+       <Route path="/services/property-tenancy" component={PropertyTenancy} />
+       <Route path="/services/insurance" component={Insurance} />
+       <Route path="/services/income-tax" component={IncomeTax} />
+       
+       {/* Operational Model */}
+       <Route path="/how-it-works" component={HowItWorks} />
+       <Route path="/pricing" component={Pricing} />
+       <Route path="/emergency-response" component={EmergencyResponse} />
+       
+       {/* Insights & Contact */}
+       <Route path="/resources" component={Resources} />
+       <Route path="/contact" component={Contact} />
+       
+       <Route component={NotFound} />
+      </Switch>
+     </Layout>
+    </Route>
+   </Switch>
   </WouterRouter>
  );
 }
