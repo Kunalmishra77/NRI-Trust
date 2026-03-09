@@ -44,7 +44,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#050814]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050814]"
     >
       {/* ─── CINEMATIC BACKGROUND ─── */}
       <div className="absolute inset-0 z-0">
@@ -73,7 +73,7 @@ export default function HeroSection() {
       <div className="absolute top-0 right-0 w-[70vw] h-[70vw] bg-[radial-gradient(circle_at_center,rgba(207,160,82,0.08)_0%,transparent_60%)] blur-[120px] pointer-events-none z-[2]" />
       <div className="absolute bottom-0 left-0 w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.05)_0%,transparent_60%)] blur-[120px] pointer-events-none z-[2]" />
 
-      <div className="max-container relative z-20 pt-24 pb-16">
+      <div className="max-container relative z-20 pt-32 pb-16">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           
           {/* ─── CONTENT (7 Cols) ─── */}
