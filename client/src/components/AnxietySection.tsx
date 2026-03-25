@@ -90,7 +90,8 @@ function CircularOrbitCard({
   // Opacity
   const opacity = useTransform(angleRef, (a: number) => {
     const zPos = Math.sin(baseAngle + a) * radiusZ;
-    return 0.7 + ((zPos + radiusZ) / (radiusZ * 2)) * 0.3;
+    // Keep cards mostly opaque when in front, only fade slightly when in back
+    return 0.9 + ((zPos + radiusZ) / (radiusZ * 2)) * 0.1;
   });
 
   return (
@@ -125,7 +126,7 @@ function CircularOrbitCard({
       >
         {/* FRONT SIDE */}
         <div 
-          className="absolute inset-0 rounded-full border border-[#050914]/10 bg-white/70 backdrop-blur-2xl p-8 flex flex-col items-center justify-center text-center overflow-hidden"
+          className="absolute inset-0 rounded-full border border-[#d4af37]/20 bg-[#FDFCFB] p-8 flex flex-col items-center justify-center text-center overflow-hidden shadow-[0_0_30px_rgba(212,175,55,0.15)]"
           style={{ 
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden"
