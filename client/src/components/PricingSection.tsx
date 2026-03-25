@@ -116,7 +116,7 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
       >
        <div
         className={cn(
-         "flex flex-col h-full p-10 lg:p-12 transition-all duration-700 rounded-[2.5rem] border",
+         "flex flex-col h-full p-6 md:p-10 lg:p-12 transition-all duration-700 rounded-[2.5rem] border",
          tier.popular
           ? "bg-gradient-to-b from-[#121A17] to-[#0A0F0D] border-accent/40 shadow-[0_0_50px_rgba(207,160,82,0.15)] ring-1 ring-accent/20 scale-[1.03] z-10"
           : (theme === 'light' 
@@ -142,7 +142,7 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
           {tier.frequency}
          </span>
          <h3 className={cn(
-          "text-2xl lg:text-3xl font-serif font-medium mb-4",
+          "text-xl lg:text-3xl font-serif font-medium mb-4",
           tier.popular ? "text-white !text-white" : (theme === 'light' ? "text-[#1A1A1A]" : "text-white")
          )}>
           {tier.name}
@@ -161,7 +161,7 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
         )}>
          <div className="flex items-baseline gap-2">
           <span className={cn(
-           "text-4xl lg:text-5xl font-mono font-medium",
+           "text-3xl lg:text-5xl font-mono font-medium",
            tier.popular ? "text-accent !text-accent" : (theme === 'light' ? "text-[#1A1A1A]" : "text-white")
           )}>
            {tier.price}

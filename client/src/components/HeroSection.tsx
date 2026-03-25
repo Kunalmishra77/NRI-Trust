@@ -68,12 +68,12 @@ export default function HeroSection() {
             <div className="space-y-2 mb-10">
               <motion.h1 
                 variants={revealVariants}
-                className="text-4xl md:text-6xl xl:text-7xl font-sans font-black leading-tight tracking-tight text-white drop-shadow-2xl"
+                className="text-3xl md:text-6xl xl:text-7xl font-sans font-black leading-tight tracking-tight text-white drop-shadow-2xl"
               >
                 Your Parents'
               </motion.h1>
               
-              <div className="h-[60px] md:h-[80px] xl:h-[100px] relative overflow-hidden">
+              <div className="h-[50px] md:h-[80px] xl:h-[100px] relative overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={index}
@@ -83,7 +83,7 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, ease: EASE_PREMIUM }}
                     className="absolute inset-0 flex items-center justify-start"
                   >
-                    <span className="text-4xl md:text-6xl xl:text-7xl font-sans font-black leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#d4af37] whitespace-nowrap filter drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+                    <span className="text-3xl md:text-6xl xl:text-7xl font-sans font-black leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#d4af37] whitespace-nowrap filter drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]">
                       {SLIDING_WORDS[index]}
                     </span>
                   </motion.div>
@@ -92,7 +92,7 @@ export default function HeroSection() {
 
               <motion.h1 
                 variants={revealVariants}
-                className="text-4xl md:text-6xl xl:text-7xl font-sans font-black leading-tight tracking-tight text-white drop-shadow-2xl"
+                className="text-3xl md:text-6xl xl:text-7xl font-sans font-black leading-tight tracking-tight text-white drop-shadow-2xl"
               >
                 Managed Globally.
               </motion.h1>
@@ -139,8 +139,8 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Hero Form */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Right Column: Hero Form (Hidden on Mobile) */}
+          <div className="hidden lg:flex justify-center lg:justify-end">
             <HeroForm />
           </div>
 
