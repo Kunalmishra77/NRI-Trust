@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { elegantFadeUp, luxuryStagger } from "@/motion/variants";
 import { Plus, Minus } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const faqs = [
  {
@@ -26,23 +27,35 @@ const faqs = [
  }
 ];
 
-function FAQItem({ question, answer, index }: { question: string; answer: string; index: number }) {
+function FAQItem({ question, answer, theme }: { question: string; answer: string; theme?: 'dark' | 'light' }) {
  const [isOpen, setIsOpen] = useState(false);
 
  return (
   <motion.div 
    variants={elegantFadeUp}
-   className={`border-b border-white/[0.05] transition-all duration-500 ${isOpen ? "bg-white/[0.02]" : ""}`}
+   className={cn(
+    "border-b transition-all duration-500",
+    theme === 'light' ? "border-black/[0.05]" : "border-white/[0.05]",
+    isOpen ? (theme === 'light' ? "bg-black/[0.02]" : "bg-white/[0.02]") : ""
+   )}
   >
    <button 
     onClick={() => setIsOpen(!isOpen)}
     className="w-full py-8 lg:py-10 flex items-start lg:items-center justify-between text-left group px-4 lg:px-8"
    >
-    <span className={`text-xl lg:text-2xl font-serif font-medium transition-colors pr-8 ${isOpen ? "text-accent" : "text-white group-hover:text-white/80"}`}>
+    <span className={cn(
+     "text-xl lg:text-2xl font-serif font-medium transition-colors pr-8",
+     isOpen ? "text-accent" : (theme === 'light' ? "text-[#1A1A1A] group-hover:text-accent" : "text-white group-hover:text-white/80")
+    )}>
      {question}
     </span>
-    <div className={`w-10 h-10 rounded-full border flex items-center justify-center flex-shrink-0 transition-all duration-500 shadow-inner ${isOpen ? "bg-[#0A0F0D] border-accent/30 rotate-180" : "bg-white/5 border-white/10 group-hover:border-accent/50"}`}>
-     {isOpen ? <Minus className="w-5 h-5 text-accent" /> : <Plus className="w-5 h-5 text-accent/60 group-hover:text-accent" />}
+    <div className={cn(
+     "w-10 h-10 rounded-full border flex items-center justify-center flex-shrink-0 transition-all duration-500 shadow-inner",
+     isOpen 
+       ? (theme === 'light' ? "bg-[#FDFCFB] border-accent/30 rotate-180" : "bg-[#0A0F0D] border-accent/30 rotate-180") 
+       : (theme === 'light' ? "bg-black/5 border-black/10 group-hover:border-accent/50" : "bg-white/5 border-white/10 group-hover:border-accent/50")
+    )}>
+     {isOpen ? <Minus className="w-5 h-5 text-accent" /> : <Plus className="w-5 h-5 text-accent group-hover:text-accent" />}
     </div>
    </button>
    <motion.div 
@@ -50,7 +63,10 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
     animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
     className="overflow-hidden"
    >
-    <p className="pb-8 lg:pb-10 px-4 lg:px-8 text-base lg:text-lg text-muted-foreground font-light leading-relaxed max-w-4xl border-l-2 border-accent/20 ml-4 lg:ml-8 mt-2">
+    <p className={cn(
+      "pb-8 lg:pb-10 px-4 lg:px-8 text-base lg:text-lg font-light leading-relaxed max-w-4xl border-l-2 border-accent/20 ml-4 lg:ml-8 mt-2",
+      theme === 'light' ? "text-[#1A1A1A]/90" : "text-white/90"
+    )}>
      {answer}
     </p>
    </motion.div>
@@ -58,10 +74,13 @@ function FAQItem({ question, answer, index }: { question: string; answer: string
  );
 }
 
-export default function FAQSection() {
+export default function FAQSection({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
  return (
-  <section className="section-padding bg-[#070b09] relative overflow-hidden border-y border-white/[0.05]">
-   <div className="absolute inset-0 bg-noise pointer-events-none" />
+  <section className={cn(
+    "section-padding relative overflow-hidden transition-colors duration-500",
+    theme === 'light' ? "section-light" : "section-dark"
+  )}>
+   <div className="absolute inset-0 noise-overlay opacity-[0.02] pointer-events-none" />
    <div className="max-container relative z-10">
     <motion.div
      initial="hidden"
@@ -75,7 +94,10 @@ export default function FAQSection() {
       <span className="accent-label !mb-0 tracking-[0.25em]">Common Inquiries</span>
       <div className="h-[2px] w-10 bg-gradient-to-l from-transparent to-accent/50" />
      </div>
-     <h2 className="section-title text-white">Stewardship <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light">Questions</span></h2>
+     <h2 className={cn(
+      "section-title mb-8",
+      theme === 'light' ? "text-[#1A1A1A]" : "text-white"
+     )}>Stewardship <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light">Questions</span></h2>
     </motion.div>
 
     <motion.div
@@ -83,13 +105,17 @@ export default function FAQSection() {
      whileInView="visible"
      viewport={{ once: true, margin: "-50px" }}
      variants={luxuryStagger}
-     className="max-w-4xl mx-auto glass-card rounded-[3rem] overflow-hidden border border-white/[0.05] bg-[#0A0F0D]"
+     className={cn(
+      "max-w-4xl mx-auto rounded-[3rem] overflow-hidden border shadow-sm",
+      theme === 'light' ? "bg-white border-black/5" : "bg-[#0A0F0D] border-white/0.05"
+     )}
     >
      {faqs.map((faq, idx) => (
-      <FAQItem key={idx} {...faq} index={idx} />
+      <FAQItem key={idx} {...faq} theme={theme} />
      ))}
     </motion.div>
    </div>
   </section>
  );
 }
+

@@ -1,133 +1,178 @@
-import { Phone, Mail, ArrowRight, Shield, MapPin, Linkedin, Twitter, Lock, Globe } from "lucide-react";
+import { Phone, Mail, ArrowRight, Shield, Linkedin, Twitter, Lock, Globe, MapPin, Instagram, Youtube, ExternalLink } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 
 export default function Footer() {
- const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
- const footerLinks = {
-  Advisory: [
-   { label: "Banking & KYC", href: "/services/banking-kyc" },
-   { label: "Legal & Succession", href: "/services/legal-succession" },
-   { label: "Property & Tenancy", href: "/services/property-tenancy" },
-   { label: "Insurance Advocacy", href: "/services/insurance" },
-   { label: "Tax Compliance", href: "/services/income-tax" },
-  ],
-  Practice: [
-   { label: "About the Firm", href: "/about" },
-   { label: "Engagement Models", href: "/pricing" },
-   { label: "Private Consultation", href: "/contact" },
-   { label: "Practice Areas", href: "/services" },
-  ]
- };
+  const footerLinks = {
+    Advisory: [
+      { label: "Banking & KYC", href: "/services/banking-kyc" },
+      { label: "Legal & Succession", href: "/services/legal-succession" },
+      { label: "Property & Tenancy", href: "/services/property-tenancy" },
+      { label: "Insurance Advocacy", href: "/services/insurance" },
+      { label: "Tax Compliance", href: "/services/income-tax" },
+    ],
+    Practice: [
+      { label: "About the Firm", href: "/about" },
+      { label: "Engagement Models", href: "/pricing" },
+      { label: "Our Process", href: "/how-it-works" },
+      { label: "Knowledge Hub", href: "/resources" },
+      { label: "Contact Advisory", href: "/contact" },
+    ]
+  };
 
- return (
-  <footer className="bg-[#050814] text-[#F5F3EC] relative overflow-hidden border-t border-white/[0.03]">
-   <div className="absolute inset-0 noise-overlay opacity-60 pointer-events-none" />
-   
-   {/* Cinematic Watermark - Perfectly centered and scaled */}
-   <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.02] select-none flex items-center justify-center p-12">
-    <h1 className="text-[10vw] lg:text-[8vw] font-serif font-black text-center leading-none tracking-[0.1em] whitespace-nowrap text-white transform-gpu uppercase opacity-90">
-     NRI TRUST
-    </h1>
-   </div>
+  return (
+    <footer className="bg-[#FDFCFB] text-[#1A1A1A] relative overflow-hidden border-t border-black/[0.05] z-20">
+      {/* Background Ambience - Block the globe with solid color and subtle gradients */}
+      <div className="absolute top-0 right-0 w-[40vw] h-[40vw] bg-accent/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-50" />
+      <div className="absolute bottom-0 left-0 w-[30vw] h-[30vw] bg-red-900/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-30" />
 
-   <div className="max-w-7xl mx-auto px-8 relative z-10 pt-16 pb-12">
-    <div className="grid lg:grid-cols-12 gap-16 mb-20">
-     
-     {/* Brand Pillar */}
-     <div className="lg:col-span-4">
-      <Link href="/" className="flex items-center gap-5 mb-8 group">
-       <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-[#8a652a] flex items-center justify-center border border-accent/20 group-hover:scale-105 transition-all duration-500 shadow-2xl">
-        <Shield className="w-7 h-7 text-[#0A0F0D]" />
-       </div>
-       <div className="flex flex-col leading-none">
-        <span className="text-3xl font-serif font-medium tracking-tight text-white group-hover:text-accent transition-colors">NRI TRUST</span>
-        <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-accent/60 mt-1 font-bold">Digital Vault</span>
-       </div>
-      </Link>
-      
-      <p className="text-xl text-muted-foreground font-light mb-10 max-w-md leading-relaxed">
-       Acting as a professional fiduciary for global Indian families across 40+ countries. 
-      </p>
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10 pt-16 pb-8">
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 mb-12">
 
-      <div className="flex flex-col gap-6 mb-10">
-       <a href="mailto:advisory@nritrust.com" className="flex items-center gap-4 text-white/70 hover:text-accent transition-all group">
-        <Mail className="w-5 h-5 text-accent/40 group-hover:text-accent" />
-        <span className="font-mono text-sm tracking-widest font-medium">advisory@nritrust.com</span>
-       </a>
-       <a href="tel:+919876543210" className="flex items-center gap-4 text-white/70 hover:text-accent transition-all group">
-        <Phone className="w-5 h-5 text-accent/40 group-hover:text-accent" />
-        <span className="font-mono text-sm tracking-widest font-medium">+91 98765 43210</span>
-       </a>
+          {/* Column 1: Brand & Narrative */}
+          <div className="lg:col-span-4 flex flex-col">
+            <Link href="/" className="flex items-center gap-4 mb-8 group w-fit">
+              <div className="w-12 h-12 rounded-xl bg-[#1A1A1A] flex items-center justify-center group-hover:bg-accent transition-all duration-500 shadow-2xl">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="text-2xl font-sans font-black tracking-tight text-[#1A1A1A]">NRI TRUST</span>
+                <span className="text-[9px] font-mono tracking-[0.4em] uppercase text-accent mt-1 font-bold">Global Stewardship</span>
+              </div>
+            </Link>
+
+            <p className="text-lg text-[#1A1A1A]/90 font-medium mb-10 max-w-sm leading-relaxed">
+              The dedicated family office and fiduciary bridge for global NRIs. Absolute operational control over your Indian legacy.
+            </p>
+
+            {/* Tactical Contact */}
+            <div className="space-y-4 mb-10">
+              <a href="mailto:advisory@nritrust.com" className="flex items-center gap-4 group text-[#1A1A1A]/80 hover:text-accent transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-[#1A1A1A]/5 border border-[#1A1A1A]/10 flex items-center justify-center group-hover:border-accent/30 transition-all">
+                  <Mail className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                </div>
+                <span className="font-mono text-[13px] font-bold tracking-wider">advisory@nritrust.com</span>
+              </a>
+              <a href="tel:+919876543210" className="flex items-center gap-4 group text-[#1A1A1A]/80 hover:text-accent transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-[#1A1A1A]/5 border border-[#1A1A1A]/10 flex items-center justify-center group-hover:border-accent/30 transition-all">
+                  <Phone className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                </div>
+                <span className="font-mono text-[13px] font-bold tracking-wider">+91 98765 43210</span>
+              </a>
+            </div>
+
+            {/* Social Matrix */}
+            <div className="flex items-center gap-4">
+              {[
+                { icon: Linkedin, label: "LinkedIn" },
+                { icon: Twitter, label: "Twitter" },
+                { icon: Youtube, label: "YouTube" },
+                { icon: Instagram, label: "Instagram" }
+              ].map((social) => (
+                <a 
+                  key={social.label}
+                  href="#" 
+                  className="w-10 h-10 rounded-xl bg-[#1A1A1A]/5 border border-[#1A1A1A]/10 flex items-center justify-center text-[#1A1A1A]/60 hover:text-white hover:bg-[#1A1A1A] transition-all duration-300 group shadow-sm"
+                >
+                  <social.icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Column 2 & 3: Links Grid */}
+          <div className="lg:col-span-5 grid grid-cols-2 gap-12 pt-4">
+            {Object.entries(footerLinks).map(([title, links]) => (
+              <div key={title}>
+                <h3 className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-10">{title}</h3>
+                <ul className="space-y-5">
+                  {links.map((link) => (
+                    <li key={link.label}>
+                      <Link href={link.href} className="text-[#1A1A1A]/80 hover:text-accent transition-all flex items-center gap-3 group/link">
+                        <div className="w-1.5 h-px bg-accent/30 group-hover/link:w-4 group-hover/link:bg-accent transition-all duration-500" />
+                        <span className="text-[15px] font-bold">{link.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Column 4: Engagement & Status */}
+          <div className="lg:col-span-3 flex flex-col pt-4">
+            <h3 className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-10">Institutional Access</h3>
+            
+            <Link href="/portal">
+              <motion.div 
+                whileHover={{ y: -5, borderColor: "rgba(212,175,55,0.4)" }}
+                className="p-6 rounded-[2rem] border border-[#1A1A1A]/10 bg-white transition-all cursor-pointer group mb-10 shadow-xl shadow-black/[0.02]"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center border border-accent/20 group-hover:bg-accent transition-all duration-500">
+                    <Lock className="w-5 h-5 text-accent group-hover:text-white" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] font-mono font-black text-[#1A1A1A] uppercase tracking-widest leading-none mb-1">Client Portal</div>
+                    <div className="text-[9px] text-accent font-bold uppercase tracking-tighter">Secure High-Net Access</div>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between text-[10px] font-mono text-[#1A1A1A]/70 uppercase tracking-widest group-hover:text-accent transition-colors">
+                  <span>Enter Dashboard</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* Operational Status */}
+            <div className="p-6 rounded-2xl bg-[#1A1A1A]/5 border border-[#1A1A1A]/5 space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-mono text-[#1A1A1A]/60 uppercase font-bold">Network Status</span>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
+                  <span className="text-[10px] font-mono text-green-600 font-black uppercase">Live</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-mono text-[#1A1A1A]/60 uppercase font-bold">HQ Location</span>
+                <span className="text-[10px] font-mono text-[#1A1A1A] font-black uppercase">Mumbai, IN</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar: Compliance & Copyright */}
+        <div className="pt-12 border-t border-black/[0.05] flex flex-col md:flex-row justify-between items-center gap-8">
+          <span className="text-[11px] font-mono text-[#1A1A1A]/70 tracking-[0.2em] uppercase font-black">
+            &copy; {currentYear} NRI Trust Global Advisory Ltd.
+          </span>
+
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex items-center gap-6">
+              <Link href="/terms" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Terms of Engagement</Link>
+              <Link href="/privacy" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Privacy Protocol</Link>
+              <Link href="/cookies" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Cookie Policy</Link>
+            </div>
+
+            <div className="hidden md:block h-4 w-px bg-black/10" />
+
+            <div className="flex items-center gap-8">
+              <div className="flex items-center gap-3 text-[10px] font-mono text-[#1A1A1A]/70 uppercase tracking-widest font-black">
+                <Globe className="w-3.5 h-3.5" />
+                <span>40+ Global Jurisdictions</span>
+              </div>
+              <div className="h-4 w-px bg-black/10" />
+              <div className="flex items-center gap-3 text-[10px] font-mono text-[#1A1A1A]/70 uppercase tracking-widest font-black">
+                <MapPin className="w-3.5 h-3.5" />
+                <span>FEMA Compliant</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div className="flex items-center gap-5">
-       <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent/10 hover:border-accent/30 transition-all text-white/40 hover:text-accent shadow-inner">
-        <Linkedin className="w-5 h-5" />
-       </a>
-       <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent/10 hover:border-accent/30 transition-all text-white/40 hover:text-accent shadow-inner">
-        <Twitter className="w-5 h-5" />
-       </a>
-       <div className="w-px h-8 bg-white/10 mx-4" />
-       <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-widest text-white/40">
-        <Globe className="w-4 h-4" />
-        HQ: Mumbai
-       </div>
-      </div>
-     </div>
-
-     {/* Links Grid */}
-     <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-12 pt-2">
-      {Object.entries(footerLinks).map(([title, links]) => (
-       <div key={title}>
-        <h3 className="font-mono text-[11px] font-bold uppercase tracking-[0.4em] text-accent mb-10">{title}</h3>
-        <ul className="space-y-6">
-         {links.map((link) => (
-          <li key={link.label}>
-           <Link href={link.href} className="text-white/70 hover:text-white transition-all flex items-center gap-4 group/link">
-            <ArrowRight className="w-4 h-4 text-accent opacity-0 -translate-x-3 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
-            <span className="text-[16px] font-light tracking-wide">{link.label}</span>
-           </Link>
-          </li>
-         ))}
-        </ul>
-       </div>
-      ))}
-      
-      <div className="md:col-span-1">
-       <h3 className="font-mono text-[11px] font-bold uppercase tracking-[0.4em] text-accent mb-10">Client Access</h3>
-       <Link href="/portal">
-        <button className="flex items-center gap-4 p-6 glass-panel rounded-2xl border-white/10 hover:border-accent/30 transition-all w-full text-left group bg-white/[0.02] cursor-pointer">
-         <Lock className="w-5 h-5 text-accent/50 group-hover:text-accent" />
-         <div className="flex flex-col leading-tight">
-          <span className="text-[11px] font-mono font-bold text-white uppercase tracking-widest">Portal</span>
-          <span className="text-[10px] text-muted-foreground font-light uppercase mt-1">Secure Login</span>
-         </div>
-        </button>
-       </Link>
-      </div>
-     </div>
-    </div>
-
-    {/* Bottom Bar - Tightened and positioned at the very bottom */}
-    <div className="pt-10 border-t border-white/[0.05] flex flex-col md:flex-row justify-between items-center gap-10">
-     <div className="text-[11px] font-mono text-muted-foreground/40 tracking-[0.25em] uppercase">
-      &copy; {currentYear} NRI TRUST GLOBAL ADVISORY.
-     </div>
-     
-     <div className="flex items-center gap-12">
-      <div className="flex items-center gap-4 px-6 py-3 rounded-full bg-[#1B332D]/30 border border-[#20B2AA]/20">
-       <div className="w-1.5 h-1.5 rounded-full bg-[#20B2AA] animate-pulse shadow-[0_0_10px_#20B2AA]" />
-       <span className="text-[10px] font-mono font-bold text-[#20B2AA] tracking-widest uppercase text-nowrap">Encryption Active</span>
-      </div>
-      <div className="flex items-center gap-5 opacity-70 hover:opacity-100 transition-opacity">
-       <Shield className="w-4 h-4 text-accent" />
-       <span className="text-[10px] font-mono font-bold tracking-widest text-white text-nowrap uppercase">FEMA Compliant</span>
-      </div>
-     </div>
-    </div>
-   </div>
-  </footer>
- );
+    </footer>
+  );
 }
+

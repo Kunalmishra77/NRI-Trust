@@ -64,19 +64,19 @@ export default function ClientOutcomes() {
               
               <div className="space-y-6 flex-1">
                 <div>
-                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30 block mb-2">The Challenge</span>
-                  <p className="text-sm text-muted-foreground leading-relaxed italic">"{item.scenario}"</p>
+                  <span className="text-[12px] font-mono uppercase tracking-[0.2em] text-white/70 block mb-2">The Challenge</span>
+                  <p className="text-sm text-white/90 leading-relaxed italic">"{item.scenario}"</p>
                 </div>
                 
                 <div className="pt-6 border-t border-white/[0.05]">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-accent/60 block mb-2">The NRI Trust Result</span>
-                  <p className="text-sm text-white/80 leading-relaxed font-light">{item.result}</p>
+                  <span className="text-[12px] font-mono uppercase tracking-[0.2em] text-accent block mb-2 font-bold">The NRI Trust Result</span>
+                  <p className="text-sm text-white/90 leading-relaxed font-light">{item.result}</p>
                 </div>
               </div>
               
               <div className="mt-10 pt-6 border-t border-accent/20 flex items-center justify-between">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">{item.impact}</span>
-                <ArrowRight className="w-4 h-4 text-accent/40" />
+                <span className="text-[12px] font-mono uppercase tracking-widest text-accent font-bold">{item.impact}</span>
+                <ArrowRight className="w-4 h-4 text-accent/60" />
               </div>
             </motion.div>
           ))}
@@ -85,3 +85,4 @@ export default function ClientOutcomes() {
     </section>
   );
 }
+

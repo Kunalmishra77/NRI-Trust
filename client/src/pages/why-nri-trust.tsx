@@ -7,59 +7,77 @@ import DedicatedManager from "@/components/why-nri-trust/DedicatedManager";
 import ClientOutcomes from "@/components/why-nri-trust/ClientOutcomes";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { elegantFadeUp } from "@/motion/variants";
 
 export default function WhyNRITrust() {
   return (
-    <>
-      {/* 1. Hero */}
-      <PageHeader
-        title="Why NRI Trust Exists"
-        subtitle="Moving beyond fragmented agents to institutional-grade stewardship for NRI families."
-        breadcrumbs={[{ label: "The Firm" }, { label: "Why NRI Trust" }]}
-      />
+    <main className="min-h-screen">
+      {/* 1. Hero (Dark) */}
+      <div className="section-dark">
+        <PageHeader
+          title="Why NRI Trust Exists"
+          subtitle="Moving beyond fragmented agents to institutional-grade stewardship for NRI families."
+          breadcrumbs={[{ label: "The Firm" }, { label: "Why NRI Trust" }]}
+        />
+      </div>
 
-      {/* 2. The NRI Reality */}
-      <NRIReality />
+      {/* 2. The NRI Reality (Light) */}
+      <NRIReality theme="light" />
 
-      {/* 3. Fragmented Solutions Problem */}
-      <FailureMatrix />
+      {/* 3. Fragmented Solutions Problem (Dark) */}
+      <FailureMatrix theme="dark" />
 
-      {/* 4. The NRI Trust Model */}
-      <WhyNRITrustSection />
+      {/* 4. The NRI Trust Model (Light) */}
+      <WhyNRITrustSection theme="light" />
 
-      {/* 5. Our Operating Principles */}
-      <OperatingPrinciples />
+      {/* 5. Our Operating Principles (Dark) */}
+      <div className="section-dark">
+        <OperatingPrinciples />
+      </div>
 
-      {/* 6. Dedicated Manager Model */}
-      <DedicatedManager />
+      {/* 6. Dedicated Manager Model (Light) */}
+      <div className="section-light">
+        <DedicatedManager />
+      </div>
 
-      {/* 7. Client Outcomes */}
-      <ClientOutcomes />
+      {/* 7. Client Outcomes (Dark) */}
+      <div className="section-dark">
+        <ClientOutcomes />
+      </div>
 
-      {/* 8. Final CTA */}
-      <section className="section-padding bg-[#0A0F0D] relative overflow-hidden border-t border-white/[0.05] text-center">
+      {/* 8. Final CTA (Dark) */}
+      <section className="section-padding section-dark border-t border-white/[0.05] text-center">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,hsl(160_30%_15%_/_0.2)_0%,transparent_70%)] pointer-events-none" />
         <div className="max-container relative z-10">
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-accent/50" />
-            <span className="accent-label !mb-0">Secure Your Legacy</span>
-            <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-accent/50" />
-          </div>
-          <h2 className="display-title !text-4xl md:!text-6xl text-white mb-10 leading-tight">
-            Stop Leaving Your Assets <br className="hidden md:block" />
-            <span className="text-gradient-gold italic">To Chance.</span>
-          </h2>
-          <p className="body-large mb-16 text-muted-foreground max-w-2xl mx-auto">
-            Book a confidential 30-minute review session. We will evaluate your current India-based risks and demonstrate our professional stewardship roadmap.
-          </p>
-          <Link href="/contact">
-            <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">
-              <span>Book Private Review</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </Link>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={elegantFadeUp}
+          >
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-accent/50" />
+              <span className="accent-label !mb-0 text-accent">Secure Your Legacy</span>
+              <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-accent/50" />
+            </div>
+            <h2 className="display-title !text-4xl md:!text-6xl text-white mb-10 leading-tight">
+              Stop Leaving Your Assets <br className="hidden md:block" />
+              <span className="text-gradient-gold italic">To Chance.</span>
+            </h2>
+            <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
+              Book a confidential 30-minute review session. We will evaluate your current India-based risks and demonstrate our professional stewardship roadmap.
+            </p>
+            <Link href="/contact">
+              <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">
+                <span>Book Private Review</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+          </motion.div>
         </div>
       </section>
-    </>
+    </main>
   );
 }
+

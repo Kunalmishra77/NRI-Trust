@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
-import { FileText, Shield, CreditCard, Building2, Scale } from "lucide-react";
+import { FileText, Shield, CreditCard, Building2 } from "lucide-react";
 
-export const FloatingLegalDoc = ({ delay = 0, className = "" }) => (
+interface ThreeDProps {
+  delay?: number;
+  className?: string;
+}
+
+export const FloatingLegalDoc = ({ delay = 0, className = "" }: ThreeDProps) => (
  <motion.div
   initial={{ opacity: 0, y: 20, rotateX: 20 }}
   animate={{ 
@@ -34,7 +39,12 @@ export const FloatingLegalDoc = ({ delay = 0, className = "" }) => (
  </motion.div>
 );
 
-export const ComplianceCard = ({ title, status, delay = 0, className = "" }) => (
+interface ComplianceCardProps extends ThreeDProps {
+  title: string;
+  status: string;
+}
+
+export const ComplianceCard = ({ title, status, delay = 0, className = "" }: ComplianceCardProps) => (
  <motion.div
   initial={{ opacity: 0, x: -20, rotateY: -20 }}
   animate={{ 
@@ -67,7 +77,7 @@ export const ComplianceCard = ({ title, status, delay = 0, className = "" }) => 
  </motion.div>
 );
 
-export const VaultMotif = ({ className = "" }) => (
+export const VaultMotif = ({ className = "" }: { className?: string }) => (
  <div className={`relative perspective-container ${className}`}>
   <motion.div
    animate={{ rotateY: [0, 360] }}
@@ -94,7 +104,7 @@ export const VaultMotif = ({ className = "" }) => (
  </div>
 );
 
-export const IsometricProperty = ({ delay = 0, className = "" }) => (
+export const IsometricProperty = ({ delay = 0, className = "" }: ThreeDProps) => (
  <motion.div
   initial={{ opacity: 0, scale: 0.8 }}
   animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
@@ -112,3 +122,4 @@ export const IsometricProperty = ({ delay = 0, className = "" }) => (
   </div>
  </motion.div>
 );
+

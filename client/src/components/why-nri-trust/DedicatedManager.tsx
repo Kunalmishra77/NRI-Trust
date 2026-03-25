@@ -21,8 +21,8 @@ export default function DedicatedManager() {
               <span className="text-gradient-gold italic">Institutional Accountability.</span>
             </h2>
             <p className="body-large text-muted-foreground mb-12">
-              We don't believe in call centers or automated ticket systems. 
-              Each NRI Trust client is assigned a **Senior Relationship Manager** who acts 
+              We don't believe in call centers or automated ticket systems.
+              Each NRI Trust client is assigned a <strong className="text-white font-medium">Senior Relationship Manager</strong> who acts
               as your family's personal CFO and physical proxy in India.
             </p>
             
@@ -81,7 +81,7 @@ export default function DedicatedManager() {
                 </div>
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-4 h-4 text-accent" />
-                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-accent font-bold">Dedicated Manager Protocol</span>
+                  <span className="text-[12px] font-mono uppercase tracking-[0.2em] text-accent font-bold">Dedicated Manager Protocol</span>
                 </div>
               </div>
             </div>
@@ -91,3 +91,4 @@ export default function DedicatedManager() {
     </section>
   );
 }
+

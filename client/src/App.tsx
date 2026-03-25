@@ -23,6 +23,9 @@ import EmergencyResponse from "@/pages/emergency-response";
 import SuccessStories from "@/pages/success-stories";
 import Resources from "@/pages/resources";
 import ClientPortal from "@/pages/portal";
+import TermsOfEngagement from "@/pages/terms";
+import PrivacyProtocol from "@/pages/privacy";
+import CookiePolicy from "@/pages/cookies";
 
 function Router() {
  return (
@@ -58,6 +61,11 @@ function Router() {
        {/* Insights & Contact */}
        <Route path="/resources" component={Resources} />
        <Route path="/contact" component={Contact} />
+       
+       {/* Legal & Compliance */}
+       <Route path="/terms" component={TermsOfEngagement} />
+       <Route path="/privacy" component={PrivacyProtocol} />
+       <Route path="/cookies" component={CookiePolicy} />
        
        <Route component={NotFound} />
       </Switch>

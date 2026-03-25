@@ -1,115 +1,132 @@
 import { motion } from "framer-motion";
-import { elegantFadeUp, luxuryStagger } from "@/motion/variants";
-import { X, Check, ArrowRight, ShieldCheck, UserMinus, HardHat, FileText, Smartphone } from "lucide-react";
+import { X, Check, ArrowRight, ShieldCheck, UserMinus, HardHat, FileText, Smartphone, AlertTriangle, Shield } from "lucide-react";
+import { Link } from "wouter";
 
 export default function ComparisonSection() {
   return (
-    <section className="section-padding bg-[#0B101E] relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.03)_0%,transparent_70%)] pointer-events-none" />
-      
-      <div className="max-container relative z-10">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={elegantFadeUp}
-          className="text-center mb-24"
-        >
-          <span className="accent-label">The Evolution of Support</span>
-          <h2 className="text-4xl md:text-6xl font-serif text-[#F5F3EC] mb-8 leading-tight">
-            Why Fragmented <br className="hidden md:block" />
-            <span className="text-white/40 italic">Handling Fails.</span>
-          </h2>
-        </motion.div>
+    <section className="relative py-20 md:py-28 overflow-hidden bg-[#FDFCFB] text-[#1A1A1A]">
+      {/* Structural Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#1A1A1A 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          {/* THE FRAGMENTED SYSTEM */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div className="text-center mb-20 md:mb-32 max-w-4xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            variants={elegantFadeUp}
-            className="premium-card p-10 lg:p-16 rounded-[3rem] border-red-500/10 bg-red-500/[0.02] relative group"
+            className="inline-block px-5 py-2 rounded-full border border-[#1A1A1A]/10 bg-[#1A1A1A]/5 backdrop-blur-sm text-[11px] font-mono font-bold uppercase tracking-[0.3em] text-accent mb-8"
           >
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center">
-                <X className="w-6 h-6 text-red-500" />
-              </div>
-              <h3 className="text-2xl font-serif text-[#F5F3EC]">Fragmented Chaos</h3>
-            </div>
-
-            <div className="space-y-10 relative">
-              {[
-                { icon: UserMinus, label: "Random Local CA", desc: "Only handles tax, misses bank kyc link." },
-                { icon: HardHat, label: "Property Broker", desc: "Conflict of interest with tenants." },
-                { icon: FileText, label: "Freelance Lawyer", desc: "No continuity for succession data." },
-                { icon: Smartphone, label: "Relatives", desc: "Good intentions, but lacks expertise." }
-              ].map((item, idx) => (
-                <div key={idx} className="flex gap-6 items-start opacity-60 group-hover:opacity-100 transition-opacity">
-                  <div className="w-10 h-10 rounded-full border border-red-500/20 flex items-center justify-center shrink-0">
-                    <item.icon className="w-4 h-4 text-red-400" />
-                  </div>
-                  <div>
-                    <div className="text-[#F5F3EC] font-medium mb-1">{item.label}</div>
-                    <div className="text-white/40 text-sm font-light">{item.desc}</div>
-                  </div>
-                </div>
-              ))}
-              
-              {/* Abstract Messy Connectors */}
-              <div className="absolute top-0 bottom-0 left-5 w-px bg-gradient-to-b from-red-500/20 via-red-500/5 to-transparent -z-10" />
-            </div>
+            Structural Diagnostic
           </motion.div>
-
-          {/* THE NRI TRUST SYSTEM */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            variants={elegantFadeUp}
-            className="premium-card p-10 lg:p-16 rounded-[3rem] border-accent/20 bg-accent/[0.03] relative overflow-hidden"
+            className="text-5xl md:text-7xl font-sans font-black tracking-tight mb-8 leading-[1.1] text-[#1A1A1A]"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.05)_0%,transparent_50%)]" />
+            Fragmented Handling <br />
+            <span className="text-[#1A1A1A]/40">is an Active Risk.</span>
+          </motion.h2>
+        </div>
+
+        <div className="relative">
+          {/* Comparison Matrix Logic */}
+          <div className="grid lg:grid-cols-2 gap-0 rounded-[3rem] overflow-hidden border border-[#1A1A1A]/10 shadow-2xl bg-white">
             
-            <div className="flex items-center gap-4 mb-12 relative z-10">
-              <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                <Check className="w-6 h-6 text-accent" />
-              </div>
-              <h3 className="text-2xl font-serif text-[#F5F3EC]">The NRI Trust System</h3>
-            </div>
-
-            <div className="bg-[#050814]/60 backdrop-blur-xl rounded-2xl p-8 border border-white/5 mb-12 relative z-10">
-              <div className="flex items-center justify-between mb-8">
-                <span className="text-[10px] font-mono text-accent uppercase tracking-widest font-bold">One Coordinated Team</span>
-                <div className="w-2 h-2 rounded-full bg-accent animate-ping" />
+            {/* LEFT: THE CHAOS (BEFORE) */}
+            <div className="p-10 md:p-16 bg-[#FDFCFB] border-r border-[#1A1A1A]/5 relative overflow-hidden group">
+              <div className="absolute top-[-5%] left-[-5%] opacity-[0.03] rotate-[-15deg] pointer-events-none">
+                <AlertTriangle size={400} className="text-red-600" />
               </div>
               
-              <div className="grid grid-cols-2 gap-6 text-center">
-                <div className="p-4 rounded-xl border border-white/5 bg-white/5">
-                  <ShieldCheck className="w-5 h-5 text-accent mx-auto mb-2" />
-                  <div className="text-xs text-white/80 font-medium">Compliance</div>
+              <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-16">
+                  <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center border border-red-500/20">
+                    <X className="w-6 h-6 text-red-600" />
+                  </div>
+                  <span className="text-xs font-mono font-black uppercase tracking-[0.2em] text-red-600/70">Market Status Quo</span>
                 </div>
-                <div className="p-4 rounded-xl border border-white/5 bg-white/5">
-                  <ArrowRight className="w-5 h-5 text-accent mx-auto mb-2" />
-                  <div className="text-xs text-white/80 font-medium">Liaison</div>
-                </div>
-                <div className="p-4 rounded-xl border border-white/5 bg-white/5">
-                  <FileText className="w-5 h-5 text-accent mx-auto mb-2" />
-                  <div className="text-xs text-white/80 font-medium">Reporting</div>
-                </div>
-                <div className="p-4 rounded-xl border border-white/5 bg-white/5">
-                  <Check className="w-5 h-5 text-accent mx-auto mb-2" />
-                  <div className="text-xs text-white/80 font-medium">Security</div>
+
+                <h3 className="text-3xl md:text-4xl font-sans font-black mb-12 text-[#1A1A1A]">Informal <br/>Coordination</h3>
+
+                <div className="space-y-10">
+                  {[
+                    { label: "Isolated Vendors", desc: "CA, Lawyer, and Broker never speak to each other.", icon: UserMinus },
+                    { label: "Manual Tracking", desc: "Deadlines monitored on sticky notes or memory.", icon: Smartphone },
+                    { label: "Zero Continuity", desc: "Critical knowledge lost if a relative or agent changes.", icon: FileText }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex gap-6 items-start">
+                      <div className="mt-1 w-5 h-5 rounded-full bg-red-500/20 flex items-center justify-center shrink-0">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-600" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-[#1A1A1A] mb-1">{item.label}</div>
+                        <div className="text-base text-[#1A1A1A]/50 font-medium leading-relaxed">{item.desc}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            <p className="text-lg text-white/60 font-light leading-relaxed relative z-10">
-              A single point of truth for your entire Indian portfolio. Our multi-disciplinary team ensures every action is legal, compliant, and documented.
-            </p>
-          </motion.div>
+            {/* RIGHT: THE CONTROL (AFTER) */}
+            <div className="p-10 md:p-16 bg-[#050914] text-white relative overflow-hidden group">
+              {/* Animated Glow */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.15)_0%,transparent_70%)]" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-16">
+                  <div className="w-12 h-12 rounded-xl bg-[#d4af37]/20 flex items-center justify-center border border-[#d4af37]/30 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+                    <Shield className="w-6 h-6 text-[#d4af37]" />
+                  </div>
+                  <span className="text-xs font-mono font-black uppercase tracking-[0.2em] text-[#d4af37]">Unified Stewardship</span>
+                </div>
+
+                <h3 className="text-3xl md:text-4xl font-sans font-black mb-12">Consolidated <br/>Governance</h3>
+
+                <div className="space-y-10">
+                  {[
+                    { label: "Technical Oversight", desc: "Professional directors coordinating legal and financial logic.", icon: ShieldCheck },
+                    { label: "Institutional Audit", desc: "Full digital trail of every action taken in India.", icon: ArrowRight },
+                    { label: "Absolute Continuity", desc: "Legacies managed generationally, not transactionally.", icon: Check }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex gap-6 items-start">
+                      <div className="mt-1 w-5 h-5 rounded-full bg-[#d4af37]/30 flex items-center justify-center shrink-0">
+                        <Check className="w-3 h-3 text-[#d4af37]" />
+                      </div>
+                      <div>
+                        <div className="font-bold text-lg text-white mb-1 group-hover:text-accent transition-colors">{item.label}</div>
+                        <div className="text-base text-white/50 font-medium leading-relaxed">{item.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-20 pt-10 border-t border-white/10">
+                  <Link href="/contact">
+                    <motion.button 
+                      whileHover={{ x: 5 }}
+                      className="flex items-center gap-4 text-[#d4af37] font-sans font-black uppercase tracking-[0.2em] text-xs"
+                    >
+                      Initialize Unified Audit
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Center Connector Badge */}
+          <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-white border border-[#1A1A1A]/10 shadow-2xl items-center justify-center z-20">
+            <div className="text-center">
+              <div className="text-[10px] font-mono font-black text-[#1A1A1A]/40 leading-none">VS</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+

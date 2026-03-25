@@ -1,139 +1,214 @@
-import { motion } from "framer-motion";
-import { elegantFadeUp, luxuryStagger } from "@/motion/variants";
-import { AlertCircle, HelpCircle, ChevronRight, ArrowRight } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform, useAnimationFrame } from "framer-motion";
+import { AlertCircle, ArrowUpRight, ShieldAlert, Landmark, Home, Heart, FileText, Zap, RefreshCw } from "lucide-react";
 import { Link } from "wouter";
+import { useState, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 const anxieties = [
   {
-    title: "Tax Notice",
-    problem: "Sudden show-cause notices from the Income Tax department regarding high-value transactions or dormant NRO accounts.",
-    impact: "Potential frozen liquidity and hefty compliance penalties.",
+    title: "Tax Scrutiny",
+    problem: "Sudden show-cause notices on legacy accounts.",
+    impact: "Frozen liquidity & penalties.",
+    icon: ShieldAlert,
+    color: "rgba(239, 68, 68, 0.2)",
     href: "/services/income-tax"
   },
   {
-    title: "Bank Account Frozen",
-    problem: "KYC non-compliance or lack of proper nomination leading to parents being unable to access their own savings.",
-    impact: "Severe financial stress during medical or emergency needs.",
+    title: "Frozen Assets",
+    problem: "KYC non-compliance leading to blocked savings.",
+    impact: "Zero medical emergency access.",
+    icon: Landmark,
+    color: "rgba(249, 115, 22, 0.2)",
     href: "/services/banking-kyc"
   },
   {
-    title: "Tenant Dispute",
-    problem: "Tenants refusing to vacate or stopping rent payments, knowing the owner lives 10,000 miles away.",
-    impact: "Legal deadlock and loss of property control for parents.",
+    title: "Tenant Deadlock",
+    problem: "Refusal to vacate ancestral property.",
+    impact: "Loss of property control.",
+    icon: Home,
+    color: "rgba(245, 158, 11, 0.2)",
     href: "/services/property-tenancy"
   },
   {
-    title: "Utility Disconnection",
-    problem: "Missed municipal taxes or utility bills causing sudden disconnection of water or electricity.",
-    impact: "Immediate physical hardship for elderly residents.",
-    href: "/services/property-tenancy"
-  },
-  {
-    title: "Succession Delay",
-    problem: "Lack of registered Wills or survival certificates causing assets to be locked for years.",
-    impact: "Generational wealth erosion and legal infighting.",
+    title: "Legacy Erosion",
+    problem: "Lack of registered Wills causing locking.",
+    impact: "Generational wealth erosion.",
+    icon: FileText,
+    color: "rgba(220, 38, 38, 0.2)",
     href: "/services/legal-succession"
   },
   {
-    title: "Insurance Rejection",
-    problem: "Complex claim filing processes or policy lapses due to non-monitoring of renewal dates.",
-    impact: "Huge out-of-pocket medical expenses during surgery.",
+    title: "Health Denials",
+    problem: "Insurance claim rejected due to gaps.",
+    impact: "Huge out-of-pocket expenses.",
+    icon: Heart,
+    color: "rgba(244, 63, 94, 0.2)",
     href: "/services/insurance"
+  },
+  {
+    title: "Utility Cutoffs",
+    problem: "Municipal tax lapses causing disconnection.",
+    impact: "Hardship for elderly parents.",
+    icon: Zap,
+    color: "rgba(234, 179, 8, 0.2)",
+    href: "/services/property-tenancy"
   }
 ];
 
-export default function AnxietySection() {
+function CircularOrbitCard({ 
+  item, 
+  index, 
+  total, 
+  angleRef, 
+  setIsHovered 
+}: { 
+  item: typeof anxieties[0], 
+  index: number, 
+  total: number, 
+  angleRef: any,
+  setIsHovered: (v: boolean) => void 
+}) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  // Calculate orbit position
+  const baseAngle = (index / total) * Math.PI * 2;
+  
+  // RADIUS SETTINGS - Adjusted for slight side padding
+  // Using 38% of width leaves comfortable room on left/right so cards aren't cut
+  const radiusX = window.innerWidth * 0.38; 
+  const radiusZ = 350; 
+
+  const x = useTransform(angleRef, (a: number) => Math.cos(baseAngle + a) * radiusX);
+  const z = useTransform(angleRef, (a: number) => Math.sin(baseAngle + a) * radiusZ + 200); 
+  
+  // Dynamic scale based on Z
+  const scale = useTransform(angleRef, (a: number) => {
+    const zPos = Math.sin(baseAngle + a) * radiusZ;
+    return 0.85 + ((zPos + radiusZ) / (radiusZ * 2)) * 0.55; 
+  });
+
+  // Opacity
+  const opacity = useTransform(angleRef, (a: number) => {
+    const zPos = Math.sin(baseAngle + a) * radiusZ;
+    return 0.7 + ((zPos + radiusZ) / (radiusZ * 2)) * 0.3;
+  });
+
   return (
-    <section className="section-padding bg-[#050814] relative overflow-hidden">
-      <div className="absolute inset-0 noise-overlay opacity-40 pointer-events-none" />
-      
-      <div className="max-container relative z-10">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={elegantFadeUp}
-          className="text-center mb-24"
+    <motion.div
+      style={{
+        x,
+        z,
+        scale,
+        opacity,
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        marginTop: "-140px", 
+        marginLeft: "-140px", 
+        transformStyle: "preserve-3d"
+      }}
+      className="w-[280px] h-[280px] perspective-[2000px] group"
+      onMouseEnter={() => {
+        setIsHovered(true);
+        setIsFlipped(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setIsFlipped(false);
+      }}
+    >
+      <motion.div
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="relative w-full h-full rounded-full cursor-pointer shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
+      >
+        {/* FRONT SIDE */}
+        <div 
+          className="absolute inset-0 rounded-full border border-[#050914]/10 bg-white/70 backdrop-blur-2xl p-8 flex flex-col items-center justify-center text-center overflow-hidden"
+          style={{ 
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden"
+          }}
         >
-          <span className="accent-label text-[#D4AF37]">The Burden of Distance</span>
-          <h2 className="text-4xl md:text-6xl font-serif text-[#F5F3EC] mb-8">
-            What Keeps <span className="text-white/40 italic">NRIs Awake at Night?</span>
-          </h2>
-          <p className="text-lg text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
-            The anxiety isn't just about healthcare—it's the structural failures that threaten your family's Indian legacy.
+          <div className="w-16 h-16 rounded-full bg-[#050914]/5 border border-[#050914]/10 flex items-center justify-center mb-4 group-hover:bg-[#d4af37]/10 group-hover:border-[#d4af37]/30 transition-all duration-500">
+            <item.icon className="w-7 h-7 text-[#050914] group-hover:text-[#d4af37] transition-colors" />
+          </div>
+          <h3 className="text-2xl font-sans font-black text-[#050914] tracking-tight mb-2 leading-tight">
+            {item.title}
+          </h3>
+          <div className="flex items-center gap-2 mt-2 opacity-50 group-hover:opacity-100 transition-opacity">
+            <RefreshCw className="w-3 h-3 text-[#050914]" />
+            <span className="text-[9px] font-mono uppercase tracking-widest text-[#050914]">Hover to analyze</span>
+          </div>
+        </div>
+
+        {/* BACK SIDE */}
+        <div 
+          className="absolute inset-0 rounded-full border border-white/10 bg-[#050914] backdrop-blur-xl p-6 flex flex-col items-center justify-center text-center overflow-hidden shadow-[inset_0_0_50px_rgba(0,0,0,0.5)]"
+          style={{ 
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)"
+          }}
+        >
+          <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse mb-3 shadow-[0_0_10px_rgba(239,68,68,0.8)]" />
+          <p className="text-xs text-white/60 leading-relaxed mb-3 italic">
+            &ldquo;{item.problem}&rdquo;
           </p>
-        </motion.div>
+          <p className="text-sm font-sans font-black text-white leading-tight mb-4">
+            {item.impact}
+          </p>
+          
+          <Link href={item.href}>
+            <button className="px-4 py-2 rounded-full bg-white text-[#050914] font-bold text-[9px] uppercase tracking-widest flex items-center gap-2 shadow-xl hover:scale-105 transition-transform">
+              Protocol <ArrowUpRight className="w-3 h-3" />
+            </button>
+          </Link>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={luxuryStagger}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {anxieties.map((item, idx) => (
-            <Link key={idx} href={item.href}>
-              <motion.div
-                variants={elegantFadeUp}
-                className="group relative h-80 perspective-container cursor-pointer"
-              >
-                <div className="preserve-3d w-full h-full transition-all duration-700 group-hover:rotate-y-12">
-                  {/* Front Side */}
-                  <div className="absolute inset-0 premium-card p-10 rounded-[2rem] flex flex-col backdrop-blur-xl border-white/5 group-hover:border-accent/40 group-hover:bg-accent/5 transition-all duration-500 shadow-2xl">
-                    <div className="flex flex-col h-full group-hover:opacity-0 transition-opacity duration-300">
-                      <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center mb-8 border border-accent/20">
-                        <AlertCircle className="w-6 h-6 text-accent" />
-                      </div>
-                      
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-serif text-[#F5F3EC] mb-4">{item.title}</h3>
-                        <p className="text-xs text-white/30 font-light leading-relaxed line-clamp-2">
-                          {item.problem}
-                        </p>
-                      </div>
+export default function AnxietySection() {
+  const angleRef = useMotionValue(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-                      <div className="mt-auto">
-                        <div className="h-[1px] w-8 bg-accent/30" />
-                        <div className="flex items-center gap-2 mt-4 text-[10px] font-mono text-accent/40 uppercase tracking-widest">
-                          <span>Examine Strategy</span>
-                          <ChevronRight className="w-3 h-3" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+  // Auto-rotate logic
+  useAnimationFrame((t, delta) => {
+    if (!isHovered) {
+      angleRef.set(angleRef.get() - (delta / 1000) * 0.2); 
+    }
+  });
 
-                  {/* Hover Reveal Overlay */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 bg-[#0B101E] rounded-[2rem] p-10 flex flex-col justify-center gap-6 z-20 border border-accent/40 translate-z-10 shadow-[0_0_50px_rgba(207,160,82,0.1)]">
-                    <div className="flex items-center justify-between">
-                      <div className="text-accent font-mono text-[10px] uppercase tracking-widest font-bold flex items-center gap-2">
-                        <HelpCircle className="w-3 h-3" />
-                        Risk Analysis
-                      </div>
-                      <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center border border-accent/20">
-                        <ArrowRight className="w-4 h-4 text-accent" />
-                      </div>
-                    </div>
-                    
-                    <p className="text-[#F5F3EC] text-[15px] leading-relaxed font-light italic">"{item.problem}"</p>
-                    
-                    <div className="h-px w-full bg-white/10" />
-                    
-                    <div>
-                      <span className="text-[10px] font-mono text-accent/60 uppercase tracking-widest block mb-2 font-bold">Outcome</span>
-                      <p className="text-white/60 text-xs font-light leading-relaxed">{item.impact}</p>
-                    </div>
+  return (
+    <section className="relative h-screen w-screen bg-transparent overflow-hidden flex flex-col items-center">
+      {/* Global Globe is rendered behind this transparent section */}
+      
+      {/* Subtle vignette to ensure focus */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(253,252,251,0.4)_80%)] z-0 pointer-events-none" />
 
-                    <div className="mt-4 flex items-center gap-2 text-accent font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
-                      <span>Initiate Resolution</span>
-                      <ChevronRight className="w-3 h-3" />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
-        </motion.div>
+      {/* 3D Orbit Container - Full screen with overflow allowed for 3D elements */}
+      <div 
+        className="absolute inset-0 z-10 w-full h-full flex items-center justify-center perspective-[3000px]"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Invisible interactive area */}
+        <div className="absolute inset-0 z-[-1]" onMouseEnter={() => setIsHovered(false)} />
+        
+        {anxieties.map((item, idx) => (
+          <CircularOrbitCard 
+            key={idx} 
+            item={item} 
+            index={idx} 
+            total={anxieties.length} 
+            angleRef={angleRef}
+            setIsHovered={setIsHovered}
+          />
+        ))}
       </div>
+
     </section>
   );
 }

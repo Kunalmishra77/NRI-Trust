@@ -143,6 +143,43 @@ export const glowHover = {
   transition: { duration: 0.3 }
 };
 
+// ─── New Cinematic / Anthropic-inspired variants ───
+
+// Primary heading animation — clip-path mask reveal
+export const textMaskReveal: Variants = {
+  hidden: { clipPath: "inset(0 0 100% 0)", y: 20 },
+  visible: {
+    clipPath: "inset(0 0 0% 0)",
+    y: 0,
+    transition: { duration: 1, ease: luxuryEase }
+  }
+};
+
+// Stagger wrapper for text lines
+export const lineStagger: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 }
+  }
+};
+
+// Card entrance — replaces elegantFadeUp for cards (shorter travel distance)
+export const cardReveal: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: luxuryEase }
+  }
+};
+
+// Grid stagger container for cards
+export const gridStagger: Variants = {
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 }
+  }
+};
+
 // ─── useCountUp hook ───
 
 export function useCountUp(end: number, duration: number = 2) {

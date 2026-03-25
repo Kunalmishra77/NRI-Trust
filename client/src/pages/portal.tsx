@@ -41,7 +41,7 @@ export default function ClientPortal() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050806] text-[#F5F3EC] flex flex-col lg:flex-row">
+    <div className="min-h-screen bg-[#050806] text-[#FDFCFB] flex flex-col lg:flex-row">
       {/* ─── SIDEBAR NAVIGATION ─── */}
       <aside className="w-full lg:w-72 border-r border-white/5 bg-[#0A0F0D] flex flex-col h-screen sticky top-0 shrink-0">
         <div className="p-8 border-b border-white/5">
@@ -273,3 +273,4 @@ export default function ClientPortal() {
     </div>
   );
 }
+

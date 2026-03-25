@@ -1,223 +1,344 @@
+import * as React from "react";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown, Lock, Shield, ArrowRight } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { Shield, ChevronDown, Menu, X, Lock, Landmark, Scale, Home, Heart, FileText, Settings, Users, Trophy, Zap, HelpCircle } from "lucide-react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import { services } from "@/data/services";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+
+// Consistent Animation Constants
+const TRANSITION = { duration: 0.8, ease: "easeInOut" };
+
+const services = [
+  {
+    title: "Banking & KYC",
+    href: "/services/banking-kyc",
+    description: "Digital transformation of your Indian banking and re-KYC compliance.",
+    icon: Landmark
+  },
+  {
+    title: "Legal & Succession",
+    href: "/services/legal-succession",
+    description: "Professional probate, inheritance management, and legal advisory.",
+    icon: Scale
+  },
+  {
+    title: "Property & Tenancy",
+    href: "/services/property-tenancy",
+    description: "Complete management of your real estate portfolio and disputes.",
+    icon: Home
+  },
+  {
+    title: "Insurance Management",
+    href: "/services/insurance",
+    description: "Optimizing health and life coverage for your parents in India.",
+    icon: Heart
+  },
+  {
+    title: "Tax & Compliance",
+    href: "/services/income-tax",
+    description: "Strategic tax planning and repatriation of Indian funds.",
+    icon: FileText
+  }
+];
+
+const company = [
+  {
+    title: "The Firm",
+    href: "/about",
+    description: "Learn about our mission to secure NRI legacies.",
+    icon: Shield
+  },
+  {
+    title: "Why NRI Trust",
+    href: "/why-nri-trust",
+    description: "Our dedicated fiduciary and executive stewardship model.",
+    icon: Trophy
+  },
+  {
+    title: "Our Process",
+    href: "/how-it-works",
+    description: "How we bridge the 10,000-mile gap with local presence.",
+    icon: Zap
+  }
+];
 
 export default function Navigation() {
- const [isScrolled, setIsScrolled] = useState(false);
- const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
- const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
- const [location] = useLocation();
- const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [location, setLocation] = useLocation();
+  const { scrollY } = useScroll();
 
- useMotionValueEvent(scrollY, "change", (latest) => {
-  setIsScrolled(latest > 50);
- });
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+  });
 
- const menuItems = {
-  firm: [
-   { label: "Our Story", href: "/about" },
-   { label: "Why NRI Trust", href: "/why-nri-trust" },
-   { label: "Success Stories", href: "/success-stories" },
-  ],
-  operations: [
-   { label: "Our Process", href: "/how-it-works" },
-   { label: "Pricing & Plans", href: "/pricing" },
-   { label: "Emergency Support", href: "/emergency-response" },
-  ],
-  insights: [
-   { label: "Helpful Guides", href: "/resources" }
-  ]
- };
+  return (
+    <motion.header
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={TRANSITION}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? "py-4 bg-white border-b border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+          : "py-8 bg-transparent"
+      }`}
+    >
+      <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-4 group shrink-0">
+          <div className="w-11 h-11 rounded-xl bg-accent flex items-center justify-center shadow-lg shadow-accent/20 transition-transform duration-500 group-hover:scale-110">
+            <Shield className="w-6 h-6 text-white" />
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className={`text-2xl font-sans font-black tracking-tight transition-colors duration-500 ${isScrolled ? "text-[#1A1A1A]" : "text-white"}`}>NRI TRUST</span>
+            <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-accent font-bold mt-0.5">Global Advisory</span>
+          </div>
+        </Link>
 
- const navLinks = [
- { id: "home", label: "Home", href: "/" },
- { id: "firm", label: "About Us", items: menuItems.firm },
- { id: "practice", label: "Our Services", items: services.map(s => ({ label: s.title, href: `/services/${s.slug}`, icon: s.icon })) },
- { id: "operations", label: "How It Works", items: menuItems.operations },
- { id: "insights", label: "Helpful Guides", items: menuItems.insights },
- { id: "contact", label: "Contact Us", href: "/contact" },
- ];
+        {/* Desktop Nav with Mega Menu */}
+        <nav className="hidden lg:flex items-center">
+          <NavigationMenu>
+            <NavigationMenuList className="gap-4">
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/" className={cn(
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[15px] font-black transition-colors uppercase tracking-[0.12em]",
+                    isScrolled ? "text-[#1A1A1A] hover:text-accent" : "text-white hover:text-white"
+                  )}>
+                    Home
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
 
- return (
- <motion.header
-  initial={{ y: -100, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-  className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-   isScrolled
-    ? "bg-[#050814]/90 backdrop-blur-xl py-3 border-b border-white/[0.05] shadow-lg"
-    : "bg-transparent py-5"
-  }`}
- >
-  <div className="max-container flex items-center justify-between">
-   {/* Brand */}
-   <Link href="/" className="flex items-center gap-3 group z-50 shrink-0">
-    <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#AA7C11] flex items-center justify-center border border-[#D4AF37]/20 group-hover:scale-105 transition-all duration-500 relative overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.2)]">
-     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.4),transparent)]" />
-     <Shield className="w-4 h-4 lg:w-5 lg:h-5 text-[#050814] relative z-10" />
-    </div>
-    <div className="flex flex-col leading-none">
-     <span className="text-lg lg:text-xl font-serif font-medium tracking-tight text-[#F5F3EC] group-hover:text-[#D4AF37] transition-colors">NRI TRUST</span>
-     <span className="text-[7px] lg:text-[8px] font-mono tracking-[0.3em] uppercase text-[#D4AF37]/80 mt-0.5 font-bold">Private Advisory</span>
-    </div>
-   </Link>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={cn(
+                  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent transition-colors uppercase text-[15px] font-black tracking-[0.12em]",
+                  isScrolled 
+                    ? "text-[#1A1A1A] hover:text-accent data-[state=open]:text-accent" 
+                    : "text-white hover:text-white data-[state=open]:text-white"
+                )}>
+                  The Firm
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-1 lg:w-[600px] bg-white border-none shadow-2xl rounded-2xl">
+                    {company.map((item) => (
+                      <ListItem 
+                        key={item.title} 
+                        title={item.title} 
+                        href={item.href} 
+                        icon={item.icon}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setLocation(item.href);
+                        }}
+                      >
+                        {item.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-   {/* Desktop Links */}
-   <div className="hidden lg:flex items-center gap-8 xl:gap-10">
-    {navLinks.map((nav) => (
-     <div 
-      key={nav.id}
-      className="relative py-2"
-      onMouseEnter={() => nav.items ? setActiveDropdown(nav.id) : null}
-      onMouseLeave={() => nav.items ? setActiveDropdown(null) : null}
-     >
-      {nav.items ? (
-       <button className={`font-sans text-[14px] xl:text-[16px] font-medium flex items-center gap-2 transition-all duration-300 ${
-        activeDropdown === nav.id || location.includes(nav.id) ? "text-[#D4AF37]" : "text-[#F5F3EC]/80 hover:text-[#D4AF37]"
-       }`}>
-        {nav.label}
-        <ChevronDown className={`w-3 h-3 transition-transform duration-500 ${activeDropdown === nav.id ? "rotate-180 text-[#D4AF37]" : ""}`} />
-       </button>
-      ) : (
-       <Link href={nav.href || "/"}>
-        <button className={`font-sans text-[14px] xl:text-[16px] font-medium transition-all duration-300 ${
-         location === nav.href ? "text-[#D4AF37]" : "text-[#F5F3EC]/80 hover:text-[#D4AF37]"
-        }`}>
-         {nav.label}
-        </button>
-       </Link>
-      )}
-       <AnimatePresence>
-        {nav.items && activeDropdown === nav.id && (
-         <motion.div
-          initial={{ opacity: 0, y: 25, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 15, scale: 0.95 }}
-          transition={{ 
-            duration: 0.4, 
-            ease: [0.23, 1, 0.32, 1] 
-          }}
-          className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-[100]"
-         >
-          <div className="premium-card p-1 rounded-2xl overflow-hidden relative shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)] backdrop-blur-3xl bg-[#0B101E]/98 border border-white/10 min-w-[220px]">
-           <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
-           <div className="grid gap-0 relative z-10">
-            {nav.items.map((item, idx) => (
-             <Link key={idx} href={item.href}>
-              <div className="px-3.5 py-2 rounded-xl hover:bg-white/[0.05] transition-all duration-300 group/link flex gap-3 items-center cursor-pointer">
-               {/* @ts-ignore */}
-               {item.icon && (
-                <div className="w-8 h-8 rounded-lg bg-white/[0.03] border border-white/5 flex items-center justify-center shrink-0 group-hover/link:bg-[#D4AF37]/15 group-hover/link:border-[#D4AF37]/30 transition-all">
-                 {/* @ts-ignore */}
-                 <item.icon className="w-4 h-4 text-[#F5F3EC]/50 group-hover/link:text-[#D4AF37]" />
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={cn(
+                  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent transition-colors uppercase text-[15px] font-black tracking-[0.12em]",
+                  isScrolled 
+                    ? "text-[#1A1A1A] hover:text-accent data-[state=open]:text-accent" 
+                    : "text-white hover:text-white data-[state=open]:text-white"
+                )}>
+                  Practice Areas
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-2 lg:w-[700px] bg-white border-none shadow-2xl rounded-2xl">
+                    {services.map((service) => (
+                      <ListItem 
+                        key={service.title} 
+                        title={service.title} 
+                        href={service.href} 
+                        icon={service.icon}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setLocation(service.href);
+                        }}
+                      >
+                        {service.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/pricing" className={cn(
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[14px] font-bold transition-colors uppercase tracking-[0.12em]",
+                    isScrolled ? "text-[#1A1A1A] hover:text-accent" : "text-white/80 hover:text-white"
+                  )}>
+                    Pricing
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/contact" className={cn(
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[14px] font-bold transition-colors uppercase tracking-[0.12em]",
+                    isScrolled ? "text-[#1A1A1A] hover:text-accent" : "text-white/80 hover:text-white"
+                  )}>
+                    Contact
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </nav>
+
+        {/* Actions */}
+        <div className="flex items-center gap-4 lg:gap-8">
+          <Link href="/portal">
+            <button className={`hidden xl:flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors font-bold ${isScrolled ? "text-[#1A1A1A]/60 hover:text-accent" : "text-white/60 hover:text-accent"}`}>
+              <Lock className="w-4.5 h-4.5" />
+              Client Portal
+            </button>
+          </Link>
+          <Link href="/contact" className="hidden sm:block">
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(212,175,55,0.3)" }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-accent text-white px-9 py-4 rounded-full text-[13px] font-black uppercase tracking-widest shadow-xl"
+            >
+              Initiate Review
+            </motion.button>
+          </Link>
+
+          {/* Mobile Menu Trigger */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className={cn(
+                  "lg:hidden rounded-xl",
+                  isScrolled ? "text-[#1A1A1A]" : "text-white"
+                )}
+              >
+                <Menu className="w-6 h-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="bg-[#FDFCFB] border-none p-0 w-full sm:w-[400px]">
+              <div className="flex flex-col h-full pt-12">
+                <div className="px-8 mb-12">
+                  <SheetTitle className="text-left text-2xl font-black tracking-tight text-[#1A1A1A] mb-2 uppercase">NRI TRUST</SheetTitle>
+                  <div className="h-px w-12 bg-accent/40" />
                 </div>
-               )}
-               <span className="text-[13.5px] text-[#F5F3EC]/80 group-hover/link:text-[#D4AF37] font-medium whitespace-nowrap transition-colors">
-                {item.label}
-               </span>
-              </div>
-             </Link>
-            ))}
-           </div>
-           {nav.id === "practice" && (
-            <div className="mt-1 pt-1.5 border-t border-white/[0.08] px-1 pb-1">
-             <Link href="/services">
-              <div className="flex items-center justify-between px-3.5 py-2 rounded-lg bg-[#D4AF37]/5 hover:bg-[#D4AF37]/10 border border-[#D4AF37]/15 transition-colors cursor-pointer group/all">
-               <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#D4AF37]">Examine All Practices</span>
-               <ArrowRight className="w-3 h-3 text-[#D4AF37]/60 group-hover:all:translate-x-1 transition-transform" />
-              </div>
-             </Link>
-            </div>
-           )}
-          </div>
-         </motion.div>
-        )}
-       </AnimatePresence>
-      </div>
-     ))}
-    </div>
 
-    {/* CTAs */}
-    <div className="flex items-center gap-6 xl:gap-8 z-50">
-     <Link href="/portal">
-      <button className="hidden xl:flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#F5F3EC]/50 hover:text-[#D4AF37] transition-colors cursor-pointer">
-       <Lock className="w-3.5 h-3.5" />
-       Client Portal
-      </button>
-     </Link>
-     
-     <Link href="/contact" className="hidden sm:block">
-      <button className="btn-premium-primary !px-7 !py-3.5 !text-[11px]">
-       Initiate Review
-      </button>
-     </Link>
+                <div className="flex-1 overflow-y-auto px-8 pb-12">
+                  <div className="space-y-10">
+                    <div>
+                      <Link href="/" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()}>
+                        <span className="text-3xl font-black uppercase tracking-widest text-[#1A1A1A] hover:text-accent transition-colors">Home</span>
+                      </Link>
+                    </div>
 
-     {/* Mobile Menu */}
-     <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-      <SheetTrigger asChild className="lg:hidden">
-       <Button variant="ghost" size="icon" className="text-[#F5F3EC] hover:bg-white/5 h-12 w-12 rounded-2xl">
-        <Menu className="h-6 w-6" />
-       </Button>
-      </SheetTrigger>
-      <SheetContent side="right" className="bg-[#050814] border-l border-white/[0.05] w-full sm:w-[400px] p-0 flex flex-col shadow-2xl">
-       <SheetTitle className="sr-only">Menu</SheetTitle>
-       
-       <div className="p-8 border-b border-white/[0.05] flex items-center justify-between relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.1)_0%,transparent_70%)] pointer-events-none" />
-        <div className="flex items-center gap-4 relative z-10">
-         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#AA7C11] flex items-center justify-center">
-          <Shield className="w-5 h-5 text-[#050814]" />
-         </div>
-         <span className="text-xl font-serif text-[#F5F3EC]">NRI TRUST</span>
+                    <div>
+                      <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-6">Practice Areas</h4>
+                      <div className="grid gap-6">
+                        {services.map((item) => (
+                          <Link 
+                            key={item.href} 
+                            href={item.href}
+                            onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()}
+                            className="flex items-center gap-4 group"
+                          >
+                            <div className="w-10 h-10 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all">
+                              <item.icon className="w-5 h-5 text-[#1A1A1A]/40 group-hover:text-accent transition-colors" />
+                            </div>
+                            <span className="text-lg font-bold text-[#1A1A1A] group-hover:text-accent transition-colors">{item.title}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-6">The Firm</h4>
+                      <div className="grid gap-6">
+                        {company.map((item) => (
+                          <Link 
+                            key={item.href} 
+                            href={item.href}
+                            onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()}
+                            className="flex items-center gap-4 group"
+                          >
+                            <div className="w-10 h-10 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all">
+                              <item.icon className="w-5 h-5 text-[#1A1A1A]/40 group-hover:text-accent transition-colors" />
+                            </div>
+                            <span className="text-lg font-bold text-[#1A1A1A] group-hover:text-accent transition-colors">{item.title}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="space-y-6 pt-6 border-t border-black/5">
+                      <Link href="/pricing" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()} className="block text-xl font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Pricing</Link>
+                      <Link href="/contact" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()} className="block text-xl font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Contact</Link>
+                      <Link href="/portal" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()} className="flex items-center gap-2 text-xl font-bold text-accent uppercase tracking-widest transition-colors">
+                        <Lock className="w-5 h-5" />
+                        Portal
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-8 bg-[#1A1A1A]/5">
+                  <Link href="/contact" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()}>
+                    <button className="w-full bg-[#d4af37] text-white py-5 rounded-2xl font-black uppercase tracking-widest shadow-xl">
+                      Initiate Audit
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
-        <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)} className="h-10 w-10 relative z-10 text-white hover:bg-white/10 rounded-xl">
-         <X className="h-5 w-5" />
-        </Button>
-       </div>
-       
-       <div className="flex-1 overflow-y-auto p-8 space-y-10">
-        <Link href="/portal" onClick={() => setIsMobileMenuOpen(false)}>
-         <div className="flex items-center gap-4 p-4 rounded-xl bg-accent/5 border border-accent/10 mb-6">
-          <Lock className="w-5 h-5 text-accent" />
-          <span className="text-accent font-medium">Access Client Portal</span>
-         </div>
-        </Link>
-        {navLinks.map((nav) => (
-         <div key={nav.id} className="space-y-5">
-          <div className="text-[10px] font-mono text-[#D4AF37] uppercase tracking-[0.3em] font-bold border-b border-white/5 pb-3">
-           {nav.label}
-          </div>
-          <div className="grid gap-1">
-           {nav.items ? nav.items.map((item, idx) => (
-            <Link key={idx} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="flex items-start gap-4 py-3 px-4 rounded-xl hover:bg-white/[0.03] transition-colors">
-             <div className="text-[#F5F3EC]/90 font-medium text-[16px]">{item.label}</div>
-            </Link>
-           )) : (
-            <Link href={nav.href || "/"} onClick={() => setIsMobileMenuOpen(false)} className="flex items-start gap-4 py-3 px-4 rounded-xl hover:bg-white/[0.03] transition-colors">
-             <div className="text-[#F5F3EC]/90 font-medium text-[16px]">{nav.label}</div>
-            </Link>
-           )}
-          </div>
-         </div>
-        ))}
-       </div>
-       
-       <div className="p-8 border-t border-white/[0.05] bg-[#0A0F1A]">
-        <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-         <button className="btn-premium-primary w-full h-14 rounded-xl flex items-center justify-center gap-3">
-          Initiate Review
-          <ArrowRight className="w-4 h-4" />
-         </button>
-        </Link>
-       </div>
-      </SheetContent>
-     </Sheet>
-    </div>
-   </div>
-  </motion.header>
- );
+      </div>
+    </motion.header>
+  );
 }
+
+const ListItem = React.forwardRef<
+  HTMLAnchorElement,
+  React.ComponentPropsWithoutRef<"a"> & { icon?: any; title: string }
+>(({ className, title, children, icon: Icon, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink
+        ref={ref}
+        className={cn(
+          "block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent/5 hover:text-accent focus:bg-accent/5 focus:text-accent group",
+          className
+        )}
+        {...props}
+      >
+        <div className="flex items-center gap-3">
+          {Icon && <Icon className="w-5 h-5 text-accent/40 group-hover:text-accent transition-colors" />}
+          <div className="text-[15px] font-bold leading-none tracking-tight">{title}</div>
+        </div>
+        <p className="line-clamp-2 text-[13px] leading-relaxed text-black/40 mt-2 font-medium">
+          {children}
+        </p>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
+

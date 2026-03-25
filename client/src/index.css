@@ -2,135 +2,178 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── KEYFRAMES ─── */
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes progress-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 @layer base {
   :root {
-    /* Deep Obsidian / Navy Core */
-    --background: 222 47% 5%;
-    --foreground: 40 20% 95%;
+    /* Premium Light Theme */
+    --background: 40 20% 99%;
+    --foreground: 222 47% 5%;
 
-    --card: 222 47% 7%;
-    --card-foreground: 40 20% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 5%;
 
-    --popover: 222 47% 7%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 5%;
 
-    /* Deep Emerald Secondary for trust/compliance */
-    --primary: 160 80% 15%;
-    --primary-foreground: 40 20% 95%;
+    /* Deep Navy for primary actions */
+    --primary: 222 47% 5%;
+    --primary-foreground: 40 20% 98%;
 
-    --secondary: 222 40% 12%;
-    --secondary-foreground: 40 20% 95%;
+    --secondary: 222 20% 96%;
+    --secondary-foreground: 222 47% 5%;
 
-    --muted: 222 30% 15%;
-    --muted-foreground: 222 15% 65%;
+    --muted: 222 20% 94%;
+    --muted-foreground: 222 10% 15%; /* Darker for better visibility */
 
     /* Premium Gold Accent */
     --accent: 45 65% 55%;
     --accent-foreground: 222 47% 5%;
 
-    --border: 222 30% 15%;
-    --input: 222 30% 15%;
+    --border: 222 10% 90%;
+    --input: 222 10% 90%;
     --ring: 45 65% 55%;
 
-    --radius: 1.5rem;
+    --radius: 2rem;
 
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-serif: 'Inter', sans-serif; /* Changed to match straight font requirement */
     --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  /* Dark Theme Overrides (Optional/Scoped) */
+  .theme-dark {
+    --background: 222 47% 5%;
+    --foreground: 40 20% 95%;
+    --card: 222 47% 7%;
+    --card-foreground: 40 20% 95%;
+    --popover: 222 47% 7%;
+    --popover-foreground: 40 20% 95%;
+    --primary: 40 20% 95%;
+    --primary-foreground: 222 47% 5%;
+    --secondary: 222 40% 12%;
+    --secondary-foreground: 40 20% 95%;
+    --muted: 222 30% 15%;
+    --muted-foreground: 222 15% 75%; /* Lighter for dark mode visibility */
+    --border: 222 30% 15%;
+    --input: 222 30% 15%;
   }
 }
 
 @layer base {
-  body {
-    @apply font-sans antialiased bg-background text-foreground selection:bg-accent/30 selection:text-white;
-    background-attachment: fixed;
+  html {
+    scroll-behavior: smooth;
   }
-  
-  h1, h2, h3, h4 {
-    @apply font-serif tracking-tight text-white;
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground selection:bg-accent/20 selection:text-black;
+    font-style: normal !important; /* Force no italics */
+  }
+
+  h1, h2, h3, h4, span, p, button, input, textarea {
+    @apply tracking-tight;
+    font-style: normal !important; /* Force no italics globally */
+  }
+
+  /* Force high contrast text by default */
+  .section-light h1, .section-light h2, .section-light h3, .section-light h4, .section-light p, .section-light span {
+    @apply text-[#1A1A1A];
+  }
+
+  .section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4, .section-dark p, .section-dark span {
+    @apply text-white;
+  }
+
+  /* Theme Overrides */
+  .theme-dark h1, .theme-dark h2, .theme-dark h3, .theme-dark h4 {
+    @apply text-white;
   }
 }
 
 @layer components {
   .max-container {
-    @apply max-w-[1440px] mx-auto px-6 md:px-10 lg:px-12;
+    @apply max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20;
   }
 
   .section-padding {
-    @apply py-20 md:py-32 lg:py-40;
+    @apply py-16 md:py-24;
   }
 
-  /* Cinematic Surfaces */
-  .vault-surface {
-    @apply bg-gradient-to-br from-[#0B101E] to-[#050814] border border-white/[0.05] shadow-[0_20px_60px_rgba(0,0,0,0.8)];
+  /* ─── PREMIUM THEME UTILITIES ─── */
+  .section-dark {
+    @apply bg-[#050914] text-white relative overflow-hidden;
   }
-  
-  .glass-panel {
-    @apply backdrop-blur-3xl bg-[#0B101E]/80 border border-white/[0.06] shadow-2xl;
+
+  .section-light {
+    @apply bg-[#FDFCFB] text-[#1A1A1A] relative overflow-hidden;
   }
-  
+
+  /* Card Surfaces */
   .premium-card {
-    @apply bg-[#0D1322] border border-white/[0.04] hover:border-accent/30 hover:bg-[#11182A] transition-all duration-700 shadow-xl hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)];
+    @apply transition-all duration-700 backdrop-blur-xl;
   }
 
-  .mesh-glow-emerald {
-    @apply bg-[radial-gradient(circle_at_50%_50%,hsl(160_80%_15%_/_0.5)_0%,transparent_70%)];
+  .section-light .premium-card {
+    @apply bg-white border border-[#1A1A1A]/10 shadow-[0_20px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] hover:-translate-y-1;
   }
 
-  .mesh-glow-gold {
-    @apply bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.12)_0%,transparent_70%)];
-  }
-
-  .mesh-glow-navy {
-    @apply bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,42,0.8)_0%,transparent_80%)];
+  .section-dark .premium-card {
+    @apply bg-white/5 border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.4)] hover:-translate-y-1 hover:bg-white/10;
   }
 
   /* Typography */
-  .display-title {
-    @apply text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-medium leading-[1.05] tracking-tighter;
-  }
-  
-  .section-title {
-    @apply text-3xl md:text-5xl lg:text-6xl font-serif font-medium leading-tight tracking-tight;
-  }
-
   .accent-label {
-    @apply font-mono text-[11px] md:text-xs tracking-[0.3em] uppercase text-accent font-semibold mb-6 block;
+    @apply font-mono text-[13px] md:text-[14px] tracking-[0.4em] uppercase text-[#d4af37] font-bold mb-6 block;
   }
 
-  /* 3D Helpers */
-  .perspective-container {
-    perspective: 2000px;
+  .section-title {
+    @apply text-3xl md:text-5xl lg:text-6xl font-sans font-black tracking-tight leading-[1.1];
   }
-  
-  .preserve-3d {
-    transform-style: preserve-3d;
+
+  .display-title {
+    @apply text-4xl md:text-6xl lg:text-7xl font-sans font-black tracking-tight leading-[1.1];
   }
 
   /* Buttons */
   .btn-premium {
-    @apply relative overflow-hidden px-8 py-4 rounded-full font-sans text-sm font-medium tracking-wide transition-all duration-500;
+    @apply relative overflow-hidden px-10 py-5 rounded-full font-sans text-sm font-black tracking-widest uppercase transition-all duration-500 flex items-center justify-center gap-3;
   }
-  
+
   .btn-premium-primary {
-    @apply btn-premium bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] text-[#050814] hover:shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:scale-[1.02] active:scale-95 font-semibold;
+    @apply btn-premium bg-[#d4af37] text-[#050914] shadow-2xl hover:scale-105 hover:shadow-[0_20px_40px_rgba(212,175,55,0.3)] active:scale-95;
   }
 
   .btn-premium-outline {
-    @apply btn-premium border border-white/20 text-white hover:bg-white/5 hover:border-white/40 backdrop-blur-md;
+    @apply btn-premium border transition-colors hover:scale-105 active:scale-95;
+  }
+
+  .section-light .btn-premium-outline {
+    @apply border-[#1A1A1A]/20 text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white;
+  }
+
+  .section-dark .btn-premium-outline {
+    @apply border-white/20 text-white hover:bg-white hover:text-[#050914];
   }
 }
 
 @layer utilities {
-  .light-streak {
-    @apply absolute w-px bg-gradient-to-b from-transparent via-accent/30 to-transparent;
-  }
-  
   .noise-overlay {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.02;
   }
 
   .text-gradient-gold {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37];
   }
+
+  .perspective-1000 { perspective: 1000px; }
 }

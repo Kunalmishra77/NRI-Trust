@@ -2,8 +2,9 @@ import { CalendarCheck, FileSearch, UserCheck, ShieldCheck, ArrowRight } from "l
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { elegantFadeUp, luxuryStagger } from "@/motion/variants";
+import { cn } from "@/lib/utils";
 
-export default function HowItWorksSection() {
+export default function HowItWorksSection({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
  const steps = [
   {
    icon: CalendarCheck,
@@ -34,10 +35,23 @@ export default function HowItWorksSection() {
  return (
   <section
    id="how-it-works"
-   className="py-32 md:py-48 bg-[#070b09] relative overflow-hidden border-y border-white/[0.05]"
+   className={cn(
+    "py-32 md:py-48 relative overflow-hidden transition-colors duration-500",
+    theme === 'light' ? "section-light" : "section-dark"
+   )}
   >
-   <div className="absolute inset-0 noise-overlay opacity-60 pointer-events-none" />
-   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(160_30%_15%_/_0.2)_0%,transparent_60%)] pointer-events-none" />
+   {theme === 'dark' && (
+    <>
+     <div className="absolute inset-0 noise-overlay opacity-60 pointer-events-none" />
+     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(160_30%_15%_/_0.2)_0%,transparent_60%)] pointer-events-none" />
+    </>
+   )}
+   {theme === 'light' && (
+    <>
+     <div className="absolute inset-0 noise-overlay opacity-[0.02] pointer-events-none" />
+     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.03)_0%,transparent_60%)] pointer-events-none" />
+    </>
+   )}
 
    <div className="max-container relative z-10">
     <motion.div
@@ -52,7 +66,10 @@ export default function HowItWorksSection() {
       <span className="accent-label !mb-0 text-accent">Our Process</span>
       <div className="h-[1px] w-10 bg-accent/40" />
      </div>
-     <h2 className="section-title text-white mb-8">
+     <h2 className={cn(
+      "section-title mb-8",
+      theme === 'light' ? "text-[#1A1A1A]" : "text-white"
+     )}>
       How We Secure Your <br className="hidden md:block" />
       <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light">Parents' Well-Being.</span>
      </h2>
@@ -70,7 +87,10 @@ export default function HowItWorksSection() {
      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative perspective-container"
     >
      {/* Connector line background (desktop) */}
-     <div className="hidden lg:block absolute top-[110px] left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-white/[0.05] via-accent/20 to-white/[0.05]" />
+     <div className={cn(
+      "hidden lg:block absolute top-[110px] left-[10%] right-[10%] h-[1px]",
+      theme === 'light' ? "bg-black/[0.05]" : "bg-white/[0.05]"
+     )} />
 
      {steps.map((step, idx) => {
       const IconComponent = step.icon;
@@ -78,16 +98,27 @@ export default function HowItWorksSection() {
        <motion.div
         key={step.number}
         variants={elegantFadeUp}
-        className="group p-10 lg:p-12 flex flex-col relative transition-all duration-500 rounded-[2.5rem] border border-white/[0.03] hover:border-accent/20 bg-white/[0.01] hover:bg-[#0A0F0D] hover:-translate-y-2"
+        className={cn(
+         "group p-10 lg:p-12 flex flex-col relative transition-all duration-500 rounded-[2.5rem] border shadow-sm",
+         theme === 'light' 
+           ? "bg-white border-black/5 hover:border-accent/40 hover:-translate-y-2" 
+           : "border-white/[0.03] hover:border-accent/20 bg-white/[0.01] hover:bg-[#0A0F0D] hover:-translate-y-2"
+        )}
        >
         {/* Visual marker */}
         <div className="mb-10 relative z-10 flex justify-between items-start">
-         <span className="font-mono text-5xl lg:text-6xl font-bold text-white/[0.03] leading-none select-none group-hover:text-accent/10 transition-colors">
+         <span className={cn(
+          "font-mono text-5xl lg:text-6xl font-bold leading-none select-none group-hover:text-accent/10 transition-colors",
+          theme === 'light' ? "text-black/[0.03]" : "text-white/[0.03]"
+         )}>
           {step.number}
          </span>
          
          {/* Icon block */}
-         <div className="w-14 h-14 rounded-2xl bg-background border border-white/10 flex items-center justify-center shadow-inner group-hover:border-accent/40 transition-all duration-500">
+         <div className={cn(
+          "w-14 h-14 rounded-2xl border flex items-center justify-center shadow-inner group-hover:border-accent/40 transition-all duration-500",
+          theme === 'light' ? "bg-[#FDFCFB] border-black/5" : "bg-background border-white/10"
+         )}>
           <IconComponent className="w-6 h-6 text-accent/70 group-hover:text-accent transition-colors" />
          </div>
         </div>
@@ -95,7 +126,10 @@ export default function HowItWorksSection() {
         {/* Content */}
         <div className="relative z-10">
          <div className="w-10 h-[1px] bg-accent/20 mb-6 group-hover:bg-accent group-hover:w-16 transition-all duration-500" />
-         <h3 className="text-xl lg:text-2xl font-serif font-medium text-white mb-4 group-hover:text-accent transition-colors">
+         <h3 className={cn(
+          "text-xl lg:text-2xl font-serif font-medium mb-4 group-hover:text-accent transition-colors",
+          theme === 'light' ? "text-[#1A1A1A]" : "text-white"
+         )}>
           {step.title}
          </h3>
          <p className="text-[14px] text-muted-foreground font-light leading-relaxed">
@@ -126,7 +160,10 @@ export default function HowItWorksSection() {
      </Link>
      <div className="mt-12 flex items-center justify-center gap-4 opacity-30">
       <ShieldCheck className="w-4 h-4 text-accent" />
-      <p className="text-[10px] font-mono font-bold tracking-[0.2em] uppercase text-white">
+      <p className={cn(
+       "text-[10px] font-mono font-bold tracking-[0.2em] uppercase",
+       theme === 'light' ? "text-black" : "text-white"
+      )}>
        Strictly Financial & Legal • Non-Medical
       </p>
      </div>
@@ -135,3 +172,4 @@ export default function HowItWorksSection() {
   </section>
  );
 }
+
