@@ -3,7 +3,7 @@ import AnxietySection from "@/components/AnxietySection";
 import ComparisonSection from "@/components/ComparisonSection";
 import ServiceEcosystem from "@/components/ServiceEcosystem";
 import EmergencyTimeline from "@/components/EmergencyTimeline";
-import SuccessStoriesSection from "@/components/SuccessStoriesSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import KnowledgeHubSection from "@/components/KnowledgeHubSection";
 import FinalCTA from "@/components/FinalCTA";
 import UnifiedGlobe from "@/components/UnifiedGlobe";
@@ -29,7 +29,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 3. Global Stewardship (Horizontal Scroll) */}
+      {/* 3. Global Protection (Horizontal Scroll) */}
       <GlobalStewardshipScroll />
 
       {/* 4. The Evolution / Comparison */}
@@ -40,11 +40,11 @@ export default function Home() {
       {/* 4. Service Ecosystem */}
       <ServiceEcosystem />
 
-      {/* 5. Emergency Protocols */}
+      {/* 5. Emergency Steps */}
       <EmergencyTimeline />
 
-      {/* 6. Proven Outcomes */}
-      <SuccessStoriesSection />
+      {/* 6. Testimonials */}
+      <TestimonialsSection />
 
       {/* 7. The Private Library */}
       <KnowledgeHubSection />

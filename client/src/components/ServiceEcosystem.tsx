@@ -32,16 +32,16 @@ export default function ServiceEcosystem() {
             viewport={{ once: true }}
             className="inline-block px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-[11px] font-mono font-bold uppercase tracking-[0.3em] text-[#d4af37] mb-4"
           >
-            Practice Areas
+            Our Services
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-4xl md:text-6xl font-sans font-black tracking-tight mb-2"
+            className="text-2xl md:text-4xl lg:text-5xl font-sans font-black tracking-tight mb-2"
           >
-            Our Service Ecosystem.
+            What We Do For You.
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export default function ServiceEcosystem() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-base md:text-lg text-white/50 max-w-2xl mx-auto font-medium leading-relaxed px-4"
           >
-            Five specialized pillars of stewardship, coordinated by one dedicated relationship lead for your family.
+            We bring your parents' complete financial life into one structured system — insurance checked, accounts organized, documents secured, emergency plan ready.
           </motion.p>
         </div>
 
@@ -105,7 +105,7 @@ export default function ServiceEcosystem() {
                       </div>
                       
                       <div className="flex-1">
-                        <h3 className="text-2xl md:text-4xl lg:text-5xl font-sans font-black text-white mb-2 md:mb-4 group-hover:text-[#d4af37] transition-colors duration-500">
+                        <h3 className="text-xl md:text-2xl lg:text-3xl font-sans font-black text-white mb-2 md:mb-4 group-hover:text-[#d4af37] transition-colors duration-500">
                           {service.title}
                         </h3>
                         <p className="text-sm md:text-lg text-white/60 font-medium leading-relaxed max-w-xl group-hover:text-white/80 transition-colors">

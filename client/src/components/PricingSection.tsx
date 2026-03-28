@@ -11,7 +11,7 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
    price: "₹12,000",
    period: "/ month",
    frequency: "Annual Review (1x/year)",
-   bestFor: "Basic financial & insurance compliance for parents.",
+   bestFor: "For families who need basic insurance and tax help for parents.",
    features: [
     "Health insurance renewals & claims",
     "Life insurance management",
@@ -26,7 +26,7 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
    price: "₹24,000",
    period: "/ month",
    frequency: "Semi-Annual Review (2x/year)",
-   bestFor: "Active property and banking stewardship.",
+   bestFor: "For families with property, bank accounts, and insurance to manage.",
    features: [
     "Everything in Essential Care",
     "House Tax & municipal issues",
@@ -42,7 +42,7 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
    price: "₹36,000",
    period: "/ month",
    frequency: "Quarterly Review (4x/year)",
-   bestFor: "Full family estate & asset management.",
+   bestFor: "For families with multiple properties and complete financial management needs.",
    features: [
     "Everything in Comprehensive Care",
     "Multiple fixed asset management",
@@ -85,18 +85,18 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
     >
      <div className="flex items-center justify-center gap-4 mb-8">
       <div className="h-[1px] w-12 bg-accent/40" />
-      <span className="accent-label !mb-0 text-accent">Service Tiers</span>
+      <span className="accent-label !mb-0 text-accent">Pricing Plans</span>
       <div className="h-[1px] w-12 bg-accent/40" />
      </div>
      <h2 className={cn(
       "section-title mb-8",
       theme === 'light' ? "text-[#1A1A1A]" : "text-white"
      )}>
-      Choosing the Right <br className="hidden md:block" />
-      <span className="text-gradient-gold italic font-light">Care Level.</span>
+      Choose the Right <br className="hidden md:block" />
+      <span className="text-gradient-gold font-medium">Plan for Your Family.</span>
      </h2>
      <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
-      We offer three carefully designed tiers to match the specific needs of your family. During a complimentary review session, we assess your parents’ situation and recommend the most appropriate tier.
+      We offer three simple plans based on your parents' needs. Start with a free consultation — we'll help you pick the right one.
      </p>
     </motion.div>
 
@@ -161,7 +161,7 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
         )}>
          <div className="flex items-baseline gap-2">
           <span className={cn(
-           "text-3xl lg:text-5xl font-mono font-medium",
+           "text-2xl lg:text-4xl font-mono font-medium",
            tier.popular ? "text-accent !text-accent" : (theme === 'light' ? "text-[#1A1A1A]" : "text-white")
           )}>
            {tier.price}
@@ -229,11 +229,11 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
       </div>
       <div className="relative z-10 text-center md:text-left">
        <h4 className={cn(
-        "text-2xl lg:text-3xl font-serif font-medium mb-4",
+        "text-2xl lg:text-3xl font-sans font-bold mb-4",
         theme === 'light' ? "text-[#1A1A1A]" : "text-white"
-       )}>Our Fiduciary Promise</h4>
+       )}>Our Promise to You</h4>
        <p className="text-muted-foreground font-light text-[15px] leading-relaxed">
-        Your parents’ financial security is our responsibility. We handle the complexities in India so you can focus on your life abroad with complete peace of mind.
+        Your parents' financial security is our responsibility. We handle the complexities in India so you can focus on your life abroad with complete peace of mind.
        </p>
       </div>
      </div>

@@ -15,7 +15,7 @@ const guides = [
   {
     title: "Preventing Property Encroachment in India",
     tag: "Property • 12 min read",
-    desc: "Operational protocols for securing ancestral land, establishing authorized physical presence, and the utility of public notices.",
+    desc: "Practical steps to protect your family's ancestral land, establishing authorized physical presence, and the utility of public notices.",
     icon: Scale,
     href: "/resources"
   },
@@ -29,7 +29,7 @@ const guides = [
   {
     title: "The NRI Succession Playbook",
     tag: "Legal • 15 min read",
-    desc: "Professional strategies for Will registration, probate coordination across jurisdictions, and asset consolidation.",
+    desc: "Professional strategies for Will registration, probate coordination across jurisdictions, and bringing all assets together.",
     icon: Lock,
     href: "/resources"
   }
@@ -65,7 +65,7 @@ export default function KnowledgeHubSection() {
                 </span>
               </motion.div>
               
-              <h2 className="text-5xl md:text-6xl font-sans font-black tracking-tight text-[#1A1A1A] leading-tight mb-8">
+              <h2 className="text-2xl md:text-4xl font-sans font-black tracking-tight text-[#1A1A1A] leading-tight mb-8">
                 Authoritative <br />
                 <span className="text-[#1A1A1A]/30 italic font-light">NRI Briefs.</span>
               </h2>
@@ -77,7 +77,7 @@ export default function KnowledgeHubSection() {
                 transition={{ delay: 0.2 }}
                 className="text-lg text-[#1A1A1A]/60 font-medium leading-relaxed max-w-sm mb-12"
               >
-                Institutional-grade insights on managing Indian assets, distilled for the global executive.
+                Practical guides on managing Indian assets, distilled for the global executive.
               </motion.p>
 
               <Link href="/resources">

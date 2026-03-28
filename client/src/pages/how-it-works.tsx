@@ -44,8 +44,8 @@ export default function HowItWorks() {
        <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-accent/50" />
       </div>
       <h2 className="display-title !text-4xl md:!text-6xl text-[#FDFCFB] mb-10 leading-tight">
-       Initiate Your <br className="hidden md:block" />
-       <span className="text-gradient-gold italic">Stewardship Journey.</span>
+       Start Protecting Your <br className="hidden md:block" />
+       <span className="text-gradient-gold italic">Parents.</span>
       </h2>
       <p className="text-xl text-white/50 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
        The first step is a confidential, no-obligation discovery session to map your family's assets and assess immediate risks.

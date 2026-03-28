@@ -37,7 +37,7 @@ interface PageHeaderProps {
   badge?: string;
 }
 
-export default function PageHeader({ title, subtitle, breadcrumbs, badge = "Institutional Fiduciary" }: PageHeaderProps) {
+export default function PageHeader({ title, subtitle, breadcrumbs, badge = "Professional Advisory" }: PageHeaderProps) {
   return (
     <section className="relative min-h-[85vh] w-full flex items-center pt-32 pb-24 overflow-hidden border-b border-white/[0.05] bg-[#050914]">
       {/* --- LAYER 0: ATMOSPHERIC OVERLAYS --- */}

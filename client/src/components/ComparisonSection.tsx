@@ -16,16 +16,16 @@ export default function ComparisonSection() {
             viewport={{ once: true }}
             className="inline-block px-5 py-2 rounded-full border border-[#1A1A1A]/10 bg-[#1A1A1A]/5 backdrop-blur-sm text-[11px] font-mono font-bold uppercase tracking-[0.3em] text-accent mb-8"
           >
-            Structural Diagnostic
+            Why You Need This
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-sans font-black tracking-tight mb-8 leading-[1.1] text-[#1A1A1A]"
+            className="text-3xl md:text-5xl font-sans font-black tracking-tight mb-8 leading-[1.1] text-[#1A1A1A]"
           >
-            Fragmented Handling <br />
-            <span className="text-[#1A1A1A]/40">is an Active Risk.</span>
+            Without Preparation, <br />
+            <span className="text-[#1A1A1A]/40">Families Struggle.</span>
           </motion.h2>
         </div>
 
@@ -44,16 +44,16 @@ export default function ComparisonSection() {
                   <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center border border-red-500/20">
                     <X className="w-6 h-6 text-red-600" />
                   </div>
-                  <span className="text-xs font-mono font-black uppercase tracking-[0.2em] text-red-600/70">Market Status Quo</span>
+                  <span className="text-xs font-mono font-black uppercase tracking-[0.2em] text-red-600/70">Without NRI Trust</span>
                 </div>
 
-                <h3 className="text-3xl md:text-4xl font-sans font-black mb-12 text-[#1A1A1A]">Informal <br/>Coordination</h3>
+                <h3 className="text-3xl md:text-4xl font-sans font-black mb-12 text-[#1A1A1A]">Scattered <br/>& Unorganized</h3>
 
                 <div className="space-y-10">
                   {[
-                    { label: "Isolated Vendors", desc: "CA, Lawyer, and Broker never speak to each other.", icon: UserMinus },
-                    { label: "Manual Tracking", desc: "Deadlines monitored on sticky notes or memory.", icon: Smartphone },
-                    { label: "Zero Continuity", desc: "Critical knowledge lost if a relative or agent changes.", icon: FileText }
+                    { label: "No Single View", desc: "Insurance with one agent, bank work with another, property with a third — nobody connects the dots.", icon: UserMinus },
+                    { label: "Missing Information", desc: "Nominee details wrong, policies expired, documents scattered across lockers and relatives.", icon: Smartphone },
+                    { label: "Panic in Emergency", desc: "When something happens, nobody knows what to do, who to call, or where to find papers.", icon: FileText }
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-6 items-start">
                       <div className="mt-1 w-5 h-5 rounded-full bg-red-500/20 flex items-center justify-center shrink-0">
@@ -79,16 +79,16 @@ export default function ComparisonSection() {
                   <div className="w-12 h-12 rounded-xl bg-[#d4af37]/20 flex items-center justify-center border border-[#d4af37]/30 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
                     <Shield className="w-6 h-6 text-[#d4af37]" />
                   </div>
-                  <span className="text-xs font-mono font-black uppercase tracking-[0.2em] text-[#d4af37]">Unified Stewardship</span>
+                  <span className="text-xs font-mono font-black uppercase tracking-[0.2em] text-[#d4af37]">With NRI Trust</span>
                 </div>
 
-                <h3 className="text-3xl md:text-4xl font-sans font-black mb-12">Consolidated <br/>Governance</h3>
+                <h3 className="text-3xl md:text-4xl font-sans font-black mb-12">One Structured <br/>System</h3>
 
                 <div className="space-y-10">
                   {[
-                    { label: "Technical Oversight", desc: "Professional directors coordinating legal and financial logic.", icon: ShieldCheck },
-                    { label: "Institutional Audit", desc: "Full digital trail of every action taken in India.", icon: ArrowRight },
-                    { label: "Absolute Continuity", desc: "Legacies managed generationally, not transactionally.", icon: Check }
+                    { label: "Everything in One Place", desc: "Insurance, bank accounts, property papers, nominees — all organized and accessible.", icon: ShieldCheck },
+                    { label: "Nothing Falls Through", desc: "We track every policy renewal, KYC update, and document expiry so you don't have to.", icon: ArrowRight },
+                    { label: "Emergency Ready", desc: "Your family has a clear plan — contacts, documents, steps — for any situation.", icon: Check }
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-6 items-start">
                       <div className="mt-1 w-5 h-5 rounded-full bg-[#d4af37]/30 flex items-center justify-center shrink-0">
@@ -108,7 +108,7 @@ export default function ComparisonSection() {
                       whileHover={{ x: 5 }}
                       className="flex items-center gap-4 text-[#d4af37] font-sans font-black uppercase tracking-[0.2em] text-xs"
                     >
-                      Initialize Unified Audit
+                      Get Free Consultation
                       <ArrowRight className="w-4 h-4" />
                     </motion.button>
                   </Link>

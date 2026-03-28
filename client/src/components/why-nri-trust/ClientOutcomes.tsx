@@ -12,20 +12,20 @@ export default function ClientOutcomes() {
     },
     {
       title: "Property Encroachment Averted",
-      scenario: "A client in Silicon Valley discovered an unauthorized 'temporary' structure being built on her vacant ancestral land in Bangalore.",
-      result: "Our legal team and physical liaisons intervened within 48 hours, filed a formal police complaint, and secured the perimeter with institutional-grade monitoring.",
+      scenario: "A client in Silicon Valley discovered an unauthorized 'temporary' structure being built on her vacant family land in Bangalore.",
+      result: "Our legal team and physical liaisons intervened within 48 hours, filed a formal police complaint, and secured the perimeter with professional security monitoring.",
       impact: "₹4.2 Cr Asset Secured"
     },
     {
       title: "Tax Notice Resolved",
       scenario: "An NRI in Dubai received multiple IT notices for unreported capital gains on a property sale from 5 years ago, risking a bank account freeze.",
-      result: "We consolidated his tax history, filed the necessary appeals, and resolved the discrepancy without him having to travel to India once.",
+      result: "We compiled his complete tax history, filed the necessary appeals, and resolved the discrepancy without him having to travel to India once.",
       impact: "Zero Penalties Incurred"
     }
   ];
 
   return (
-    <section className="section-padding bg-background relative overflow-hidden">
+    <section className="section-padding bg-[#0A0F0D] relative overflow-hidden">
       <div className="max-container relative z-10">
         <motion.div
           initial="hidden"
@@ -34,9 +34,9 @@ export default function ClientOutcomes() {
           variants={elegantFadeUp}
           className="text-center mb-24"
         >
-          <span className="accent-label">The Stewardship Proof</span>
-          <h2 className="section-title mb-6">Real Scenarios. <br /><span className="text-gradient-gold italic">Definitive Outcomes.</span></h2>
-          <p className="body-large text-muted-foreground max-w-2xl mx-auto">
+          <span className="accent-label">The Proof</span>
+          <h2 className="section-title text-white mb-6">Real Scenarios. <br /><span className="text-gradient-gold italic">Definitive Outcomes.</span></h2>
+          <p className="body-large text-white/60 max-w-2xl mx-auto">
             Our value isn't just in what we do, but in the peace of mind we provide when complex 
             Indian bureaucracy meets global expectations.
           </p>

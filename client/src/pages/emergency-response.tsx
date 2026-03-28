@@ -123,7 +123,7 @@ export default function EmergencyResponse() {
        <span className="accent-label text-red-500">Rapid Response</span>
        <h2 className="section-title text-[#FDFCFB] mb-8">Professional Physical <br /><span className="text-red-500 italic">Liaison.</span></h2>
        <p className="text-lg text-white/90 font-light leading-relaxed mb-10 max-w-xl">
-        Situations like court notices or utility cuts require expert attention on the ground. We eliminate the time-zone liability by acting as your parents’ authorized physical proxy in India.
+        Situations like court notices or utility cuts require expert attention on the ground. We eliminate the time-zone liability by acting as your parents' authorized physical proxy in India.
        </p>
        <div className="space-y-8">
         <div className="flex items-center gap-6 group/item">
@@ -159,12 +159,12 @@ export default function EmergencyResponse() {
        <span className="text-gradient-gold italic">Crisis Safety Net.</span>
       </h2>
       <p className="text-xl text-[#1A1A1A] font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-       Establish your fiduciary relationship today so we are authorized to act the moment your parents face a financial or legal crisis.
+       Get your emergency plan ready today so we are authorized to act the moment your parents face a financial or legal crisis.
       </p>
       <div className="flex justify-center">
        <Link href="/contact">
         <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 group shadow-lg">
-         <span>Initiate Pre-Emptive Review</span>
+         <span>Start Emergency Planning</span>
          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </button>
        </Link>
@@ -172,7 +172,7 @@ export default function EmergencyResponse() {
       <div className="mt-16 flex items-center justify-center gap-4 opacity-40">
        <ShieldCheck className="w-5 h-5 text-accent" />
        <span className="text-[12px] font-mono font-bold uppercase tracking-[0.3em] text-[#1A1A1A]">
-        Institutional Discretion Guaranteed
+        Your Information Is Handled Securely
        </span>
       </div>
      </motion.div>

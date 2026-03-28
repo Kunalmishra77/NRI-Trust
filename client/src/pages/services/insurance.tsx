@@ -26,41 +26,41 @@ export default function Insurance() {
   const problems = [
     {
       title: "Claim Rejection",
-      desc: "TPAs and insurers often reject high-value claims citing minor documentation gaps or non-disclosed historical conditions.",
+      desc: "Insurance companies often reject hospital claims because of small paperwork mistakes or missing information.",
       icon: XCircle
     },
     {
       title: "Policy Lapses",
-      desc: "Parents often forget renewal dates, leading to a permanent loss of 'waiting period' benefits for critical illnesses.",
+      desc: "Parents forget to renew their policy on time, and they lose years of waiting-period benefits for serious illnesses.",
       icon: AlertCircle
     },
     {
-      title: "Documentation Gaps",
-      desc: "Discrepancies between hospital records and policy certificates create massive delays during patient discharge.",
+      title: "Wrong Documents",
+      desc: "Mismatch between hospital records and policy papers causes delays in getting bills cleared during emergencies.",
       icon: FileText
     }
   ];
 
   const services = [
-    { title: "Policy Renewals", desc: "Automated monitoring and timely execution of all health and life insurance renewals." },
-    { title: "Claims Support", desc: "Professional advocacy at the hospital billing desk and with insurance ombudsmen." },
-    { title: "Coverage Review", desc: "Annual audit of existing policies to ensure they meet current medical inflation standards." },
-    { title: "Top-up Advice", desc: "Strategic recommendations for super-top-ups to enhance protection without high premiums." }
+    { title: "Policy Renewals", desc: "We track all renewal dates and make sure health and life insurance never expires." },
+    { title: "Claims Support", desc: "We help file claims at the hospital and follow up until the money is received." },
+    { title: "Coverage Review", desc: "We check if existing insurance is enough for today's hospital costs and recommend changes." },
+    { title: "Top-up Advice", desc: "We suggest affordable top-up plans so your parents have better coverage without high premiums." }
   ];
 
   const scenarios = [
-    { 
-      title: "Hospitalization Claim", 
-      desc: "Navigating the 'Cashless' authorization process while you are abroad, ensuring the TPA receives all verified data instantly." 
+    {
+      title: "Hospitalization Claim",
+      desc: "Your parent is in the hospital and you are abroad. We handle the cashless claim process and make sure the insurance company approves everything."
     },
-    { 
-      title: "Multiple Policies", 
-      desc: "Coordinating between base plans and top-ups from different insurers to maximize the claim amount and minimize out-of-pocket loss." 
+    {
+      title: "Multiple Policies",
+      desc: "Your parents have policies from different companies. We coordinate between all of them to get the maximum claim amount."
     }
   ];
 
   const emergency = [
-    { title: "Claim Rejection", desc: "Immediate legal and administrative escalation when a valid medical claim is denied during an active emergency." }
+    { title: "Claim Rejection", desc: "If a valid claim is rejected while your parent is in the hospital, we immediately step in and resolve it with the insurance company." }
   ];
 
   return (
@@ -69,7 +69,7 @@ export default function Insurance() {
       <div className="section-dark">
         <PageHeader
           title="Managing Insurance for Your Parents in India"
-          subtitle="Moving beyond fragmented agents to institutional-grade advocacy for your family's medical safety net."
+          subtitle="We review your parents' insurance, identify gaps, and make sure claims are processed when it matters most."
           breadcrumbs={[
             { label: "Practice Areas", href: "/services" },
             { label: "Insurance" },
@@ -87,8 +87,8 @@ export default function Insurance() {
             variants={elegantFadeUp}
             className="text-center mb-20"
           >
-            <span className="accent-label text-red-500/80">Protection Vulnerabilities</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Why Parental Insurance <br /><span className="text-[#1A1A1A]/80 italic">Often Fails.</span></h2>
+            <span className="accent-label text-red-500/80">Common Problems</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">Why Insurance <br /><span className="text-[#1A1A1A]/80 italic">Often Fails.</span></h2>
           </motion.div>
 
           <motion.div
@@ -121,12 +121,11 @@ export default function Insurance() {
               viewport={{ once: true }}
               variants={elegantFadeUp}
             >
-              <span className="accent-label text-accent">Professional Advocacy</span>
-              <h2 className="section-title text-[#FDFCFB] mb-8">Comprehensive <br /><span className="text-gradient-gold italic">Medical-Financial Stewardship.</span></h2>
+              <span className="accent-label text-accent">What We Do</span>
+              <h2 className="section-title text-[#FDFCFB] mb-8">Complete <br /><span className="text-gradient-gold italic">Insurance Management.</span></h2>
               <p className="text-xl text-white/50 font-light mb-12 leading-relaxed">
-                We act as your parents' financial guardian in the healthcare system. 
-                We handle the complex lifecycle of insurance—from audits to renewals 
-                and final claim settlements.
+                We take care of your parents' entire insurance — from checking if coverage is enough,
+                to renewing policies on time, to filing claims when they are hospitalized.
               </p>
               
               <div className="space-y-6">
@@ -161,7 +160,7 @@ export default function Insurance() {
                 <div className="absolute bottom-10 left-10 right-10 p-10 glass-panel border-accent/20 backdrop-blur-3xl shadow-2xl">
                   <div className="flex items-center gap-3 mb-4">
                     <ShieldCheck className="w-5 h-5 text-accent" />
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-bold">Authorized Advocacy Protocol</span>
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-bold">Insurance Protection Active</span>
                   </div>
                   <p className="text-white text-lg font-serif italic leading-relaxed">"Ensuring protection works when your parents need it most."</p>
                 </div>
@@ -181,8 +180,8 @@ export default function Insurance() {
             variants={elegantFadeUp}
             className="text-center mb-20"
           >
-            <span className="accent-label text-accent">Scenarios We Resolve</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Navigating <br /><span className="text-gradient-gold italic">Medical Crisis.</span></h2>
+            <span className="accent-label text-accent">Situations We Handle</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">When Your Parents <br /><span className="text-gradient-gold italic">Need Help Most.</span></h2>
           </motion.div>
 
           <motion.div
@@ -213,10 +212,10 @@ export default function Insurance() {
             <div className="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-10 shadow-[0_0_30px_rgba(239,68,68,0.15)]">
               <Zap className="w-8 h-8 text-red-500 animate-pulse" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-serif text-[#FDFCFB] mb-8">Crisis <span className="text-red-500 italic">Intervention.</span></h2>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#FDFCFB] mb-8">Emergency <span className="text-red-500 italic">Response.</span></h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              Urgent claim rejections during hospitalization require immediate on-ground response. 
-              Our team intervenes with hospital management and TPAs to resolve disputes.
+              When an insurance claim is rejected while your parent is in the hospital,
+              we step in immediately and work with the hospital and insurance company to fix it.
             </p>
             
             <div className="grid md:grid-cols-1 max-w-2xl mx-auto">
@@ -244,27 +243,27 @@ export default function Insurance() {
             variants={elegantFadeUp}
             className="text-center mb-24"
           >
-            <span className="accent-label text-accent">Strategic Tiers</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Service <span className="text-gradient-gold italic">Coverage.</span></h2>
+            <span className="accent-label text-accent">Our Plans</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">What Each Plan <span className="text-gradient-gold italic">Covers.</span></h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                tier: "Essential Care", 
+              {
+                tier: "Essential Care",
                 items: data.tierCoverage.essential,
                 bestFor: "Basic health & life insurance renewals."
               },
-              { 
-                tier: "Comprehensive", 
+              {
+                tier: "Comprehensive",
                 items: data.tierCoverage.comprehensive,
-                bestFor: "Regular policy audits & claims advocacy.",
+                bestFor: "Regular policy check-ups & claims support.",
                 highlight: true
               },
-              { 
-                tier: "Premium Legacy", 
+              {
+                tier: "Premium Legacy",
                 items: data.tierCoverage.premiumLegacy,
-                bestFor: "Complete family medical-financial stewardship."
+                bestFor: "Complete insurance management for the whole family."
               }
             ].map((plan, i) => (
               <div 
@@ -282,7 +281,7 @@ export default function Insurance() {
                 )}>{plan.tier}</h3>
                 <p className={cn(
                   "text-xs mb-10 leading-relaxed uppercase tracking-widest font-bold",
-                  plan.highlight ? "text-accent/80" : "text-[#1A1A1A]/90"
+                  plan.highlight ? "text-accent" : "text-[#1A1A1A]/90"
                 )}>{plan.bestFor}</p>
                 
                 <div className="space-y-6 flex-1 mb-12">
@@ -294,7 +293,7 @@ export default function Insurance() {
                       )} />
                       <span className={cn(
                         "text-[14px] font-light leading-snug",
-                        plan.highlight ? "text-white/80" : "text-[#1A1A1A]/90"
+                        plan.highlight ? "text-white" : "text-[#1A1A1A]/90"
                       )}>{item}</span>
                     </div>
                   ))}
@@ -327,14 +326,14 @@ export default function Insurance() {
             variants={elegantFadeUp}
             className="max-w-4xl mx-auto"
           >
-            <span className="accent-label text-accent">Initiate Stewardship</span>
+            <span className="accent-label text-accent">Get Started</span>
             <h2 className="display-title mb-10 !text-4xl md:!text-6xl text-[#FDFCFB]">
-              Ready to Secure Your <br />
-              <span className="text-gradient-gold italic">Parents' Medical Safety Net?</span>
+              Ready to Protect Your <br />
+              <span className="text-gradient-gold italic">Parents' Insurance?</span>
             </h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              Book a confidential 30-minute review session. We will evaluate your parents' current 
-              insurance risks and demonstrate our professional stewardship roadmap.
+              Book a free 30-minute consultation. We will check your parents' current insurance
+              and show you exactly what needs to be fixed.
             </p>
             <Link href="/contact">
               <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">

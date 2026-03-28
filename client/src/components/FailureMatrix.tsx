@@ -7,19 +7,19 @@ import { cn } from "@/lib/utils";
 export default function FailureMatrix({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
  const comparisons = [
   {
-   domain: "Legal Coordination",
-   fail: "Relying on overburdened relatives or local agents who lack technical legal expertise.",
-   trust: "Professional directors acting as authorized physical proxies for all legal formalities."
+   domain: "Legal & Documents",
+   fail: "Relying on busy relatives or local agents who don't understand legal paperwork properly.",
+   trust: "A professional team that handles all legal formalities, bank visits, and document work on your behalf."
   },
   {
-   domain: "Financial Vigilance",
-   fail: "Reactive response to bank freezes or tax notices only after they become crises.",
-   trust: "Proactive governance and regular monitoring to prevent emergencies before they occur."
+   domain: "Financial Safety",
+   fail: "Only finding out about frozen accounts or tax notices after they become emergencies.",
+   trust: "Regular monitoring of all accounts and documents so problems are caught and fixed early."
   },
   {
    domain: "Accountability",
-   fail: "Fragmented communication and zero formal audit trail for actions taken in India.",
-   trust: "Consolidated stewardship with institutional reporting and absolute fiduciary accountability."
+   fail: "No proper updates, no records, and no way to verify what was actually done in India.",
+   trust: "One organized system with regular reports, documented actions, and complete transparency."
   }
  ];
 
@@ -37,13 +37,13 @@ export default function FailureMatrix({ theme = 'dark' }: { theme?: 'dark' | 'li
       variants={cardReveal}
       className="lg:col-span-7"
      >
-      <span className="accent-label text-accent">The Fiduciary Shift</span>
+      <span className="accent-label text-accent">Why You Need This</span>
       <h2 className={cn(
         "section-title mb-8",
         theme === 'light' ? "text-[#1A1A1A]" : "text-white"
-      )}>Why Informal <br /><span className={cn("italic text-3xl md:text-4xl", theme === 'light' ? "text-[#1A1A1A]/90" : "text-white/90")}>Handling Is High-Risk.</span></h2>
+      )}>Why Informal <br /><span className={cn("italic text-3xl md:text-4xl", theme === 'light' ? "text-[#1A1A1A]/90" : "text-white/90")}>Handling Does Not Work.</span></h2>
       <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-xl">
-       Protecting your parents’ financial well-being requires more than just 'checking in.' It requires a structured, professional system that bridges the distance gap.
+       Protecting your parents' financial life requires more than just checking in once in a while. It requires a proper system that works even when you are thousands of miles away.
       </p>
      </motion.div>
      
@@ -66,7 +66,7 @@ export default function FailureMatrix({ theme = 'dark' }: { theme?: 'dark' | 'li
        )} />
        <div className="absolute bottom-8 left-8 flex items-center gap-3">
         <AlertCircle className="w-4 h-4 text-accent" />
-        <span className="text-[12px] font-mono text-accent uppercase tracking-widest font-bold">Fiduciary Standard</span>
+        <span className="text-[12px] font-mono text-accent uppercase tracking-widest font-bold">Professional Standard</span>
        </div>
       </div>
      </div>
@@ -79,7 +79,7 @@ export default function FailureMatrix({ theme = 'dark' }: { theme?: 'dark' | 'li
      {/* Market Status Quo */}
      <div className={cn(
        "lg:col-span-5 p-10 lg:p-16 relative overflow-hidden group",
-       theme === 'light' ? "bg-black/[0.02]" : "bg-background"
+       theme === 'light' ? "bg-black/[0.02]" : "bg-[#050914]"
      )}>
       <div className="absolute top-0 right-0 p-12 opacity-[0.03]">
        <X className="w-64 h-64 text-red-500" />
@@ -89,7 +89,7 @@ export default function FailureMatrix({ theme = 'dark' }: { theme?: 'dark' | 'li
        <h3 className={cn(
          "text-2xl font-serif mb-12",
          theme === 'light' ? "text-[#1A1A1A]" : "text-white/90"
-       )}>The Fragile System</h3>
+       )}>The Risky Way</h3>
        
        <div className="space-y-10">
         {comparisons.map((c, i) => (
@@ -118,7 +118,7 @@ export default function FailureMatrix({ theme = 'dark' }: { theme?: 'dark' | 'li
        <h3 className={cn(
          "text-2xl font-serif mb-12",
          theme === 'light' ? "text-[#1A1A1A]" : "text-white"
-       )}>Consolidated Stewardship</h3>
+       )}>One Structured System</h3>
        
        <div className="space-y-10">
         {comparisons.map((c, i) => (
@@ -143,7 +143,7 @@ export default function FailureMatrix({ theme = 'dark' }: { theme?: 'dark' | 'li
        )}>
         <Link href="/contact">
          <button className="flex items-center gap-4 text-accent hover:text-accent/80 transition-all group/btn">
-          <span className="font-mono text-xs font-bold tracking-[0.2em] uppercase">Secure Your Stewardship</span>
+          <span className="font-mono text-xs font-bold tracking-[0.2em] uppercase">Get Free Consultation</span>
           <div className="w-10 h-10 rounded-full border border-accent/20 flex items-center justify-center group-hover/btn:bg-accent group-hover/btn:text-[#0A0F0D] transition-all shadow-sm">
            <ArrowRight className="w-4 h-4" />
           </div>

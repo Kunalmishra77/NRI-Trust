@@ -13,7 +13,7 @@ export default function Services() {
       <div className="section-dark">
         <PageHeader
           title="Complete Financial and Legal Support for NRI Families"
-          subtitle="Moving beyond fragmented agents to institutional-grade stewardship."
+          subtitle="We manage your parents' insurance, bank accounts, property, legal documents, and emergencies — all in one place."
           breadcrumbs={[{ label: "Practice Areas" }]}
         />
       </div>
@@ -102,7 +102,7 @@ export default function Services() {
                   )}>
                     <div className="h-px w-12 bg-accent/30" />
                     <span className="accent-label !mb-0 text-accent uppercase tracking-[0.3em]">
-                      {service.shortTitle} Excellence
+                      {service.shortTitle}
                     </span>
                   </div>
 
@@ -131,12 +131,12 @@ export default function Services() {
                         "text-[11px] font-mono uppercase tracking-widest font-bold",
                         isLight ? "text-[#1A1A1A]" : "text-white"
                       )}>
-                        Critical Problems Resolved
+                        Problems We Solve
                       </span>
                     </div>
                     
                     <div className="grid sm:grid-cols-1 gap-4">
-                      {service.scenarios.concat(service.risks ? [{ title: "Institutional Risk", description: service.risks[0] }] : []).slice(0, 3).map((problem, pIdx) => (
+                      {service.scenarios.concat(service.risks ? [{ title: "Common Risk", description: service.risks[0] }] : []).slice(0, 3).map((problem, pIdx) => (
                         <div 
                           key={pIdx}
                           className={cn(
@@ -172,7 +172,7 @@ export default function Services() {
                       "btn-premium-outline !px-10 !py-5 flex items-center gap-4 group mx-auto lg:mx-0",
                       isLight ? "section-light" : "section-dark"
                     )}>
-                      <span>Examine Strategy</span>
+                      <span>Learn More</span>
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </button>
                   </Link>
@@ -197,17 +197,17 @@ export default function Services() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(207,160,82,0.1)_0%,transparent_70%)] pointer-events-none" />
               
               <div className="relative z-10 max-w-3xl mx-auto">
-                <span className="accent-label text-accent mb-8 block">Legacy Protection</span>
+                <span className="accent-label text-accent mb-8 block">Get Started</span>
                 <h2 className="display-title !text-4xl md:!text-6xl text-[#FDFCFB] mb-10">
-                  Ready to Secure Your <br />
-                  <span className="text-gradient-gold italic">Family's Future?</span>
+                  Ready to Protect Your <br />
+                  <span className="text-gradient-gold italic">Parents' Financial Life?</span>
                 </h2>
                 <p className="text-xl text-white/50 font-light mb-16 leading-relaxed">
-                  Every family legacy is unique. Initiate a confidential consultation with our advisors to build your bespoke stewardship plan.
+                  Every family's situation is different. Book a free consultation and we will create a plan that fits your parents' needs.
                 </p>
                 <Link href="/contact">
                   <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.2)]">
-                    <span>Book Private Consultation</span>
+                    <span>Get Free Consultation</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </Link>
@@ -215,7 +215,7 @@ export default function Services() {
                 <div className="mt-12 flex items-center justify-center gap-4">
                   <ShieldCheck className="w-5 h-5 text-accent" />
                   <span className="text-[11px] font-mono uppercase tracking-[0.3em] text-white font-bold opacity-60">
-                    Institutional Discretion Guaranteed
+                    Your Information Is Handled Securely
                   </span>
                 </div>
               </div>

@@ -24,7 +24,7 @@ const bookingExpectations = [
   {
     icon: ShieldCheck,
     title: "Tier Recommendation",
-    desc: "Post-session, you receive a formal stewardship proposal with a specific service tier recommendation for your units."
+    desc: "Post-session, you receive a detailed protection plan with a specific service tier recommendation for your units."
   }
 ];
 
@@ -35,7 +35,7 @@ export default function Contact() {
       <div className="section-dark">
         <PageHeader
           title="Book Your Free Review Session"
-          subtitle="Moving beyond fragmented agents to institutional-grade stewardship for NRI families."
+          subtitle="We help NRI families protect their parents' financial life in India — insurance, bank accounts, property, and legal documents."
           breadcrumbs={[{ label: "Direct Channel" }]}
         />
       </div>
@@ -55,10 +55,10 @@ export default function Contact() {
             variants={elegantFadeUp}
             className="text-center mb-24 md:mb-32"
           >
-            <span className="accent-label text-accent">Post-Submission Protocol</span>
+            <span className="accent-label text-accent">Post-Submission Steps</span>
             <h2 className="section-title text-[#FDFCFB]">
               The Journey to <br />
-              <span className="text-gradient-gold italic">Institutional Control.</span>
+              <span className="text-gradient-gold italic">Complete Control.</span>
             </h2>
           </motion.div>
 

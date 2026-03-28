@@ -85,7 +85,7 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
               </h2>
               
               <p className="text-xl text-muted-foreground font-light leading-relaxed mb-16 max-w-md">
-                Initiate a professional assessment of your family's Indian asset exposure and risk factors.
+                Get a free review of your parents' financial situation in India.
               </p>
 
               <div className="space-y-12">
@@ -123,7 +123,7 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
               )}>
                 <ShieldAlert className="w-6 h-6 text-accent shrink-0" />
                 <p className="text-[11px] font-mono leading-relaxed text-accent uppercase tracking-widest font-bold">
-                  Institutional Stewardship Channel — <span className={theme === 'light' ? "text-[#1A1A1A]" : "text-white"}>FEMA & RBI Compliant.</span>
+                  Professional Protection Channel — <span className={theme === 'light' ? "text-[#1A1A1A]" : "text-white"}>FEMA & RBI Compliant.</span>
                 </p>
               </div>
             </div>
@@ -274,7 +274,7 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                         <label className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">Family Context & Requirements</label>
                         <Textarea 
                           required
-                          placeholder="Briefly describe the assets or concerns requiring institutional stewardship..." 
+                          placeholder="Briefly describe the assets or concerns requiring financial protection..." 
                           value={formData.message} 
                           onChange={(e) => setFormData({...formData, message: e.target.value})} 
                           className={cn(
@@ -324,7 +324,7 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                         <span className={cn(
                           "text-[9px] font-mono uppercase tracking-[0.3em] font-bold",
                           theme === 'light' ? "text-black/20" : "text-white/20"
-                        )}>Verified Fiduciary Intake Protocol</span>
+                        )}>Verified Trusted Intake Process</span>
                       </div>
                     </form>
                   </motion.div>

@@ -28,17 +28,17 @@ export default function FinalCTA() {
             >
               <ShieldCheck className="w-4 h-4 text-[#d4af37]" />
               <span className="text-[10px] font-mono font-black uppercase tracking-[0.3em] text-[#d4af37]">
-                Executive Engagement
+                Take Action Now
               </span>
             </motion.div>
             
-            <h2 className="text-4xl md:text-6xl font-sans font-black tracking-tight text-white leading-none mb-6">
-              Secure Your Parents' <br className="hidden md:block" />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#d4af37]">Indian Legacy.</span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-sans font-black tracking-tight text-white leading-none mb-6">
+              Don't Wait for a <br className="hidden md:block" />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#d4af37]">Crisis to Act.</span>
             </h2>
-            
+
             <p className="text-lg text-white/40 font-medium max-w-xl leading-relaxed">
-              Institutional-grade stewardship distilled for the global executive. Initiate your family's private strategy audit.
+              Most families discover financial problems only during emergencies. Let us help you protect your parents' financial life before it's too late.
             </p>
           </div>
 
@@ -51,7 +51,7 @@ export default function FinalCTA() {
                 whileTap={{ scale: 0.98 }}
                 className="bg-[#d4af37] text-[#050914] px-12 py-6 rounded-full font-black text-[14px] uppercase tracking-widest flex items-center gap-4 shadow-2xl transition-all duration-500 overflow-hidden relative group mx-auto lg:mx-0"
               >
-                <span className="relative z-10">Initiate Protocol</span>
+                <span className="relative z-10">Get Free Consultation</span>
                 <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1.5 transition-transform" />
                 
                 {/* Sweep Shine */}
@@ -64,9 +64,9 @@ export default function FinalCTA() {
             </Link>
 
             <div className="flex items-center gap-6 opacity-30">
-              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white">Absolute Discretion</span>
+              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white">100% Secure</span>
               <div className="w-1 h-1 rounded-full bg-[#d4af37]" />
-              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white">Institutional Access</span>
+              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white">Free Consultation</span>
             </div>
           </div>
 

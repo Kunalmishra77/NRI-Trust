@@ -7,7 +7,7 @@ export default function OperatingPrinciples() {
     {
       icon: ShieldCheck,
       title: "Absolute Trust",
-      description: "We act as your physical proxy in India, bound by the highest fiduciary standards of integrity."
+      description: "We act as your physical proxy in India, bound by the highest highest standards of honesty and care."
     },
     {
       icon: UserCheck,
@@ -22,7 +22,7 @@ export default function OperatingPrinciples() {
     {
       icon: Lock,
       title: "Confidentiality",
-      description: "Your family's financial footprint is protected with bank-grade security and absolute discretion."
+      description: "Your family's financial footprint is protected with bank-grade security and complete confidentiality."
     },
     {
       icon: HeartPulse,
@@ -42,9 +42,9 @@ export default function OperatingPrinciples() {
           className="text-center mb-24"
         >
           <span className="accent-label">Our Core Pillars</span>
-          <h2 className="section-title mb-6">Built on <span className="text-gradient-gold italic">Institutional Principles.</span></h2>
+          <h2 className="section-title mb-6">Built on <span className="text-gradient-gold italic">Core Principles.</span></h2>
           <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-            While others provide fragmented services, we provide a unified system of stewardship 
+            While others provide fragmented services, we provide a one organized system of protection 
             governed by five non-negotiable principles.
           </p>
         </motion.div>

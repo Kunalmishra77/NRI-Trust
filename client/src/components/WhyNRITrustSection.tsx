@@ -7,27 +7,27 @@ export default function WhyNRITrustSection({ theme = 'dark' }: { theme?: 'dark' 
  const comparisons = [
   {
    icon: Users,
-   title: "Consolidated Expertise",
-   others: "Coordinating separate CAs, lawyers, agents, and managers — resulting in communication gaps.",
-   nriTrust: "One unified advisor managing all domains with a single, high-trust relationship manager.",
+   title: "Everything in One Place",
+   others: "Juggling separate CAs, lawyers, property agents, and bank managers — nobody talks to each other.",
+   nriTrust: "One team handling insurance, banking, property, legal, and emergencies — with one person you can call.",
   },
   {
    icon: Shield,
-   title: "Professional Indemnity",
-   others: "Zero accountability or insurance for local 'help' or family-friend referrals.",
-   nriTrust: "Full professional liability coverage with a documented, audited trail for every action.",
+   title: "Real Accountability",
+   others: "No records, no proof of work, and no accountability when a local contact makes a mistake.",
+   nriTrust: "Every action is documented. You get regular reports and can see exactly what was done.",
   },
   {
    icon: FileCheck,
-   title: "Strategic Transparency",
-   others: "Opaque updates, verbal promises, and a lack of formal documentation or photo evidence.",
-   nriTrust: "Secure client portal, monthly data-driven reports, and on-ground verified documentation.",
+   title: "Clear Updates",
+   others: "Vague phone calls, verbal promises, and no way to verify if things were actually done.",
+   nriTrust: "Secure online portal with monthly reports, photos, and verified documentation.",
   },
   {
    icon: Clock,
-   title: "Emergency Readiness",
-   others: "No guaranteed response. Relying on someone's availability during Indian business hours.",
-   nriTrust: "A dedicated 24/7 Rapid Response team for legal, financial, or property emergencies.",
+   title: "Emergency Help",
+   others: "No guaranteed response. Hoping someone is available when something goes wrong.",
+   nriTrust: "A dedicated team ready to respond immediately for any financial, legal, or property emergency.",
   },
  ];
 
@@ -59,19 +59,19 @@ export default function WhyNRITrustSection({ theme = 'dark' }: { theme?: 'dark' 
     >
      <div className="flex items-center justify-center gap-4 mb-6">
       <div className="h-[2px] w-10 bg-gradient-to-r from-transparent to-accent/50" />
-      <span className="accent-label !mb-0 tracking-[0.25em]">Market Distinction</span>
+      <span className="accent-label !mb-0 tracking-[0.25em]">Why Choose Us</span>
       <div className="h-[2px] w-10 bg-gradient-to-l from-transparent to-accent/50" />
      </div>
      <h2 className={cn(
       "section-title mb-8",
       theme === 'light' ? "text-[#1A1A1A]" : "text-white"
      )}>
-      Why Discerning Families <br className="hidden md:block" />
-      <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light drop-shadow-md">Choose NRI Trust</span>
+      Why Families <br className="hidden md:block" />
+      <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light drop-shadow-md">Trust NRI Trust</span>
      </h2>
      <p className="text-lg text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed">
-      We operate as a private family office for NRIs. 
-      While others provide fragmented services, we provide stewardship, accountability, and absolute discretion.
+      Other families rely on scattered agents and relatives.
+      We give you one organized system that covers everything — with proper accountability and regular updates.
      </p>
     </motion.div>
 

@@ -6,19 +6,19 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
-    Advisory: [
-      { label: "Banking & KYC", href: "/services/banking-kyc" },
-      { label: "Legal & Succession", href: "/services/legal-succession" },
-      { label: "Property & Tenancy", href: "/services/property-tenancy" },
-      { label: "Insurance Advocacy", href: "/services/insurance" },
-      { label: "Tax Compliance", href: "/services/income-tax" },
+    Services: [
+      { label: "Insurance Adequacy Check", href: "/services/insurance" },
+      { label: "Bank Account Consolidation", href: "/services/banking-kyc" },
+      { label: "Property Documents", href: "/services/property-tenancy" },
+      { label: "Succession & Nominees", href: "/services/legal-succession" },
+      { label: "Emergency Access", href: "/services/income-tax" },
     ],
-    Practice: [
-      { label: "About the Firm", href: "/about" },
-      { label: "Engagement Models", href: "/pricing" },
-      { label: "Our Process", href: "/how-it-works" },
-      { label: "Knowledge Hub", href: "/resources" },
-      { label: "Contact Advisory", href: "/contact" },
+    Company: [
+      { label: "About Us", href: "/about" },
+      { label: "Pricing Plans", href: "/pricing" },
+      { label: "How It Works", href: "/how-it-works" },
+      { label: "Resources", href: "/resources" },
+      { label: "Contact Us", href: "/contact" },
     ]
   };
 
@@ -39,12 +39,12 @@ export default function Footer() {
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-2xl font-sans font-black tracking-tight text-[#1A1A1A]">NRI TRUST</span>
-                <span className="text-[9px] font-mono tracking-[0.4em] uppercase text-accent mt-1 font-bold">Global Stewardship</span>
+                <span className="text-[9px] font-mono tracking-[0.4em] uppercase text-accent mt-1 font-bold">Financial Protection</span>
               </div>
             </Link>
 
             <p className="text-lg text-[#1A1A1A]/90 font-medium mb-10 max-w-sm leading-relaxed">
-              The dedicated family office and fiduciary bridge for global NRIs. Absolute operational control over your Indian legacy.
+              NRI Trust helps protect your parents' financial life in India — insurance, bank accounts, property, and legal matters, all in one place.
             </p>
 
             {/* Tactical Contact */}
@@ -103,7 +103,7 @@ export default function Footer() {
 
           {/* Column 4: Engagement & Status */}
           <div className="lg:col-span-3 flex flex-col pt-4">
-            <h3 className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-10">Institutional Access</h3>
+            <h3 className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-10">Client Access</h3>
             
             <Link href="/portal">
               <motion.div 
@@ -116,7 +116,7 @@ export default function Footer() {
                   </div>
                   <div>
                     <div className="text-[11px] font-mono font-black text-[#1A1A1A] uppercase tracking-widest leading-none mb-1">Client Portal</div>
-                    <div className="text-[9px] text-accent font-bold uppercase tracking-tighter">Secure High-Net Access</div>
+                    <div className="text-[9px] text-accent font-bold uppercase tracking-tighter">Secure Family Access</div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between text-[10px] font-mono text-[#1A1A1A]/70 uppercase tracking-widest group-hover:text-accent transition-colors">
@@ -151,8 +151,8 @@ export default function Footer() {
 
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="flex items-center gap-6">
-              <Link href="/terms" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Terms of Engagement</Link>
-              <Link href="/privacy" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Privacy Protocol</Link>
+              <Link href="/terms" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Terms of Service</Link>
+              <Link href="/privacy" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Privacy Policy</Link>
               <Link href="/cookies" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Cookie Policy</Link>
             </div>
 

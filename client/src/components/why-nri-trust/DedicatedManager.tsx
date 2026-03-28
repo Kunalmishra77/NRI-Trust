@@ -15,12 +15,12 @@ export default function DedicatedManager() {
             viewport={{ once: true }}
             variants={elegantFadeUp}
           >
-            <span className="accent-label text-accent">Personalized Stewardship</span>
-            <h2 className="section-title mb-8">
+            <span className="accent-label text-accent">Personalized Management</span>
+            <h2 className="section-title text-white mb-8">
               Your Single Point of <br />
-              <span className="text-gradient-gold italic">Institutional Accountability.</span>
+              <span className="text-gradient-gold italic">Complete Accountability.</span>
             </h2>
-            <p className="body-large text-muted-foreground mb-12">
+            <p className="body-large text-white/90 mb-12">
               We don't believe in call centers or automated ticket systems.
               Each NRI Trust client is assigned a <strong className="text-white font-medium">Senior Relationship Manager</strong> who acts
               as your family's personal CFO and physical proxy in India.
@@ -50,7 +50,7 @@ export default function DedicatedManager() {
                   </div>
                   <div>
                     <h4 className="text-white font-medium mb-1">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                    <p className="text-sm text-white/80 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -81,7 +81,7 @@ export default function DedicatedManager() {
                 </div>
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-4 h-4 text-accent" />
-                  <span className="text-[12px] font-mono uppercase tracking-[0.2em] text-accent font-bold">Dedicated Manager Protocol</span>
+                  <span className="text-[12px] font-mono uppercase tracking-[0.2em] text-accent font-bold">Dedicated Manager Process</span>
                 </div>
               </div>
             </div>

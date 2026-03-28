@@ -14,7 +14,7 @@ export default function Pricing() {
    <div className="section-dark">
     <PageHeader
      title="Engagement Models"
-     subtitle="Transparent, retainer-based pricing for consolidated family stewardship. Recommended after your private review."
+     subtitle="Transparent, retainer-based pricing for complete family protection. Recommended after your private review."
      breadcrumbs={[{ label: "Pricing & Plans" }]}
     />
    </div>
@@ -47,10 +47,10 @@ export default function Pricing() {
       </div>
       <h2 className="display-title mb-10 text-[#FDFCFB]">
        Begin Your Family's <br />
-       <span className="text-gradient-gold italic">Stewardship Audit.</span>
+       <span className="text-gradient-gold italic">Financial Review.</span>
       </h2>
       <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-       Initiate a confidential 30-minute review session. We'll audit your current India-based risks and recommend the right tier for your family.
+       Book a free 30-minute consultation. We'll audit your current India-based risks and recommend the right tier for your family.
       </p>
       
       <div className="flex justify-center">

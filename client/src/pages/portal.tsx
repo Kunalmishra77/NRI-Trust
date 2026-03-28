@@ -36,7 +36,7 @@ export default function ClientPortal() {
 
   const documents = [
     { name: "Family Succession Will.pdf", type: "Legal", date: "Feb 2026" },
-    { name: "Ancestral Plot Deed.pdf", type: "Property", date: "Jan 2026" },
+    { name: "Family Plot Deed.pdf", type: "Property", date: "Jan 2026" },
     { name: "NRE Account Statement.pdf", type: "Banking", date: "Mar 2026" }
   ];
 
@@ -83,7 +83,7 @@ export default function ClientPortal() {
               <Zap className="w-4 h-4 text-red-500 animate-pulse" />
               <span className="text-[10px] font-mono uppercase tracking-widest text-red-500 font-bold">Emergency</span>
             </div>
-            <p className="text-xs text-red-500/80 leading-relaxed font-medium">Initiate Rapid Response Deployment</p>
+            <p className="text-xs text-red-500/80 leading-relaxed font-medium">Start Emergency Response</p>
           </div>
         </div>
       </aside>

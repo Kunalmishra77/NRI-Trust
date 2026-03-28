@@ -6,24 +6,24 @@ import { cn } from "@/lib/utils";
 
 const faqs = [
  {
-  question: "How do we select the right tier for our family?",
-  answer: "Tier selection is handled during your complimentary Discovery Session. We audit your current financial, legal, and property footprint in India and recommend the tier that provides optimal coverage without unnecessary complexity."
+  question: "How do I know which plan is right for my family?",
+  answer: "We offer a free consultation where we review your parents' situation — their insurance, bank accounts, property, and legal documents. Based on that, we recommend the plan that covers everything they need without paying for extras."
  },
  {
-  question: "Can we upgrade or transition between tiers later?",
-  answer: "Yes. As your family requirements evolve—such as acquiring new property or beginning estate planning—you can transition to a higher tier. Most families start with Comprehensive Care for immediate risk mitigation."
+  question: "Can I change my plan later?",
+  answer: "Yes. As your family's needs change — like buying new property or starting succession planning — you can move to a higher plan anytime. Most families start with Comprehensive Care."
  },
  {
-  question: "What exactly counts as 'Emergency Support'?",
-  answer: "We define emergencies as critical financial or legal events: frozen bank accounts, unexpected legal notices, property encroachment attempts, or critical health insurance claim rejections. We do NOT provide medical care, but we handle the financial/admin side of medical emergencies."
+  question: "What counts as an emergency?",
+  answer: "Emergencies include frozen bank accounts, sudden legal notices, someone trying to take over your property, or insurance claims getting rejected during hospitalization. We do NOT provide medical care, but we handle the financial and paperwork side of medical emergencies."
  },
  {
-  question: "Does the pricing include healthcare or medical costs?",
-  answer: "No. NRI Trust is a financial and legal stewardship firm. We handle insurance claims, hospital billing audits, and administrative coordination, but we are not a healthcare provider or a home-care nursing service."
+  question: "Does the plan include healthcare or medical costs?",
+  answer: "No. NRI Trust handles insurance claims, hospital billing, and all the administrative work. We are not a healthcare provider or nursing service — we handle the financial and legal side."
  },
  {
-  question: "Does one plan cover multiple parents and different cities?",
-  answer: "Our Comprehensive and Premium tiers are designed to cover the entire family unit's assets across India. During onboarding, we map all assets regardless of location to ensure unified stewardship."
+  question: "Does one plan cover both parents and different cities?",
+  answer: "Yes. Our Comprehensive and Premium plans cover your entire family's assets across India. During onboarding, we map all accounts, properties, and documents regardless of which city they are in."
  }
 ];
 
@@ -91,13 +91,13 @@ export default function FAQSection({ theme = 'dark' }: { theme?: 'dark' | 'light
     >
      <div className="flex items-center justify-center gap-4 mb-6">
       <div className="h-[2px] w-10 bg-gradient-to-r from-transparent to-accent/50" />
-      <span className="accent-label !mb-0 tracking-[0.25em]">Common Inquiries</span>
+      <span className="accent-label !mb-0 tracking-[0.25em]">Common Questions</span>
       <div className="h-[2px] w-10 bg-gradient-to-l from-transparent to-accent/50" />
      </div>
      <h2 className={cn(
       "section-title mb-8",
       theme === 'light' ? "text-[#1A1A1A]" : "text-white"
-     )}>Stewardship <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light">Questions</span></h2>
+     )}>Frequently Asked <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light">Questions</span></h2>
     </motion.div>
 
     <motion.div

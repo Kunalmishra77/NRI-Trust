@@ -117,7 +117,7 @@ export default function ProcessTimeline({ theme = 'dark' }: { theme?: 'dark' | '
        "btn-premium-outline flex items-center gap-4 mx-auto group",
        theme === 'light' ? "section-light" : "section-dark"
       )}>
-       <span>Initiate Private Audit</span>
+       <span>Book Free Consultation</span>
        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
       </button>
      </Link>

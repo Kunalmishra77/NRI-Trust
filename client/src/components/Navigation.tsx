@@ -21,54 +21,54 @@ const TRANSITION = { duration: 0.8, ease: "easeInOut" };
 
 const services = [
   {
-    title: "Banking & KYC",
-    href: "/services/banking-kyc",
-    description: "Digital transformation of your Indian banking and re-KYC compliance.",
-    icon: Landmark
-  },
-  {
-    title: "Legal & Succession",
-    href: "/services/legal-succession",
-    description: "Professional probate, inheritance management, and legal advisory.",
-    icon: Scale
-  },
-  {
-    title: "Property & Tenancy",
-    href: "/services/property-tenancy",
-    description: "Complete management of your real estate portfolio and disputes.",
-    icon: Home
-  },
-  {
-    title: "Insurance Management",
+    title: "Insurance Check",
     href: "/services/insurance",
-    description: "Optimizing health and life coverage for your parents in India.",
+    description: "Check if your parents' health and life insurance is enough.",
     icon: Heart
   },
   {
-    title: "Tax & Compliance",
+    title: "Bank Account Setup",
+    href: "/services/banking-kyc",
+    description: "Find scattered accounts and organize them in one place.",
+    icon: Landmark
+  },
+  {
+    title: "Property Documents",
+    href: "/services/property-tenancy",
+    description: "Make sure all property papers are updated and accessible.",
+    icon: Home
+  },
+  {
+    title: "Succession & Nominees",
+    href: "/services/legal-succession",
+    description: "Set up correct nominees and plan for smooth legal transfer.",
+    icon: Scale
+  },
+  {
+    title: "Emergency Access",
     href: "/services/income-tax",
-    description: "Strategic tax planning and repatriation of Indian funds.",
+    description: "Prepare a clear plan so your family knows what to do in a crisis.",
     icon: FileText
   }
 ];
 
 const company = [
   {
-    title: "The Firm",
+    title: "About Us",
     href: "/about",
-    description: "Learn about our mission to secure NRI legacies.",
+    description: "How we help NRIs protect their parents' financial life in India.",
     icon: Shield
   },
   {
     title: "Why NRI Trust",
     href: "/why-nri-trust",
-    description: "Our dedicated fiduciary and executive stewardship model.",
+    description: "One structured system for insurance, accounts, documents and emergencies.",
     icon: Trophy
   },
   {
-    title: "Our Process",
+    title: "How It Works",
     href: "/how-it-works",
-    description: "How we bridge the 10,000-mile gap with local presence.",
+    description: "Simple steps to secure your parents' complete financial life.",
     icon: Zap
   }
 ];
@@ -101,7 +101,7 @@ export default function Navigation() {
           </div>
           <div className="flex flex-col leading-none">
             <span className={`text-2xl font-sans font-black tracking-tight transition-colors duration-500 ${isScrolled ? "text-[#1A1A1A]" : "text-white"}`}>NRI TRUST</span>
-            <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-accent font-bold mt-0.5">Global Advisory</span>
+            <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-accent font-bold mt-0.5">Financial Protection</span>
           </div>
         </Link>
 
@@ -112,7 +112,7 @@ export default function Navigation() {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/" className={cn(
-                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[15px] font-black transition-colors uppercase tracking-[0.12em]",
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[15px] font-medium transition-colors uppercase tracking-[0.12em]",
                     isScrolled ? "text-[#1A1A1A] hover:text-accent" : "text-white hover:text-white"
                   )}>
                     Home
@@ -122,9 +122,9 @@ export default function Navigation() {
 
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={cn(
-                  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent transition-colors uppercase text-[15px] font-black tracking-[0.12em]",
-                  isScrolled 
-                    ? "text-[#1A1A1A] hover:text-accent data-[state=open]:text-accent" 
+                  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent transition-colors uppercase text-[15px] font-medium tracking-[0.12em]",
+                  isScrolled
+                    ? "text-[#1A1A1A] hover:text-accent data-[state=open]:text-accent"
                     : "text-white hover:text-white data-[state=open]:text-white"
                 )}>
                   The Firm
@@ -151,9 +151,9 @@ export default function Navigation() {
 
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={cn(
-                  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent transition-colors uppercase text-[15px] font-black tracking-[0.12em]",
-                  isScrolled 
-                    ? "text-[#1A1A1A] hover:text-accent data-[state=open]:text-accent" 
+                  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent transition-colors uppercase text-[15px] font-medium tracking-[0.12em]",
+                  isScrolled
+                    ? "text-[#1A1A1A] hover:text-accent data-[state=open]:text-accent"
                     : "text-white hover:text-white data-[state=open]:text-white"
                 )}>
                   Practice Areas
@@ -217,7 +217,7 @@ export default function Navigation() {
               whileTap={{ scale: 0.98 }}
               className="bg-accent text-white px-9 py-4 rounded-full text-[13px] font-black uppercase tracking-widest shadow-xl"
             >
-              Initiate Review
+              Get Free Consultation
             </motion.button>
           </Link>
 
@@ -302,7 +302,7 @@ export default function Navigation() {
                 <div className="p-8 bg-[#1A1A1A]/5">
                   <Link href="/contact" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()}>
                     <button className="w-full bg-[#d4af37] text-white py-5 rounded-2xl font-black uppercase tracking-widest shadow-xl">
-                      Initiate Audit
+                      Get Free Consultation
                     </button>
                   </Link>
                 </div>

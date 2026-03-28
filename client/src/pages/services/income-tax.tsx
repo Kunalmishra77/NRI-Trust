@@ -25,43 +25,43 @@ export default function IncomeTax() {
 
   const challenges = [
     {
-      title: "Rental Income",
-      desc: "Managing TDS on rent and ensuring correct reporting of property income to avoid compliance gaps.",
+      title: "Family Doesn't Know What to Do",
+      desc: "When something happens to parents, family members panic because there is no clear plan for what to do next.",
       icon: TrendingUp
     },
     {
-      title: "Tax Notices",
-      desc: "Responding to automated scrutiny notices or show-cause orders from the Income Tax department.",
+      title: "Cannot Access Money",
+      desc: "Bank accounts are frozen or blocked, and the family does not know which documents are needed to access funds.",
       icon: AlertTriangle
     },
     {
-      title: "Refund Delays",
-      desc: "Navigating the administrative hurdles that cause significant delays in receiving legitimate tax refunds.",
+      title: "Missing Documents",
+      desc: "Important papers like insurance policies, bank details, and legal documents are scattered or lost when they are needed most.",
       icon: Clock
     }
   ];
 
   const services = [
-    { title: "ITR Filing", desc: "Precise income tax return filing covering all Indian income sources." },
-    { title: "Notice Response", desc: "Expert drafting and submission of responses to departmental inquiries." },
-    { title: "Refund Follow-up", desc: "Persistent liaison with the department to expedite blocked or delayed refunds." },
-    { title: "Capital Gains Guidance", desc: "Strategic advice on tax-efficient reporting of property or equity sales." }
+    { title: "Emergency Contact List", desc: "A clear list of who to call first — family members, doctors, lawyers, and our team." },
+    { title: "Money Access Plan", desc: "Step-by-step guide for your family on which accounts to use and how to access funds." },
+    { title: "Document Checklist", desc: "All important documents organized and ready — insurance, bank papers, legal records." },
+    { title: "Action Steps Guide", desc: "Simple instructions for filing claims, starting bank succession, and handling legal steps." }
   ];
 
   const scenarios = [
-    { 
-      title: "Old Tax Notices Appearing", 
-      desc: "When a notice regarding a transaction from years ago suddenly appears in the portal, requiring immediate historical data mapping." 
+    {
+      title: "Sudden Medical Emergency",
+      desc: "Your parent is hospitalized and the family does not know which insurance to use or how to file a claim quickly."
     },
-    { 
-      title: "Incorrect TDS on Rent", 
-      desc: "When tenants fail to deposit correct TDS, creating a liability that needs professional rectification with the department." 
+    {
+      title: "After a Parent Passes Away",
+      desc: "The family is overwhelmed and does not know what documents are needed, which accounts to access, or what legal steps to take."
     }
   ];
 
   const emergency = [
-    { title: "Urgent Tax Notice", desc: "Immediate representation and response filing for high-priority or time-sensitive tax notices." },
-    { title: "Filing Deadline", desc: "Rapid processing for clients who have missed or are nearing critical statutory deadlines." }
+    { title: "Family Needs Help Now", desc: "When something happens and your family does not know what to do, we guide them through every step immediately." },
+    { title: "Money Access Blocked", desc: "When bank accounts are frozen or payments are stuck, we step in to get the money released quickly." }
   ];
 
   return (
@@ -69,11 +69,11 @@ export default function IncomeTax() {
       {/* 1. Hero (Dark) */}
       <div className="section-dark">
         <PageHeader
-          title="Stay Compliant With Indian Tax Laws"
-          subtitle="Moving beyond fragmented agents to institutional-grade stewardship for NRI family units."
+          title="Emergency Access: Your Family Will Know What to Do"
+          subtitle="We create a complete emergency plan so your family is never caught off guard when something happens."
           breadcrumbs={[
             { label: "Practice Areas", href: "/services" },
-            { label: "Income Tax" },
+            { label: "Emergency Access" },
           ]}
         />
       </div>
@@ -88,8 +88,8 @@ export default function IncomeTax() {
             variants={elegantFadeUp}
             className="text-center mb-20"
           >
-            <span className="accent-label text-red-500/80">Compliance Risks</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Navigating <br /><span className="text-[#1A1A1A]/80 italic">Tax Complexity.</span></h2>
+            <span className="accent-label text-red-500/80">What Goes Wrong</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">Why Families <br /><span className="text-[#1A1A1A]/80 italic">Struggle in Emergencies.</span></h2>
           </motion.div>
 
           <motion.div
@@ -122,12 +122,12 @@ export default function IncomeTax() {
               viewport={{ once: true }}
               variants={elegantFadeUp}
             >
-              <span className="accent-label text-accent">Institutional Compliance</span>
-              <h2 className="section-title text-[#FDFCFB] mb-8">Comprehensive <br /><span className="text-gradient-gold italic">Tax Stewardship.</span></h2>
+              <span className="accent-label text-accent">What We Prepare</span>
+              <h2 className="section-title text-[#FDFCFB] mb-8">Your Family's <br /><span className="text-gradient-gold italic">Emergency Plan.</span></h2>
               <p className="text-xl text-white/50 font-light mb-12 leading-relaxed">
-                We replace reactive filing with proactive stewardship. Our advisors map your 
-                entire Indian income footprint to ensure complete compliance and defense 
-                against algorithmic IT scrutiny.
+                We create a simple, clear plan so your family knows exactly what to do
+                in an emergency — who to call, how to access money, what documents to use,
+                and what steps to take.
               </p>
               
               <div className="space-y-6">
@@ -162,9 +162,9 @@ export default function IncomeTax() {
                 <div className="absolute bottom-10 left-10 right-10 p-10 glass-panel border-accent/20 backdrop-blur-3xl shadow-2xl">
                   <div className="flex items-center gap-3 mb-4">
                     <ShieldCheck className="w-5 h-5 text-accent" />
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-bold">Authorized Tax Protocol</span>
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-bold">Emergency Plan Ready</span>
                   </div>
-                  <p className="text-white text-lg font-serif italic leading-relaxed">"Building a clean tax footprint for your Indian family legacy."</p>
+                  <p className="text-white text-lg font-serif italic leading-relaxed">"Your family will never be caught unprepared when something happens."</p>
                 </div>
               </div>
             </motion.div>
@@ -182,8 +182,8 @@ export default function IncomeTax() {
             variants={elegantFadeUp}
             className="text-center mb-20"
           >
-            <span className="accent-label text-accent">Scenarios We Resolve</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Complexity <br /><span className="text-gradient-gold italic">Simplified.</span></h2>
+            <span className="accent-label text-accent">Situations We Prepare For</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">When Your Family <br /><span className="text-gradient-gold italic">Needs This Plan.</span></h2>
           </motion.div>
 
           <motion.div
@@ -214,10 +214,10 @@ export default function IncomeTax() {
             <div className="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-10 shadow-[0_0_30px_rgba(239,68,68,0.15)]">
               <Zap className="w-8 h-8 text-red-500 animate-pulse" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-serif text-[#FDFCFB] mb-8">Crisis <span className="text-red-500 italic">Protocols.</span></h2>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#FDFCFB] mb-8">When It <span className="text-red-500 italic">Happens.</span></h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              Urgent tax notices or account freezes require immediate expert intervention. 
-              Our response unit represents your family to restore compliance and liquidity.
+              When an emergency happens, your family needs help immediately.
+              We step in right away to guide them through every step.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -245,27 +245,27 @@ export default function IncomeTax() {
             variants={elegantFadeUp}
             className="text-center mb-24"
           >
-            <span className="accent-label text-accent">Strategic Tiers</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Service <span className="text-gradient-gold italic">Coverage.</span></h2>
+            <span className="accent-label text-accent">Our Plans</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">What Each Plan <span className="text-gradient-gold italic">Covers.</span></h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                tier: "Essential Care", 
+              {
+                tier: "Essential Care",
                 items: data.tierCoverage.essential,
-                bestFor: "Basic income tax filing & compliance guidance."
+                bestFor: "Basic emergency contacts and document list."
               },
-              { 
-                tier: "Comprehensive", 
+              {
+                tier: "Comprehensive",
                 items: data.tierCoverage.comprehensive,
-                bestFor: "Priority tax support & TDS reconciliation stewardship.",
+                bestFor: "Full emergency plan with money access guidance.",
                 highlight: true
               },
-              { 
-                tier: "Premium Legacy", 
+              {
+                tier: "Premium Legacy",
                 items: data.tierCoverage.premiumLegacy,
-                bestFor: "Full multi-asset tax management & notice resolution."
+                bestFor: "Complete crisis management and family guide."
               }
             ].map((plan, i) => (
               <div 
@@ -283,7 +283,7 @@ export default function IncomeTax() {
                 )}>{plan.tier}</h3>
                 <p className={cn(
                   "text-xs mb-10 leading-relaxed uppercase tracking-widest font-bold",
-                  plan.highlight ? "text-accent/80" : "text-[#1A1A1A]/90"
+                  plan.highlight ? "text-accent" : "text-[#1A1A1A]/90"
                 )}>{plan.bestFor}</p>
                 
                 <div className="space-y-6 flex-1 mb-12">
@@ -295,7 +295,7 @@ export default function IncomeTax() {
                       )} />
                       <span className={cn(
                         "text-[14px] font-light leading-snug",
-                        plan.highlight ? "text-white/80" : "text-[#1A1A1A]/90"
+                        plan.highlight ? "text-white" : "text-[#1A1A1A]/90"
                       )}>{item}</span>
                     </div>
                   ))}
@@ -328,14 +328,14 @@ export default function IncomeTax() {
             variants={elegantFadeUp}
             className="max-w-4xl mx-auto"
           >
-            <span className="accent-label text-accent">Initiate Stewardship</span>
+            <span className="accent-label text-accent">Get Started</span>
             <h2 className="display-title mb-10 !text-4xl md:!text-6xl text-[#FDFCFB]">
-              Ready to Secure Your <br />
-              <span className="text-gradient-gold italic">Family's Tax Footprint?</span>
+              Ready to Prepare Your <br />
+              <span className="text-gradient-gold italic">Family's Emergency Plan?</span>
             </h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              Book a confidential 30-minute review session. We will evaluate your family's 
-              Indian tax risks and demonstrate our professional stewardship roadmap.
+              Book a free 30-minute consultation. We will review your family's situation
+              and create an emergency plan so they are never caught off guard.
             </p>
             <Link href="/contact">
               <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">

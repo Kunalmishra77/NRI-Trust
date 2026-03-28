@@ -17,7 +17,7 @@ export default function WhyNRITrust() {
       <div className="section-dark">
         <PageHeader
           title="Why NRI Trust Exists"
-          subtitle="Moving beyond fragmented agents to institutional-grade stewardship for NRI families."
+          subtitle="One professional system to protect your parents' complete financial life in India."
           breadcrumbs={[{ label: "The Firm" }, { label: "Why NRI Trust" }]}
         />
       </div>
@@ -66,7 +66,7 @@ export default function WhyNRITrust() {
               <span className="text-gradient-gold italic">To Chance.</span>
             </h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              Book a confidential 30-minute review session. We will evaluate your current India-based risks and demonstrate our professional stewardship roadmap.
+              Book a confidential 30-minute review session. We will evaluate your current India-based risks and demonstrate our protection plan.
             </p>
             <Link href="/contact">
               <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">

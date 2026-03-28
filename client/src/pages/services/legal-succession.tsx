@@ -24,42 +24,42 @@ export default function LegalSuccession() {
   const legalRisks = [
     {
       title: "No Will",
-      desc: "In the absence of a registered Will, assets are governed by complex personal laws, often leading to unintended distribution.",
+      desc: "Without a registered Will, the law decides who gets what — and it may not be what your parents wanted.",
       icon: FileText
     },
     {
-      title: "Inheritance Disputes",
-      desc: "Ambiguous documentation or verbal promises often lead to multi-generational legal battles between heirs.",
+      title: "Family Disputes",
+      desc: "Unclear documents or verbal promises lead to fights between family members that can go on for years.",
       icon: Gavel
     },
     {
-      title: "Cross-border Heirs",
-      desc: "Coordinating legal formalities when heirs are scattered globally creates massive procedural deadlocks in India.",
+      title: "Family Living Abroad",
+      desc: "When heirs are in different countries, completing legal paperwork in India becomes extremely difficult.",
       icon: Users
     }
   ];
 
   const handleItems = [
-    { title: "Will Registration", desc: "Assisting in the drafting and formal registration of Wills to ensure clear asset transition." },
-    { title: "Succession Certificates", desc: "Preparation and filing for survival and succession certificates for bank and movable assets." },
-    { title: "Probate", desc: "Navigating the court process for probate to validate and execute family Wills." },
-    { title: "Power of Attorney", desc: "Drafting and registering PoA to enable professional management while you are abroad." }
+    { title: "Will Registration", desc: "We help draft and register your parents' Will so everything is legally clear." },
+    { title: "Succession Certificates", desc: "We prepare and file all certificates needed for bank and pension transfers." },
+    { title: "Probate", desc: "We handle the court process to get the Will approved and executed properly." },
+    { title: "Power of Attorney", desc: "We set up a legal Power of Attorney so someone trusted can manage things while you are abroad." }
   ];
 
   const scenarios = [
-    { 
-      title: "Parent Passes Without Will", 
-      desc: "Navigating the 'Intestate' succession process where multiple legal heirs must be identified and coordinated across time zones." 
+    {
+      title: "Parent Passes Without Will",
+      desc: "When there is no Will, all legal heirs need to be identified and coordinated — even if they are in different countries."
     },
-    { 
-      title: "Property Ownership Confusion", 
-      desc: "When ancestral property titles remain in the name of deceased grandparents, creating risks of encroachment or legal challenge." 
+    {
+      title: "Property Still in Grandparent's Name",
+      desc: "When property titles were never transferred from grandparents, creating risk of disputes or encroachment."
     }
   ];
 
   const emergencyCases = [
-    { title: "Court Notices", desc: "Sudden summons or notices regarding family property or ancestral disputes." },
-    { title: "Inheritance Disputes", desc: "Active challenges to family Wills or attempts to freeze asset transfers by distant relatives." }
+    { title: "Court Notices", desc: "A sudden court notice about family property or a family property dispute that needs immediate response." },
+    { title: "Family Disputes", desc: "A relative is challenging the Will or trying to block the transfer of assets." }
   ];
 
   return (
@@ -68,7 +68,7 @@ export default function LegalSuccession() {
       <div className="section-dark">
         <PageHeader
           title="Protect Your Family Legacy"
-          subtitle="Moving beyond fragmented agents to institutional-grade stewardship for NRI families."
+          subtitle="We set up proper nominees, register Wills, handle probate, and make sure your family avoids legal trouble."
           breadcrumbs={[
             { label: "Practice Areas", href: "/services" },
             { label: "Legal & Succession" },
@@ -86,8 +86,8 @@ export default function LegalSuccession() {
             variants={elegantFadeUp}
             className="text-center mb-20"
           >
-            <span className="accent-label text-red-500/80">The Cost of Ambiguity</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Hidden <br /><span className="text-[#1A1A1A]/80 italic">Legal Vulnerabilities.</span></h2>
+            <span className="accent-label text-red-500/80">Common Problems</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">Why Legal Issues <br /><span className="text-[#1A1A1A]/80 italic">Catch Families Off Guard.</span></h2>
           </motion.div>
 
           <motion.div
@@ -120,12 +120,12 @@ export default function LegalSuccession() {
               viewport={{ once: true }}
               variants={elegantFadeUp}
             >
-              <span className="accent-label text-accent">Professional Advocacy</span>
-              <h2 className="section-title text-[#FDFCFB] mb-8">Comprehensive <br /><span className="text-gradient-gold italic">Succession Stewardship.</span></h2>
+              <span className="accent-label text-accent">What We Do</span>
+              <h2 className="section-title text-[#FDFCFB] mb-8">Complete <br /><span className="text-gradient-gold italic">Legal & Succession Help.</span></h2>
               <p className="text-xl text-white/50 font-light mb-12 leading-relaxed">
-                Indian succession law is complex and procedural. We provide the physical liaison 
-                and legal expertise required to ensure your family's wishes are registered, 
-                protected, and executed with absolute precision.
+                Indian legal processes are complicated. We handle all the paperwork —
+                from registering Wills to getting succession certificates — so your family
+                doesn't have to deal with courts and lawyers alone.
               </p>
               
               <div className="space-y-6">
@@ -160,9 +160,9 @@ export default function LegalSuccession() {
                 <div className="absolute bottom-10 left-10 right-10 p-10 glass-panel border-accent/20 backdrop-blur-3xl shadow-2xl">
                   <div className="flex items-center gap-3 mb-4">
                     <ShieldCheck className="w-5 h-5 text-accent" />
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-bold">Authorized Fiduciary Protocol</span>
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-bold">Legal Protection Active</span>
                   </div>
-                  <p className="text-white text-lg font-serif italic leading-relaxed">"Preserving legacy by bridging the gap between Indian law and global NRIs."</p>
+                  <p className="text-white text-lg font-serif italic leading-relaxed">"We handle the legal work in India so your family is always protected."</p>
                 </div>
               </div>
             </motion.div>
@@ -180,8 +180,8 @@ export default function LegalSuccession() {
             variants={elegantFadeUp}
             className="text-center mb-20"
           >
-            <span className="accent-label text-accent">Scenarios We Resolve</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Navigating <br /><span className="text-gradient-gold italic">Family Complexity.</span></h2>
+            <span className="accent-label text-accent">Situations We Handle</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">Problems We <br /><span className="text-gradient-gold italic">Solve for Families.</span></h2>
           </motion.div>
 
           <motion.div
@@ -212,10 +212,10 @@ export default function LegalSuccession() {
             <div className="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-10 shadow-[0_0_30px_rgba(239,68,68,0.15)]">
               <Zap className="w-8 h-8 text-red-500 animate-pulse" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-serif text-[#FDFCFB] mb-8">Legal <span className="text-red-500 italic">Intervention.</span></h2>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#FDFCFB] mb-8">Emergency <span className="text-red-500 italic">Legal Help.</span></h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              Sudden legal challenges require immediate on-ground response. Our legal unit 
-              intervenes within 48 hours to secure family interests.
+              When a sudden court notice arrives or someone challenges your family's property,
+              we respond immediately to protect your interests.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -243,27 +243,27 @@ export default function LegalSuccession() {
             variants={elegantFadeUp}
             className="text-center mb-24"
           >
-            <span className="accent-label text-accent">Strategic Tiers</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Service <span className="text-gradient-gold italic">Coverage.</span></h2>
+            <span className="accent-label text-accent">Our Plans</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">What Each Plan <span className="text-gradient-gold italic">Covers.</span></h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                tier: "Essential Care", 
+              {
+                tier: "Essential Care",
                 items: data.tierCoverage.essential,
-                bestFor: "Basic legal document audits & succession guidance."
+                bestFor: "Basic legal document check and succession help."
               },
-              { 
-                tier: "Comprehensive", 
+              {
+                tier: "Comprehensive",
                 items: data.tierCoverage.comprehensive,
-                bestFor: "Will drafting & PoA management stewardship.",
+                bestFor: "Will drafting and Power of Attorney setup.",
                 highlight: true
               },
-              { 
-                tier: "Premium Legacy", 
+              {
+                tier: "Premium Legacy",
                 items: data.tierCoverage.premiumLegacy,
-                bestFor: "Full probate, court intervention & asset transition."
+                bestFor: "Complete succession planning, probate, and legal work."
               }
             ].map((plan, i) => (
               <div 
@@ -281,7 +281,7 @@ export default function LegalSuccession() {
                 )}>{plan.tier}</h3>
                 <p className={cn(
                   "text-xs mb-10 leading-relaxed uppercase tracking-widest font-bold",
-                  plan.highlight ? "text-accent/80" : "text-[#1A1A1A]/90"
+                  plan.highlight ? "text-accent" : "text-[#1A1A1A]/90"
                 )}>{plan.bestFor}</p>
                 
                 <div className="space-y-6 flex-1 mb-12">
@@ -293,7 +293,7 @@ export default function LegalSuccession() {
                       )} />
                       <span className={cn(
                         "text-[14px] font-light leading-snug",
-                        plan.highlight ? "text-white/80" : "text-[#1A1A1A]/90"
+                        plan.highlight ? "text-white" : "text-[#1A1A1A]/90"
                       )}>{item}</span>
                     </div>
                   ))}
@@ -326,14 +326,14 @@ export default function LegalSuccession() {
             variants={elegantFadeUp}
             className="max-w-4xl mx-auto"
           >
-            <span className="accent-label text-accent">Initiate Stewardship</span>
+            <span className="accent-label text-accent">Get Started</span>
             <h2 className="display-title mb-10 !text-4xl md:!text-6xl text-[#FDFCFB]">
-              Ready to Secure Your <br />
-              <span className="text-gradient-gold italic">Family Legacy in India?</span>
+              Ready to Protect Your <br />
+              <span className="text-gradient-gold italic">Family's Legal Future?</span>
             </h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              Book a confidential 30-minute review session. We will evaluate your family's 
-              legal standing and demonstrate our professional succession roadmap.
+              Book a free 30-minute consultation. We will check your family's legal situation
+              and show you exactly what needs to be done.
             </p>
             <Link href="/contact">
               <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">

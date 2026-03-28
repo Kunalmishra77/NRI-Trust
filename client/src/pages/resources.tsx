@@ -43,8 +43,8 @@ const articles = [
     id: 2,
     category: "legal",
     categoryLabel: "Succession",
-    title: "Registering a Will from Abroad: A Remote Protocol",
-    desc: "The definitive process for drafting, notarizing, and registering succession documents without traveling to India.",
+    title: "Registering a Will from Abroad: A Remote Process",
+    desc: "The complete process for drafting, notarizing, and registering succession documents without traveling to India.",
     readTime: "8 min read",
     featured: false,
     author: "Estate Lead"
@@ -84,7 +84,7 @@ const articles = [
     category: "insurance",
     categoryLabel: "Advocacy",
     title: "Navigating TPA Rejections in Medical Claims",
-    desc: "Professional advocacy techniques to overturn technical denials in health insurance claims for aging parents.",
+    desc: "How to get rejected insurance claims approved for your aging parents' health insurance.",
     readTime: "9 min read",
     featured: false,
     author: "Claims Advocate"
@@ -106,7 +106,7 @@ export default function Resources() {
       <div className="section-dark">
         <PageHeader
           title="NRI Guides"
-          subtitle="Institutional-grade intelligence for the global Indian family unit."
+          subtitle="Practical guides to help NRI families manage their parents' finances in India."
           breadcrumbs={[{ label: "The Firm", href: "/why-nri-trust" }, { label: "Library" }]}
         />
       </div>
@@ -278,7 +278,7 @@ export default function Resources() {
         <div className="max-container relative z-10 text-center">
           <div className="max-w-2xl mx-auto">
             <span className="accent-label text-accent">Stay Briefed</span>
-            <h2 className="section-title text-[#1A1A1A] mb-8">Receive Institutional <br /><span className="text-gradient-gold italic">Intelligence.</span></h2>
+            <h2 className="section-title text-[#1A1A1A] mb-8">Get Practical <br /><span className="text-gradient-gold italic">Guides.</span></h2>
             <p className="text-lg text-[#1A1A1A]/90 font-light mb-12">
               Monthly technical updates on Indian regulation changes impacting global families. 
               No marketing. Strictly operational briefs.
@@ -286,7 +286,7 @@ export default function Resources() {
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input 
                 type="email" 
-                placeholder="Institutional Email" 
+                placeholder="Your Email" 
                 className="flex-1 bg-white border border-black/10 rounded-full px-8 py-4 text-sm text-[#1A1A1A] focus:outline-none focus:border-accent/40 shadow-sm transition-all"
               />
               <button className="btn-premium-primary whitespace-nowrap !h-14">
@@ -314,7 +314,7 @@ export default function Resources() {
             </h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
               These guides outline the landscape. Our private review session secures your units. 
-              Initiate your family's stewardship roadmap today.
+              Start protecting your family's finances today.
             </p>
             <Link href="/contact">
               <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-lg">

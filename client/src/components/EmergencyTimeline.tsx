@@ -6,33 +6,33 @@ import { cn } from "@/lib/utils";
 
 const emergencySteps = [
   {
-    time: "T + 02 Hours",
-    title: "Crisis Triage",
-    desc: "Confidential intake and immediate risk assessment. Our legal and financial directors evaluate the deadlock or emergency within 120 minutes of engagement.",
+    time: "Step 1",
+    title: "Who to Contact",
+    desc: "We give you a clear list of emergency contacts — family members, doctors, lawyers, and our team. No confusion about who to call first.",
     icon: Clock,
     color: "text-red-500",
     bg: "bg-red-500/10"
   },
   {
-    time: "T + 12 Hours",
-    title: "Physical Dispatch",
-    desc: "Authorized physical presence deployed. Our local representatives reach the bank branch, property site, or legal office to initiate ground-level resolution.",
+    time: "Step 2",
+    title: "How to Access Money",
+    desc: "We make sure your family knows which bank accounts to use, where the documents are, and how to withdraw funds quickly during an emergency.",
     icon: Zap,
     color: "text-orange-500",
     bg: "bg-orange-500/10"
   },
   {
-    time: "T + 24 Hours",
-    title: "Resolution Track",
-    desc: "Direct liaison with institution heads. We bypass standard customer service queues, moving your case directly to managerial or specialized legal oversight.",
+    time: "Step 3",
+    title: "What Documents Are Needed",
+    desc: "Insurance policies, death certificates, bank papers, property documents — we prepare a checklist so nothing is missed when it matters most.",
     icon: UserCheck,
     color: "text-red-600",
     bg: "bg-red-600/10"
   },
   {
-    time: "T + 48 Hours",
-    title: "Final Closure",
-    desc: "Documented resolution and audit trail. The emergency is cleared, and a full executive report is filed in your family portal for absolute accountability.",
+    time: "Step 4",
+    title: "What Steps to Take",
+    desc: "A simple, step-by-step guide for your family — from filing insurance claims to starting bank succession. No guesswork, no legal surprises.",
     icon: ShieldCheck,
     color: "text-red-700",
     bg: "bg-red-700/10"
@@ -71,8 +71,8 @@ export default function EmergencyTimeline() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="max-w-4xl">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-sans font-black tracking-tight leading-[1.1] text-[#1A1A1A]">
-              Rapid Response Protocol: <span className="text-red-600 italic">Emergencies Don’t Wait.</span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-sans font-black tracking-tight leading-[1.1] text-[#1A1A1A]">
+              Emergency Preparedness: <span className="text-red-600">Your Family Will Know What to Do.</span>
             </h2>
           </div>
           <Link href="/emergency-response">
@@ -80,7 +80,7 @@ export default function EmergencyTimeline() {
               whileHover={{ scale: 1.05 }}
               className="px-8 py-4 rounded-full border border-[#1A1A1A]/10 bg-white/50 backdrop-blur-xl text-[#1A1A1A] font-bold text-xs uppercase tracking-widest flex items-center gap-3 hover:bg-[#1A1A1A] hover:text-white transition-all duration-500 shadow-sm"
             >
-              View Full Protocol <ArrowRight className="w-4 h-4" />
+              See Full Plan <ArrowRight className="w-4 h-4" />
             </motion.button>
           </Link>
         </div>
@@ -124,7 +124,7 @@ export default function EmergencyTimeline() {
                       {emergencySteps[activeIndex].time}
                     </span>
                     
-                    <h3 className="text-4xl md:text-6xl font-sans font-black text-[#1A1A1A] mb-8 tracking-tighter">
+                    <h3 className="text-2xl md:text-4xl font-sans font-black text-[#1A1A1A] mb-8 tracking-tighter">
                       {emergencySteps[activeIndex].title}
                     </h3>
                     

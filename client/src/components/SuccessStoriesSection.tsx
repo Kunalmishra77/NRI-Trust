@@ -5,32 +5,32 @@ import { cn } from "@/lib/utils";
 
 const cases = [
   {
-    category: "Legal & Succession",
-    title: "Estate Probate Resolved Remotely",
-    location: "The Kapoor Family • UK",
-    problem: "Ancestral assets frozen across three Indian states due to an unregistered Will and missing legal heirs.",
-    resolution: "Professional directors acted as physical proxies, coordinating 14 legal hearings and consolidating assets into a single family trust.",
-    impact: "₹12Cr Assets Unlocked",
+    category: "Insurance Gap",
+    title: "Insurance Gap Caught Before Emergency",
+    location: "The Mehta Family • USA",
+    problem: "Parents had outdated health insurance with low coverage. A sudden hospitalization would have cost the family lakhs out of pocket.",
+    resolution: "NRI Trust reviewed all policies, identified the gap, and upgraded coverage 3 months before the father was hospitalized. Full claim was processed.",
+    impact: "Full Coverage When It Mattered",
     statIcon: TrendingUp,
     accent: "text-blue-500"
   },
   {
-    category: "Property Governance",
-    title: "Encroachment Defended in Absentia",
-    location: "The Menon Family • Singapore",
-    problem: "Ancestral property targeted by local land-grabbers using forged utility documents while the family was abroad.",
-    resolution: "Immediate physical dispatch of security and legal team. Established 24/7 ground monitoring and secured local police protection.",
-    impact: "Title Secured Permanently",
+    category: "Smooth Succession",
+    title: "No Legal Issues After Father's Passing",
+    location: "The Iyer Family • Singapore",
+    problem: "Father passed away suddenly. Family had no idea about bank accounts, nominees, or what documents were needed.",
+    resolution: "NRI Trust had already organized everything — nominees were correct, documents were ready, and bank succession happened in days instead of months.",
+    impact: "Succession in 5 Days",
     statIcon: Target,
     accent: "text-orange-500"
   },
   {
-    category: "Tax & Compliance",
-    title: "₹45L Tax Demand Rectified",
-    location: "The Sharma Family • USA",
-    problem: "Sudden NRO account freeze and heavy penalty notices for 'undisclosed' high-value foreign remittances.",
-    resolution: "Reconstructed 10 years of bank records. Direct liaison with the IT ombudsman to prove source of funds and clear all liabilities.",
-    impact: "Penalty Zeroed",
+    category: "Property Documents",
+    title: "Property Transfer Without Legal Trouble",
+    location: "The Reddy Family • Australia",
+    problem: "Property papers were scattered across relatives, some documents were outdated, and mutation records were incomplete.",
+    resolution: "NRI Trust tracked down every document, updated records, and organized everything. When the family needed to transfer the property, there were zero legal complications.",
+    impact: "Clean Transfer, No Delays",
     statIcon: ShieldCheck,
     accent: "text-green-600"
   }
@@ -54,12 +54,12 @@ export default function SuccessStoriesSection() {
             >
               <Activity className="w-4 h-4 text-[#d4af37]" />
               <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-[#d4af37]">
-                Fiduciary Track Record
+                Real Family Stories
               </span>
             </motion.div>
-            <h2 className="text-5xl md:text-7xl font-sans font-black text-white leading-tight tracking-tight">
-              Real Impact for <br />
-              <span className="text-white/40">Global Families.</span>
+            <h2 className="text-3xl md:text-5xl font-sans font-black text-white leading-tight tracking-tight">
+              How We Helped <br />
+              <span className="text-white/40">Real Families.</span>
             </h2>
           </div>
           
@@ -72,7 +72,7 @@ export default function SuccessStoriesSection() {
               ))}
             </div>
             <p className="text-[11px] font-mono font-bold uppercase tracking-widest text-white/40 leading-tight text-left">
-              Active Stewardship <br/> 200+ Elite Portfolios
+              Active Protection <br/> 200+ Elite Portfolios
             </p>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function SuccessStoriesSection() {
                           whileHover={{ scale: 1.05 }}
                           className="flex items-center gap-4 px-8 py-4 rounded-full border border-white/10 bg-white/5 text-white text-[11px] font-mono font-black uppercase tracking-[0.2em] shadow-2xl transition-all hover:bg-white hover:text-black"
                         >
-                          Protocol Detail
+                          Full Details
                           <ArrowRight className="w-4 h-4 text-[#d4af37]" />
                         </motion.button>
                       </Link>

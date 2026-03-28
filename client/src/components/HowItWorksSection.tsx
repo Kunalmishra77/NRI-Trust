@@ -10,7 +10,7 @@ export default function HowItWorksSection({ theme = 'dark' }: { theme?: 'dark' |
    icon: CalendarCheck,
    number: "01",
    title: "Complimentary Review Session",
-   description: "We assess your parents’ financial and legal situation to understand the scope of support needed.",
+   description: "We assess your parents' financial and legal situation to understand the scope of support needed.",
   },
   {
    icon: FileSearch,
@@ -22,7 +22,7 @@ export default function HowItWorksSection({ theme = 'dark' }: { theme?: 'dark' |
    icon: UserCheck,
    number: "03",
    title: "Onboarding",
-   description: "We collect necessary documents, establish points of contact, and set up your parents’ care profile.",
+   description: "We collect necessary documents, establish points of contact, and set up your parents' care profile.",
   },
   {
    icon: ShieldCheck,
@@ -74,7 +74,7 @@ export default function HowItWorksSection({ theme = 'dark' }: { theme?: 'dark' |
       <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light">Parents' Well-Being.</span>
      </h2>
      <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
-      A structured, 4-step journey to transition from fragmented handling to institutional-grade care.
+      A structured, 4-step journey to transition from fragmented handling to professional care.
      </p>
     </motion.div>
 

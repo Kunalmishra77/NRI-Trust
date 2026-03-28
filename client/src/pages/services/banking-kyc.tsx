@@ -22,39 +22,39 @@ export default function BankingKyc() {
 
   const problems = [
     {
-      title: "Missed KYC Cycles",
-      desc: "Banks now use automated algorithms to freeze accounts if KYC is not updated within strict windows.",
+      title: "KYC Not Updated",
+      desc: "Banks freeze accounts if KYC documents are not updated on time. Many parents miss these deadlines.",
       icon: Clock
     },
     {
-      title: "Dormant Status",
-      desc: "Accounts with no transaction for 24 months are flagged as 'Dormant', requiring physical branch visits to reactivate.",
+      title: "Dormant Accounts",
+      desc: "If no transaction happens for 24 months, the account becomes dormant. Reactivating it requires a physical branch visit.",
       icon: UserX
     },
     {
-      title: "Nomination Gaps",
-      desc: "Missing or outdated nominations create massive legal hurdles for families during wealth transition.",
+      title: "Missing Nominees",
+      desc: "Old accounts often have no nominee listed. This creates serious legal problems if something happens to your parents.",
       icon: AlertCircle
     }
   ];
 
   const handleItems = [
-    { title: "KYC Renewals", desc: "Authorized physical liaison for periodic KYC updates." },
-    { title: "Account Reactivation", desc: "Restoring dormant accounts without parent travel." },
-    { title: "Bank Liaison", desc: "Direct coordination with branch managers for complex issues." },
-    { title: "FD Renewals", desc: "Managing maturity instructions and tax-efficient reinvestment." },
-    { title: "Digital Banking Setup", desc: "Assisting seniors with secure net-banking and mobile app access." }
+    { title: "KYC Updates", desc: "We visit the bank and update KYC documents so accounts stay active." },
+    { title: "Account Reactivation", desc: "We reactivate dormant accounts so your parents don't have to visit the bank." },
+    { title: "Bank Coordination", desc: "We work directly with branch managers to resolve any banking issues." },
+    { title: "FD Renewals", desc: "We handle fixed deposit maturity and reinvestment so nothing expires unnoticed." },
+    { title: "Digital Banking Help", desc: "We help your parents set up and use net-banking and mobile banking safely." }
   ];
 
   const scenarios = [
-    { title: "Parent Cannot Visit Branch", desc: "When health or mobility prevents seniors from fulfilling 'In-person' banking mandates." },
-    { title: "Multiple Bank Accounts", desc: "Fragmented accounts across different cities and banks with varying compliance status." },
-    { title: "Nomination Missing", desc: "Accounts opened decades ago that lack clear, verified nominee documentation." }
+    { title: "Parent Cannot Visit Branch", desc: "When your parents are too old or unwell to go to the bank for mandatory in-person requirements." },
+    { title: "Multiple Bank Accounts", desc: "Accounts spread across different cities and banks, each with different KYC and compliance status." },
+    { title: "Nominee Not Listed", desc: "Old accounts opened decades ago where no nominee was ever added or the nominee details are wrong." }
   ];
 
   const emergencies = [
-    { title: "Account Frozen", desc: "Sudden loss of access to pension or expense funds due to regulatory flags." },
-    { title: "Urgent Transfer Blocked", desc: "Critical medical or property payments stalled by bank security protocols." }
+    { title: "Account Frozen", desc: "Your parents suddenly cannot access their pension or expense money because the bank flagged the account." },
+    { title: "Payment Blocked", desc: "An urgent medical or property payment is stuck because the bank blocked the transfer." }
   ];
 
   return (
@@ -62,8 +62,8 @@ export default function BankingKyc() {
       {/* 1. Hero (Dark) */}
       <div className="section-dark">
         <PageHeader
-          title="Keep Your Parents’ Bank Accounts Active and Compliant"
-          subtitle="Moving beyond fragmented agents to institutional-grade stewardship for NRI families."
+          title="Keep Your Parents' Bank Accounts Active and Compliant"
+          subtitle="We find all scattered bank accounts, update KYC, fix nominees, and organize everything in one place."
           breadcrumbs={[
             { label: "Practice Areas", href: "/services" },
             { label: "Banking & KYC" },
@@ -115,11 +115,11 @@ export default function BankingKyc() {
               viewport={{ once: true }}
               variants={elegantFadeUp}
             >
-              <span className="accent-label text-accent">Our Stewardship Scope</span>
-              <h2 className="section-title text-[#FDFCFB] mb-8">Comprehensive <br /><span className="text-gradient-gold italic">Domain Management.</span></h2>
+              <span className="accent-label text-accent">What We Do</span>
+              <h2 className="section-title text-[#FDFCFB] mb-8">Complete <br /><span className="text-gradient-gold italic">Banking Management.</span></h2>
               <p className="text-xl text-white/90 font-light mb-12 leading-relaxed">
-                We act as your family's personal CFO in India, providing the physical liaison required 
-                to navigate complex banking bureaucracies without your parents having to leave home.
+                We handle all the bank work in India so your parents don't have to.
+                From KYC updates to nominee corrections — we visit the bank on their behalf.
               </p>
               
               <div className="space-y-6">
@@ -154,9 +154,9 @@ export default function BankingKyc() {
                 <div className="absolute bottom-10 left-10 right-10 p-10 glass-panel border-accent/20 backdrop-blur-3xl shadow-2xl">
                   <div className="flex items-center gap-3 mb-4">
                     <ShieldCheck className="w-5 h-5 text-accent" />
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-bold">Authorized Fiduciary Protocol</span>
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-bold">Banking Protection Active</span>
                   </div>
-                  <p className="text-white text-lg font-serif italic leading-relaxed">"Restoring parent mobility by managing the complexity behind the scenes."</p>
+                  <p className="text-white text-lg font-serif italic leading-relaxed">"We handle the bank visits so your parents can stay comfortable at home."</p>
                 </div>
               </div>
             </motion.div>
@@ -174,8 +174,8 @@ export default function BankingKyc() {
             variants={elegantFadeUp}
             className="text-center mb-20"
           >
-            <span className="accent-label text-accent">Scenarios We Resolve</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Complexity <br /><span className="text-[#1A1A1A] italic">Simplified.</span></h2>
+            <span className="accent-label text-accent">Situations We Handle</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">Problems We <br /><span className="text-[#1A1A1A] italic">Solve.</span></h2>
           </motion.div>
 
           <motion.div
@@ -206,10 +206,10 @@ export default function BankingKyc() {
             <div className="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-10 shadow-[0_0_30px_rgba(239,68,68,0.15)]">
               <Zap className="w-8 h-8 text-red-500 animate-pulse" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-serif text-[#FDFCFB] mb-8">Crisis <span className="text-red-500 italic">Protocols.</span></h2>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#FDFCFB] mb-8">Emergency <span className="text-red-500 italic">Response.</span></h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              In financial emergencies, every hour counts. Our rapid response team skips 
-              automated queues to resolve liquidity blocks at the source.
+              When your parents cannot access their money, every hour matters. We step in
+              immediately to get accounts unblocked and payments released.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -237,27 +237,27 @@ export default function BankingKyc() {
             variants={elegantFadeUp}
             className="text-center mb-24"
           >
-            <span className="accent-label text-accent">Strategic Tiers</span>
-            <h2 className="section-title text-[#1A1A1A] mb-6">Service <span className="text-gradient-gold italic">Coverage.</span></h2>
+            <span className="accent-label text-accent">Our Plans</span>
+            <h2 className="section-title text-[#1A1A1A] mb-6">What Each Plan <span className="text-gradient-gold italic">Covers.</span></h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                tier: "Essential Care", 
+              {
+                tier: "Essential Care",
                 items: data.tierCoverage.essential,
-                bestFor: "Basic financial & insurance compliance."
+                bestFor: "Basic KYC and banking compliance help."
               },
-              { 
-                tier: "Comprehensive", 
+              {
+                tier: "Comprehensive",
                 items: data.tierCoverage.comprehensive,
-                bestFor: "Active property and banking stewardship.",
+                bestFor: "Full KYC updates, nominees, and account monitoring.",
                 highlight: true
               },
-              { 
-                tier: "Premium Legacy", 
+              {
+                tier: "Premium Legacy",
                 items: data.tierCoverage.premiumLegacy,
-                bestFor: "Full family estate & asset management."
+                bestFor: "Complete banking and fixed deposit management."
               }
             ].map((plan, i) => (
               <div 
@@ -320,14 +320,14 @@ export default function BankingKyc() {
             variants={elegantFadeUp}
             className="max-w-4xl mx-auto"
           >
-            <span className="accent-label text-accent">Initiate Stewardship</span>
+            <span className="accent-label text-accent">Get Started</span>
             <h2 className="display-title mb-10 !text-4xl md:!text-6xl text-[#FDFCFB]">
-              Ready to Secure Your <br />
-              <span className="text-gradient-gold italic">Family's Indian Assets?</span>
+              Ready to Organize Your <br />
+              <span className="text-gradient-gold italic">Parents' Bank Accounts?</span>
             </h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              Book a confidential 30-minute review session. We will evaluate your parents' current 
-              banking risks and demonstrate our professional stewardship roadmap.
+              Book a free 30-minute consultation. We will check your parents' bank accounts
+              and show you exactly what needs to be fixed.
             </p>
             <Link href="/contact">
               <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">

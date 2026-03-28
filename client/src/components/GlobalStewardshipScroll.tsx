@@ -8,46 +8,46 @@ gsap.registerPlugin(ScrollTrigger);
 
 const pillars = [
   {
-    title: "Global Custody",
-    desc: "Institutional-grade oversight of your Indian assets, monitored from every timezone.",
+    title: "Insurance Checked",
+    desc: "We review your parents' health and life insurance to make sure there are no gaps in coverage.",
     number: "01",
     icon: Globe,
-    stat: "40+ Countries Covered"
+    stat: "Coverage Verified"
   },
   {
-    title: "Fiduciary Trust",
-    desc: "Acting as your professional proxy for bank KYC, legal probate, and property disputes.",
+    title: "Accounts Organized",
+    desc: "We find all scattered bank accounts, update KYC, and fix nominees so nothing is missed.",
     number: "02",
     icon: Shield,
-    stat: "₹500Cr+ Under Advisory"
+    stat: "All Accounts Tracked"
   },
   {
-    title: "Legacy Security",
-    desc: "Ensuring your parents' financial peace is never compromised by administrative gaps.",
+    title: "Documents Secured",
+    desc: "Property papers, insurance policies, legal records — everything organized and accessible.",
     number: "03",
     icon: Lock,
-    stat: "24/7 Response Active"
+    stat: "Documents Safe"
   },
   {
-    title: "Tax Stewardship",
-    desc: "Coordinating complex NRI tax compliance and strategic repatriation of Indian capital.",
+    title: "Nominees Updated",
+    desc: "We check and correct nominee details across all bank accounts and insurance policies.",
     number: "04",
     icon: Landmark,
-    stat: "Compliance Optimized"
+    stat: "Nominees Verified"
   },
   {
-    title: "Physical Advocacy",
-    desc: "On-the-ground authorized presence for property inspections and institutional liaison.",
+    title: "Emergency Plan Ready",
+    desc: "A clear plan for your family — who to contact, how to access money, what steps to take.",
     number: "05",
     icon: Zap,
-    stat: "Ground Teams Ready"
+    stat: "Plan Activated"
   },
   {
-    title: "Risk Governance",
-    desc: "Proactive monitoring of legal notices and bank status to prevent asset freezes.",
+    title: "Legal Transfer Ready",
+    desc: "Succession certificates, Wills, and probate — everything prepared so there are no legal battles.",
     number: "06",
     icon: ShieldAlert,
-    stat: "Absolute Oversight"
+    stat: "Legally Prepared"
   }
 ];
 
@@ -97,7 +97,7 @@ export default function GlobalStewardshipScroll() {
     >
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full pointer-events-none select-none overflow-hidden opacity-[0.03]">
         <h2 className="bg-text-scroll text-[25vw] font-black font-sans whitespace-nowrap leading-none tracking-tighter text-white">
-          STEWARDSHIP
+          PROTECTION
         </h2>
       </div>
 
@@ -109,14 +109,14 @@ export default function GlobalStewardshipScroll() {
               whileInView={{ opacity: 1, y: 0 }}
               className="accent-label text-[#d4af37] font-bold"
             >
-              The Institutional Standard
+              Our Promise
             </motion.span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-sans font-black tracking-tight text-white leading-tight">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-sans font-black tracking-tight text-white leading-tight">
               Managed Locally. <span className="text-[#d4af37]">Trusted Globally.</span>
             </h2>
           </div>
           <p className="text-lg text-white/40 max-w-sm font-medium leading-relaxed pb-2 text-left">
-            Professional fiduciary presence on the ground in India, bridging the 10,000-mile gap.
+            We are physically present in India to manage everything your parents need.
           </p>
         </div>
 

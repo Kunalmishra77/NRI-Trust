@@ -19,7 +19,7 @@ export default function SuccessStories() {
       title: "Tax Notice Resolved",
       problem: "A high-value Section 148 notice was issued for transactions dating back 6 years, which the NRI client was unaware of.",
       risk: "A potential penalty of ₹45L and the immediate freezing of all Indian NRO accounts.",
-      help: "Our tax stewardship team reconstructed 6 years of financial history, established DTAA residency proof, and represented the client before the IT department.",
+      help: "Our tax team reconstructed 6 years of financial history, established DTAA residency proof, and represented the client before the IT department.",
       result: "Liability reduced by 85%, and the case was closed without any bank account disruptions.",
       icon: TrendingUp
     },
@@ -37,7 +37,7 @@ export default function SuccessStories() {
       title: "Insurance Claim Approved",
       problem: "A health insurance claim for a senior parent's heart surgery was rejected three times by the TPA citing 'pre-existing conditions'.",
       risk: "₹8.5L in urgent out-of-pocket medical expenses that the family had to bear unexpectedly.",
-      help: "Our advocacy team conducted a medical-legal audit of the policy, re-filed the claim with corrected hospital documentation, and escalated to the Ombudsman.",
+      help: "Our team reviewed the medical records and insurance policies, re-filed the claim with corrected hospital documentation, and escalated to the Ombudsman.",
       result: "The full claim amount was credited to the client's account within 14 days of our intervention.",
       icon: CheckCircle2
     },
@@ -187,7 +187,7 @@ export default function SuccessStories() {
               <span className="text-gradient-gold italic">Success Story.</span>
             </h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
-              Don't wait for a crisis to initiate professional stewardship. Book your private review session today.
+              Don't wait for a crisis to get professional help. Book your private review session today.
             </p>
             <Link href="/contact">
               <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-lg">

@@ -8,16 +8,16 @@ import { Shield, Users, Globe, Award, HeartHandshake, Eye, Scale, Briefcase, Loc
 
 export default function About() {
  const highlights = [
-  { icon: Shield, number: "Fiduciary", label: "Legal Responsibility" },
+  { icon: Shield, number: "Trusted", label: "Legal Responsibility" },
   { icon: Users, number: "200+", label: "Elite NRI Families" },
   { icon: Globe, number: "40+", label: "Jurisdictions" },
-  { icon: Award, number: "since 2020", label: "Stewardship Active" },
+  { icon: Award, number: "since 2020", label: "Protection Active" },
  ];
 
  const operatingPrinciples = [
   {
    icon: Briefcase,
-   title: "Consolidated Lead",
+   title: "Combined Lead",
    description: "One senior advisor who understands your family's entire India-based asset footprint. No more repeating your story to different agents."
   },
   {
@@ -27,7 +27,7 @@ export default function About() {
   },
   {
    icon: Scale,
-   title: "Escalation Protocol",
+   title: "Escalation Process",
    description: "When legal or financial deadlocks occur, we have an immediate escalation path to senior legal counsel and banking ombudsmen."
   },
   {
@@ -42,7 +42,7 @@ export default function About() {
    {/* SECTION 1: DARK HERO */}
    <div className="section-dark">
     <PageHeader
-     title="The Stewardship Mission"
+     title="Our Mission"
      subtitle="A private advisory bridge for global Indian families who prioritize legacy and absolute peace of mind."
      breadcrumbs={[{ label: "The Firm" }]}
     />
@@ -134,7 +134,7 @@ export default function About() {
     </div>
    </section>
 
-   {/* SECTION 5: DARK FIDUCIARY VOW */}
+   {/* SECTION 5: DARK TRUST VOW */}
    <section className="section-padding section-dark">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(207,160,82,0.05)_0%,transparent_70%)] pointer-events-none" />
     <div className="max-container relative z-10 text-center">
@@ -143,10 +143,10 @@ export default function About() {
        <Lock className="w-8 h-8 text-accent opacity-80" />
       </div>
       <h2 className="display-title !text-3xl md:!text-5xl italic font-light text-[#FDFCFB] mb-16 leading-snug tracking-tight">
-       &ldquo;To act with absolute discretion, to manage every family asset as our own, and to ensure that distance never compromises the legacy you've built.&rdquo;
+       &ldquo;To act with complete privacy, to manage every family asset as our own, and to ensure that distance never compromises the legacy you've built.&rdquo;
       </h2>
       <div className="h-px w-24 bg-accent/40 mx-auto" />
-      <div className="mt-8 text-[11px] font-mono uppercase tracking-[0.4em] text-accent font-bold">The Fiduciary Oath</div>
+      <div className="mt-8 text-[11px] font-mono uppercase tracking-[0.4em] text-accent font-bold">Our Promise</div>
      </motion.div>
     </div>
    </section>
@@ -163,12 +163,12 @@ export default function About() {
       <span className="accent-label text-accent">Ready to Engage</span>
       <h2 className="display-title mb-10 text-[#FDFCFB]">Secure Your Family's <br /><span className="text-gradient-gold italic">Indian Legacy Today.</span></h2>
       <p className="text-xl text-white/90 font-light mb-16 leading-relaxed">
-       Initiate a confidential review session to evaluate your family's current India-based risks and build a professional stewardship roadmap.
+       Book a free consultation to review your parents' financial situation in India and create a protection plan.
       </p>
       <div className="flex justify-center">
        <Link href="/contact">
         <button className="btn-premium-primary min-w-[320px]">
-         <span>Initiate Discovery Session</span>
+         <span>Book Free Consultation</span>
         </button>
        </Link>
       </div>

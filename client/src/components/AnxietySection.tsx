@@ -7,50 +7,50 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const anxieties = [
   {
-    title: "Tax Scrutiny",
-    problem: "Sudden show-cause notices on legacy accounts.",
-    impact: "Frozen liquidity & penalties.",
-    icon: ShieldAlert,
-    color: "rgba(239, 68, 68, 0.2)",
-    href: "/services/income-tax"
-  },
-  {
-    title: "Frozen Assets",
-    problem: "KYC non-compliance leading to blocked savings.",
-    impact: "Zero medical emergency access.",
-    icon: Landmark,
-    color: "rgba(249, 115, 22, 0.2)",
-    href: "/services/banking-kyc"
-  },
-  {
-    title: "Tenant Deadlock",
-    problem: "Refusal to vacate ancestral property.",
-    impact: "Loss of property control.",
-    icon: Home,
-    color: "rgba(245, 158, 11, 0.2)",
-    href: "/services/property-tenancy"
-  },
-  {
-    title: "Legacy Erosion",
-    problem: "Lack of registered Wills causing locking.",
-    impact: "Generational wealth erosion.",
-    icon: FileText,
-    color: "rgba(220, 38, 38, 0.2)",
-    href: "/services/legal-succession"
-  },
-  {
-    title: "Health Denials",
-    problem: "Insurance claim rejected due to gaps.",
-    impact: "Huge out-of-pocket expenses.",
+    title: "Underinsured",
+    problem: "Your parents may be underinsured without knowing it.",
+    impact: "No cover when it matters most.",
     icon: Heart,
     color: "rgba(244, 63, 94, 0.2)",
     href: "/services/insurance"
   },
   {
-    title: "Utility Cutoffs",
-    problem: "Municipal tax lapses causing disconnection.",
-    impact: "Hardship for elderly parents.",
+    title: "Scattered Accounts",
+    problem: "Multiple bank accounts may be scattered and untracked.",
+    impact: "Money stuck, no one knows where.",
+    icon: Landmark,
+    color: "rgba(249, 115, 22, 0.2)",
+    href: "/services/banking-kyc"
+  },
+  {
+    title: "Missing Documents",
+    problem: "Property documents may not be updated or accessible.",
+    impact: "Legal trouble during transfer.",
+    icon: FileText,
+    color: "rgba(245, 158, 11, 0.2)",
+    href: "/services/property-tenancy"
+  },
+  {
+    title: "Wrong Nominees",
+    problem: "Nominees may be missing or incorrect across accounts.",
+    impact: "Family can't access funds.",
+    icon: ShieldAlert,
+    color: "rgba(220, 38, 38, 0.2)",
+    href: "/services/legal-succession"
+  },
+  {
+    title: "No Emergency Plan",
+    problem: "In an emergency, no one knows what to do.",
+    impact: "Panic and costly delays.",
     icon: Zap,
+    color: "rgba(239, 68, 68, 0.2)",
+    href: "/services/insurance"
+  },
+  {
+    title: "Hidden Problems",
+    problem: "These problems stay hidden — until a crisis exposes everything.",
+    impact: "Family struggles at the worst time.",
+    icon: Home,
     color: "rgba(234, 179, 8, 0.2)",
     href: "/services/property-tenancy"
   }
@@ -193,7 +193,7 @@ function CircularOrbitCard({
           
           <Link href={item.href}>
             <button className="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white text-[#050914] font-bold text-[7px] md:text-[9px] uppercase tracking-widest flex items-center gap-2 shadow-xl hover:scale-105 transition-transform">
-              Protocol <ArrowUpRight className="w-2.5 h-2.5 md:w-3 md:h-3" />
+              Learn More <ArrowUpRight className="w-2.5 h-2.5 md:w-3 md:h-3" />
             </button>
           </Link>
         </div>

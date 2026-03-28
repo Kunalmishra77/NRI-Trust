@@ -7,7 +7,7 @@ import HeroForm from "./HeroForm";
 // --- REUSABLE ANIMATION CONSTANTS ---
 const EASE_PREMIUM = [0.16, 1, 0.3, 1];
 
-const SLIDING_WORDS = ["Financial Peace", "Health Security", "Legal Control", "Global Legacy"];
+const SLIDING_WORDS = ["Insurance", "Bank Accounts", "Property", "Legal Risks"];
 
 export default function HeroSection() {
   const [index, setIndex] = useState(0);
@@ -66,14 +66,14 @@ export default function HeroSection() {
           >
             {/* Main Headline with Sliding Text */}
             <div className="space-y-2 mb-10">
-              <motion.h1 
+              <motion.h1
                 variants={revealVariants}
-                className="text-3xl md:text-6xl xl:text-7xl font-sans font-black leading-tight tracking-tight text-white drop-shadow-2xl"
+                className="text-2xl md:text-4xl xl:text-5xl font-sans font-black leading-tight tracking-tight text-white drop-shadow-2xl"
               >
-                Your Parents'
+                Protect Your Parents'
               </motion.h1>
               
-              <div className="h-[50px] md:h-[80px] xl:h-[100px] relative overflow-hidden">
+              <div className="h-[36px] md:h-[56px] xl:h-[68px] relative overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={index}
@@ -83,27 +83,27 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, ease: EASE_PREMIUM }}
                     className="absolute inset-0 flex items-center justify-start"
                   >
-                    <span className="text-3xl md:text-6xl xl:text-7xl font-sans font-black leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#d4af37] whitespace-nowrap filter drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+                    <span className="text-2xl md:text-4xl xl:text-5xl font-sans font-black leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#d4af37] whitespace-nowrap filter drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]">
                       {SLIDING_WORDS[index]}
                     </span>
                   </motion.div>
                 </AnimatePresence>
               </div>
 
-              <motion.h1 
+              <motion.h1
                 variants={revealVariants}
-                className="text-3xl md:text-6xl xl:text-7xl font-sans font-black leading-tight tracking-tight text-white drop-shadow-2xl"
+                className="text-2xl md:text-4xl xl:text-5xl font-sans font-black leading-tight tracking-tight text-white drop-shadow-2xl"
               >
-                Managed Globally.
+                Even When You're Abroad.
               </motion.h1>
             </div>
 
             {/* Subheading */}
             <motion.p 
               variants={revealVariants} 
-              className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mb-12 font-medium"
+              className="text-sm md:text-base text-white/60 leading-relaxed max-w-2xl mb-10 font-medium"
             >
-              The dedicated family office and executive stewardship bridge for global NRIs. Absolute operational control over your Indian legacy from anywhere in the world.
+              We help you manage insurance, bank accounts, property and legal risks for your parents — all in one structured system. Most families discover financial problems only during emergencies — when it's already too late.
             </motion.p>
 
             {/* CTAs */}
@@ -114,7 +114,7 @@ export default function HeroSection() {
                   whileTap={{ scale: 0.95 }}
                   className="bg-[#d4af37] text-[#050914] px-10 py-5 rounded-full font-black text-[15px] tracking-wide flex items-center justify-center gap-3 shadow-2xl transition-all duration-500 group relative overflow-hidden"
                 >
-                  <span className="relative z-10 font-black">Explore Services</span>
+                  <span className="relative z-10 font-black">Get Free Consultation</span>
                   <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
                   
                   {/* Sweep Shine Effect */}
@@ -133,7 +133,7 @@ export default function HeroSection() {
                   className="border border-white/20 text-white px-10 py-5 rounded-full font-bold text-[15px] tracking-wide flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md transition-all duration-500 group"
                 >
                   <Globe2 className="w-5 h-5 text-[#d4af37] group-hover:rotate-12 transition-transform" />
-                  Our Process
+                  How It Works
                 </motion.button>
               </Link>
             </motion.div>
