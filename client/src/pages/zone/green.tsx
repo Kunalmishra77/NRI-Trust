@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Scale, Landmark, FileText, Heart, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
 import { useUser, PHASE_CONFIG } from "@/context/UserContext";
+import HeroForm from "@/components/HeroForm";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const COLOR = "#22c55e";
@@ -80,40 +81,52 @@ export default function ZoneGreen() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,#050914_100%)] opacity-60" />
 
         <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-          <motion.div {...fadeUp(0)} className="flex items-center gap-3 mb-8">
-            <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: COLOR }} />
-            <span className="text-[10px] font-mono font-black uppercase tracking-[0.45em]" style={{ color: COLOR }}>
-              Green Zone · Planning & Prevention · Parents 55–65
-            </span>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 lg:gap-16 items-center">
 
-          <motion.h1 {...fadeUp(0.1)}
-            className="text-5xl md:text-7xl font-black text-white leading-[1.02] tracking-tight mb-6">
-            You have time.
-            <br />
-            <span style={{ color: COLOR }}>Use it well.</span>
-          </motion.h1>
+            {/* Left */}
+            <div>
+              <motion.div {...fadeUp(0)} className="flex items-center gap-3 mb-8">
+                <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: COLOR }} />
+                <span className="text-[10px] font-mono font-black uppercase tracking-[0.45em]" style={{ color: COLOR }}>
+                  Green Zone · Planning & Prevention · Parents 55–65
+                </span>
+              </motion.div>
 
-          <motion.p {...fadeUp(0.2)}
-            className="text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl mb-10 font-medium">
-            The best time to protect your parents' future is before anything goes wrong.
-            That time is right now — and the cost of waiting is far greater than the cost of starting.
-          </motion.p>
+              <motion.h1 {...fadeUp(0.1)}
+                className="text-5xl md:text-7xl font-black text-white leading-[1.02] tracking-tight mb-6">
+                You have time.
+                <br />
+                <span style={{ color: COLOR }}>Use it well.</span>
+              </motion.h1>
 
-          <motion.div {...fadeUp(0.3)} className="flex flex-wrap gap-4">
-            <Link href="/contact">
-              <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
-                className="px-8 py-4 rounded-full font-black text-sm tracking-wide flex items-center gap-3 text-[#050914]"
-                style={{ backgroundColor: COLOR }}>
-                Start Free Audit <ArrowRight className="w-4 h-4" />
-              </motion.button>
-            </Link>
-            <button
-              onClick={() => selectZone("green")}
-              className="px-8 py-4 rounded-full font-bold text-sm border text-white/60 border-white/15 hover:border-white/30 transition-all">
-              ← Back to Homepage
-            </button>
-          </motion.div>
+              <motion.p {...fadeUp(0.2)}
+                className="text-white/60 text-lg md:text-xl leading-relaxed max-w-xl mb-10 font-medium">
+                The best time to protect your parents' future is before anything goes wrong.
+                That time is right now — and the cost of waiting is far greater than the cost of starting.
+              </motion.p>
+
+              <motion.div {...fadeUp(0.3)} className="flex flex-wrap gap-4">
+                <Link href="/contact">
+                  <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
+                    className="px-8 py-4 rounded-full font-black text-sm tracking-wide flex items-center gap-3 text-[#050914]"
+                    style={{ backgroundColor: COLOR }}>
+                    Start Free Audit <ArrowRight className="w-4 h-4" />
+                  </motion.button>
+                </Link>
+                <Link href="/">
+                  <button className="px-8 py-4 rounded-full font-bold text-sm border text-white/60 border-white/15 hover:border-white/30 transition-all">
+                    ← Back to Homepage
+                  </button>
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right: form */}
+            <motion.div {...fadeUp(0.2)} className="hidden lg:flex justify-end">
+              <HeroForm />
+            </motion.div>
+
+          </div>
         </div>
       </section>
 

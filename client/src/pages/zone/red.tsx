@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Scale, Landmark, FileText, Zap, MessageCircle, Phone } from "lucide-react";
 import { Link } from "wouter";
 import { useUser } from "@/context/UserContext";
+import HeroForm from "@/components/HeroForm";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const COLOR = "#ef4444";
@@ -87,54 +88,66 @@ export default function ZoneRed() {
         />
 
         <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-          <motion.div {...fadeUp(0)} className="flex items-center gap-3 mb-8">
-            <motion.div
-              animate={{ scale: [1, 1.4, 1] }}
-              transition={{ duration: 0.9, repeat: Infinity }}
-              className="w-2.5 h-2.5 rounded-full"
-              style={{ backgroundColor: COLOR }}
-            />
-            <span className="text-[10px] font-mono font-black uppercase tracking-[0.45em]" style={{ color: COLOR }}>
-              Red Zone · Critical Care · Immediate Support
-            </span>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 lg:gap-16 items-center">
 
-          <motion.h1 {...fadeUp(0.1)}
-            className="text-5xl md:text-7xl font-black text-white leading-[1.02] tracking-tight mb-6">
-            We're here.
-            <br />
-            <span style={{ color: COLOR }}>Right now.</span>
-          </motion.h1>
+            {/* Left */}
+            <div>
+              <motion.div {...fadeUp(0)} className="flex items-center gap-3 mb-8">
+                <motion.div
+                  animate={{ scale: [1, 1.4, 1] }}
+                  transition={{ duration: 0.9, repeat: Infinity }}
+                  className="w-2.5 h-2.5 rounded-full"
+                  style={{ backgroundColor: COLOR }}
+                />
+                <span className="text-[10px] font-mono font-black uppercase tracking-[0.45em]" style={{ color: COLOR }}>
+                  Red Zone · Critical Care · Immediate Support
+                </span>
+              </motion.div>
 
-          <motion.p {...fadeUp(0.2)}
-            className="text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl mb-10 font-medium">
-            Every hour matters. Our team responds within 2 hours — 24/7 — to handle every
-            legal, financial, and administrative crisis you are facing from abroad.
-          </motion.p>
+              <motion.h1 {...fadeUp(0.1)}
+                className="text-5xl md:text-7xl font-black text-white leading-[1.02] tracking-tight mb-6">
+                We're here.
+                <br />
+                <span style={{ color: COLOR }}>Right now.</span>
+              </motion.h1>
 
-          <motion.div {...fadeUp(0.3)} className="flex flex-wrap gap-4">
-            <a href="https://wa.me/919999999999?text=URGENT%3A%20I%20need%20emergency%20support%20for%20my%20parents"
-              target="_blank" rel="noopener noreferrer">
-              <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
-                className="px-8 py-4 rounded-full font-black text-sm tracking-wide flex items-center gap-3 text-white"
-                style={{ backgroundColor: COLOR }}>
-                <Zap className="w-4 h-4" />
-                Get Emergency Support Now
-              </motion.button>
-            </a>
-            <Link href="/contact">
-              <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
-                className="px-8 py-4 rounded-full font-bold text-sm flex items-center gap-3 border text-white/60 border-white/15 hover:border-white/30 transition-all">
-                <Phone className="w-4 h-4" />
-                Schedule Urgent Call
-              </motion.button>
-            </Link>
-            <button
-              onClick={() => selectZone("red")}
-              className="px-8 py-4 rounded-full font-bold text-sm border text-white/40 border-white/10 hover:border-white/20 transition-all">
-              ← Back to Homepage
-            </button>
-          </motion.div>
+              <motion.p {...fadeUp(0.2)}
+                className="text-white/60 text-lg md:text-xl leading-relaxed max-w-xl mb-10 font-medium">
+                Every hour matters. Our team responds within 2 hours — 24/7 — to handle every
+                legal, financial, and administrative crisis you are facing from abroad.
+              </motion.p>
+
+              <motion.div {...fadeUp(0.3)} className="flex flex-wrap gap-4">
+                <a href="https://wa.me/919999999999?text=URGENT%3A%20I%20need%20emergency%20support%20for%20my%20parents"
+                  target="_blank" rel="noopener noreferrer">
+                  <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
+                    className="px-8 py-4 rounded-full font-black text-sm tracking-wide flex items-center gap-3 text-white"
+                    style={{ backgroundColor: COLOR }}>
+                    <Zap className="w-4 h-4" />
+                    Get Emergency Support Now
+                  </motion.button>
+                </a>
+                <Link href="/contact">
+                  <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
+                    className="px-8 py-4 rounded-full font-bold text-sm flex items-center gap-3 border text-white/60 border-white/15 hover:border-white/30 transition-all">
+                    <Phone className="w-4 h-4" />
+                    Schedule Urgent Call
+                  </motion.button>
+                </Link>
+                <Link href="/">
+                  <button className="px-8 py-4 rounded-full font-bold text-sm border text-white/40 border-white/10 hover:border-white/20 transition-all">
+                    ← Back to Homepage
+                  </button>
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right: form */}
+            <motion.div {...fadeUp(0.2)} className="hidden lg:flex justify-end">
+              <HeroForm />
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
