@@ -6,9 +6,7 @@ import { useUser, PHASE_CONFIG, Phase } from "@/context/UserContext";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-// Words that slot into: "Is Your Parents' [WORD] Protected?"
 const CYCLING_WORDS = ["Future", "Insurance", "Banking", "Property", "Succession"];
-
 const ZONES: Phase[] = ["green", "orange", "red"];
 
 const STATS = [
@@ -17,45 +15,40 @@ const STATS = [
   { val: "40+", label: "Jurisdictions" },
 ];
 
-// ── Inline preview (shown above cards on hover) ────────────────
+// ── Preview panel (hovered state) ─────────────────────────────
 function PreviewPanel({ phase }: { phase: Phase }) {
   const config = PHASE_CONFIG[phase];
   const color = config.color;
-
   return (
     <motion.div
       key={phase}
-      initial={{ opacity: 0, y: -8 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -4 }}
-      transition={{ duration: 0.2, ease: EASE }}
-      className="rounded-2xl p-5 border w-full"
-      style={{
-        background: "rgba(5,9,20,0.9)",
-        borderColor: `${color}28`,
-        backdropFilter: "blur(16px)",
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+      className="absolute inset-0 rounded-2xl p-4 border overflow-hidden"
+      style={{ background: "rgba(8,14,30,0.96)", borderColor: `${color}35` }}
     >
-      <p className="text-[9px] font-mono font-black uppercase tracking-[0.35em] mb-3" style={{ color }}>
+      <p className="text-[9px] font-mono font-black uppercase tracking-[0.35em] mb-2.5" style={{ color }}>
         Ask yourself
       </p>
-      <ul className="space-y-2 mb-4">
+      <ul className="space-y-1.5 mb-3">
         {config.hoverContent.questions.map((q, i) => (
           <li key={i} className="flex items-start gap-2">
-            <div className="w-1 h-1 rounded-full mt-[7px] shrink-0" style={{ backgroundColor: color }} />
-            <span className="text-white/55 text-[11px] leading-relaxed">{q}</span>
+            <div className="w-1 h-1 rounded-full mt-[6px] shrink-0" style={{ backgroundColor: color }} />
+            <span className="text-white/75 text-[11px] leading-snug">{q}</span>
           </li>
         ))}
       </ul>
-      <div className="pt-3 border-t border-white/[0.06]">
+      <div className="pt-2.5 border-t border-white/10">
         <p className="text-[9px] font-mono font-black uppercase tracking-[0.35em] mb-2" style={{ color }}>
           How we help
         </p>
-        <ul className="space-y-1.5">
+        <ul className="space-y-1">
           {config.hoverContent.benefits.map((b, i) => (
             <li key={i} className="flex items-start gap-2">
               <ChevronRight className="w-3 h-3 mt-0.5 shrink-0" style={{ color }} />
-              <span className="text-white/65 text-[11px] leading-relaxed font-medium">{b}</span>
+              <span className="text-white/80 text-[11px] leading-snug font-medium">{b}</span>
             </li>
           ))}
         </ul>
@@ -64,7 +57,7 @@ function PreviewPanel({ phase }: { phase: Phase }) {
   );
 }
 
-// ── Default panel (shown when nothing is hovered) ──────────────
+// ── Default panel (no hover) ───────────────────────────────────
 function DefaultPanel() {
   return (
     <motion.div
@@ -72,24 +65,22 @@ function DefaultPanel() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-      className="w-full"
+      transition={{ duration: 0.18 }}
+      className="absolute inset-0 flex flex-col justify-center"
     >
-      {/* Stats row */}
-      <div className="grid grid-cols-3 gap-4 mb-5">
+      <div className="grid grid-cols-3 gap-3 mb-4">
         {STATS.map((s) => (
           <div key={s.label} className="text-center">
-            <div className="text-2xl md:text-3xl font-black text-white mb-0.5">{s.val}</div>
-            <div className="text-[10px] text-white/30 font-medium leading-tight">{s.label}</div>
+            <div className="text-2xl md:text-3xl font-black text-white mb-1">{s.val}</div>
+            <div className="text-[10px] text-white/55 font-medium leading-tight">{s.label}</div>
           </div>
         ))}
       </div>
-      {/* Trust badges */}
-      <div className="flex flex-wrap gap-x-5 gap-y-2 justify-center">
+      <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center">
         {["FEMA Compliant", "Registered Legal Firm", "24/7 Support"].map((t) => (
           <div key={t} className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-3 h-3 text-[#d4af37]/50" />
-            <span className="text-white/30 text-[11px] font-medium">{t}</span>
+            <CheckCircle2 className="w-3 h-3 text-[#d4af37]/60" />
+            <span className="text-white/55 text-[11px] font-medium">{t}</span>
           </div>
         ))}
       </div>
@@ -114,57 +105,62 @@ function ZoneCard({
   const config = PHASE_CONFIG[id];
   const color = config.color;
 
-  const handleClick = () => {
-    selectZone(id);
-    navigate(config.zonePage);
-  };
-
   return (
-      <motion.button
-        onMouseEnter={onHoverIn}
-        onMouseLeave={onHoverOut}
-        onClick={handleClick}
-        whileHover={{ x: 4 }}
-        whileTap={{ scale: 0.98 }}
-        className="relative w-full text-left rounded-2xl px-5 py-4 border transition-colors duration-200 overflow-hidden flex items-center justify-between gap-4"
-        style={{
-          background: isHovered ? `${color}09` : "rgba(255,255,255,0.03)",
-          borderColor: isHovered ? `${color}45` : "rgba(255,255,255,0.08)",
-        }}
-      >
-        {/* Left: dot + labels */}
-        <div className="flex items-center gap-3 min-w-0">
-          <motion.div
-            animate={isHovered ? { scale: [1, 1.5, 1] } : { scale: 1 }}
-            transition={{ duration: 0.9, repeat: isHovered ? Infinity : 0 }}
-            className="w-2.5 h-2.5 rounded-full shrink-0"
-            style={{ backgroundColor: color }}
-          />
-          <div className="min-w-0">
-            <div className="text-white font-black text-sm leading-tight">{config.ageRange}</div>
-            <div className="text-[9px] font-mono uppercase tracking-[0.28em] mt-0.5" style={{ color }}>
-              {config.label}
-            </div>
+    <motion.button
+      onMouseEnter={onHoverIn}
+      onMouseLeave={onHoverOut}
+      onClick={() => { selectZone(id); navigate(config.zonePage); }}
+      whileTap={{ scale: 0.98 }}
+      className="relative w-full text-left rounded-2xl px-5 py-4 border overflow-hidden flex items-center justify-between gap-4 transition-colors duration-200"
+      style={{
+        background: isHovered ? `${color}12` : "rgba(255,255,255,0.04)",
+        borderColor: isHovered ? `${color}50` : "rgba(255,255,255,0.10)",
+      }}
+    >
+      {/* Left */}
+      <div className="flex items-center gap-3 min-w-0">
+        <div
+          className="w-2.5 h-2.5 rounded-full shrink-0 transition-all duration-200"
+          style={{
+            backgroundColor: color,
+            boxShadow: isHovered ? `0 0 8px ${color}80` : "none",
+          }}
+        />
+        <div className="min-w-0">
+          <div className="text-white font-black text-sm leading-tight">{config.ageRange}</div>
+          <div className="text-[10px] font-mono uppercase tracking-[0.28em] mt-0.5 font-bold" style={{ color }}>
+            {config.label}
           </div>
         </div>
+      </div>
 
-        {/* Right: stage + arrow */}
-        <div className="flex items-center gap-2.5 shrink-0">
-          <span className="text-white/25 text-[11px] font-medium hidden sm:block">{config.stage}</span>
-          <motion.div
-            animate={{ opacity: isHovered ? 1 : 0.25, x: isHovered ? 0 : -3 }}
-            transition={{ duration: 0.15 }}
-          >
-            <ArrowRight className="w-4 h-4" style={{ color }} />
-          </motion.div>
-        </div>
-
-        {/* Corner glow */}
-        <div
-          className="absolute -top-6 -right-6 w-20 h-20 rounded-full blur-xl pointer-events-none transition-opacity duration-300"
-          style={{ background: color, opacity: isHovered ? 0.07 : 0 }}
+      {/* Right */}
+      <div className="flex items-center gap-2.5 shrink-0">
+        <span
+          className="text-[11px] font-medium hidden sm:block transition-colors duration-200"
+          style={{ color: isHovered ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.35)" }}
+        >
+          {config.stage}
+        </span>
+        <ArrowRight
+          className="w-4 h-4 transition-all duration-200"
+          style={{
+            color,
+            opacity: isHovered ? 1 : 0.4,
+            transform: isHovered ? "translateX(2px)" : "translateX(0)",
+          }}
         />
-      </motion.button>
+      </div>
+
+      {/* Subtle left accent bar */}
+      <div
+        className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] rounded-r-full transition-all duration-200"
+        style={{
+          height: isHovered ? "60%" : "0%",
+          backgroundColor: color,
+        }}
+      />
+    </motion.button>
   );
 }
 
@@ -188,20 +184,19 @@ export default function HeroSection() {
       <div className="absolute inset-x-0 bottom-0 h-[35vh] bg-gradient-to-t from-[#050914] via-[#050914]/70 to-transparent z-[1] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-[20] w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 lg:gap-20 items-center">
 
-          {/* ── LEFT: 3-line cycling headline ──────────────────── */}
+          {/* ── LEFT ───────────────────────────────────────────── */}
           <div className="flex flex-col items-start">
 
-            {/* Overline */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
               className="flex items-center gap-3 mb-8"
             >
-              <Shield className="w-3.5 h-3.5 text-[#d4af37]/50" />
-              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-[#d4af37]/50">
+              <Shield className="w-3.5 h-3.5 text-[#d4af37]/70" />
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-[#d4af37]/70">
                 India's Most Trusted NRI Family Protection Platform
               </span>
             </motion.div>
@@ -211,16 +206,14 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
-              className="mb-6 w-full"
+              className="mb-7 w-full"
             >
-              {/* Line 1 — static */}
               <div className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black text-white leading-[1.06] tracking-tight">
                 Is Your Parents'
               </div>
 
-              {/* Line 2 — cycling (same size as h1, invisible spacer for height) */}
+              {/* Cycling word — invisible spacer keeps height stable */}
               <div className="relative text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black leading-[1.06] tracking-tight overflow-hidden">
-                {/* Invisible spacer — fixes height to match font-size */}
                 <span className="invisible select-none pointer-events-none">Future</span>
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -236,50 +229,47 @@ export default function HeroSection() {
                 </AnimatePresence>
               </div>
 
-              {/* Line 3 — static */}
               <div className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black text-white leading-[1.06] tracking-tight">
                 Protected?
               </div>
             </motion.div>
 
-            {/* Subtext */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
-              className="text-white/45 text-base md:text-lg leading-relaxed max-w-xl font-medium"
+              className="text-white/65 text-base md:text-lg leading-relaxed max-w-xl font-medium"
             >
               Most NRI families discover financial problems only during a crisis —
-              when it's already too late. Select your parents' age group below to
-              see exactly what needs to be done right now.
+              when it's already too late. Select your parents' age group to see
+              exactly what needs to be done right now.
             </motion.p>
           </div>
 
-          {/* ── RIGHT: Preview + zone cards ────────────────────── */}
+          {/* ── RIGHT ──────────────────────────────────────────── */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
             className="flex flex-col gap-4"
           >
-            {/* Preview / default panel */}
-            <div className="min-h-[152px] flex items-center">
+            {/* Fixed-height preview area — panels are absolute so cards never shift */}
+            <div className="relative h-[180px] rounded-2xl overflow-hidden">
               <AnimatePresence mode="wait">
-                {hoveredZone ? (
-                  <PreviewPanel key={hoveredZone} phase={hoveredZone} />
-                ) : (
-                  <DefaultPanel key="default" />
-                )}
+                {hoveredZone
+                  ? <PreviewPanel key={hoveredZone} phase={hoveredZone} />
+                  : <DefaultPanel key="default" />
+                }
               </AnimatePresence>
             </div>
 
-            {/* Divider + label */}
+            {/* Divider */}
             <div className="flex items-center gap-3">
-              <div className="h-[1px] flex-1 bg-white/[0.06]" />
-              <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/20 font-bold shrink-0">
+              <div className="h-[1px] flex-1 bg-white/10" />
+              <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/40 font-bold shrink-0">
                 Select age group
               </p>
-              <div className="h-[1px] flex-1 bg-white/[0.06]" />
+              <div className="h-[1px] flex-1 bg-white/10" />
             </div>
 
             {/* Zone cards */}
@@ -295,7 +285,7 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <p className="text-[10px] font-mono text-white/15 tracking-widest text-center">
+            <p className="text-[10px] font-mono text-white/30 tracking-widest text-center">
               Hover to preview · Click to view your plan
             </p>
           </motion.div>
