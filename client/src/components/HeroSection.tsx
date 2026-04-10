@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronRight, Shield, CheckCircle2 } from "lucide-react";
-import { Link } from "wouter";
+import { useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import { useUser, PHASE_CONFIG, Phase } from "@/context/UserContext";
 
@@ -110,22 +110,26 @@ function ZoneCard({
   onHoverOut: () => void;
 }) {
   const { selectZone } = useUser();
+  const [, navigate] = useLocation();
   const config = PHASE_CONFIG[id];
   const color = config.color;
 
+  const handleClick = () => {
+    selectZone(id);
+    navigate(config.zonePage);
+  };
+
   return (
-    <Link href={config.zonePage}>
-      <motion.a
+      <motion.button
         onMouseEnter={onHoverIn}
         onMouseLeave={onHoverOut}
-        onClick={() => selectZone(id)}
+        onClick={handleClick}
         whileHover={{ x: 4 }}
         whileTap={{ scale: 0.98 }}
-        className="relative w-full text-left rounded-2xl px-5 py-4 border transition-colors duration-200 overflow-hidden flex items-center justify-between gap-4 cursor-pointer"
+        className="relative w-full text-left rounded-2xl px-5 py-4 border transition-colors duration-200 overflow-hidden flex items-center justify-between gap-4"
         style={{
           background: isHovered ? `${color}09` : "rgba(255,255,255,0.03)",
           borderColor: isHovered ? `${color}45` : "rgba(255,255,255,0.08)",
-          display: "flex",
         }}
       >
         {/* Left: dot + labels */}
@@ -160,8 +164,7 @@ function ZoneCard({
           className="absolute -top-6 -right-6 w-20 h-20 rounded-full blur-xl pointer-events-none transition-opacity duration-300"
           style={{ background: color, opacity: isHovered ? 0.07 : 0 }}
         />
-      </motion.a>
-    </Link>
+      </motion.button>
   );
 }
 
