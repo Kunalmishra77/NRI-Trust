@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "public": true,
+  "buildCommand": "npx vite build",
+  "outputDirectory": "dist",
+  "framework": null,
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
