@@ -18,11 +18,11 @@ const ZONES: { id: Phase; emoji: string }[] = [
 function HoverPanel({ config, color }: { config: typeof PHASE_CONFIG['green']; color: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8, scale: 0.97 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 6, scale: 0.97 }}
+      initial={{ opacity: 0, x: 8, scale: 0.97 }}
+      animate={{ opacity: 1, x: 0, scale: 1 }}
+      exit={{ opacity: 0, x: 6, scale: 0.97 }}
       transition={{ duration: 0.22, ease: EASE }}
-      className="absolute bottom-[calc(100%+12px)] left-0 right-0 z-50 rounded-2xl p-5 backdrop-blur-xl border shadow-2xl"
+      className="absolute top-0 right-[calc(100%+12px)] z-50 rounded-2xl p-5 backdrop-blur-xl border shadow-2xl w-72"
       style={{
         background: 'rgba(5,9,20,0.97)',
         borderColor: `${color}30`,
@@ -73,9 +73,9 @@ function HoverPanel({ config, color }: { config: typeof PHASE_CONFIG['green']; c
         </ul>
       </div>
 
-      {/* Arrow pointing down */}
+      {/* Arrow pointing right toward the card */}
       <div
-        className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 border-r border-b"
+        className="absolute top-5 right-[-6px] w-3 h-3 rotate-45 border-t border-r"
         style={{ background: 'rgba(5,9,20,0.97)', borderColor: `${color}30` }}
       />
     </motion.div>
@@ -226,63 +226,66 @@ export default function HeroSection() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, ease: EASE }}
-              className="flex flex-col items-start max-w-3xl"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full"
             >
-              {/* Overline */}
+              {/* Left: text */}
+              <div className="flex flex-col items-start">
+                {/* Overline */}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
+                  className="flex items-center gap-3 mb-7"
+                >
+                  <Shield className="w-3.5 h-3.5 text-[#d4af37]/50" />
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-[#d4af37]/50">
+                    India's Most Trusted NRI Family Protection Platform
+                  </span>
+                </motion.div>
+
+                {/* Headline */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
+                  className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-white leading-[1.02] tracking-tight mb-5"
+                >
+                  Is Your Parents'
+                  <br />
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#d4af37]">
+                    Future Protected?
+                  </span>
+                </motion.h1>
+
+                {/* Subtext */}
+                <motion.p
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: EASE, delay: 0.28 }}
+                  className="text-white/50 text-sm md:text-base leading-relaxed max-w-lg font-medium"
+                >
+                  Most NRI families discover financial problems only during a crisis —
+                  when it's already too late. Select your parents' age group to see
+                  what you need right now.
+                </motion.p>
+              </div>
+
+              {/* Right: zone picker */}
               <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-                className="flex items-center gap-3 mb-8"
-              >
-                <Shield className="w-3.5 h-3.5 text-[#d4af37]/50" />
-                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-[#d4af37]/50">
-                  India's Most Trusted NRI Family Protection Platform
-                </span>
-              </motion.div>
-
-              {/* Headline */}
-              <motion.h1
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
-                className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black text-white leading-[1.02] tracking-tight mb-6"
-              >
-                Is Your Parents'
-                <br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#d4af37]">
-                  Future Protected?
-                </span>
-              </motion.h1>
-
-              {/* Subtext */}
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: EASE, delay: 0.28 }}
-                className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl mb-12 font-medium"
-              >
-                Most NRI families discover financial problems only during a crisis —
-                when it's already too late. Select your parents' age group to see
-                what you need right now.
-              </motion.p>
-
-              {/* Zone picker */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
-                className="w-full"
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: EASE, delay: 0.35 }}
+                className="flex flex-col"
               >
                 <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/20 mb-4 font-bold">
                   Select your parents' age group
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl">
+                <div className="grid grid-cols-1 gap-3">
                   {ZONES.map(z => (
                     <ZoneCard key={z.id} id={z.id} onSelect={selectZone} />
                   ))}
                 </div>
-                <p className="text-[10px] font-mono text-white/15 mt-5 tracking-widest">
+                <p className="text-[10px] font-mono text-white/15 mt-4 tracking-widest">
                   Hover to preview · Click to personalise
                 </p>
               </motion.div>
