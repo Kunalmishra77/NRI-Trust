@@ -14,7 +14,7 @@ function StatCounter({ end, suffix, label, theme }: { end: number; suffix: strin
    )}>
     <span ref={ref}>{display}</span>{suffix}
    </div>
-   <div className="text-[10px] md:text-[11px] font-mono text-[#D4AF37]/60 uppercase tracking-[0.3em] font-semibold">{label}</div>
+   <div className="text-[12px] md:text-[13px] font-mono text-[#D4AF37]/85 uppercase tracking-[0.25em] font-semibold">{label}</div>
   </div>
  );
 }
@@ -171,7 +171,7 @@ function TestimonialCard({ testimonial, theme, sizeClass }: { testimonial: Testi
       <div>
         <div className="flex items-center gap-2 mb-1.5">
           <Check className="w-3 h-3 text-[#D4AF37]" />
-          <span className="text-[10px] font-mono font-bold text-[#D4AF37] uppercase tracking-wider">{testimonial.outcome}</span>
+          <span className="text-[12px] font-mono font-bold text-[#D4AF37] uppercase tracking-wider">{testimonial.outcome}</span>
         </div>
         <div className={cn(
           "text-[12px] font-semibold",
@@ -179,7 +179,7 @@ function TestimonialCard({ testimonial, theme, sizeClass }: { testimonial: Testi
         )}>
           {testimonial.name}
         </div>
-        <div className="text-[10px] font-mono text-[#D4AF37]/50 uppercase tracking-wider">
+        <div className="text-[10px] font-mono text-[#D4AF37]/80 uppercase tracking-wider">
           {testimonial.location}
         </div>
       </div>
@@ -299,14 +299,12 @@ export default function TestimonialsSection({ theme = 'dark' }: { theme?: 'dark'
     </motion.div>
    </div>
 
-   {/* Marquee Rows */}
+   {/* Single Marquee Row */}
    <div
-    className="space-y-4 md:space-y-5"
     onMouseEnter={() => setIsPaused(true)}
     onMouseLeave={() => setIsPaused(false)}
    >
-    <MarqueeRow testimonials={row1Testimonials} direction="left" theme={theme} isPaused={isPaused} />
-    <MarqueeRow testimonials={row2Testimonials} direction="right" theme={theme} isPaused={isPaused} />
+    <MarqueeRow testimonials={[...row1Testimonials, ...row2Testimonials]} direction="left" theme={theme} isPaused={isPaused} />
    </div>
 
    {/* Global Statistics */}

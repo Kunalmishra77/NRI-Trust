@@ -136,7 +136,7 @@ function CircularOrbitCard({
           </h3>
           <div className="flex items-center gap-2 mt-1 md:mt-2 opacity-50 group-hover:opacity-100 transition-opacity">
             <RefreshCw className="w-2.5 h-2.5 text-[#050914]" />
-            <span className="text-[6px] md:text-[9px] font-mono uppercase tracking-widest text-[#050914]">Analyse</span>
+            <span className="text-[9px] md:text-[11px] font-mono uppercase tracking-widest text-[#050914]">Analyse</span>
           </div>
         </div>
 
@@ -151,7 +151,7 @@ function CircularOrbitCard({
             className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full mb-2 md:mb-3"
             style={{ backgroundColor: phaseColor, boxShadow: `0 0 10px ${phaseColor}80` }}
           />
-          <p className="text-[8px] md:text-xs text-white/60 leading-relaxed mb-2 md:mb-3 italic px-2">
+          <p className="text-[10px] md:text-sm text-white/80 leading-relaxed mb-2 md:mb-3 italic px-2">
             &ldquo;{item.problem}&rdquo;
           </p>
           <p className="text-[10px] md:text-sm font-sans font-black text-white leading-tight mb-3 md:mb-4 px-2">
@@ -159,7 +159,7 @@ function CircularOrbitCard({
           </p>
           <Link href={SERVICE_HREFS[index % SERVICE_HREFS.length]}>
             <button
-              className="px-3 py-1.5 md:px-4 md:py-2 rounded-full font-bold text-[7px] md:text-[9px] uppercase tracking-widest flex items-center gap-2 shadow-xl hover:scale-105 transition-transform"
+              className="px-3 py-1.5 md:px-4 md:py-2 rounded-full font-bold text-[9px] md:text-[11px] uppercase tracking-widest flex items-center gap-2 shadow-xl hover:scale-105 transition-transform"
               style={{ backgroundColor: phaseColor, color: '#050914' }}
             >
               Learn More <ArrowUpRight className="w-2.5 h-2.5 md:w-3 md:h-3" />
@@ -198,10 +198,10 @@ export default function AnxietySection() {
       {/* Phase-aware center label */}
       {phase && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none text-center">
-          <p className="text-[10px] font-mono uppercase tracking-[0.4em] font-bold" style={{ color: phaseColor }}>
+          <p className="text-[13px] font-mono uppercase tracking-[0.35em] font-bold" style={{ color: phaseColor }}>
             {PHASE_CONFIG[phase].label}
           </p>
-          <p className="text-[9px] text-[#050914]/30 mt-1 font-medium">Your risk landscape</p>
+          <p className="text-[12px] text-[#050914]/65 mt-1 font-medium">Your risk landscape</p>
         </div>
       )}
 

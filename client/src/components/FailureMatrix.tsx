@@ -42,7 +42,10 @@ export default function FailureMatrix({ theme = 'dark' }: { theme?: 'dark' | 'li
         "section-title mb-8",
         theme === 'light' ? "text-[#1A1A1A]" : "text-white"
       )}>Why Informal <br /><span className={cn("italic text-3xl md:text-4xl", theme === 'light' ? "text-[#1A1A1A]/90" : "text-white/90")}>Handling Does Not Work.</span></h2>
-      <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-xl">
+      <p className={cn(
+        "text-lg font-light leading-relaxed max-w-xl",
+        theme === 'light' ? "text-[#1A1A1A]/65" : "text-white/65"
+      )}>
        Protecting your parents' financial life requires more than just checking in once in a while. It requires a proper system that works even when you are thousands of miles away.
       </p>
      </motion.div>

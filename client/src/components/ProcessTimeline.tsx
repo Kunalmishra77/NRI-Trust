@@ -94,12 +94,15 @@ export default function ProcessTimeline({ theme = 'dark' }: { theme?: 'dark' | '
          <step.icon className="w-8 h-8 text-[#D4AF37]/60 group-hover:text-[#D4AF37] group-hover:scale-110 transition-all duration-500" />
         </div>
         
-        <div className="text-[10px] font-mono text-[#D4AF37]/50 uppercase tracking-widest mb-4 font-bold relative z-10">Phase 0{i + 1}</div>
+        <div className="text-[10px] font-mono text-[#D4AF37]/80 uppercase tracking-widest mb-4 font-bold relative z-10">Phase 0{i + 1}</div>
         <h3 className={cn(
          "text-2xl font-serif mb-4 group-hover:text-[#D4AF37] transition-colors relative z-10",
          theme === 'light' ? "text-[#1A1A1A]" : "text-[#FDFCFB]"
         )}>{step.title}</h3>
-        <p className="text-sm text-muted-foreground font-light leading-relaxed relative z-10">{step.desc}</p>
+        <p className={cn(
+          "text-sm font-light leading-relaxed relative z-10",
+          theme === 'light' ? "text-[#1A1A1A]/65" : "text-white/65"
+        )}>{step.desc}</p>
        </div>
       </motion.div>
      ))}

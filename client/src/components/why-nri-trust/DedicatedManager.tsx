@@ -15,14 +15,14 @@ export default function DedicatedManager() {
             viewport={{ once: true }}
             variants={elegantFadeUp}
           >
-            <span className="accent-label text-accent">Personalized Management</span>
-            <h2 className="section-title text-white mb-8">
+            <span className="accent-label !text-accent">Personalized Management</span>
+            <h2 className="section-title !text-white mb-8">
               Your Single Point of <br />
-              <span className="text-gradient-gold italic">Complete Accountability.</span>
+              <span className="text-gradient-gold italic !text-transparent bg-clip-text">Complete Accountability.</span>
             </h2>
-            <p className="body-large text-white/90 mb-12">
+            <p className="body-large !text-white/90 mb-12">
               We don't believe in call centers or automated ticket systems.
-              Each NRI Trust client is assigned a <strong className="text-white font-medium">Senior Relationship Manager</strong> who acts
+              Each NRI Trust client is assigned a <strong className="!text-white font-medium">Senior Relationship Manager</strong> who acts
               as your family's personal CFO and physical proxy in India.
             </p>
             
@@ -49,8 +49,8 @@ export default function DedicatedManager() {
                     <item.icon className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h4 className="text-white font-medium mb-1">{item.title}</h4>
-                    <p className="text-sm text-white/80 leading-relaxed">{item.desc}</p>
+                    <h4 className="!text-white font-medium mb-1">{item.title}</h4>
+                    <p className="text-sm !text-white/80 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -76,7 +76,7 @@ export default function DedicatedManager() {
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-1 h-12 bg-accent" />
                   <div>
-                    <div className="text-white font-serif text-xl italic">"Our role is to ensure that while you sleep in New York, your legacy in New Delhi is being actively guarded."</div>
+                    <div className="!text-white font-serif text-xl italic">"Our role is to ensure that while you sleep in New York, your legacy in New Delhi is being actively guarded."</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">

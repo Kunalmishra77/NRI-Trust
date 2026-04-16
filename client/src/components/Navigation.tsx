@@ -95,13 +95,13 @@ export default function Navigation() {
     >
       <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-4 group shrink-0">
-          <div className="w-11 h-11 rounded-xl bg-accent flex items-center justify-center shadow-lg shadow-accent/20 transition-transform duration-500 group-hover:scale-110">
-            <Shield className="w-6 h-6 text-white" />
+        <Link href="/" className="flex items-center gap-3 group shrink-0">
+          <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shadow-lg shadow-accent/20 transition-transform duration-500 group-hover:scale-110">
+            <Shield className="w-7 h-7 text-white" />
           </div>
-          <div className="flex flex-col leading-none">
-            <span className={`text-2xl font-sans font-black tracking-tight transition-colors duration-500 ${isScrolled ? "text-[#1A1A1A]" : "text-white"}`}>NRI TRUST</span>
-            <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-accent font-bold mt-0.5">Financial Protection</span>
+          <div className="flex flex-col leading-none gap-[6px]">
+            <span className={`text-[26px] font-sans font-black tracking-tight leading-none transition-colors duration-500 ${isScrolled ? "text-[#1A1A1A]" : "text-white"}`}>NRI TRUST</span>
+            <div className="h-[3px] w-full bg-gradient-to-r from-accent via-accent/60 to-transparent rounded-full" />
           </div>
         </Link>
 
@@ -112,8 +112,8 @@ export default function Navigation() {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/" className={cn(
-                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[15px] font-medium transition-colors uppercase tracking-[0.12em]",
-                    isScrolled ? "text-[#1A1A1A] hover:text-accent" : "text-white hover:text-white"
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[16px] font-semibold transition-colors uppercase tracking-[0.12em]",
+                    isScrolled ? "text-[#1A1A1A] hover:text-accent" : "text-white/90 hover:text-white"
                   )}>
                     Home
                   </Link>
@@ -122,10 +122,10 @@ export default function Navigation() {
 
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={cn(
-                  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent transition-colors uppercase text-[15px] font-medium tracking-[0.12em]",
+                  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent transition-colors uppercase text-[16px] font-semibold tracking-[0.12em]",
                   isScrolled
                     ? "text-[#1A1A1A] hover:text-accent data-[state=open]:text-accent"
-                    : "text-white hover:text-white data-[state=open]:text-white"
+                    : "text-white/90 hover:text-white data-[state=open]:text-white"
                 )}>
                   The Firm
                 </NavigationMenuTrigger>
@@ -151,10 +151,10 @@ export default function Navigation() {
 
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={cn(
-                  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent transition-colors uppercase text-[15px] font-medium tracking-[0.12em]",
+                  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent transition-colors uppercase text-[16px] font-semibold tracking-[0.12em]",
                   isScrolled
                     ? "text-[#1A1A1A] hover:text-accent data-[state=open]:text-accent"
-                    : "text-white hover:text-white data-[state=open]:text-white"
+                    : "text-white/90 hover:text-white data-[state=open]:text-white"
                 )}>
                   Practice Areas
                 </NavigationMenuTrigger>
@@ -181,8 +181,8 @@ export default function Navigation() {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/pricing" className={cn(
-                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[14px] font-bold transition-colors uppercase tracking-[0.12em]",
-                    isScrolled ? "text-[#1A1A1A] hover:text-accent" : "text-white/80 hover:text-white"
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[16px] font-semibold transition-colors uppercase tracking-[0.12em]",
+                    isScrolled ? "text-[#1A1A1A] hover:text-accent" : "text-white/90 hover:text-white"
                   )}>
                     Pricing
                   </Link>
@@ -192,8 +192,8 @@ export default function Navigation() {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/contact" className={cn(
-                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[14px] font-bold transition-colors uppercase tracking-[0.12em]",
-                    isScrolled ? "text-[#1A1A1A] hover:text-accent" : "text-white/80 hover:text-white"
+                    "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-[16px] font-semibold transition-colors uppercase tracking-[0.12em]",
+                    isScrolled ? "text-[#1A1A1A] hover:text-accent" : "text-white/90 hover:text-white"
                   )}>
                     Contact
                   </Link>
@@ -206,18 +206,18 @@ export default function Navigation() {
         {/* Actions */}
         <div className="flex items-center gap-4 lg:gap-8">
           <Link href="/portal">
-            <button className={`hidden xl:flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors font-bold ${isScrolled ? "text-[#1A1A1A]/60 hover:text-accent" : "text-white/60 hover:text-accent"}`}>
-              <Lock className="w-4.5 h-4.5" />
+            <button className={`hidden lg:flex items-center gap-2 font-mono text-[14px] uppercase tracking-[0.15em] whitespace-nowrap transition-colors font-bold ${isScrolled ? "text-[#1A1A1A]/60 hover:text-accent" : "text-white/60 hover:text-accent"}`}>
+              <Lock className="w-4 h-4" />
               Client Portal
             </button>
           </Link>
-          <Link href="/contact" className="hidden sm:block">
+          <Link href="/contact" className="hidden lg:block">
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(212,175,55,0.3)" }}
               whileTap={{ scale: 0.98 }}
-              className="bg-accent text-white px-9 py-4 rounded-full text-[13px] font-black uppercase tracking-widest shadow-xl"
+              className="bg-accent text-white px-8 py-4 rounded-full text-[15px] font-black uppercase tracking-wider whitespace-nowrap shadow-xl"
             >
-              Get Free Consultation
+              Free Consultation
             </motion.button>
           </Link>
 
@@ -251,7 +251,7 @@ export default function Navigation() {
                     </div>
 
                     <div>
-                      <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-6">Practice Areas</h4>
+                      <h4 className="font-mono text-[12px] font-black uppercase tracking-[0.3em] text-accent mb-6">Practice Areas</h4>
                       <div className="grid gap-6">
                         {services.map((item) => (
                           <Link 
@@ -270,7 +270,7 @@ export default function Navigation() {
                     </div>
 
                     <div>
-                      <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-6">The Firm</h4>
+                      <h4 className="font-mono text-[12px] font-black uppercase tracking-[0.3em] text-accent mb-6">The Firm</h4>
                       <div className="grid gap-6">
                         {company.map((item) => (
                           <Link 

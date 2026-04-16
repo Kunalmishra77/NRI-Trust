@@ -121,7 +121,7 @@ export default function EmergencyTimeline() {
                     style={{ backgroundColor: phaseColor }}
                   />
                 )}
-                <span className="text-[10px] font-mono font-black uppercase tracking-widest" style={{ color: phaseColor }}>
+                <span className="text-[12px] font-mono font-black uppercase tracking-widest" style={{ color: phaseColor }}>
                   {content.badge}
                 </span>
               </motion.div>
@@ -207,7 +207,7 @@ export default function EmergencyTimeline() {
                   <div className="relative z-10 pt-10 border-t border-[#1A1A1A]/5 flex items-center gap-6">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: stepColor }} />
-                      <span className="text-[10px] font-mono font-black uppercase tracking-widest text-[#1A1A1A]/40 leading-none">
+                      <span className="text-[12px] font-mono font-black uppercase tracking-widest text-[#1A1A1A]/40 leading-none">
                         {phase === 'red' ? 'Emergency Mode Active' : 'Execution Logic Active'}
                       </span>
                     </div>
@@ -248,7 +248,7 @@ export default function EmergencyTimeline() {
                       </div>
                       <div>
                         <div
-                          className="text-[9px] font-mono font-black uppercase tracking-widest mb-1"
+                          className="text-[11px] font-mono font-black uppercase tracking-widest mb-1"
                           style={{ color: isActive ? stepColor : 'rgba(26,26,26,0.3)' }}
                         >
                           {step.time}

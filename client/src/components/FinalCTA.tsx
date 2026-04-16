@@ -70,7 +70,7 @@ export default function FinalCTA() {
               className="flex items-center justify-center lg:justify-start gap-3 mb-6"
             >
               <ShieldCheck className="w-4 h-4" style={{ color: phaseColor }} />
-              <span className="text-[10px] font-mono font-black uppercase tracking-[0.3em]" style={{ color: phaseColor }}>
+              <span className="text-[12px] font-mono font-black uppercase tracking-[0.25em]" style={{ color: phaseColor }}>
                 {isRed ? 'Emergency Response' : isOrange ? 'Active Protection' : 'Take Action Now'}
               </span>
               {/* Urgency pulse for red */}
@@ -88,7 +88,7 @@ export default function FinalCTA() {
               {headline}
             </h2>
 
-            <p className="text-lg text-white/40 font-medium max-w-xl leading-relaxed">
+            <p className="text-lg text-white/70 font-medium max-w-xl leading-relaxed">
               {subtext}
             </p>
 
@@ -112,7 +112,7 @@ export default function FinalCTA() {
                 ].map(stat => (
                   <div key={stat.label} className="flex flex-col items-center lg:items-start">
                     <span className="font-black text-2xl text-white" style={{ color: phaseColor }}>{stat.val}</span>
-                    <span className="text-white/30 text-xs font-mono uppercase tracking-widest">{stat.label}</span>
+                    <span className="text-white/65 text-xs font-mono uppercase tracking-widest">{stat.label}</span>
                   </div>
                 ))}
               </motion.div>
@@ -172,10 +172,10 @@ export default function FinalCTA() {
               </motion.a>
             ) : null}
 
-            <div className="flex items-center gap-6 opacity-30">
-              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white">100% Secure</span>
+            <div className="flex items-center gap-6 opacity-70">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-white">100% Secure</span>
               <div className="w-1 h-1 rounded-full" style={{ backgroundColor: phaseColor }} />
-              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white">{urgencyText}</span>
+              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-white">{urgencyText}</span>
             </div>
           </div>
         </div>

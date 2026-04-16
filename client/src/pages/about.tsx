@@ -61,11 +61,11 @@ export default function About() {
         <div className="h-px w-12 bg-accent/40" />
         <span className="accent-label !mb-0 text-accent">Foundational Ethos</span>
        </div>
-       <h2 className="display-title !text-4xl md:!text-6xl mb-10 text-[#1A1A1A]">
+       <h2 className="display-title !text-4xl md:!text-6xl mb-10 text-white">
         Eliminating the Burden of <br />
         <span className="text-gradient-gold italic">Managing Assets from Afar.</span>
        </h2>
-       <p className="text-xl text-muted-foreground font-light leading-relaxed mb-12 max-w-xl">
+       <p className="text-xl text-white/65 font-light leading-relaxed mb-12 max-w-xl">
         NRIs operate at the highest levels of global commerce, yet managing family assets in India remains a source of manual, fragmented stress. We serve as your professional proxy on the ground.
        </p>
        

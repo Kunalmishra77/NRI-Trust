@@ -86,7 +86,7 @@ export default function ZoneOrange() {
             <div>
               <motion.div {...fadeUp(0)} className="flex items-center gap-3 mb-8">
                 <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: COLOR }} />
-                <span className="text-[10px] font-mono font-black uppercase tracking-[0.45em]" style={{ color: COLOR }}>
+                <span className="text-[12px] font-mono font-black uppercase tracking-[0.3em]" style={{ color: COLOR }}>
                   Orange Zone · Active Watch · Parents 65–75
                 </span>
               </motion.div>
@@ -133,12 +133,12 @@ export default function ZoneOrange() {
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
           <motion.div {...fadeUp()} className="mb-16">
-            <div className="text-[10px] font-mono font-black uppercase tracking-[0.4em] mb-4" style={{ color: COLOR }}>
+            <div className="text-[12px] font-mono font-black uppercase tracking-[0.3em] mb-4" style={{ color: COLOR }}>
               Reality Check
             </div>
             <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
               5 questions that tell you<br />
-              <span className="text-[#1A1A1A]/30 font-light italic">exactly where you stand.</span>
+              <span className="text-[#1A1A1A]/55 font-light italic">exactly where you stand.</span>
             </h2>
           </motion.div>
 
@@ -154,7 +154,7 @@ export default function ZoneOrange() {
                   <p className="font-black text-[#1A1A1A] text-base md:text-lg mb-2 leading-snug">{item.q}</p>
                   <div className="flex items-start gap-2">
                     <AlertTriangle className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
-                    <p className="text-[#1A1A1A]/45 text-sm font-medium leading-relaxed">
+                    <p className="text-[#1A1A1A]/65 text-sm font-medium leading-relaxed">
                       If not: {item.risk}
                     </p>
                   </div>
@@ -169,7 +169,7 @@ export default function ZoneOrange() {
       <section className="py-24 md:py-32 bg-[#050914]">
         <div className="max-w-[1200px] mx-auto px-6">
           <motion.div {...fadeUp()} className="mb-16">
-            <div className="text-[10px] font-mono font-black uppercase tracking-[0.4em] mb-4 text-white/30">
+            <div className="text-[12px] font-mono font-black uppercase tracking-[0.3em] mb-4 text-white/55">
               What We See
             </div>
             <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-white">
@@ -188,7 +188,7 @@ export default function ZoneOrange() {
                   <AlertTriangle className="w-4 h-4" style={{ color: COLOR }} />
                 </div>
                 <h3 className="text-white font-black text-lg mb-3 leading-tight">{p.title}</h3>
-                <p className="text-white/45 text-sm leading-relaxed font-medium">{p.desc}</p>
+                <p className="text-white/70 text-sm leading-relaxed font-medium">{p.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -199,12 +199,12 @@ export default function ZoneOrange() {
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
           <motion.div {...fadeUp()} className="mb-16">
-            <div className="text-[10px] font-mono font-black uppercase tracking-[0.4em] mb-4" style={{ color: COLOR }}>
+            <div className="text-[12px] font-mono font-black uppercase tracking-[0.3em] mb-4" style={{ color: COLOR }}>
               Our Services
             </div>
             <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
               What we handle first<br />
-              <span className="text-[#1A1A1A]/30 font-light italic">for families in the Orange Zone.</span>
+              <span className="text-[#1A1A1A]/55 font-light italic">for families in the Orange Zone.</span>
             </h2>
           </motion.div>
 
@@ -276,7 +276,7 @@ export default function ZoneOrange() {
               Start with a full review.<br />
               <span style={{ color: COLOR }}>Know every gap in 48 hours.</span>
             </h2>
-            <p className="text-white/40 text-lg leading-relaxed mb-10 max-w-xl mx-auto font-medium">
+            <p className="text-white/65 text-lg leading-relaxed mb-10 max-w-xl mx-auto font-medium">
               We audit your parents' insurance, property, legal documents, banking, and tax situation — then give you a clear priority list with timelines.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

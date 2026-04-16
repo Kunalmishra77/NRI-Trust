@@ -6,7 +6,7 @@ export const PHASE_CONFIG = {
   green: {
     label: 'Planning Zone',
     sublabel: 'Early Protection',
-    ageRange: 'Parents 55–65',
+    ageRange: 'Parents 55 – 65',
     stage: 'Planning & Prevention',
     color: '#22c55e',
     colorDim: '#15803d',
@@ -49,7 +49,7 @@ export const PHASE_CONFIG = {
   orange: {
     label: 'Active Watch',
     sublabel: 'Ongoing Management',
-    ageRange: 'Parents 65–75',
+    ageRange: 'Parents 65 – 75',
     stage: 'Verification & Structuring',
     color: '#f97316',
     colorDim: '#c2410c',

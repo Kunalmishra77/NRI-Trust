@@ -37,6 +37,7 @@ import ZoneRed from "@/pages/zone/red";
 import Preloader, { hasPreloaded } from "@/components/Preloader";
 import PhaseIndicator from "@/components/PhaseIndicator";
 import { UserProvider } from "@/context/UserContext";
+import { AuthProvider } from "@/context/AuthContext";
 
 function Router() {
   return (
@@ -83,17 +84,19 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <UserProvider>
-          {!preloaderDone && (
-            <Preloader onDone={() => setPreloaderDone(true)} />
-          )}
-          {preloaderDone && (
-            <>
-              <Router />
-              <PhaseIndicator />
-            </>
-          )}
-        </UserProvider>
+        <AuthProvider>
+          <UserProvider>
+            {!preloaderDone && (
+              <Preloader onDone={() => setPreloaderDone(true)} />
+            )}
+            {preloaderDone && (
+              <>
+                <Router />
+                <PhaseIndicator />
+              </>
+            )}
+          </UserProvider>
+        </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );

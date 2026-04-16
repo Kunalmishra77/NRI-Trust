@@ -95,7 +95,10 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
       Choose the Right <br className="hidden md:block" />
       <span className="text-gradient-gold font-medium">Plan for Your Family.</span>
      </h2>
-     <p className="text-lg text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
+     <p className={cn(
+      "text-lg font-light leading-relaxed max-w-2xl mx-auto",
+      theme === 'light' ? "text-[#1A1A1A]/65" : "text-white/65"
+     )}>
       We offer three simple plans based on your parents' needs. Start with a free consultation — we'll help you pick the right one.
      </p>
     </motion.div>
@@ -232,7 +235,10 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
         "text-2xl lg:text-3xl font-sans font-bold mb-4",
         theme === 'light' ? "text-[#1A1A1A]" : "text-white"
        )}>Our Promise to You</h4>
-       <p className="text-muted-foreground font-light text-[15px] leading-relaxed">
+       <p className={cn(
+        "font-light text-[15px] leading-relaxed",
+        theme === 'light' ? "text-[#1A1A1A]/65" : "text-white/65"
+       )}>
         Your parents' financial security is our responsibility. We handle the complexities in India so you can focus on your life abroad with complete peace of mind.
        </p>
       </div>

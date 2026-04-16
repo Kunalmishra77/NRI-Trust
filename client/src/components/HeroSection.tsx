@@ -29,26 +29,26 @@ function PreviewPanel({ phase }: { phase: Phase }) {
       className="absolute inset-0 rounded-2xl p-4 border overflow-hidden"
       style={{ background: "rgba(8,14,30,0.96)", borderColor: `${color}35` }}
     >
-      <p className="text-[9px] font-mono font-black uppercase tracking-[0.35em] mb-2.5" style={{ color }}>
+      <p className="text-[11px] font-mono font-black uppercase tracking-[0.25em] mb-2.5" style={{ color }}>
         Ask yourself
       </p>
       <ul className="space-y-1.5 mb-3">
         {config.hoverContent.questions.map((q, i) => (
           <li key={i} className="flex items-start gap-2">
             <div className="w-1 h-1 rounded-full mt-[6px] shrink-0" style={{ backgroundColor: color }} />
-            <span className="text-white/75 text-[11px] leading-snug">{q}</span>
+            <span className="text-white/85 text-[12px] leading-snug">{q}</span>
           </li>
         ))}
       </ul>
       <div className="pt-2.5 border-t border-white/10">
-        <p className="text-[9px] font-mono font-black uppercase tracking-[0.35em] mb-2" style={{ color }}>
+        <p className="text-[11px] font-mono font-black uppercase tracking-[0.25em] mb-2" style={{ color }}>
           How we help
         </p>
         <ul className="space-y-1">
           {config.hoverContent.benefits.map((b, i) => (
             <li key={i} className="flex items-start gap-2">
               <ChevronRight className="w-3 h-3 mt-0.5 shrink-0" style={{ color }} />
-              <span className="text-white/80 text-[11px] leading-snug font-medium">{b}</span>
+              <span className="text-white/90 text-[12px] leading-snug font-medium">{b}</span>
             </li>
           ))}
         </ul>
@@ -72,15 +72,15 @@ function DefaultPanel() {
         {STATS.map((s) => (
           <div key={s.label} className="text-center">
             <div className="text-2xl md:text-3xl font-black text-white mb-1">{s.val}</div>
-            <div className="text-[10px] text-white/55 font-medium leading-tight">{s.label}</div>
+            <div className="text-[12px] text-white/75 font-medium leading-tight">{s.label}</div>
           </div>
         ))}
       </div>
       <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center">
         {["FEMA Compliant", "Registered Legal Firm", "24/7 Support"].map((t) => (
           <div key={t} className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-3 h-3 text-[#d4af37]/60" />
-            <span className="text-white/55 text-[11px] font-medium">{t}</span>
+            <CheckCircle2 className="w-3 h-3 text-[#d4af37]/70" />
+            <span className="text-white/75 text-[12px] font-medium">{t}</span>
           </div>
         ))}
       </div>
@@ -128,7 +128,7 @@ function ZoneCard({
         />
         <div className="min-w-0">
           <div className="text-white font-black text-sm leading-tight">{config.ageRange}</div>
-          <div className="text-[10px] font-mono uppercase tracking-[0.28em] mt-0.5 font-bold" style={{ color }}>
+          <div className="text-[12px] font-mono uppercase tracking-[0.2em] mt-0.5 font-bold" style={{ color }}>
             {config.label}
           </div>
         </div>
@@ -137,8 +137,8 @@ function ZoneCard({
       {/* Right */}
       <div className="flex items-center gap-2.5 shrink-0">
         <span
-          className="text-[11px] font-medium hidden sm:block transition-colors duration-200"
-          style={{ color: isHovered ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.35)" }}
+          className="text-[12px] font-medium hidden sm:block transition-colors duration-200"
+          style={{ color: isHovered ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.6)" }}
         >
           {config.stage}
         </span>
@@ -195,8 +195,8 @@ export default function HeroSection() {
               transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
               className="flex items-center gap-3 mb-8"
             >
-              <Shield className="w-3.5 h-3.5 text-[#d4af37]/70" />
-              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-[#d4af37]/70">
+              <Shield className="w-3.5 h-3.5 text-[#d4af37]/80" />
+              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] text-[#d4af37]/80">
                 India's Most Trusted NRI Family Protection Platform
               </span>
             </motion.div>
@@ -266,14 +266,14 @@ export default function HeroSection() {
             {/* Divider */}
             <div className="flex items-center gap-3">
               <div className="h-[1px] flex-1 bg-white/10" />
-              <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/40 font-bold shrink-0">
+              <p className="text-[11px] font-mono uppercase tracking-[0.3em] text-white/55 font-bold shrink-0">
                 Select age group
               </p>
               <div className="h-[1px] flex-1 bg-white/10" />
             </div>
 
             {/* Zone cards */}
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-3.5">
               {ZONES.map((id) => (
                 <ZoneCard
                   key={id}
@@ -285,7 +285,7 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <p className="text-[10px] font-mono text-white/30 tracking-widest text-center">
+            <p className="text-[11px] font-mono text-white/50 tracking-wider text-center">
               Hover to preview · Click to view your plan
             </p>
           </motion.div>

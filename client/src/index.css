@@ -142,7 +142,8 @@
 
   /* Typography */
   .accent-label {
-    @apply font-mono text-[13px] md:text-[14px] tracking-[0.4em] uppercase text-[#d4af37] font-bold mb-6 block;
+    @apply font-mono text-[13px] md:text-[14px] tracking-[0.4em] uppercase font-bold mb-6 block;
+    color: #d4af37 !important;
   }
 
   .section-title {
@@ -182,7 +183,8 @@
   }
 
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37];
+    @apply bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37];
+    color: transparent !important;
   }
 
   .perspective-1000 { perspective: 1000px; }

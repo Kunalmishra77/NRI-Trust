@@ -73,7 +73,10 @@ export default function HowItWorksSection({ theme = 'dark' }: { theme?: 'dark' |
       How We Secure Your <br className="hidden md:block" />
       <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light">Parents' Well-Being.</span>
      </h2>
-     <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
+     <p className={cn(
+      "text-lg font-light max-w-2xl mx-auto leading-relaxed",
+      theme === 'light' ? "text-[#1A1A1A]/65" : "text-white/65"
+     )}>
       A structured, 4-step journey to transition from fragmented handling to professional care.
      </p>
     </motion.div>
@@ -132,7 +135,10 @@ export default function HowItWorksSection({ theme = 'dark' }: { theme?: 'dark' |
          )}>
           {step.title}
          </h3>
-         <p className="text-[14px] text-muted-foreground font-light leading-relaxed">
+         <p className={cn(
+          "text-[14px] font-light leading-relaxed",
+          theme === 'light' ? "text-[#1A1A1A]/65" : "text-white/65"
+         )}>
           {step.description}
          </p>
         </div>
@@ -152,12 +158,14 @@ export default function HowItWorksSection({ theme = 'dark' }: { theme?: 'dark' |
      variants={elegantFadeUp}
      className="text-center mt-24 md:mt-32"
     >
-     <Link href="/contact">
-      <button className="btn-premium-primary min-w-[320px] group">
-       <span className="relative z-10">Book Review Session</span>
-       <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform inline-block" />
-      </button>
-     </Link>
+     <div className="flex justify-center">
+      <Link href="/contact">
+       <button className="btn-premium-primary min-w-[320px] group">
+        <span className="relative z-10">Book Review Session</span>
+        <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform inline-block" />
+       </button>
+      </Link>
+     </div>
      <div className="mt-12 flex items-center justify-center gap-4 opacity-30">
       <ShieldCheck className="w-4 h-4 text-accent" />
       <p className={cn(

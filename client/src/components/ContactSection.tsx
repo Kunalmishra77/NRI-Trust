@@ -84,7 +84,10 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                 <span className="text-gradient-gold italic">Review Session.</span>
               </h2>
               
-              <p className="text-xl text-muted-foreground font-light leading-relaxed mb-16 max-w-md">
+              <p className={cn(
+                "text-xl font-light leading-relaxed mb-16 max-w-md",
+                theme === 'light' ? "text-[#1A1A1A]/65" : "text-white/65"
+              )}>
                 Get a free review of your parents' financial situation in India.
               </p>
 
@@ -106,7 +109,10 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                         "text-lg font-serif mb-2",
                         theme === 'light' ? "text-[#1A1A1A]" : "text-white"
                       )}>{item.title}</h3>
-                      <p className="text-sm text-muted-foreground font-light leading-relaxed">{item.desc}</p>
+                      <p className={cn(
+                        "text-sm font-light leading-relaxed",
+                        theme === 'light' ? "text-[#1A1A1A]/65" : "text-white/65"
+                      )}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -159,7 +165,10 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                       "text-3xl font-serif mb-6",
                       theme === 'light' ? "text-[#1A1A1A]" : "text-white"
                     )}>Request Received.</h3>
-                    <p className="text-lg text-muted-foreground font-light leading-relaxed mb-12 max-w-sm">
+                    <p className={cn(
+                      "text-lg font-light leading-relaxed mb-12 max-w-sm",
+                      theme === 'light' ? "text-[#1A1A1A]/65" : "text-white/65"
+                    )}>
                       Our scheduling unit will contact you within 4 hours to confirm your private review session.
                     </p>
                     <button
@@ -188,8 +197,8 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                         <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-500 font-bold">Encrypted Booking Line</span>
                       </div>
                       <div className={cn(
-                        "flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest",
-                        theme === 'light' ? "text-black/20" : "text-white/20"
+                        "flex items-center gap-2 text-[12px] font-mono uppercase tracking-widest",
+                        theme === 'light' ? "text-black/55" : "text-white/55"
                       )}>
                         <Globe className="w-3 h-3" />
                         Serving 40+ Jurisdictions
@@ -201,7 +210,7 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
 
                       <div className="grid md:grid-cols-2 gap-8">
                         <div className="space-y-3">
-                          <label className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">Principal Name</label>
+                          <label className="text-[12px] font-mono uppercase tracking-widest text-accent font-bold">Principal Name</label>
                           <Input 
                             required 
                             placeholder="Full Legal Name" 
@@ -210,13 +219,13 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                             className={cn(
                               "h-14 rounded-xl focus:border-accent/50 focus:ring-accent/20 transition-all shadow-sm",
                               theme === 'light' 
-                                ? "bg-[#FDFCFB] border-black/10 text-[#1A1A1A] placeholder:text-black/20" 
-                                : "bg-background/50 border-white/10 text-white placeholder:text-white/20"
+                                ? "bg-[#FDFCFB] border-black/10 text-[#1A1A1A] placeholder:text-black/40" 
+                                : "bg-background/50 border-white/10 text-white placeholder:text-white/40"
                             )}
                           />
                         </div>
                         <div className="space-y-3">
-                          <label className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">Confidential Email</label>
+                          <label className="text-[12px] font-mono uppercase tracking-widest text-accent font-bold">Confidential Email</label>
                           <Input 
                             required 
                             type="email" 
@@ -226,8 +235,8 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                             className={cn(
                               "h-14 rounded-xl focus:border-accent/50 focus:ring-accent/20 transition-all shadow-sm",
                               theme === 'light' 
-                                ? "bg-[#FDFCFB] border-black/10 text-[#1A1A1A] placeholder:text-black/20" 
-                                : "bg-background/50 border-white/10 text-white placeholder:text-white/20"
+                                ? "bg-[#FDFCFB] border-black/10 text-[#1A1A1A] placeholder:text-black/40" 
+                                : "bg-background/50 border-white/10 text-white placeholder:text-white/40"
                             )}
                           />
                         </div>
@@ -235,7 +244,7 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
 
                       <div className="grid md:grid-cols-2 gap-8">
                         <div className="space-y-3">
-                          <label className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">Country of Residency</label>
+                          <label className="text-[12px] font-mono uppercase tracking-widest text-accent font-bold">Country of Residency</label>
                           <Select required onValueChange={(val) => setFormData({...formData, country: val})}>
                             <SelectTrigger className={cn(
                               "h-14 rounded-xl shadow-sm transition-all",
@@ -254,7 +263,7 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                           </Select>
                         </div>
                         <div className="space-y-3">
-                          <label className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">Parent Location (India)</label>
+                          <label className="text-[12px] font-mono uppercase tracking-widest text-accent font-bold">Parent Location (India)</label>
                           <Input 
                             required 
                             placeholder="City/State in India" 
@@ -263,15 +272,15 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                             className={cn(
                               "h-14 rounded-xl focus:border-accent/50 focus:ring-accent/20 transition-all shadow-sm",
                               theme === 'light' 
-                                ? "bg-[#FDFCFB] border-black/10 text-[#1A1A1A] placeholder:text-black/20" 
-                                : "bg-background/50 border-white/10 text-white placeholder:text-white/20"
+                                ? "bg-[#FDFCFB] border-black/10 text-[#1A1A1A] placeholder:text-black/40" 
+                                : "bg-background/50 border-white/10 text-white placeholder:text-white/40"
                             )}
                           />
                         </div>
                       </div>
 
                       <div className="space-y-3">
-                        <label className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">Family Context & Requirements</label>
+                        <label className="text-[12px] font-mono uppercase tracking-widest text-accent font-bold">Family Context & Requirements</label>
                         <Textarea 
                           required
                           placeholder="Briefly describe the assets or concerns requiring financial protection..." 
@@ -280,8 +289,8 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                           className={cn(
                             "min-h-[140px] rounded-xl p-5 transition-all resize-none shadow-sm",
                             theme === 'light' 
-                              ? "bg-[#FDFCFB] border-black/10 text-[#1A1A1A] placeholder:text-black/20 focus:border-accent/50" 
-                              : "bg-background/50 border-white/10 text-white placeholder:text-white/20 focus:border-accent/50"
+                              ? "bg-[#FDFCFB] border-black/10 text-[#1A1A1A] placeholder:text-black/40 focus:border-accent/50" 
+                              : "bg-background/50 border-white/10 text-white placeholder:text-white/40 focus:border-accent/50"
                           )}
                         />
                       </div>
@@ -299,7 +308,7 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                             theme === 'light' ? "border-black/20" : "border-white/20"
                           )} 
                         />
-                        <label htmlFor="consent" className="text-xs leading-relaxed cursor-pointer select-none text-muted-foreground font-light hover:text-accent transition-colors">
+                        <label htmlFor="consent" className={cn("text-xs leading-relaxed cursor-pointer select-none font-light hover:text-accent transition-colors", theme === 'light' ? "text-[#1A1A1A]/55" : "text-white/55")}>
                           I consent to the secure processing of my data for the purpose of a confidential advisory consultation. All communications are strictly private.
                         </label>
                       </div>
@@ -322,8 +331,8 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
 
                       <div className="text-center">
                         <span className={cn(
-                          "text-[9px] font-mono uppercase tracking-[0.3em] font-bold",
-                          theme === 'light' ? "text-black/20" : "text-white/20"
+                          "text-[11px] font-mono uppercase tracking-[0.25em] font-bold",
+                          theme === 'light' ? "text-black/55" : "text-white/55"
                         )}>Verified Trusted Intake Process</span>
                       </div>
                     </form>

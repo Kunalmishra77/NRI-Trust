@@ -115,7 +115,7 @@ export default function GlobalStewardshipScroll() {
               Managed Locally. <span className="text-[#d4af37]">Trusted Globally.</span>
             </h2>
           </div>
-          <p className="text-lg text-white/40 max-w-sm font-medium leading-relaxed pb-2 text-left">
+          <p className="text-lg text-white/65 max-w-sm font-medium leading-relaxed pb-2 text-left">
             We are physically present in India to manage everything your parents need.
           </p>
         </div>
@@ -151,10 +151,10 @@ export default function GlobalStewardshipScroll() {
                   </div>
 
                   <div className="relative z-10 pt-5 border-t border-white/10 flex items-center justify-between mt-4">
-                    <span className="text-[9px] font-mono font-bold uppercase tracking-[0.3em] text-[#d4af37]">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#d4af37]">
                       {pillar.stat}
                     </span>
-                    <div className="flex items-center gap-3 text-white/40 group-hover:text-[#d4af37] transition-colors font-bold">
+                    <div className="flex items-center gap-3 text-white/65 group-hover:text-[#d4af37] transition-colors font-bold">
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>

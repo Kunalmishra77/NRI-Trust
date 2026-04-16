@@ -39,7 +39,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-2xl font-sans font-black tracking-tight text-[#1A1A1A]">NRI TRUST</span>
-                <span className="text-[9px] font-mono tracking-[0.4em] uppercase text-accent mt-1 font-bold">Financial Protection</span>
+                <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-accent mt-1 font-bold">Financial Protection</span>
               </div>
             </Link>
 
@@ -86,7 +86,7 @@ export default function Footer() {
           <div className="lg:col-span-5 grid grid-cols-2 gap-12 pt-4">
             {Object.entries(footerLinks).map(([title, links]) => (
               <div key={title}>
-                <h3 className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-10">{title}</h3>
+                <h3 className="font-mono text-[12px] font-black uppercase tracking-[0.3em] text-accent mb-10">{title}</h3>
                 <ul className="space-y-5">
                   {links.map((link) => (
                     <li key={link.label}>
@@ -103,7 +103,7 @@ export default function Footer() {
 
           {/* Column 4: Engagement & Status */}
           <div className="lg:col-span-3 flex flex-col pt-4">
-            <h3 className="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-10">Client Access</h3>
+            <h3 className="font-mono text-[12px] font-black uppercase tracking-[0.3em] text-accent mb-10">Client Access</h3>
             
             <Link href="/portal">
               <motion.div 
@@ -115,8 +115,8 @@ export default function Footer() {
                     <Lock className="w-5 h-5 text-accent group-hover:text-white" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono font-black text-[#1A1A1A] uppercase tracking-widest leading-none mb-1">Client Portal</div>
-                    <div className="text-[9px] text-accent font-bold uppercase tracking-tighter">Secure Family Access</div>
+                    <div className="text-[13px] font-mono font-black text-[#1A1A1A] uppercase tracking-widest leading-none mb-1">Client Portal</div>
+                    <div className="text-[11px] text-accent font-bold uppercase tracking-tight">Secure Family Access</div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between text-[10px] font-mono text-[#1A1A1A]/70 uppercase tracking-widest group-hover:text-accent transition-colors">
@@ -129,15 +129,15 @@ export default function Footer() {
             {/* Operational Status */}
             <div className="p-6 rounded-2xl bg-[#1A1A1A]/5 border border-[#1A1A1A]/5 space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono text-[#1A1A1A]/60 uppercase font-bold">Network Status</span>
+                <span className="text-[12px] font-mono text-[#1A1A1A]/75 uppercase font-bold">Network Status</span>
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
                   <span className="text-[10px] font-mono text-green-600 font-black uppercase">Live</span>
                 </div>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono text-[#1A1A1A]/60 uppercase font-bold">HQ Location</span>
-                <span className="text-[10px] font-mono text-[#1A1A1A] font-black uppercase">Mumbai, IN</span>
+                <span className="text-[12px] font-mono text-[#1A1A1A]/75 uppercase font-bold">HQ Location</span>
+                <span className="text-[12px] font-mono text-[#1A1A1A] font-black uppercase">Mumbai, IN</span>
               </div>
             </div>
           </div>
@@ -145,26 +145,26 @@ export default function Footer() {
 
         {/* Bottom Bar: Compliance & Copyright */}
         <div className="pt-12 border-t border-black/[0.05] flex flex-col md:flex-row justify-between items-center gap-8">
-          <span className="text-[11px] font-mono text-[#1A1A1A]/70 tracking-[0.2em] uppercase font-black">
+          <span className="text-[13px] font-mono text-[#1A1A1A]/80 tracking-[0.15em] uppercase font-black">
             &copy; {currentYear} NRI Trust Global Advisory Ltd.
           </span>
 
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="flex items-center gap-6">
-              <Link href="/terms" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Terms of Service</Link>
-              <Link href="/privacy" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Privacy Policy</Link>
-              <Link href="/cookies" className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/70 hover:text-accent transition-colors">Cookie Policy</Link>
+              <Link href="/terms" className="text-[12px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/75 hover:text-accent transition-colors">Terms of Service</Link>
+              <Link href="/privacy" className="text-[12px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/75 hover:text-accent transition-colors">Privacy Policy</Link>
+              <Link href="/cookies" className="text-[12px] font-mono font-bold uppercase tracking-widest text-[#1A1A1A]/75 hover:text-accent transition-colors">Cookie Policy</Link>
             </div>
 
             <div className="hidden md:block h-4 w-px bg-black/10" />
 
             <div className="flex items-center gap-8">
-              <div className="flex items-center gap-3 text-[10px] font-mono text-[#1A1A1A]/70 uppercase tracking-widest font-black">
+              <div className="flex items-center gap-3 text-[12px] font-mono text-[#1A1A1A]/75 uppercase tracking-widest font-black">
                 <Globe className="w-3.5 h-3.5" />
                 <span>40+ Global Jurisdictions</span>
               </div>
               <div className="h-4 w-px bg-black/10" />
-              <div className="flex items-center gap-3 text-[10px] font-mono text-[#1A1A1A]/70 uppercase tracking-widest font-black">
+              <div className="flex items-center gap-3 text-[12px] font-mono text-[#1A1A1A]/75 uppercase tracking-widest font-black">
                 <MapPin className="w-3.5 h-3.5" />
                 <span>FEMA Compliant</span>
               </div>

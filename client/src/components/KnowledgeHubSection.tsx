@@ -135,14 +135,14 @@ export default function KnowledgeHubSection() {
                 className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#1A1A1A]/5 border border-[#1A1A1A]/10 mb-8"
               >
                 <BookOpen className="w-4 h-4" style={{ color: phaseColor }} />
-                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em]" style={{ color: phaseColor }}>
+                <span className="text-[12px] font-mono font-bold uppercase tracking-[0.25em]" style={{ color: phaseColor }}>
                   {sectionLabel}
                 </span>
               </motion.div>
 
               <h2 className="text-3xl md:text-5xl font-sans font-black tracking-tight text-[#1A1A1A] leading-[1.05] mb-8">
                 Authoritative <br />
-                <span className="text-[#1A1A1A]/30 italic font-light">NRI Briefs.</span>
+                <span className="text-[#1A1A1A]/55 italic font-light">NRI Briefs.</span>
               </h2>
 
               <motion.p

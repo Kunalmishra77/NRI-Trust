@@ -279,11 +279,11 @@ export default function PropertyTenancy() {
               >
                 <h3 className={cn(
                   "text-2xl font-serif mb-4",
-                  plan.highlight ? "text-white" : "text-[#1A1A1A]"
+                  plan.highlight ? "!text-white" : "text-[#1A1A1A]"
                 )}>{plan.tier}</h3>
                 <p className={cn(
                   "text-xs mb-10 leading-relaxed uppercase tracking-widest font-bold",
-                  plan.highlight ? "text-accent" : "text-[#1A1A1A]/90"
+                  plan.highlight ? "!text-accent" : "text-[#1A1A1A]/90"
                 )}>{plan.bestFor}</p>
                 
                 <div className="space-y-6 flex-1 mb-12">
@@ -295,7 +295,7 @@ export default function PropertyTenancy() {
                       )} />
                       <span className={cn(
                         "text-[14px] font-light leading-snug",
-                        plan.highlight ? "text-white" : "text-[#1A1A1A]/90"
+                        plan.highlight ? "!text-white" : "text-[#1A1A1A]/90"
                       )}>{item}</span>
                     </div>
                   ))}

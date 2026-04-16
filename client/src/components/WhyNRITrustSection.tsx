@@ -69,7 +69,10 @@ export default function WhyNRITrustSection({ theme = 'dark' }: { theme?: 'dark' 
       Why Families <br className="hidden md:block" />
       <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light drop-shadow-md">Trust NRI Trust</span>
      </h2>
-     <p className="text-lg text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed">
+     <p className={cn(
+      "text-lg font-light max-w-3xl mx-auto leading-relaxed",
+      theme === 'light' ? "text-[#1A1A1A]/65" : "text-white/65"
+     )}>
       Other families rely on scattered agents and relatives.
       We give you one organized system that covers everything — with proper accountability and regular updates.
      </p>
@@ -127,7 +130,7 @@ export default function WhyNRITrustSection({ theme = 'dark' }: { theme?: 'dark' 
            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-red-400/40 mb-4">Market Standard</span>
            <div className="flex gap-4">
             <XCircle className="w-5 h-5 text-red-400/20 flex-shrink-0 mt-1" />
-            <p className="text-[14px] lg:text-[15px] text-muted-foreground/60 font-light leading-relaxed italic">
+            <p className={cn("text-[14px] lg:text-[15px] font-light leading-relaxed italic", theme === 'light' ? "text-[#1A1A1A]/50" : "text-white/50")}>
              {item.others}
             </p>
            </div>

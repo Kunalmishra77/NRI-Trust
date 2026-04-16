@@ -25,7 +25,7 @@ export default function ComparisonSection() {
             className="text-3xl md:text-5xl font-sans font-black tracking-tight mb-8 leading-[1.1] text-[#1A1A1A]"
           >
             Without Preparation, <br />
-            <span className="text-[#1A1A1A]/40">Families Struggle.</span>
+            <span className="text-[#1A1A1A]/65">Families Struggle.</span>
           </motion.h2>
         </div>
 
@@ -61,7 +61,7 @@ export default function ComparisonSection() {
                       </div>
                       <div>
                         <div className="font-bold text-lg text-[#1A1A1A] mb-1">{item.label}</div>
-                        <div className="text-base text-[#1A1A1A]/50 font-medium leading-relaxed">{item.desc}</div>
+                        <div className="text-base text-[#1A1A1A]/70 font-medium leading-relaxed">{item.desc}</div>
                       </div>
                     </div>
                   ))}
@@ -96,7 +96,7 @@ export default function ComparisonSection() {
                       </div>
                       <div>
                         <div className="font-bold text-lg text-white mb-1 group-hover:text-accent transition-colors">{item.label}</div>
-                        <div className="text-base text-white/50 font-medium leading-relaxed">{item.desc}</div>
+                        <div className="text-base text-white/75 font-medium leading-relaxed">{item.desc}</div>
                       </div>
                     </div>
                   ))}
@@ -121,7 +121,7 @@ export default function ComparisonSection() {
           {/* Center Connector Badge */}
           <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-white border border-[#1A1A1A]/10 shadow-2xl items-center justify-center z-20">
             <div className="text-center">
-              <div className="text-[10px] font-mono font-black text-[#1A1A1A]/40 leading-none">VS</div>
+              <div className="text-[13px] font-mono font-black text-[#1A1A1A]/65 leading-none">VS</div>
             </div>
           </div>
         </div>
