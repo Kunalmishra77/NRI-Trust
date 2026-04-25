@@ -98,7 +98,7 @@ export default function EmergencyTimeline() {
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 md:gap-8">
           <div className="max-w-4xl">
 
             {/* Badge */}
@@ -127,9 +127,9 @@ export default function EmergencyTimeline() {
               </motion.div>
             )}
 
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-sans font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
+    <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-sans font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
               {content.headline}{' '}
-              <span style={{ color: stepColor }}>{content.highlight}</span>
+              <span className="text-[#d4af37]">{content.highlight}</span>
             </h2>
             <p className="text-[#1A1A1A]/50 text-base md:text-lg font-medium mt-4 max-w-2xl leading-relaxed">
               {content.sub}
@@ -159,7 +159,7 @@ export default function EmergencyTimeline() {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0"
               >
-                <div className="h-full w-full rounded-[3rem] border border-[#1A1A1A]/10 bg-white p-10 md:p-16 flex flex-col justify-between overflow-hidden relative shadow-xl">
+                <div className="h-full w-full rounded-[3rem] border border-[#1A1A1A]/10 bg-white p-6 sm:p-8 md:p-10 lg:p-16 flex flex-col justify-between overflow-hidden relative shadow-xl">
                   {/* Progress bar */}
                   <div className="absolute top-0 left-0 w-full h-1.5 bg-[#1A1A1A]/5">
                     <motion.div

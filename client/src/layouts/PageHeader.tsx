@@ -99,7 +99,7 @@ export default function PageHeader({ title, subtitle, breadcrumbs, badge = "Prof
 
           <motion.h1
             variants={revealVariants}
-            className="text-4xl md:text-6xl lg:text-7xl font-sans font-black tracking-tight text-white leading-[1.15] mb-10 drop-shadow-2xl"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-sans font-black tracking-tight text-white leading-[1.15] mb-10 drop-shadow-2xl"
           >
             {/* If title has two parts, color the second part gold. */}
             {title.includes(':') ? (

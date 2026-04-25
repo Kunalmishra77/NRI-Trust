@@ -116,9 +116,9 @@ export default function KnowledgeHubSection() {
   return (
     <section className="relative py-20 md:py-28 overflow-hidden bg-[#FDFCFB] text-[#1A1A1A]">
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 right-[10%] w-[600px] h-[600px] rounded-full blur-[150px] opacity-30 pointer-events-none"
+        <div className="absolute top-1/4 right-[10%] w-[min(600px,90vw)] h-[min(600px,90vw)] rounded-full blur-[150px] opacity-30 pointer-events-none"
           style={{ backgroundColor: `${phaseColor}08` }} />
-        <div className="absolute bottom-1/4 left-[10%] w-[500px] h-[500px] bg-red-900/5 rounded-full blur-[120px] opacity-20 pointer-events-none" />
+        <div className="absolute bottom-1/4 left-[10%] w-[min(500px,80vw)] h-[min(500px,80vw)] bg-red-900/5 rounded-full blur-[120px] opacity-20 pointer-events-none" />
         <div className="absolute inset-0 noise-overlay opacity-[0.02]" />
       </div>
 
@@ -140,9 +140,9 @@ export default function KnowledgeHubSection() {
                 </span>
               </motion.div>
 
-              <h2 className="text-3xl md:text-5xl font-sans font-black tracking-tight text-[#1A1A1A] leading-[1.05] mb-8">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-sans font-black tracking-tight text-[#000000] leading-[1.05] mb-8">
                 Authoritative <br />
-                <span className="text-[#1A1A1A]/55 italic font-light">NRI Briefs.</span>
+                <span className="text-[#d4af37]">NRI Briefs.</span>
               </h2>
 
               <motion.p

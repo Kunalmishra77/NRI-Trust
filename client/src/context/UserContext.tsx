@@ -33,16 +33,12 @@ export const PHASE_CONFIG = {
     hoverContent: {
       questions: [
         'Do your parents have active health insurance?',
-        'Is there a registered Will in place?',
-        'Have you set up Power of Attorney from abroad?',
       ],
       problems: [
         '"We thought we had time" — the most common thing families say after a crisis',
-        'Insurance exists but nominees are wrong and coverage is outdated',
       ],
       benefits: [
         'Build complete protection before any problem occurs',
-        'Start with a free audit — takes just 20 minutes',
       ],
     },
   },
@@ -76,16 +72,12 @@ export const PHASE_CONFIG = {
     hoverContent: {
       questions: [
         'Are all insurance policies active and claim-ready?',
-        'Do you know exactly where every document is stored?',
-        'Is there an emergency access plan your family can follow?',
       ],
       problems: [
         'Insurance exists — but the claim still gets rejected due to missing paperwork',
-        'Tenants are in the house, rent agreement expired two years ago',
       ],
       benefits: [
         'We verify, organise, and close every gap — completely',
-        'One dashboard — every account, document, and policy in one place',
       ],
     },
   },
@@ -119,16 +111,12 @@ export const PHASE_CONFIG = {
     hoverContent: {
       questions: [
         'Can your family access bank funds within 24 hours?',
-        'Has an insurance claim been filed yet?',
-        'Is there a legal representative handling matters in India?',
       ],
       problems: [
         'Bank accounts frozen — family has no access to funds',
-        'Insurance company rejecting a claim that should clearly be approved',
       ],
       benefits: [
         'Our team responds within 2 hours — day or night',
-        'We handle everything: legal, financial, administrative',
       ],
     },
   },
@@ -160,12 +148,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
   });
 
   const selectZone = (p: Phase) => {
-    try { localStorage.setItem(STORAGE_KEY, p); } catch {}
+    try { localStorage.setItem(STORAGE_KEY, p); } catch { }
     setPhase(p);
   };
 
   const resetZone = () => {
-    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+    try { localStorage.removeItem(STORAGE_KEY); } catch { }
     setPhase(null);
   };
 

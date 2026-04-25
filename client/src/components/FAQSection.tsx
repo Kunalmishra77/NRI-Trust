@@ -96,8 +96,8 @@ export default function FAQSection({ theme = 'dark' }: { theme?: 'dark' | 'light
      </div>
      <h2 className={cn(
       "section-title mb-8",
-      theme === 'light' ? "text-[#1A1A1A]" : "text-white"
-     )}>Frequently Asked <span className="text-transparent bg-clip-text bg-gold-gradient italic font-light">Questions</span></h2>
+      theme === 'light' ? "text-[#000000]" : "text-white"
+     )}>Frequently Asked <span className="text-[#d4af37]">Questions</span></h2>
     </motion.div>
 
     <motion.div

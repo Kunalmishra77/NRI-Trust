@@ -22,10 +22,10 @@ export default function ComparisonSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-sans font-black tracking-tight mb-8 leading-[1.1] text-[#1A1A1A]"
+            className="text-2xl sm:text-3xl md:text-5xl font-sans font-black tracking-tight mb-8 leading-[1.1] text-[#000000]"
           >
             Without Preparation, <br />
-            <span className="text-[#1A1A1A]/65">Families Struggle.</span>
+            <span className="text-[#d4af37]">Families Struggle.</span>
           </motion.h2>
         </div>
 
@@ -34,7 +34,7 @@ export default function ComparisonSection() {
           <div className="grid lg:grid-cols-2 gap-0 rounded-[3rem] overflow-hidden border border-[#1A1A1A]/10 shadow-2xl bg-white">
             
             {/* LEFT: THE CHAOS (BEFORE) */}
-            <div className="p-10 md:p-16 bg-[#FDFCFB] border-r border-[#1A1A1A]/5 relative overflow-hidden group">
+            <div className="p-6 sm:p-8 md:p-10 lg:p-16 bg-[#FDFCFB] border-r border-[#1A1A1A]/5 relative overflow-hidden group">
               <div className="absolute top-[-5%] left-[-5%] opacity-[0.03] rotate-[-15deg] pointer-events-none">
                 <AlertTriangle size={400} className="text-red-600" />
               </div>
@@ -70,7 +70,7 @@ export default function ComparisonSection() {
             </div>
 
             {/* RIGHT: THE CONTROL (AFTER) */}
-            <div className="p-10 md:p-16 bg-[#050914] text-white relative overflow-hidden group">
+            <div className="p-6 sm:p-8 md:p-10 lg:p-16 bg-[#050914] text-white relative overflow-hidden group">
               {/* Animated Glow */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.15)_0%,transparent_70%)]" />
               

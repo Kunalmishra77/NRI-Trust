@@ -51,7 +51,7 @@ export default function HowItWorks() {
        The first step is a confidential, no-obligation discovery session to map your family's assets and assess immediate risks.
       </p>
       <Link href="/contact">
-       <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">
+       <button className="btn-premium-primary min-w-[200px] sm:min-w-[260px] md:min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">
         <span>Book Discovery Session</span>
         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
        </button>

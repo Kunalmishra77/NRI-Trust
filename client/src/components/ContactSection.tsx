@@ -144,7 +144,7 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
             className="lg:col-span-7"
           >
             <div className={cn(
-              "p-10 md:p-16 rounded-[3.5rem] relative overflow-hidden h-full premium-card shadow-2xl transition-all duration-700",
+              "p-6 sm:p-8 md:p-10 lg:p-16 rounded-[3.5rem] relative overflow-hidden h-full premium-card shadow-2xl transition-all duration-700",
               theme === 'light' ? "" : "bg-white/5 border-white/10 backdrop-blur-xl hover:bg-white/10"
             )}>
               <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-accent/30 to-transparent" />

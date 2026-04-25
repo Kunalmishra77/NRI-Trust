@@ -212,7 +212,7 @@ export default function Insurance() {
             <div className="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-10 shadow-[0_0_30px_rgba(239,68,68,0.15)]">
               <Zap className="w-8 h-8 text-red-500 animate-pulse" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-serif text-[#FDFCFB] mb-8">Emergency <span className="text-red-500 italic">Response.</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#FDFCFB] mb-8">Emergency <span className="text-red-500 italic">Response.</span></h2>
             <p className="text-xl text-white/90 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
               When an insurance claim is rejected while your parent is in the hospital,
               we step in immediately and work with the hospital and insurance company to fix it.
@@ -336,7 +336,7 @@ export default function Insurance() {
               and show you exactly what needs to be fixed.
             </p>
             <Link href="/contact">
-              <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">
+              <button className="btn-premium-primary min-w-[200px] sm:min-w-[260px] md:min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.15)]">
                 <span>Book Private Review</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>

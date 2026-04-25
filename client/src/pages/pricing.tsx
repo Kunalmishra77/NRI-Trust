@@ -55,7 +55,7 @@ export default function Pricing() {
       
       <div className="flex justify-center">
        <Link href="/contact">
-        <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 group shadow-[0_0_40px_rgba(207,160,82,0.2)]">
+        <button className="btn-premium-primary min-w-[200px] sm:min-w-[260px] md:min-w-[320px] flex items-center justify-center gap-4 group shadow-[0_0_40px_rgba(207,160,82,0.2)]">
          <span>Book Private Review Session</span>
          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </button>

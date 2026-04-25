@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -lh *.tsx)",
+      "Read(//d/NRI trust/**)",
+      "Bash(python3 -c \":*)",
+      "Bash(npx vercel:*)",
+      "Bash(node -e \"const { execSync } = require\\('child_process'\\); try { execSync\\('grep -r \\\\\"PersonStanding\\\\\" client/src/', {encoding:'utf8'}\\); } catch\\(e\\) { console.log\\('not found'\\); }\")",
+      "Bash(npm --version)",
+      "Bash(npm install:*)",
+      "Bash(node -e \"const {createCanvas} = require\\('@napi-rs/canvas'\\); console.log\\('OK', !!createCanvas\\)\")",
+      "Bash(node generate-logos.cjs)",
+      "Bash(npm uninstall:*)",
+      "Bash(ls -lh \"d:/NRI trust/client/public/\"*.png)",
+      "Bash(vercel --version)",
+      "Bash(vercel whoami:*)",
+      "Bash(vercel --prod)",
+      "Bash(python3 -c ':*)",
+      "Bash(python3)",
+      "Bash(node -e ':*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

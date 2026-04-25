@@ -59,7 +59,7 @@ export default function SuccessStoriesSection() {
             </motion.div>
             <h2 className="text-3xl md:text-5xl font-sans font-black text-white leading-tight tracking-tight">
               How We Helped <br />
-              <span className="text-white/70">Real Families.</span>
+              <span className="text-[#d4af37]">Real Families.</span>
             </h2>
           </div>
           

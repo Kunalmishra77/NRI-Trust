@@ -158,7 +158,7 @@ export default function ZoneRed() {
             <div className="text-[12px] font-mono font-black uppercase tracking-[0.3em] mb-4" style={{ color: COLOR }}>
               Immediate Assessment
             </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
               5 things we need to<br />
               <span className="text-[#1A1A1A]/55 font-light italic">know about your situation.</span>
             </h2>
@@ -194,7 +194,7 @@ export default function ZoneRed() {
             <div className="text-[12px] font-mono font-black uppercase tracking-[0.3em] mb-4 text-white/55">
               What Families Face
             </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-white">
               The crises we resolve<br />
               <span style={{ color: COLOR }}>every single week.</span>
             </h2>
@@ -224,7 +224,7 @@ export default function ZoneRed() {
             <div className="text-[12px] font-mono font-black uppercase tracking-[0.3em] mb-4" style={{ color: COLOR }}>
               Emergency Services
             </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
               What we activate immediately<br />
               <span className="text-[#1A1A1A]/55 font-light italic">for families in crisis.</span>
             </h2>

@@ -167,7 +167,7 @@ export default function About() {
       </p>
       <div className="flex justify-center">
        <Link href="/contact">
-        <button className="btn-premium-primary min-w-[320px]">
+        <button className="btn-premium-primary min-w-[200px] sm:min-w-[260px] md:min-w-[320px]">
          <span>Book Free Consultation</span>
         </button>
        </Link>

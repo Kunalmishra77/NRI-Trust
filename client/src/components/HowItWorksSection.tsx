@@ -160,7 +160,7 @@ export default function HowItWorksSection({ theme = 'dark' }: { theme?: 'dark' |
     >
      <div className="flex justify-center">
       <Link href="/contact">
-       <button className="btn-premium-primary min-w-[320px] group">
+       <button className="btn-premium-primary min-w-[200px] sm:min-w-[260px] md:min-w-[320px] group">
         <span className="relative z-10">Book Review Session</span>
         <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform inline-block" />
        </button>

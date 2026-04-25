@@ -90,10 +90,10 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
      </div>
      <h2 className={cn(
       "section-title mb-8",
-      theme === 'light' ? "text-[#1A1A1A]" : "text-white"
+      theme === 'light' ? "text-[#000000]" : "text-white"
      )}>
       Choose the Right <br className="hidden md:block" />
-      <span className="text-gradient-gold font-medium">Plan for Your Family.</span>
+      <span className="text-[#d4af37] font-medium">Plan for Your Family.</span>
      </h2>
      <p className={cn(
       "text-lg font-light leading-relaxed max-w-2xl mx-auto",
@@ -145,7 +145,7 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
           {tier.frequency}
          </span>
          <h3 className={cn(
-          "text-xl lg:text-3xl font-serif font-medium mb-4",
+          "text-lg md:text-xl lg:text-3xl font-serif font-medium mb-4",
           tier.popular ? "text-white !text-white" : (theme === 'light' ? "text-[#1A1A1A]" : "text-white")
          )}>
           {tier.name}
@@ -220,7 +220,7 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
      className="max-w-4xl mx-auto"
     >
      <div className={cn(
-      "p-10 md:p-14 rounded-[3rem] border flex flex-col md:flex-row items-center gap-10 relative overflow-hidden group shadow-sm transition-all duration-500",
+      "p-6 sm:p-8 md:p-10 lg:p-14 rounded-[3rem] border flex flex-col md:flex-row items-center gap-10 relative overflow-hidden group shadow-sm transition-all duration-500",
       theme === 'light' ? "bg-white border-black/5 hover:border-accent/40" : "vault-surface border-white/5 bg-[#0A0F0D]"
      )}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(207,160,82,0.05)_0%,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />

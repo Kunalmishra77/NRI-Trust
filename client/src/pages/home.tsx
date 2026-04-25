@@ -6,30 +6,18 @@ import EmergencyTimeline from "@/components/EmergencyTimeline";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import KnowledgeHubSection from "@/components/KnowledgeHubSection";
 import FinalCTA from "@/components/FinalCTA";
-import UnifiedGlobe from "@/components/UnifiedGlobe";
 import GlobalStewardshipScroll from "@/components/GlobalStewardshipScroll";
 
 export default function Home() {
   return (
     <main className="bg-[#FDFCFB] min-h-screen relative">
-      {/* 0. Global 3D Elements */}
-      <UnifiedGlobe />
+      {/* 1. Immersive Entry */}
+      <HeroSection />
 
-      {/* 1. Immersive Entry with Pinning */}
-      <div className="relative h-[400vh]">
-        <div className="sticky top-0 h-screen overflow-hidden">
-          <HeroSection />
-        </div>
-      </div>
+      {/* 2. Typographic Storytelling */}
+      <AnxietySection />
 
-      {/* 2. Typographic Storytelling with Pinning */}
-      <div className="relative h-[400vh]">
-        <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
-          <AnxietySection />
-        </div>
-      </div>
-
-      {/* 3. Global Protection (Horizontal Scroll) */}
+      {/* 3. Global Protection */}
       <GlobalStewardshipScroll />
 
       {/* 4. The Evolution / Comparison */}

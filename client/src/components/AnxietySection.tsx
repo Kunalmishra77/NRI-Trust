@@ -192,16 +192,16 @@ export default function AnxietySection() {
   });
 
   return (
-    <section className="relative h-screen w-screen bg-transparent overflow-hidden flex flex-col items-center">
+    <section className="relative h-screen w-full bg-transparent overflow-hidden flex flex-col items-center">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(253,252,251,0.4)_80%)] z-0 pointer-events-none" />
 
       {/* Phase-aware center label */}
       {phase && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none text-center">
-          <p className="text-[13px] font-mono uppercase tracking-[0.35em] font-bold" style={{ color: phaseColor }}>
+          <p className="text-[14px] font-mono uppercase tracking-[0.35em] font-black" style={{ color: phaseColor }}>
             {PHASE_CONFIG[phase].label}
           </p>
-          <p className="text-[12px] text-[#050914]/65 mt-1 font-medium">Your risk landscape</p>
+          <p className="text-[16px] text-[#000000] mt-1 font-black uppercase tracking-widest leading-none">Your risk landscape</p>
         </div>
       )}
 

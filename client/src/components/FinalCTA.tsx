@@ -84,7 +84,7 @@ export default function FinalCTA() {
               )}
             </motion.div>
 
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-sans font-black tracking-tight text-white leading-[1.05] mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-sans font-black tracking-tight text-white leading-[1.05] mb-6">
               {headline}
             </h2>
 

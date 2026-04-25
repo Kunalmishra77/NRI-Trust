@@ -206,7 +206,7 @@ export default function Services() {
                   Every family's situation is different. Book a free consultation and we will create a plan that fits your parents' needs.
                 </p>
                 <Link href="/contact">
-                  <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.2)]">
+                  <button className="btn-premium-primary min-w-[200px] sm:min-w-[260px] md:min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-[0_0_40px_rgba(207,160,82,0.2)]">
                     <span>Get Free Consultation</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>

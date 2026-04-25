@@ -190,7 +190,7 @@ export default function SuccessStories() {
               Don't wait for a crisis to get professional help. Book your private review session today.
             </p>
             <Link href="/contact">
-              <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-lg">
+              <button className="btn-premium-primary min-w-[200px] sm:min-w-[260px] md:min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-lg">
                 <span>Book Private Review</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>

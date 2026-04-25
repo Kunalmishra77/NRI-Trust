@@ -163,7 +163,7 @@ export default function EmergencyResponse() {
       </p>
       <div className="flex justify-center">
        <Link href="/contact">
-        <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 group shadow-lg">
+        <button className="btn-premium-primary min-w-[200px] sm:min-w-[260px] md:min-w-[320px] flex items-center justify-center gap-4 group shadow-lg">
          <span>Start Emergency Planning</span>
          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </button>

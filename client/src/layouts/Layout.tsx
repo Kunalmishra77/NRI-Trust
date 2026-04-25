@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
  }, [location]);
 
  return (
-  <div className="min-h-screen bg-background relative">
+  <div className="min-h-screen bg-background relative overflow-x-hidden">
    {/* Scroll progress line — thin single-color line */}
    <motion.div
 

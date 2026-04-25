@@ -317,7 +317,7 @@ export default function Resources() {
               Start protecting your family's finances today.
             </p>
             <Link href="/contact">
-              <button className="btn-premium-primary min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-lg">
+              <button className="btn-premium-primary min-w-[200px] sm:min-w-[260px] md:min-w-[320px] flex items-center justify-center gap-4 mx-auto group shadow-lg">
                 <span>Book Private Consultation</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>

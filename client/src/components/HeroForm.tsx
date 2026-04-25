@@ -10,7 +10,7 @@ export default function HeroForm() {
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="relative w-full max-w-[340px]"
+      className="relative w-full max-w-[340px] sm:max-w-[380px]"
     >
       {/* Premium Glow Effect behind form */}
       <div className="absolute -inset-1 bg-gradient-to-r from-[#d4af37]/20 to-[#f3e5ab]/10 blur-3xl rounded-[2rem] -z-10" />

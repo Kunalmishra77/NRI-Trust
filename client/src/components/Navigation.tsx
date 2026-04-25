@@ -87,7 +87,7 @@ export default function Navigation() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={TRANSITION}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
         isScrolled
           ? "py-4 bg-white border-b border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
           : "py-8 bg-transparent"
@@ -130,7 +130,7 @@ export default function Navigation() {
                   The Firm
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-1 lg:w-[600px] bg-white border-none shadow-2xl rounded-2xl">
+                  <ul className="grid w-[min(95vw,400px)] gap-3 p-6 md:w-[500px] md:grid-cols-1 lg:w-[600px] bg-white border-none shadow-2xl rounded-2xl">
                     {company.map((item) => (
                       <ListItem 
                         key={item.title} 
@@ -159,7 +159,7 @@ export default function Navigation() {
                   Practice Areas
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-6 md:w-[500px] md:grid-cols-2 lg:w-[700px] bg-white border-none shadow-2xl rounded-2xl">
+                  <ul className="grid w-[min(95vw,400px)] gap-3 p-6 md:w-[500px] md:grid-cols-2 lg:w-[700px] bg-white border-none shadow-2xl rounded-2xl">
                     {services.map((service) => (
                       <ListItem 
                         key={service.title} 

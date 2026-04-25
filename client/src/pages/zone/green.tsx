@@ -137,7 +137,7 @@ export default function ZoneGreen() {
             <div className="text-[12px] font-mono font-black uppercase tracking-[0.3em] mb-4" style={{ color: COLOR }}>
               Reality Check
             </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
               5 questions every NRI<br />
               <span className="text-[#1A1A1A]/55 font-light italic">should be able to answer.</span>
             </h2>
@@ -173,7 +173,7 @@ export default function ZoneGreen() {
             <div className="text-[12px] font-mono font-black uppercase tracking-[0.3em] mb-4 text-white/55">
               What We See
             </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-white">
               The problems that only<br />
               <span style={{ color: COLOR }}>show up during a crisis.</span>
             </h2>
@@ -203,7 +203,7 @@ export default function ZoneGreen() {
             <div className="text-[12px] font-mono font-black uppercase tracking-[0.3em] mb-4" style={{ color: COLOR }}>
               Our Services
             </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.05] text-[#1A1A1A]">
               What we set up first<br />
               <span className="text-[#1A1A1A]/55 font-light italic">for families in the Green Zone.</span>
             </h2>

@@ -583,7 +583,7 @@ export default function PortalDashboard() {
   };
 
   const Sidebar = () => (
-    <aside className="w-full lg:w-68 bg-[#0A0F0D] border-r border-white/5 flex flex-col h-screen sticky top-0">
+    <aside className="w-full lg:w-68 bg-[#0A0F0D] border-r border-white/5 flex flex-col lg:h-screen lg:sticky lg:top-0">
       {/* Logo */}
       <div className="p-7 border-b border-white/5">
         <div className="flex items-center gap-3 mb-1.5">
@@ -672,7 +672,7 @@ export default function PortalDashboard() {
               animate={{ x: 0 }}
               exit={{ x: -280 }}
               transition={{ type: "spring", damping: 25 }}
-              className="fixed left-0 top-0 bottom-0 w-72 z-50 lg:hidden"
+              className="fixed left-0 top-0 bottom-0 w-72 max-w-[calc(100vw-20px)] z-50 lg:hidden overflow-y-auto"
             >
               <Sidebar />
             </motion.div>

@@ -201,16 +201,16 @@ function MarqueeRow({
   const items = [...testimonials, ...testimonials];
 
   const sizeClasses = [
-    "w-[320px] md:w-[380px]",
-    "w-[310px] md:w-[365px]",
-    "w-[300px] md:w-[350px]",
-    "w-[290px] md:w-[335px]",
-    "w-[280px] md:w-[320px]",
-    "w-[270px] md:w-[310px]",
-    "w-[260px] md:w-[300px]",
-    "w-[250px] md:w-[290px]",
-    "w-[240px] md:w-[280px]",
-    "w-[230px] md:w-[270px]",
+    "w-[min(80vw,280px)] sm:w-[300px] md:w-[380px]",
+    "w-[min(80vw,270px)] sm:w-[290px] md:w-[365px]",
+    "w-[min(80vw,260px)] sm:w-[280px] md:w-[350px]",
+    "w-[min(80vw,250px)] sm:w-[270px] md:w-[335px]",
+    "w-[min(80vw,240px)] sm:w-[260px] md:w-[320px]",
+    "w-[min(80vw,240px)] sm:w-[255px] md:w-[310px]",
+    "w-[min(80vw,240px)] sm:w-[250px] md:w-[300px]",
+    "w-[min(80vw,240px)] sm:w-[245px] md:w-[290px]",
+    "w-[min(80vw,240px)] sm:w-[240px] md:w-[280px]",
+    "w-[min(80vw,240px)] sm:w-[235px] md:w-[270px]",
   ];
 
   return (
