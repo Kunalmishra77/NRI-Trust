@@ -4,7 +4,7 @@ import { Link, useLocation } from "wouter";
 import { Shield, ChevronDown, Menu, X, Lock, Landmark, Scale, Home, Heart, FileText, Settings, Users, Trophy, Zap, HelpCircle } from "lucide-react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from "@/components/ui/sheet";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -252,26 +252,28 @@ export default function Navigation() {
                 <div className="flex-1 overflow-y-auto px-6 pb-6">
                   <div className="space-y-6">
                     <div>
-                      <Link href="/" onClick={() => setMobileOpen(false)}>
-                        <span className="text-xl font-black uppercase tracking-widest text-[#1A1A1A] hover:text-accent transition-colors">Home</span>
-                      </Link>
+                      <SheetClose asChild>
+                        <Link href="/">
+                          <span className="text-xl font-black uppercase tracking-widest text-[#1A1A1A] hover:text-accent transition-colors">Home</span>
+                        </Link>
+                      </SheetClose>
                     </div>
 
                     <div>
                       <h4 className="font-mono text-[11px] font-black uppercase tracking-[0.3em] text-accent mb-4">Practice Areas</h4>
                       <div className="grid gap-4">
                         {services.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="flex items-center gap-3 group"
-                          >
-                            <div className="w-9 h-9 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all shrink-0">
-                              <item.icon className="w-4 h-4 text-[#1A1A1A]/40 group-hover:text-accent transition-colors" />
-                            </div>
-                            <span className="text-base font-bold text-[#1A1A1A] group-hover:text-accent transition-colors">{item.title}</span>
-                          </Link>
+                          <SheetClose key={item.href} asChild>
+                            <Link
+                              href={item.href}
+                              className="flex items-center gap-3 group"
+                            >
+                              <div className="w-9 h-9 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all shrink-0">
+                                <item.icon className="w-4 h-4 text-[#1A1A1A]/40 group-hover:text-accent transition-colors" />
+                              </div>
+                              <span className="text-base font-bold text-[#1A1A1A] group-hover:text-accent transition-colors">{item.title}</span>
+                            </Link>
+                          </SheetClose>
                         ))}
                       </div>
                     </div>
@@ -280,38 +282,46 @@ export default function Navigation() {
                       <h4 className="font-mono text-[11px] font-black uppercase tracking-[0.3em] text-accent mb-4">The Firm</h4>
                       <div className="grid gap-4">
                         {company.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="flex items-center gap-3 group"
-                          >
-                            <div className="w-9 h-9 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all shrink-0">
-                              <item.icon className="w-4 h-4 text-[#1A1A1A]/40 group-hover:text-accent transition-colors" />
-                            </div>
-                            <span className="text-base font-bold text-[#1A1A1A] group-hover:text-accent transition-colors">{item.title}</span>
-                          </Link>
+                          <SheetClose key={item.href} asChild>
+                            <Link
+                              href={item.href}
+                              className="flex items-center gap-3 group"
+                            >
+                              <div className="w-9 h-9 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all shrink-0">
+                                <item.icon className="w-4 h-4 text-[#1A1A1A]/40 group-hover:text-accent transition-colors" />
+                              </div>
+                              <span className="text-base font-bold text-[#1A1A1A] group-hover:text-accent transition-colors">{item.title}</span>
+                            </Link>
+                          </SheetClose>
                         ))}
                       </div>
                     </div>
 
                     <div className="space-y-4 pt-4 border-t border-black/5">
-                      <Link href="/pricing" onClick={() => setMobileOpen(false)} className="block text-base font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Pricing</Link>
-                      <Link href="/contact" onClick={() => setMobileOpen(false)} className="block text-base font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Contact</Link>
-                      <Link href="/portal" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-base font-bold text-accent uppercase tracking-widest transition-colors">
-                        <Lock className="w-4 h-4" />
-                        Portal
-                      </Link>
+                      <SheetClose asChild>
+                        <Link href="/pricing" className="block text-base font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Pricing</Link>
+                      </SheetClose>
+                      <SheetClose asChild>
+                        <Link href="/contact" className="block text-base font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Contact</Link>
+                      </SheetClose>
+                      <SheetClose asChild>
+                        <Link href="/portal" className="flex items-center gap-2 text-base font-bold text-accent uppercase tracking-widest transition-colors">
+                          <Lock className="w-4 h-4" />
+                          Portal
+                        </Link>
+                      </SheetClose>
                     </div>
                   </div>
                 </div>
 
                 <div className="p-6 bg-[#1A1A1A]/5">
-                  <Link href="/contact" onClick={() => setMobileOpen(false)}>
-                    <button className="w-full bg-[#d4af37] text-white py-4 rounded-2xl font-black uppercase tracking-widest shadow-xl">
-                      Get Free Consultation
-                    </button>
-                  </Link>
+                  <SheetClose asChild>
+                    <Link href="/contact">
+                      <button className="w-full bg-[#d4af37] text-white py-4 rounded-2xl font-black uppercase tracking-widest shadow-xl">
+                        Get Free Consultation
+                      </button>
+                    </Link>
+                  </SheetClose>
                 </div>
               </div>
             </SheetContent>
