@@ -75,6 +75,7 @@ const company = [
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [location, setLocation] = useLocation();
   const { scrollY } = useScroll();
 
@@ -223,7 +224,7 @@ export default function Navigation() {
           </Link>
 
           {/* Mobile Menu Trigger */}
-          <Sheet>
+          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
               <Button 
                 variant="ghost" 
@@ -246,7 +247,7 @@ export default function Navigation() {
                 <div className="flex-1 overflow-y-auto px-8 pb-12">
                   <div className="space-y-10">
                     <div>
-                      <Link href="/" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()}>
+                      <Link href="/" onClick={() => setMobileOpen(false)}>
                         <span className="text-3xl font-black uppercase tracking-widest text-[#1A1A1A] hover:text-accent transition-colors">Home</span>
                       </Link>
                     </div>
@@ -258,7 +259,7 @@ export default function Navigation() {
                           <Link 
                             key={item.href} 
                             href={item.href}
-                            onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()}
+                            onClick={() => setMobileOpen(false)}
                             className="flex items-center gap-4 group"
                           >
                             <div className="w-10 h-10 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all">
@@ -277,7 +278,7 @@ export default function Navigation() {
                           <Link 
                             key={item.href} 
                             href={item.href}
-                            onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()}
+                            onClick={() => setMobileOpen(false)}
                             className="flex items-center gap-4 group"
                           >
                             <div className="w-10 h-10 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all">
@@ -290,9 +291,9 @@ export default function Navigation() {
                     </div>
 
                     <div className="space-y-6 pt-6 border-t border-black/5">
-                      <Link href="/pricing" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()} className="block text-xl font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Pricing</Link>
-                      <Link href="/contact" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()} className="block text-xl font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Contact</Link>
-                      <Link href="/portal" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()} className="flex items-center gap-2 text-xl font-bold text-accent uppercase tracking-widest transition-colors">
+                      <Link href="/pricing" onClick={() => setMobileOpen(false)} className="block text-xl font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Pricing</Link>
+                      <Link href="/contact" onClick={() => setMobileOpen(false)} className="block text-xl font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Contact</Link>
+                      <Link href="/portal" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-xl font-bold text-accent uppercase tracking-widest transition-colors">
                         <Lock className="w-5 h-5" />
                         Portal
                       </Link>
@@ -301,7 +302,7 @@ export default function Navigation() {
                 </div>
 
                 <div className="p-8 bg-[#1A1A1A]/5">
-                  <Link href="/contact" onClick={() => (document.querySelector('[data-radix-collection-item]') as any)?.click()}>
+                  <Link href="/contact" onClick={() => setMobileOpen(false)}>
                     <button className="w-full bg-[#d4af37] text-white py-5 rounded-2xl font-black uppercase tracking-widest shadow-xl">
                       Get Free Consultation
                     </button>
