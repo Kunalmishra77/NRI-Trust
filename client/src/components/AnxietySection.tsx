@@ -58,15 +58,15 @@ function CircularOrbitCard({
 
   const getRadiusX = () => {
     if (typeof window === "undefined") return 400;
-    if (window.innerWidth < 400) return window.innerWidth * 0.35;
-    if (window.innerWidth < 768) return window.innerWidth * 0.4;
+    if (window.innerWidth < 400) return window.innerWidth * 0.28;
+    if (window.innerWidth < 768) return window.innerWidth * 0.32;
     return window.innerWidth * 0.38;
   };
 
   const getRadiusZ = () => {
     if (typeof window === "undefined") return 350;
-    if (window.innerWidth < 400) return 120;
-    if (window.innerWidth < 768) return 180;
+    if (window.innerWidth < 400) return 80;
+    if (window.innerWidth < 768) return 120;
     return 350;
   };
 
@@ -74,7 +74,7 @@ function CircularOrbitCard({
   const radiusZ = getRadiusZ();
 
   const x = useTransform(angleRef, (a: number) => Math.cos(baseAngle + a) * radiusX);
-  const z = useTransform(angleRef, (a: number) => Math.sin(baseAngle + a) * radiusZ + (isMobile ? 100 : 200));
+  const z = useTransform(angleRef, (a: number) => Math.sin(baseAngle + a) * radiusZ + (isMobile ? 60 : 200));
   const scale = useTransform(angleRef, (a: number) => {
     const zPos = Math.sin(baseAngle + a) * radiusZ;
     const baseScale = isMobile ? 0.5 : 0.85;
@@ -89,8 +89,8 @@ function CircularOrbitCard({
 
   const getCardSize = () => {
     if (typeof window === "undefined") return 280;
-    if (window.innerWidth < 400) return 160;
-    if (window.innerWidth < 768) return 220;
+    if (window.innerWidth < 400) return 130;
+    if (window.innerWidth < 768) return 170;
     return 280;
   };
 
@@ -192,7 +192,7 @@ export default function AnxietySection() {
   });
 
   return (
-    <section className="relative h-screen w-full bg-transparent overflow-hidden flex flex-col items-center">
+    <section className="relative h-[520px] sm:h-[620px] md:h-screen w-full bg-transparent overflow-hidden flex flex-col items-center">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(253,252,251,0.4)_80%)] z-0 pointer-events-none" />
 
       {/* Phase-aware center label */}

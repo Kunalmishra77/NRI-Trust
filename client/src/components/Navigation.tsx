@@ -89,8 +89,8 @@ export default function Navigation() {
       transition={TRANSITION}
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
         isScrolled
-          ? "py-4 bg-white border-b border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
-          : "py-8 bg-transparent"
+          ? "py-3 md:py-4 bg-white border-b border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+          : "py-4 md:py-8 bg-transparent"
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
@@ -100,7 +100,8 @@ export default function Navigation() {
             <Shield className="w-7 h-7 text-white" />
           </div>
           <div className="flex flex-col leading-none gap-[6px]">
-            <span className={`text-[26px] font-sans font-black tracking-tight leading-none transition-colors duration-500 ${isScrolled ? "text-[#1A1A1A]" : "text-white"}`}>NRI TRUST</span>
+            {/* RESPONSIVE-ONLY: text-[22px] on tiny screens, [26px] from sm+ */}
+            <span className={`text-[22px] sm:text-[26px] font-sans font-black tracking-tight leading-none transition-colors duration-500 ${isScrolled ? "text-[#1A1A1A]" : "text-white"}`}>NRI TRUST</span>
             <div className="h-[3px] w-full bg-gradient-to-r from-accent via-accent/60 to-transparent rounded-full" />
           </div>
         </Link>

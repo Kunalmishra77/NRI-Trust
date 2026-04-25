@@ -149,7 +149,7 @@ export default function EmergencyTimeline() {
         <div className="grid lg:grid-cols-[1fr,550px] gap-12 lg:gap-20 items-stretch">
 
           {/* Left: Detail Card */}
-          <div className="relative min-h-[500px]">
+          <div className="relative lg:min-h-[500px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -157,7 +157,7 @@ export default function EmergencyTimeline() {
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 exit={{ opacity: 0, x: 30, scale: 0.95 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0"
+                className="lg:absolute lg:inset-0"
               >
                 <div className="h-full w-full rounded-[3rem] border border-[#1A1A1A]/10 bg-white p-6 sm:p-8 md:p-10 lg:p-16 flex flex-col justify-between overflow-hidden relative shadow-xl">
                   {/* Progress bar */}

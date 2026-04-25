@@ -172,10 +172,8 @@ export default function FinalCTA() {
               </motion.a>
             ) : null}
 
-            <div className="flex items-center gap-6 opacity-70">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-white">100% Secure</span>
-              <div className="w-1 h-1 rounded-full" style={{ backgroundColor: phaseColor }} />
-              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-white">{urgencyText}</span>
+            <div className="flex items-center justify-center gap-2 opacity-70">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-white text-center">{urgencyText}</span>
             </div>
           </div>
         </div>

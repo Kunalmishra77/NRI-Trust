@@ -93,7 +93,7 @@ export default function ZoneGreen() {
               </motion.div>
 
               <motion.h1 {...fadeUp(0.1)}
-                className="text-5xl md:text-7xl font-black text-white leading-[1.02] tracking-tight mb-6">
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.02] tracking-tight mb-6">
                 You have time.
                 <br />
                 <span style={{ color: COLOR }}>Use it well.</span>
@@ -245,7 +245,7 @@ export default function ZoneGreen() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {OUTCOMES.map((o, i) => (
               <motion.div key={i} {...fadeUp(i * 0.08)} className="text-center">
-                <div className="text-5xl md:text-6xl font-black mb-3" style={{ color: COLOR }}>
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3" style={{ color: COLOR }}>
                   {o.stat}
                 </div>
                 <p className="text-[#1A1A1A]/55 text-sm font-medium leading-relaxed">{o.label}</p>

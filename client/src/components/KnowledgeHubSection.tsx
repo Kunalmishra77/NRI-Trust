@@ -123,7 +123,8 @@ export default function KnowledgeHubSection() {
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-[450px,1fr] gap-12 lg:gap-24 items-stretch">
+        {/* RESPONSIVE-ONLY: Changed fixed 450px column to min(450px,35%) to prevent tablet overflow */}
+        <div className="grid lg:grid-cols-[min(450px,35%),1fr] gap-12 lg:gap-24 items-stretch">
 
           {/* Left column */}
           <div className="flex flex-col justify-between py-2">
@@ -196,7 +197,7 @@ export default function KnowledgeHubSection() {
                     isHovered ? "px-8 md:px-10 bg-[#1A1A1A]/5" : "px-0"
                   )}
                 >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+                  <div className="flex flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative z-10">
                     <div className="flex-1">
                       <div className="flex items-center gap-4 mb-2">
                         <span

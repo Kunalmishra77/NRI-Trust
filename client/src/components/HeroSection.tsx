@@ -147,7 +147,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-center bg-[#050914]/40 pt-16 pb-10">
+    <section className="relative min-h-screen w-full flex flex-col justify-center bg-[#050914]/40 pt-20 sm:pt-24 md:pt-32 pb-10">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,#050914_100%)] z-[1] pointer-events-none opacity-90" />
       <div className="absolute inset-x-0 bottom-0 h-[35vh] bg-gradient-to-t from-[#050914] via-[#050914]/70 to-transparent z-[1] pointer-events-none" />
@@ -165,7 +165,8 @@ export default function HeroSection() {
               className="flex items-center gap-3 mb-6"
             >
               <Shield className="w-4 h-4 text-[#d4af37]/80" />
-              <span className="text-[13px] font-mono font-bold uppercase tracking-[0.3em] text-[#d4af37]/80">
+              {/* RESPONSIVE-ONLY: Reduced tracking on mobile to prevent overflow */}
+              <span className="text-[13px] font-mono font-bold uppercase tracking-[0.1em] sm:tracking-[0.3em] text-[#d4af37]/80">
                 India's Most Trusted NRI Family Protection Platform
               </span>
             </motion.div>

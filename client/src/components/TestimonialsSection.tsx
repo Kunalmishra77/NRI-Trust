@@ -216,13 +216,13 @@ function MarqueeRow({
   return (
     <div className="relative overflow-hidden w-full">
       <div className={cn(
-        "absolute left-0 top-0 bottom-0 w-16 md:w-24 z-10 pointer-events-none",
+        "absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-28 z-10 pointer-events-none",
         theme === 'light'
           ? "bg-gradient-to-r from-[#FDFCFB] to-transparent"
           : "bg-gradient-to-r from-[#050914] to-transparent"
       )} />
       <div className={cn(
-        "absolute right-0 top-0 bottom-0 w-16 md:w-24 z-10 pointer-events-none",
+        "absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-28 z-10 pointer-events-none",
         theme === 'light'
           ? "bg-gradient-to-l from-[#FDFCFB] to-transparent"
           : "bg-gradient-to-l from-[#050914] to-transparent"
