@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Shield, ChevronDown, Menu, X, Lock, Landmark, Scale, Home, Heart, FileText, Settings, Users, Trophy, Zap, HelpCircle } from "lucide-react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
@@ -75,14 +75,14 @@ const company = [
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [location, setLocation] = useLocation();
+  const sheetCloseRef = useRef<HTMLButtonElement>(null);
   const { scrollY } = useScroll();
 
-  // Close mobile sheet whenever the route changes
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location]);
+  const handleMobileNav = (href: string) => {
+    sheetCloseRef.current?.click();
+    setLocation(href);
+  };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
@@ -229,11 +229,11 @@ export default function Navigation() {
           </Link>
 
           {/* Mobile Menu Trigger */}
-          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+          <Sheet>
             <SheetTrigger asChild>
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 className={cn(
                   "lg:hidden rounded-xl",
                   isScrolled ? "text-[#1A1A1A]" : "text-white"
@@ -243,6 +243,9 @@ export default function Navigation() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-[#FDFCFB] border-none p-0 w-full sm:w-[400px]">
+              {/* Hidden close button — clicked imperatively by handleMobileNav */}
+              <SheetClose ref={sheetCloseRef} className="sr-only" />
+
               <div className="flex flex-col h-full pt-8">
                 <div className="px-6 mb-6">
                   <SheetTitle className="text-left text-xl font-black tracking-tight text-[#1A1A1A] mb-2 uppercase">NRI TRUST</SheetTitle>
@@ -252,28 +255,25 @@ export default function Navigation() {
                 <div className="flex-1 overflow-y-auto px-6 pb-6">
                   <div className="space-y-6">
                     <div>
-                      <SheetClose asChild>
-                        <Link href="/">
-                          <span className="text-xl font-black uppercase tracking-widest text-[#1A1A1A] hover:text-accent transition-colors">Home</span>
-                        </Link>
-                      </SheetClose>
+                      <button onClick={() => handleMobileNav("/")} className="text-xl font-black uppercase tracking-widest text-[#1A1A1A] hover:text-accent transition-colors text-left">
+                        Home
+                      </button>
                     </div>
 
                     <div>
                       <h4 className="font-mono text-[11px] font-black uppercase tracking-[0.3em] text-accent mb-4">Practice Areas</h4>
                       <div className="grid gap-4">
                         {services.map((item) => (
-                          <SheetClose key={item.href} asChild>
-                            <Link
-                              href={item.href}
-                              className="flex items-center gap-3 group"
-                            >
-                              <div className="w-9 h-9 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all shrink-0">
-                                <item.icon className="w-4 h-4 text-[#1A1A1A]/40 group-hover:text-accent transition-colors" />
-                              </div>
-                              <span className="text-base font-bold text-[#1A1A1A] group-hover:text-accent transition-colors">{item.title}</span>
-                            </Link>
-                          </SheetClose>
+                          <button
+                            key={item.href}
+                            onClick={() => handleMobileNav(item.href)}
+                            className="flex items-center gap-3 group text-left"
+                          >
+                            <div className="w-9 h-9 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all shrink-0">
+                              <item.icon className="w-4 h-4 text-[#1A1A1A]/40 group-hover:text-accent transition-colors" />
+                            </div>
+                            <span className="text-base font-bold text-[#1A1A1A] group-hover:text-accent transition-colors">{item.title}</span>
+                          </button>
                         ))}
                       </div>
                     </div>
@@ -282,46 +282,38 @@ export default function Navigation() {
                       <h4 className="font-mono text-[11px] font-black uppercase tracking-[0.3em] text-accent mb-4">The Firm</h4>
                       <div className="grid gap-4">
                         {company.map((item) => (
-                          <SheetClose key={item.href} asChild>
-                            <Link
-                              href={item.href}
-                              className="flex items-center gap-3 group"
-                            >
-                              <div className="w-9 h-9 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all shrink-0">
-                                <item.icon className="w-4 h-4 text-[#1A1A1A]/40 group-hover:text-accent transition-colors" />
-                              </div>
-                              <span className="text-base font-bold text-[#1A1A1A] group-hover:text-accent transition-colors">{item.title}</span>
-                            </Link>
-                          </SheetClose>
+                          <button
+                            key={item.href}
+                            onClick={() => handleMobileNav(item.href)}
+                            className="flex items-center gap-3 group text-left"
+                          >
+                            <div className="w-9 h-9 rounded-xl bg-[#1A1A1A]/5 flex items-center justify-center border border-[#1A1A1A]/5 group-hover:border-accent/30 transition-all shrink-0">
+                              <item.icon className="w-4 h-4 text-[#1A1A1A]/40 group-hover:text-accent transition-colors" />
+                            </div>
+                            <span className="text-base font-bold text-[#1A1A1A] group-hover:text-accent transition-colors">{item.title}</span>
+                          </button>
                         ))}
                       </div>
                     </div>
 
                     <div className="space-y-4 pt-4 border-t border-black/5">
-                      <SheetClose asChild>
-                        <Link href="/pricing" className="block text-base font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Pricing</Link>
-                      </SheetClose>
-                      <SheetClose asChild>
-                        <Link href="/contact" className="block text-base font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors">Contact</Link>
-                      </SheetClose>
-                      <SheetClose asChild>
-                        <Link href="/portal" className="flex items-center gap-2 text-base font-bold text-accent uppercase tracking-widest transition-colors">
-                          <Lock className="w-4 h-4" />
-                          Portal
-                        </Link>
-                      </SheetClose>
+                      <button onClick={() => handleMobileNav("/pricing")} className="block text-base font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors text-left">Pricing</button>
+                      <button onClick={() => handleMobileNav("/contact")} className="block text-base font-bold text-[#1A1A1A] hover:text-accent uppercase tracking-widest transition-colors text-left">Contact</button>
+                      <button onClick={() => handleMobileNav("/portal")} className="flex items-center gap-2 text-base font-bold text-accent uppercase tracking-widest transition-colors">
+                        <Lock className="w-4 h-4" />
+                        Portal
+                      </button>
                     </div>
                   </div>
                 </div>
 
                 <div className="p-6 bg-[#1A1A1A]/5">
-                  <SheetClose asChild>
-                    <Link href="/contact">
-                      <button className="w-full bg-[#d4af37] text-white py-4 rounded-2xl font-black uppercase tracking-widest shadow-xl">
-                        Get Free Consultation
-                      </button>
-                    </Link>
-                  </SheetClose>
+                  <button
+                    onClick={() => handleMobileNav("/contact")}
+                    className="w-full bg-[#d4af37] text-white py-4 rounded-2xl font-black uppercase tracking-widest shadow-xl"
+                  >
+                    Get Free Consultation
+                  </button>
                 </div>
               </div>
             </SheetContent>
