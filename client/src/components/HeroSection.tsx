@@ -15,48 +15,6 @@ const STATS = [
   { val: "40+", label: "Jurisdictions" },
 ];
 
-// ── Preview panel (hovered state) ─────────────────────────────
-function PreviewPanel({ phase }: { phase: Phase }) {
-  const config = PHASE_CONFIG[phase];
-  const color = config.color;
-  return (
-    <motion.div
-      key={phase}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.18 }}
-      className="absolute inset-0 rounded-2xl p-4 border overflow-hidden"
-      style={{ background: "rgba(8,14,30,0.96)", borderColor: `${color}35` }}
-    >
-      <p className="text-[11px] font-mono font-black uppercase tracking-[0.25em] mb-2.5" style={{ color }}>
-        Ask yourself
-      </p>
-      <ul className="space-y-1.5 mb-3">
-        {config.hoverContent.questions.map((q, i) => (
-          <li key={i} className="flex items-start gap-2">
-            <div className="w-1 h-1 rounded-full mt-[6px] shrink-0" style={{ backgroundColor: color }} />
-            <span className="text-white/85 text-[12px] leading-snug">{q}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="pt-2.5 border-t border-white/10">
-        <p className="text-[11px] font-mono font-black uppercase tracking-[0.25em] mb-2" style={{ color }}>
-          How we help
-        </p>
-        <ul className="space-y-1">
-          {config.hoverContent.benefits.map((b, i) => (
-            <li key={i} className="flex items-start gap-2">
-              <ChevronRight className="w-3 h-3 mt-0.5 shrink-0" style={{ color }} />
-              <span className="text-white/90 text-[12px] leading-snug font-medium">{b}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </motion.div>
-  );
-}
-
 // ── Zone card ──────────────────────────────────────────────────
 function ZoneCard({
   id,
@@ -80,48 +38,87 @@ function ZoneCard({
       onMouseLeave={onHoverOut}
       onClick={() => { selectZone(id); navigate(config.zonePage); }}
       whileTap={{ scale: 0.98 }}
-      className="relative w-full text-left rounded-2xl px-6 py-5 border overflow-hidden flex items-center justify-between gap-4 transition-colors duration-200"
+      className="relative w-full text-left rounded-2xl px-6 py-5 border overflow-hidden transition-colors duration-200"
       style={{
         background: isHovered ? `${color}12` : "rgba(255,255,255,0.04)",
         borderColor: isHovered ? `${color}50` : "rgba(255,255,255,0.10)",
       }}
     >
-      {/* Left */}
-      <div className="flex items-center gap-4 min-w-0">
-        <div
-          className="w-3 h-3 rounded-full shrink-0 transition-all duration-200"
-          style={{
-            backgroundColor: color,
-            boxShadow: isHovered ? `0 0 8px ${color}80` : "none",
-          }}
-        />
-        <div className="min-w-0">
-          <div className="text-white font-black text-lg leading-tight">{config.ageRange}</div>
-          <div className="text-[14px] font-mono uppercase tracking-[0.2em] mt-0.5 font-bold" style={{ color }}>
-            {config.label}
+      {/* Header row */}
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4 min-w-0">
+          <div
+            className="w-3 h-3 rounded-full shrink-0 transition-all duration-200"
+            style={{
+              backgroundColor: color,
+              boxShadow: isHovered ? `0 0 8px ${color}80` : "none",
+            }}
+          />
+          <div className="min-w-0">
+            <div className="text-white font-black text-2xl leading-tight">{config.ageRange}</div>
+            <div className="text-[15px] font-mono uppercase tracking-[0.2em] mt-0.5 font-bold" style={{ color }}>
+              {config.label}
+            </div>
           </div>
+        </div>
+
+        <div className="flex items-center gap-3 shrink-0">
+          <span
+            className="text-[14px] font-medium hidden sm:block transition-colors duration-200"
+            style={{ color: isHovered ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.6)" }}
+          >
+            {config.stage}
+          </span>
+          <ArrowRight
+            className="w-5 h-5 transition-all duration-200"
+            style={{
+              color,
+              opacity: isHovered ? 1 : 0.4,
+              transform: isHovered ? "translateX(2px)" : "translateX(0)",
+            }}
+          />
         </div>
       </div>
 
-      {/* Right */}
-      <div className="flex items-center gap-3 shrink-0">
-        <span
-          className="text-[14px] font-medium hidden sm:block transition-colors duration-200"
-          style={{ color: isHovered ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.6)" }}
-        >
-          {config.stage}
-        </span>
-        <ArrowRight
-          className="w-5 h-5 transition-all duration-200"
-          style={{
-            color,
-            opacity: isHovered ? 1 : 0.4,
-            transform: isHovered ? "translateX(2px)" : "translateX(0)",
-          }}
-        />
-      </div>
+      {/* Inline hover content — expands inside the card */}
+      <AnimatePresence initial={false}>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.32, ease: EASE }}
+            className="overflow-hidden"
+          >
+            <div className="pt-4 mt-4 border-t border-white/10">
+              <p className="text-[10px] font-mono font-black uppercase tracking-[0.25em] mb-2" style={{ color }}>
+                Ask yourself
+              </p>
+              <ul className="space-y-1.5 mb-3">
+                {config.hoverContent.questions.map((q, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <div className="w-1 h-1 rounded-full mt-[6px] shrink-0" style={{ backgroundColor: color }} />
+                    <span className="text-white/80 text-[12px] leading-snug text-left">{q}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-[10px] font-mono font-black uppercase tracking-[0.25em] mb-2" style={{ color }}>
+                How we help
+              </p>
+              <ul className="space-y-1">
+                {config.hoverContent.benefits.map((b, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <ChevronRight className="w-3 h-3 mt-0.5 shrink-0" style={{ color }} />
+                    <span className="text-white/90 text-[12px] leading-snug font-medium text-left">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Subtle left accent bar */}
+      {/* Left accent bar */}
       <div
         className="absolute left-0 top-1/2 -translate-y-1/2 w-[4px] rounded-r-full transition-all duration-200"
         style={{
@@ -223,23 +220,6 @@ export default function HeroSection() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
             className="flex flex-col justify-end gap-4 lg:pt-12"
           >
-            {/* Preview area - Positioned lower, closer to divider */}
-            <div className="relative min-h-[80px] rounded-2xl">
-              <AnimatePresence mode="wait">
-                {hoveredZone && (
-                  <motion.div
-                    key={hoveredZone}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 5 }}
-                    className="absolute inset-0"
-                  >
-                    <PreviewPanel phase={hoveredZone} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
             {/* Compliance Labels */}
             <div className="flex flex-wrap gap-x-6 gap-y-3 justify-center">
               {["FEMA Compliant", "Registered Legal Firm", "24/7 Support"].map((t) => (
