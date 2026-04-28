@@ -145,31 +145,28 @@ export default function FinalCTA() {
               </motion.button>
             </Link>
 
-            {/* WhatsApp secondary CTA */}
+            {/* Emergency Contact secondary CTA */}
             {isRed ? (
-              <motion.a
-                href={`https://wa.me/919999999999?text=${encodeURIComponent('Hello NRI Trust, I need assistance.')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                className="flex items-center gap-3 px-8 py-4 rounded-full border text-sm font-bold transition-all duration-400"
-                style={{
-                  borderColor: 'rgba(34,197,94,0.35)',
-                  backgroundColor: 'rgba(34,197,94,0.08)',
-                  color: '#4ade80',
-                }}
-              >
-                <MessageCircle className="w-4 h-4" />
-                {isRed ? 'Emergency WhatsApp Line' : 'Message on WhatsApp'}
-                {isRed && (
+              <Link href="/contact">
+                <motion.div
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center gap-3 px-8 py-4 rounded-full border text-sm font-bold transition-all duration-400 cursor-pointer"
+                  style={{
+                    borderColor: 'rgba(34,197,94,0.35)',
+                    backgroundColor: 'rgba(34,197,94,0.08)',
+                    color: '#4ade80',
+                  }}
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Emergency Contact Line
                   <motion.div
                     animate={{ scale: [1, 1.3, 1] }}
                     transition={{ duration: 0.7, repeat: Infinity }}
                     className="w-2 h-2 rounded-full bg-green-400"
                   />
-                )}
-              </motion.a>
+                </motion.div>
+              </Link>
             ) : null}
 
             <div className="flex items-center justify-center gap-2 opacity-70">

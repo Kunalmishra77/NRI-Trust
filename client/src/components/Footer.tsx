@@ -11,7 +11,7 @@ export default function Footer() {
       { label: "Bank Account Consolidation", href: "/services/banking-kyc" },
       { label: "Property Documents", href: "/services/property-tenancy" },
       { label: "Succession & Nominees", href: "/services/legal-succession" },
-      { label: "Emergency Access", href: "/services/income-tax" },
+      { label: "Emergency Access", href: "/services/emergency-access" },
     ],
     Company: [
       { label: "About Us", href: "/about" },

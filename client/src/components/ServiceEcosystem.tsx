@@ -6,9 +6,9 @@ import { useUser, PHASE_CONFIG } from "@/context/UserContext";
 
 // Service order per phase
 const PHASE_ORDER: Record<string, string[]> = {
-  green:  ["legal-succession", "banking-kyc", "insurance", "property-tenancy", "income-tax"],
-  orange: ["property-tenancy", "legal-succession", "insurance", "banking-kyc", "income-tax"],
-  red:    ["income-tax", "legal-succession", "insurance", "banking-kyc", "property-tenancy"],
+  green:  ["legal-succession", "banking-kyc", "insurance", "property-tenancy", "emergency-access"],
+  orange: ["property-tenancy", "legal-succession", "insurance", "banking-kyc", "emergency-access"],
+  red:    ["emergency-access", "legal-succession", "insurance", "banking-kyc", "property-tenancy"],
 };
 
 // Phase-specific section copy

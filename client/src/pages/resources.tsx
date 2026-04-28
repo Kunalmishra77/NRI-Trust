@@ -93,12 +93,16 @@ const articles = [
 
 export default function Resources() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredArticles = activeCategory === "all" 
-    ? articles 
-    : articles.filter(a => a.category === activeCategory);
+  const filteredArticles = articles.filter(a => {
+    const matchesCategory = activeCategory === "all" || a.category === activeCategory;
+    const q = searchQuery.toLowerCase();
+    const matchesSearch = !q || a.title.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q) || a.categoryLabel.toLowerCase().includes(q);
+    return matchesCategory && matchesSearch;
+  });
 
-  const featuredArticle = articles.find(a => a.featured && (activeCategory === 'all' || a.category === activeCategory)) || filteredArticles[0];
+  const featuredArticle = filteredArticles.find(a => a.featured) || filteredArticles[0];
 
   return (
     <main className="min-h-screen">
@@ -135,9 +139,11 @@ export default function Resources() {
             
             <div className="relative w-full lg:w-80 group">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/90 group-focus-within:text-accent transition-colors" />
-              <input 
-                type="text" 
-                placeholder="Search the Library..." 
+              <input
+                type="text"
+                placeholder="Search the Library..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-black/40 border border-white/10 rounded-full py-3.5 pl-14 pr-8 text-sm text-white focus:outline-none focus:border-accent/40 focus:ring-1 focus:ring-accent/10 transition-all placeholder:text-white/90"
               />
             </div>
@@ -217,20 +223,25 @@ export default function Resources() {
           <div className="flex items-center gap-4 mb-16">
             <div className="h-[1px] w-12 bg-accent/40" />
             <h3 className="text-sm font-mono text-white/90 uppercase tracking-[0.4em] font-bold">
-              The {activeCategory === 'all' ? 'Complete' : activeCategory} Library
+              {searchQuery ? `Results for "${searchQuery}"` : `The ${activeCategory === 'all' ? 'Complete' : activeCategory} Library`}
             </h3>
           </div>
 
           <AnimatePresence mode="wait">
-            <motion.div 
-              key={activeCategory}
-              initial="hidden" 
-              animate="visible" 
-              exit="hidden" 
+            {filteredArticles.filter(a => !a.featured || activeCategory !== 'all').length === 0 ? (
+              <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-center py-20">
+                <p className="text-white/40 text-lg font-light">No articles found. Try a different search or category.</p>
+              </motion.div>
+            ) : (
+            <motion.div
+              key={activeCategory + searchQuery}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
               variants={luxuryStagger}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
             >
-              {filteredArticles.filter(a => activeCategory !== 'all' || !a.featured).map((article) => (
+              {filteredArticles.filter(a => !a.featured || activeCategory !== 'all').map((article) => (
                 <motion.div 
                   key={article.id} 
                   variants={elegantFadeUp}
@@ -268,6 +279,7 @@ export default function Resources() {
                 </motion.div>
               ))}
             </motion.div>
+            )}
           </AnimatePresence>
         </div>
       </section>

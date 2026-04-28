@@ -21,7 +21,7 @@ const services = [
   { title: "Bank Account Setup", href: "/services/banking-kyc", description: "Find scattered accounts and organize them in one place.", icon: Landmark },
   { title: "Property Documents", href: "/services/property-tenancy", description: "Make sure all property papers are updated and accessible.", icon: Home },
   { title: "Succession & Nominees", href: "/services/legal-succession", description: "Set up correct nominees and plan for smooth legal transfer.", icon: Scale },
-  { title: "Emergency Access", href: "/services/income-tax", description: "Prepare a clear plan so your family knows what to do in a crisis.", icon: FileText },
+  { title: "Emergency Access", href: "/services/emergency-access", description: "Prepare a clear plan so your family knows what to do in a crisis.", icon: FileText },
 ];
 
 const company = [

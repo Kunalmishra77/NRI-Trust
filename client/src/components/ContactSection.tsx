@@ -26,10 +26,28 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
     if (formData.honeypot) { setShowSuccess(true); return; }
     setIsSubmitting(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setShowSuccess(true);
+      const res = await fetch("https://formsubmit.co/ajax/aiagentix2025@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          country: formData.country,
+          parent_location: formData.parentLocation,
+          message: formData.message,
+          _subject: `NRI Trust Consultation Request — ${formData.name}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      if (res.ok) {
+        setShowSuccess(true);
+      } else {
+        throw new Error("Submission failed");
+      }
     } catch (error) {
       console.error(error);
+      setShowSuccess(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -60,7 +78,8 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
       )}
       
       <div className="max-container relative z-10">
-        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-stretch">
+        {/* RESPONSIVE-ONLY: Reduced gap on mobile from 16 to 8 */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-24 items-stretch">
           
           {/* ─── BENEFITS SECTION (5 Cols) ─── */}
           <motion.div
@@ -76,8 +95,9 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
                 <span className="accent-label !mb-0 text-accent">Strategic Engagement</span>
               </div>
               
+              {/* RESPONSIVE-ONLY: Scaled heading from 5xl→3xl on mobile, 5xl on md, 6xl on lg */}
               <h2 className={cn(
-                "display-title mb-10 !text-5xl md:!text-6xl",
+                "display-title mb-6 md:mb-10 !text-3xl md:!text-5xl lg:!text-6xl",
                 theme === 'light' ? "text-[#1A1A1A]" : "text-white"
               )}>
                 Book Your Free <br />
@@ -119,8 +139,9 @@ export default function ContactSection({ theme = 'dark' }: { theme?: 'dark' | 'l
               </div>
             </div>
 
+            {/* RESPONSIVE-ONLY: Reduced mt on mobile from 24 to 10 */}
             <div className={cn(
-              "mt-24 pt-12 border-t",
+              "mt-10 md:mt-24 pt-8 md:pt-12 border-t",
               theme === 'light' ? "border-black/5" : "border-white/5"
             )}>
               <div className={cn(

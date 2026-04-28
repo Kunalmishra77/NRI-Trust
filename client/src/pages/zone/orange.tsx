@@ -287,14 +287,13 @@ export default function ZoneOrange() {
                   Book Free Consultation <ArrowRight className="w-4 h-4" />
                 </motion.button>
               </Link>
-              <a href="https://wa.me/919999999999?text=I%20want%20to%20learn%20more%20about%20Orange%20Zone%20management"
-                target="_blank" rel="noopener noreferrer">
+              <Link href="/contact">
                 <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
                   className="px-10 py-5 rounded-full font-bold text-sm flex items-center gap-3 border text-orange-400 border-orange-500/30 bg-orange-500/10">
                   <MessageCircle className="w-4 h-4" />
-                  WhatsApp Us
+                  Contact Us
                 </motion.button>
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

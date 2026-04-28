@@ -118,15 +118,14 @@ export default function ZoneRed() {
               </motion.p>
 
               <motion.div {...fadeUp(0.3)} className="flex flex-wrap gap-4">
-                <a href="https://wa.me/919999999999?text=URGENT%3A%20I%20need%20emergency%20support%20for%20my%20parents"
-                  target="_blank" rel="noopener noreferrer">
+                <Link href="/contact">
                   <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
                     className="px-8 py-4 rounded-full font-black text-sm tracking-wide flex items-center gap-3 text-white"
                     style={{ backgroundColor: COLOR }}>
                     <Zap className="w-4 h-4" />
                     Get Emergency Support Now
                   </motion.button>
-                </a>
+                </Link>
                 <Link href="/contact">
                   <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
                     className="px-8 py-4 rounded-full font-bold text-sm flex items-center gap-3 border text-white/60 border-white/15 hover:border-white/30 transition-all">
@@ -302,15 +301,14 @@ export default function ZoneRed() {
               Call, WhatsApp, or book a call. Our emergency response team picks up the case immediately and begins working on your behalf within the hour.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="https://wa.me/919999999999?text=URGENT%3A%20I%20need%20emergency%20NRI%20Trust%20support"
-                target="_blank" rel="noopener noreferrer">
+              <Link href="/contact">
                 <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
                   className="px-10 py-5 rounded-full font-black text-sm tracking-wide flex items-center gap-3 text-white"
                   style={{ backgroundColor: COLOR }}>
                   <Zap className="w-4 h-4" />
-                  Emergency WhatsApp Now
+                  Emergency Contact Now
                 </motion.button>
-              </a>
+              </Link>
               <Link href="/contact">
                 <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
                   className="px-10 py-5 rounded-full font-bold text-sm flex items-center gap-3 border text-red-400 border-red-500/30 bg-red-500/10">

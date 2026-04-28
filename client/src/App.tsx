@@ -16,7 +16,7 @@ import BankingKyc from "@/pages/services/banking-kyc";
 import LegalSuccession from "@/pages/services/legal-succession";
 import PropertyTenancy from "@/pages/services/property-tenancy";
 import Insurance from "@/pages/services/insurance";
-import IncomeTax from "@/pages/services/income-tax";
+import EmergencyAccess from "@/pages/services/emergency-access";
 import NotFound from "@/pages/not-found";
 import WhyNRITrust from "@/pages/why-nri-trust";
 import HowItWorks from "@/pages/how-it-works";
@@ -56,7 +56,8 @@ function Router() {
               <Route path="/services/legal-succession" component={LegalSuccession} />
               <Route path="/services/property-tenancy" component={PropertyTenancy} />
               <Route path="/services/insurance" component={Insurance} />
-              <Route path="/services/income-tax" component={IncomeTax} />
+              <Route path="/services/income-tax" component={EmergencyAccess} />
+              <Route path="/services/emergency-access" component={EmergencyAccess} />
               <Route path="/how-it-works" component={HowItWorks} />
               <Route path="/pricing" component={Pricing} />
               <Route path="/emergency-response" component={EmergencyResponse} />

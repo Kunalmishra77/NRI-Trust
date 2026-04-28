@@ -46,7 +46,7 @@ const pillars = [
     number: "05",
     icon: Zap,
     stat: "Plan Activated",
-    href: "/services/income-tax"
+    href: "/services/emergency-access"
   },
   {
     title: "Legal Transfer Ready",

@@ -269,7 +269,7 @@ export const services: ServiceData[] = [
     ],
   },
   {
-    slug: "income-tax",
+    slug: "emergency-access",
     title: "Emergency Access Guidance",
     shortTitle: "Emergency",
     tagline: "Prepare a clear plan so your family knows what to do in a crisis.",

@@ -270,27 +270,26 @@ export default function EmergencyTimeline() {
 
             {/* Red phase: direct action CTA */}
             {phase === 'red' && (
-              <motion.a
-                href="https://wa.me/919999999999?text=Emergency%20Support%20Needed"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-                className="flex items-center justify-center gap-3 p-5 rounded-[2rem] border mt-2 transition-all"
-                style={{ backgroundColor: `${phaseColor}10`, borderColor: `${phaseColor}30` }}
-              >
+              <Link href="/contact">
                 <motion.div
-                  animate={{ scale: [1, 1.4, 1] }}
-                  transition={{ duration: 0.8, repeat: Infinity }}
-                  className="w-2.5 h-2.5 rounded-full"
-                  style={{ backgroundColor: phaseColor }}
-                />
-                <span className="font-black text-sm uppercase tracking-widest" style={{ color: phaseColor }}>
-                  Emergency WhatsApp — Available Now
-                </span>
-              </motion.a>
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center justify-center gap-3 p-5 rounded-[2rem] border mt-2 transition-all cursor-pointer"
+                  style={{ backgroundColor: `${phaseColor}10`, borderColor: `${phaseColor}30` }}
+                >
+                  <motion.div
+                    animate={{ scale: [1, 1.4, 1] }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                    className="w-2.5 h-2.5 rounded-full"
+                    style={{ backgroundColor: phaseColor }}
+                  />
+                  <span className="font-black text-sm uppercase tracking-widest" style={{ color: phaseColor }}>
+                    Emergency Contact — Available Now
+                  </span>
+                </motion.div>
+              </Link>
             )}
           </div>
         </div>
