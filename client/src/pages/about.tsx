@@ -85,17 +85,16 @@ export default function About() {
        <div className="relative rounded-3xl overflow-hidden aspect-[3/4] max-w-sm mx-auto lg:mx-0 lg:ml-auto shadow-2xl">
         <img
          src="/generated_images/owner1.jpeg"
-         alt="NRI Trust Founder"
+         alt="Dhananjay Agrawal — Founder, NRI Trust"
          className="w-full h-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
         <div className="absolute bottom-6 left-6 right-6">
-         <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#d4af37] mb-1">Founding Partner</div>
-         <div className="text-white font-bold text-lg leading-tight">Rajiv Sharma</div>
-         <div className="text-white/60 text-sm">15+ years · Estate & Succession Law</div>
+         <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#d4af37] mb-1">Founder & Managing Partner</div>
+         <div className="text-white font-bold text-lg leading-tight">Dhananjay Agrawal</div>
+         <div className="text-white/60 text-sm">15+ years · Estate, Banking & Property Law</div>
         </div>
        </div>
-       {/* Accent frame */}
        <div className="absolute -bottom-4 -right-4 w-full h-full rounded-3xl border border-accent/20 -z-10" />
       </motion.div>
      </div>
@@ -122,81 +121,82 @@ export default function About() {
     </div>
    </section>
 
-   {/* SECTION 3: LEADERSHIP TEAM */}
+   {/* SECTION 3: FOUNDER */}
    <section className="section-padding section-light border-t border-black/[0.05]">
     <div className="max-container relative z-10">
+
      <motion.div
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={elegantFadeUp}
       className="text-center mb-16"
      >
       <div className="flex items-center justify-center gap-6 mb-6">
        <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-accent/50" />
-       <span className="accent-label !mb-0 text-accent">The People Behind It</span>
+       <span className="accent-label !mb-0 text-accent">The Person Behind It</span>
        <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-accent/50" />
       </div>
-      <h2 className="section-title text-[#1A1A1A] mb-4">Our <span className="text-gradient-gold italic">Leadership.</span></h2>
-      <p className="text-[#1A1A1A]/55 text-base max-w-xl mx-auto font-medium leading-relaxed">
-       Specialists in Indian family law, banking, and property — dedicated entirely to NRI families.
-      </p>
+      <h2 className="section-title text-[#1A1A1A] mb-4">Meet Our <span className="text-gradient-gold italic">Founder.</span></h2>
      </motion.div>
 
-     <div className="grid md:grid-cols-3 gap-8">
-      {[
-       {
-        image: "/generated_images/owner2.jpeg",
-        name: "Rajiv Sharma",
-        role: "Founding Partner",
-        expertise: "Estate & Succession Law",
-        years: "15+ years",
-        bio: "Leads all succession and estate planning engagements. Former legal counsel at a top Delhi firm specializing in NRI property disputes.",
-       },
-       {
-        image: "/generated_images/owner3.jpeg",
-        name: "Arjun Mehta",
-        role: "Co-Founder & Director",
-        expertise: "Banking & Financial Advisory",
-        years: "12+ years",
-        bio: "Oversees banking relations, KYC compliance, and insurance audit across 40+ jurisdictions. Previously with HDFC Private Banking.",
-       },
-       {
-        image: "/generated_images/owner1.jpeg",
-        name: "Rajiv Sharma",
-        role: "Senior Advisor",
-        expertise: "Property & Asset Management",
-        years: "10+ years",
-        bio: "Manages on-ground property verification, tenant disputes, and municipal compliance for NRI-owned assets across India.",
-       },
-      ].map((member, i) => (
-       <motion.div
-        key={i}
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: i * 0.12, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="group"
-       >
-        <div className="relative rounded-2xl overflow-hidden mb-5 aspect-[3/4] shadow-lg">
-         <img
-          src={member.image}
-          alt={member.name}
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-         />
-         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-         <div className="absolute bottom-0 left-0 right-0 p-5">
-          <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#d4af37] mb-1">{member.role}</div>
-          <div className="text-white font-black text-xl leading-tight">{member.name}</div>
+     {/* Founder card — horizontal on desktop */}
+     <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="grid lg:grid-cols-[380px,1fr] gap-10 lg:gap-16 items-center bg-white rounded-3xl border border-black/[0.06] shadow-xl overflow-hidden"
+     >
+      {/* Primary photo */}
+      <div className="relative aspect-[3/4] lg:aspect-auto lg:h-full min-h-[360px] overflow-hidden">
+       <img
+        src="/generated_images/owner2.jpeg"
+        alt="Dhananjay Agrawal — Founder, NRI Trust"
+        className="w-full h-full object-cover object-top"
+       />
+       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/5" />
+       <div className="absolute bottom-5 left-5 lg:hidden">
+        <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#d4af37] mb-0.5">Founder & Managing Partner</div>
+        <div className="text-white font-black text-xl">Dhananjay Agrawal</div>
+       </div>
+      </div>
+
+      {/* Details */}
+      <div className="px-8 py-10 lg:py-12 lg:pr-12">
+       <div className="hidden lg:block mb-2">
+        <div className="text-[10px] font-mono uppercase tracking-[0.35em] text-accent font-black mb-3">Founder & Managing Partner</div>
+        <h3 className="text-4xl font-black text-[#1A1A1A] tracking-tight mb-1">Dhananjay Agrawal</h3>
+        <div className="h-[3px] w-14 bg-gradient-to-r from-accent to-accent/30 rounded-full mt-3 mb-6" />
+       </div>
+
+       <p className="text-[#1A1A1A]/65 text-base leading-relaxed font-medium mb-8">
+        With over 15 years of hands-on experience in Indian family law, banking compliance, and NRI property management, Dhananjay founded NRI Trust to give global Indian families a trusted partner on the ground. His work spans estate planning, bank succession, insurance disputes, and property legal matters — all managed remotely for NRI clients across 40+ countries.
+       </p>
+
+       {/* Expertise tags */}
+       <div className="flex flex-wrap gap-2 mb-8">
+        {["Estate & Succession Law", "Banking & KYC", "Property Management", "Insurance Advisory", "FEMA Compliance"].map((tag) => (
+         <span key={tag} className="text-[11px] font-mono font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-accent/8 text-accent border border-accent/20">
+          {tag}
+         </span>
+        ))}
+       </div>
+
+       {/* Photo strip — all 3 shots */}
+       <div className="flex gap-3">
+        {[
+         { src: "/generated_images/owner2.jpeg", label: "Professional" },
+         { src: "/generated_images/owner1.jpeg", label: "Formal" },
+         { src: "/generated_images/owner3.jpeg", label: "Working" },
+        ].map((p, i) => (
+         <div key={i} className="relative w-16 h-20 rounded-xl overflow-hidden border-2 border-black/[0.06] hover:border-accent/40 transition-colors cursor-default shrink-0 shadow-sm">
+          <img src={p.src} alt={`Dhananjay Agrawal — ${p.label}`} className="w-full h-full object-cover object-top" />
          </div>
+        ))}
+        <div className="flex items-center pl-2">
+         <span className="text-[11px] font-mono text-[#1A1A1A]/35 uppercase tracking-widest">Dhananjay Agrawal</span>
         </div>
-        <div className="px-1">
-         <div className="flex items-center gap-2 mb-2">
-          <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-          <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-bold">{member.expertise} · {member.years}</span>
-         </div>
-         <p className="text-[#1A1A1A]/60 text-sm leading-relaxed font-medium">{member.bio}</p>
-        </div>
-       </motion.div>
-      ))}
-     </div>
+       </div>
+      </div>
+     </motion.div>
     </div>
    </section>
 
