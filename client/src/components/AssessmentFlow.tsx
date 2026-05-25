@@ -25,14 +25,14 @@ class AssessmentErrorBoundary extends React.Component<{children: React.ReactNode
   render() {
     if (this.state.hasError) {
       return (
-        <div className="p-12 bg-red-500/5 border-2 border-red-500/20 rounded-[2.5rem] text-center backdrop-blur-xl">
-          <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-6" />
-          <h2 className="text-2xl font-serif text-white mb-4">Advisory System Reset Required</h2>
-          <p className="text-white/60 mb-10 text-base leading-relaxed max-w-sm mx-auto">
-            A temporary synchronization error occurred in the secure portal. Please click below to re-initialize the intake session.
+        <div className="p-10 bg-red-500/5 border border-red-500/20 rounded-3xl text-center backdrop-blur-xl">
+          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <h2 className="text-xl font-serif text-white mb-3">Advisory System Reset</h2>
+          <p className="text-white/60 mb-8 text-sm leading-relaxed max-w-xs mx-auto">
+            A synchronization error occurred. Please click below to restart the intake session.
           </p>
-          <button onClick={() => window.location.reload()} className="btn-premium-primary !px-12 !py-5 rounded-2xl text-sm font-black uppercase tracking-widest">
-            Re-Initialize System
+          <button onClick={() => window.location.reload()} className="btn-premium-primary !px-8 !py-4 rounded-xl text-[10px] font-black uppercase tracking-widest">
+            Restart Intake
           </button>
         </div>
       );
@@ -64,7 +64,6 @@ function AssessmentContent({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
     setApiError(null);
     if (step === 1) {
       if (!formData.name || !formData.email || !formData.country || !formData.answers['q_parent_age']) {
-        console.warn("Validation: Missing fields on Step 1");
         return;
       }
       setStep(2);
@@ -127,19 +126,20 @@ function AssessmentContent({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
   const bgInput = theme === 'light' ? "bg-[#FDFCFB]" : "bg-background/50";
 
   return (
-    <div className="relative min-h-[600px] flex flex-col">
-      <div className="mb-10 text-left">
-        <h3 className={cn("text-4xl font-serif mb-4 tracking-tight", textPrimary)}>
+    <div className="relative min-h-[500px] flex flex-col">
+      {/* PERSISTENT HEADER */}
+      <div className="mb-8 text-left">
+        <h3 className={cn("text-2xl font-serif mb-2 tracking-tight", textPrimary)}>
           Family Protection <span className="text-gradient-gold italic">Assessment.</span>
         </h3>
-        <p className={cn("text-base font-light tracking-wide max-w-xl leading-relaxed", textSecondary)}>
-          Our proprietary intelligence engine evaluates your structural vulnerabilities in India across legal, financial, and healthcare domains to provide an A-Z advisory report.
+        <p className={cn("text-xs font-light tracking-wide max-w-lg leading-relaxed", textSecondary)}>
+          Proprietary intelligence engine evaluating structural vulnerabilities across legal, financial, and healthcare domains.
         </p>
       </div>
 
       {apiError && (
-        <div className="mb-6 p-6 rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center gap-4 text-red-500 text-base font-bold">
-          <AlertCircle className="w-6 h-6 shrink-0" />
+        <div className="mb-4 p-4 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center gap-3 text-red-500 text-xs font-bold">
+          <AlertCircle className="w-4 h-4 shrink-0" />
           <p>{apiError}</p>
         </div>
       )}
@@ -148,109 +148,109 @@ function AssessmentContent({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
         {step === 1 && (
           <motion.div 
             key="step1" 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            exit={{ opacity: 0, y: -20 }} 
-            className="space-y-10 flex-grow"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }} 
+            className="space-y-8 flex-grow"
           >
-            <div className={cn("flex items-center justify-between mb-8 border-b pb-8", borderPrimary)}>
+            <div className={cn("flex items-center justify-between mb-6 border-b pb-6", borderPrimary)}>
               <div className="flex items-center gap-3">
-                <Lock className="w-6 h-6 text-emerald-500" />
-                <span className="text-[14px] font-mono uppercase tracking-[0.25em] text-emerald-500 font-black">Secure Intake - Step 01</span>
+                <Lock className="w-4 h-4 text-emerald-500" />
+                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-emerald-500 font-black">Secure Intake - Step 01</span>
               </div>
-              <div className={cn("flex items-center gap-2 text-[12px] font-mono uppercase tracking-widest", textMuted)}>
-                <Globe className="w-4 h-4" />
+              <div className={cn("flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest", textMuted)}>
+                <Globe className="w-3.5 h-3.5" />
                 Serving 40+ Jurisdictions
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-10">
-              <div className="space-y-4">
-                <label className="text-[14px] font-mono uppercase tracking-widest text-accent font-black">Principal Name</label>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2.5">
+                <label className="text-[11px] font-mono uppercase tracking-widest text-accent font-black">Principal Name</label>
                 <Input 
                   required 
                   placeholder="Full Legal Name" 
                   value={formData.name} 
                   onChange={(e) => setFormData({...formData, name: e.target.value})} 
-                  className={cn("h-16 text-lg rounded-2xl transition-all shadow-sm focus:border-accent/50 focus:ring-accent/20", bgInput, borderPrimary, textPrimary, placeholderColor)} 
+                  className={cn("h-13 rounded-xl transition-all shadow-sm focus:border-accent/50 focus:ring-accent/20", bgInput, borderPrimary, textPrimary, placeholderColor)} 
                 />
               </div>
-              <div className="space-y-4">
-                <label className="text-[14px] font-mono uppercase tracking-widest text-accent font-black">Confidential Email</label>
+              <div className="space-y-2.5">
+                <label className="text-[11px] font-mono uppercase tracking-widest text-accent font-black">Confidential Email</label>
                 <Input 
                   required 
                   type="email" 
                   placeholder="name@organization.com" 
                   value={formData.email} 
                   onChange={(e) => setFormData({...formData, email: e.target.value})} 
-                  className={cn("h-16 text-lg rounded-2xl transition-all shadow-sm focus:border-accent/50 focus:ring-accent/20", bgInput, borderPrimary, textPrimary, placeholderColor)} 
+                  className={cn("h-13 rounded-xl transition-all shadow-sm focus:border-accent/50 focus:ring-accent/20", bgInput, borderPrimary, textPrimary, placeholderColor)} 
                 />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-10">
-              <div className="space-y-4 text-left">
-                <label className="text-[14px] font-mono uppercase tracking-widest text-accent font-black">Country of Residency</label>
-                <Select value={formData.country || undefined} onValueChange={(val) => setFormData({...formData, country: val})}>
-                  <SelectTrigger className={cn("h-16 text-lg rounded-2xl transition-all", bgInput, borderPrimary, textPrimary)}>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2.5 text-left">
+                <label className="text-[11px] font-mono uppercase tracking-widest text-accent font-black">Country of Residency</label>
+                <Select value={formData.country || ""} onValueChange={(val) => setFormData({...formData, country: val})}>
+                  <SelectTrigger className={cn("h-13 rounded-xl transition-all", bgInput, borderPrimary, textPrimary)}>
                     <SelectValue placeholder="Where do you live?" />
                   </SelectTrigger>
                   <SelectContent className={cn("z-[300]", theme === 'light' ? "bg-white text-[#1A1A1A]" : "bg-[#0A0F0D] text-white border-white/10")}>
                     {countries.map(c => (
-                      <SelectItem key={c} value={c} className="text-base py-3 cursor-pointer">
+                      <SelectItem key={c} value={c} className="text-sm py-2.5 cursor-pointer">
                         {c}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
-              <div className="space-y-4 text-left">
-                <label className="text-[14px] font-mono uppercase tracking-widest text-accent font-black">Parent Age Bracket</label>
-                <Select value={formData.answers['q_parent_age'] || undefined} onValueChange={(val) => setFormData({...formData, answers: {...formData.answers, q_parent_age: val}})}>
-                  <SelectTrigger className={cn("h-16 text-lg rounded-2xl transition-all", bgInput, borderPrimary, textPrimary)}>
+              <div className="space-y-2.5 text-left">
+                <label className="text-[11px] font-mono uppercase tracking-widest text-accent font-black">Parent Age Bracket</label>
+                <Select value={formData.answers['q_parent_age'] || ""} onValueChange={(val) => setFormData({...formData, answers: {...formData.answers, q_parent_age: val}})}>
+                  <SelectTrigger className={cn("h-13 rounded-xl transition-all", bgInput, borderPrimary, textPrimary)}>
                     <SelectValue placeholder="Select parent age..." />
                   </SelectTrigger>
                   <SelectContent className={cn("z-[300]", theme === 'light' ? "bg-white text-[#1A1A1A]" : "bg-[#0A0F0D] text-white border-white/10")}>
-                    <SelectItem value="under_55" className="text-base py-3 cursor-pointer">Under 55 (Green Zone)</SelectItem>
-                    <SelectItem value="55_65" className="text-base py-3 cursor-pointer">55 - 65 (Orange Zone)</SelectItem>
-                    <SelectItem value="65_plus" className="text-base py-3 cursor-pointer">65 or above (Red Zone)</SelectItem>
+                    <SelectItem value="under_55" className="text-sm py-2.5 cursor-pointer">Under 55 (Green Zone)</SelectItem>
+                    <SelectItem value="55_65" className="text-sm py-2.5 cursor-pointer">55 - 65 (Orange Zone)</SelectItem>
+                    <SelectItem value="65_plus" className="text-sm py-2.5 cursor-pointer">65 or above (Red Zone)</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </div>
 
-            <button onClick={handleNext} className="btn-premium-primary w-full h-24 !rounded-[2.5rem] flex items-center justify-center gap-6 group shadow-2xl mt-12 transition-all hover:scale-[1.01] active:scale-[0.99]">
-              <span className="font-black tracking-[0.3em] uppercase text-base">Initialize Secure Assessment</span>
-              <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+            <button onClick={handleNext} className="btn-premium-primary w-full h-16 !rounded-2xl flex items-center justify-center gap-4 group shadow-xl mt-8 transition-all hover:scale-[1.01] active:scale-[0.99]">
+              <span className="font-black tracking-[0.2em] uppercase text-xs">Initialize Secure Assessment</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </button>
           </motion.div>
         )}
 
         {step === 2 && (
-          <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-12 flex-grow text-left">
-            <div className={cn("flex items-center justify-between mb-8 border-b pb-8", borderPrimary)}>
+          <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-10 flex-grow text-left">
+            <div className={cn("flex items-center justify-between mb-6 border-b pb-6", borderPrimary)}>
               <div className="flex items-center gap-3">
-                <ShieldCheck className="w-6 h-6 text-accent" />
-                <span className="text-[14px] font-mono uppercase tracking-[0.25em] text-accent font-black">Customizing Advisory Path</span>
+                <ShieldCheck className="w-5 h-5 text-accent" />
+                <span className="text-[12px] font-mono uppercase tracking-[0.2em] text-accent font-black">Customizing Advisory Path</span>
               </div>
-              <span className={cn("text-[14px] font-mono font-black", textMuted)}>STEP 02 OF 02</span>
+              <span className={cn("text-[11px] font-mono font-black", textMuted)}>STEP 02 OF 02</span>
             </div>
 
-            <div className="space-y-12 max-h-[500px] overflow-y-auto pr-8 custom-scrollbar">
+            <div className="space-y-10 max-h-[450px] overflow-y-auto pr-6 custom-scrollbar">
               {getActiveQuestions().map((q) => (
-                <div key={q.id} className="space-y-6">
-                  <div className="space-y-2">
-                    <label className={cn("text-2xl font-serif leading-tight block", textPrimary)}>{q.label}</label>
-                    {q.description && <p className={cn("text-base italic leading-relaxed", textSecondary)}>{q.description}</p>}
+                <div key={q.id} className="space-y-5">
+                  <div className="space-y-1.5">
+                    <label className={cn("text-lg font-serif leading-tight block", textPrimary)}>{q.label}</label>
+                    {q.description && <p className={cn("text-[13px] italic leading-relaxed", textSecondary)}>{q.description}</p>}
                   </div>
                   
                   {q.type === 'radio_card' && (
-                    <div className="grid gap-5">
+                    <div className="grid gap-4">
                       {q.options?.map((opt: any) => (
-                        <div key={opt.value} onClick={() => setFormData({...formData, answers: {...formData.answers, [q.id]: opt.value}})} className={cn("p-6 rounded-[1.5rem] border-2 transition-all cursor-pointer flex items-center justify-between group", formData.answers[q.id] === opt.value ? "bg-accent/10 border-accent text-white ring-4 ring-accent/5" : cn(theme === 'light' ? "bg-black/5" : "bg-white/5", borderPrimary, textSecondary, "hover:border-accent/40"))}>
-                          <span className="text-lg font-bold">{opt.label}</span>
-                          <div className={cn("w-6 h-6 rounded-full border-2 flex items-center justify-center", formData.answers[q.id] === opt.value ? "border-accent" : (theme === 'light' ? "border-black/20" : "border-white/20"))}>
-                            {formData.answers[q.id] === opt.value && <div className="w-3 h-3 rounded-full bg-accent" />}
+                        <div key={opt.value} onClick={() => setFormData({...formData, answers: {...formData.answers, [q.id]: opt.value}})} className={cn("p-4 rounded-xl border transition-all cursor-pointer flex items-center justify-between group", formData.answers[q.id] === opt.value ? "bg-accent/10 border-accent text-white" : cn(theme === 'light' ? "bg-black/5" : "bg-white/5", borderPrimary, textSecondary, "hover:border-accent/40"))}>
+                          <span className="text-base font-bold">{opt.label}</span>
+                          <div className={cn("w-5 h-5 rounded-full border flex items-center justify-center", formData.answers[q.id] === opt.value ? "border-accent" : (theme === 'light' ? "border-black/20" : "border-white/20"))}>
+                            {formData.answers[q.id] === opt.value && <div className="w-2.5 h-2.5 rounded-full bg-accent" />}
                           </div>
                         </div>
                       ))}
@@ -259,75 +259,74 @@ function AssessmentContent({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
 
                   {q.type === 'text' && (
                     <Textarea 
-                      placeholder="Type your comprehensive response here..."
+                      placeholder="Type your response here..."
                       value={formData.answers[q.id] || ""}
                       onChange={(e) => setFormData({...formData, answers: {...formData.answers, [q.id]: e.target.value}})}
-                      className={cn("min-h-[160px] text-lg rounded-[1.5rem] p-6 transition-all resize-none shadow-sm leading-relaxed", bgInput, borderPrimary, textPrimary, placeholderColor, "focus:border-accent/50")}
+                      className={cn("min-h-[100px] text-base rounded-xl p-4 transition-all resize-none shadow-sm leading-relaxed", bgInput, borderPrimary, textPrimary, placeholderColor, "focus:border-accent/50")}
                     />
                   )}
                 </div>
               ))}
             </div>
 
-            <div className={cn("flex items-center gap-6 p-7 rounded-[2rem] border-2", theme === 'light' ? "bg-black/[0.04]" : "bg-white/[0.04]", borderPrimary)}>
-              <Checkbox id="consent" checked={formData.consent} onCheckedChange={(val) => setFormData({...formData, consent: val as boolean})} className={cn("mt-1 data-[state=checked]:bg-accent data-[state=checked]:border-accent h-7 w-7 rounded-lg", theme === 'light' ? "border-black/30" : "border-white/30")} />
-              <label htmlFor="consent" className={cn("text-base leading-relaxed cursor-pointer select-none font-bold hover:text-accent transition-colors", textSecondary)}>I consent to the secure processing of my data for a comprehensive A-Z family protection assessment.</label>
+            <div className={cn("flex items-center gap-5 p-5 rounded-xl border", theme === 'light' ? "bg-black/[0.03]" : "bg-white/[0.03]", borderPrimary)}>
+              <Checkbox id="consent" checked={formData.consent} onCheckedChange={(val) => setFormData({...formData, consent: val as boolean})} className={cn("mt-1 data-[state=checked]:bg-accent data-[state=checked]:border-accent h-6 w-6 rounded", theme === 'light' ? "border-black/30" : "border-white/30")} />
+              <label htmlFor="consent" className={cn("text-xs leading-relaxed cursor-pointer select-none font-bold hover:text-accent transition-colors", textSecondary)}>I consent to the secure processing of my data for a comprehensive assessment.</label>
             </div>
 
-            <div className="grid grid-cols-2 gap-8 pt-6">
-              <button onClick={() => setStep(1)} className="btn-premium-outline !h-24 !rounded-[2rem] text-[14px] uppercase tracking-[0.25em] font-black hover:bg-white/10 transition-all">Back</button>
-              <button onClick={handleNext} disabled={!formData.consent || getActiveQuestions().some(q => q.required !== false && !formData.answers[q.id])} className="btn-premium-primary !h-24 !rounded-[2.5rem] flex items-center justify-center gap-5 group disabled:opacity-50 shadow-2xl transition-all">
-                <span className="text-[14px] uppercase tracking-[0.25em] font-black">Generate Deep Brief</span>
-                <FileText className="w-6 h-6 group-hover:scale-110 transition-transform" />
+            <div className="grid grid-cols-2 gap-6 pt-4">
+              <button onClick={() => setStep(1)} className="btn-premium-outline !h-16 !rounded-xl text-[11px] uppercase tracking-[0.2em] font-black hover:bg-white/10 transition-all">Back</button>
+              <button onClick={handleNext} disabled={!formData.consent || getActiveQuestions().some(q => q.required !== false && !formData.answers[q.id])} className="btn-premium-primary !h-16 !rounded-xl flex items-center justify-center gap-4 group disabled:opacity-50 shadow-xl transition-all">
+                <span className="text-[11px] uppercase tracking-[0.2em] font-black">Generate Brief</span>
+                <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
               </button>
             </div>
           </motion.div>
         )}
 
         {step === 3 && (
-          <motion.div key="step3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-full flex flex-col items-center justify-center text-center py-32">
-            <div className="relative w-32 h-32 mb-12 flex items-center justify-center">
-              <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute inset-0 rounded-full border-[4px] border-accent/20 border-t-accent" />
-              <ShieldCheck className="w-16 h-16 text-accent" />
+          <motion.div key="step3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-full flex flex-col items-center justify-center text-center py-24">
+            <div className="relative w-24 h-24 mb-10 flex items-center justify-center">
+              <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute inset-0 rounded-full border-[3px] border-accent/20 border-t-accent" />
+              <ShieldCheck className="w-12 h-12 text-accent" />
             </div>
-            <h3 className={cn("text-4xl font-serif mb-6 italic tracking-tight", textPrimary)}>Calibrating Advisory Intelligence...</h3>
-            <p className={cn("text-[14px] font-mono tracking-[0.4em] uppercase animate-pulse font-black text-accent")}>Generating Comprehensive A-Z Report</p>
+            <h3 className={cn("text-2xl font-serif mb-4 italic tracking-tight", textPrimary)}>Calibrating Intelligence...</h3>
+            <p className={cn("text-[10px] font-mono tracking-[0.3em] uppercase animate-pulse font-black text-accent")}>Generating Comprehensive Report</p>
           </motion.div>
         )}
 
         {step === 4 && result && (
-          <motion.div key="step4" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="space-y-12 flex-grow text-left">
-            <div className={cn("flex items-center justify-between mb-8 border-b-2 pb-8", borderPrimary)}>
+          <motion.div key="step4" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="space-y-10 flex-grow text-left">
+            <div className={cn("flex items-center justify-between mb-6 border-b-2 pb-6", borderPrimary)}>
               <div className="flex items-center gap-4">
-                <CheckCircle2 className="w-8 h-8 text-emerald-500" />
-                <span className="text-[14px] font-mono uppercase tracking-[0.3em] text-emerald-500 font-black">Confidential Deep Brief Generated</span>
+                <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+                <span className="text-[12px] font-mono uppercase tracking-[0.2em] text-emerald-500 font-black">Brief Generated</span>
               </div>
-              <div className="flex items-center gap-4 px-6 py-2.5 rounded-full bg-accent/10 border-2 border-accent/30 shadow-xl">
-                <div className="w-3 h-3 rounded-full bg-accent animate-pulse" />
-                <span className="text-[12px] font-mono text-accent uppercase font-black">{result.persona} ADVISORY</span>
+              <div className="flex items-center gap-3 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 shadow-xl">
+                <span className="text-[10px] font-mono text-accent uppercase font-black">{result.persona} ADVISORY</span>
               </div>
             </div>
 
-            <div className={cn("p-12 rounded-[3.5rem] border-2 space-y-12 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)] relative overflow-hidden", theme === 'light' ? "bg-white border-black/10" : "bg-[#050914] border-white/10")}>
-               <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 blur-[100px] rounded-full" />
+            <div className={cn("p-8 rounded-[2.5rem] border space-y-10 shadow-2xl relative overflow-hidden", theme === 'light' ? "bg-white border-black/5" : "bg-[#050914] border-white/5")}>
+               <div className="absolute top-0 right-0 w-48 h-48 bg-accent/5 blur-[80px] rounded-full" />
 
-              <div className="flex items-start gap-8 relative z-10">
-                <AlertCircle className={cn("w-12 h-12 shrink-0 mt-1.5", result.urgency === 'CRITICAL' ? "text-red-500" : "text-accent")} />
-                <div className="space-y-8">
-                  <h4 className={cn("text-3xl font-serif tracking-tight leading-tight uppercase", textPrimary)}>
+              <div className="flex items-start gap-6 relative z-10">
+                <AlertCircle className={cn("w-8 h-8 shrink-0 mt-1.5", result.urgency === 'CRITICAL' ? "text-red-500" : "text-accent")} />
+                <div className="space-y-6">
+                  <h4 className={cn("text-xl font-serif tracking-tight leading-tight uppercase", textPrimary)}>
                     {result.urgency} RISK PROFILE IDENTIFIED
                   </h4>
                   
-                  <div className="grid gap-12">
+                  <div className="grid gap-8">
                     {result.fullSummary.split('\n\n').map((part: string, idx: number) => (
                       <motion.div 
                         key={idx}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 + idx * 0.1 }}
-                        className={cn("text-lg leading-relaxed font-light", textSecondary)}
+                        className={cn("text-base leading-relaxed font-light", textSecondary)}
                         dangerouslySetInnerHTML={{ 
-                          __html: part.replace(/\*\*(.*?)\*\*/g, '<b class="text-accent font-black uppercase tracking-wider">$1</b>')
+                          __html: part.replace(/\*\*(.*?)\*\*/g, '<b class="text-accent font-bold uppercase tracking-wide">$1</b>')
                                       .replace(/â— /g, '<span class="text-accent mr-2">â— </span>') 
                         }}
                       />
@@ -336,24 +335,19 @@ function AssessmentContent({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
                 </div>
               </div>
 
-              <div className={cn("pt-12 border-t-2 grid gap-8 relative z-10", borderPrimary)}>
-                <h5 className="text-[16px] font-mono uppercase tracking-[0.3em] text-accent font-black flex items-center gap-3">
-                  <Info className="w-6 h-6" />
+              <div className={cn("pt-10 border-t grid gap-6 relative z-10", borderPrimary)}>
+                <h5 className="text-[13px] font-mono uppercase tracking-[0.2em] text-accent font-black flex items-center gap-3">
+                  <Info className="w-5 h-5" />
                   Immediate A-Z Action Items:
                 </h5>
-                <div className="grid gap-6">
+                <div className="grid gap-4">
                   {result.recommendations.map((rec: any, i: number) => (
-                    <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.15 }} className={cn("flex gap-6 p-8 rounded-[2rem] border-2 transition-all hover:translate-x-2 shadow-sm hover:shadow-2xl", theme === 'light' ? "bg-[#FDFCFB] border-black/5" : "bg-white/5 border-white/5 hover:bg-white/[0.08]")}>
-                      <div className="w-14 h-14 rounded-2xl bg-accent/15 flex items-center justify-center shrink-0 border-2 border-accent/20">
-                        <span className="text-xl text-accent font-black">{i+1}</span>
-                      </div>
-                      <div className="space-y-3">
-                        <p className={cn("text-xl font-black tracking-tight", textPrimary)}>{rec.title}</p>
-                        <p className={cn("text-base leading-relaxed font-medium", textSecondary)}>{rec.description}</p>
-                        <div className="flex items-center gap-3 pt-2">
-                          <ShieldCheck className="w-5 h-5 text-accent" />
-                          <p className="text-[13px] font-mono uppercase tracking-[0.2em] text-accent font-black">Directive: {rec.action}</p>
-                        </div>
+                    <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className={cn("flex gap-5 p-6 rounded-2xl border transition-all hover:translate-x-1 shadow-sm hover:shadow-xl", theme === 'light' ? "bg-[#FDFCFB] border-black/5" : "bg-white/5 border-white/5")}>
+                      <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center shrink-0 border border-accent/20 text-accent font-black">{i+1}</div>
+                      <div className="space-y-2">
+                        <p className={cn("text-lg font-black tracking-tight", textPrimary)}>{rec.title}</p>
+                        <p className={cn("text-sm leading-relaxed font-medium", textSecondary)}>{rec.description}</p>
+                        <p className="text-[11px] font-mono uppercase tracking-[0.15em] text-accent font-black">Directive: {rec.action}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -361,31 +355,31 @@ function AssessmentContent({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
               </div>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-8 pb-10">
-              <Button variant="outline" className="btn-premium-outline !h-24 !rounded-[2.5rem] gap-5 text-[14px] uppercase tracking-[0.3em] font-black group transition-all" onClick={() => window.open(result.pdfUrl)}>
-                <FileText className="w-6 h-6 group-hover:text-accent transition-colors" /> Download Structural Brief (PDF)
+            <div className="grid sm:grid-cols-2 gap-6 pb-6">
+              <Button variant="outline" className="btn-premium-outline !h-16 !rounded-xl gap-4 text-[11px] uppercase tracking-[0.2em] font-black group" onClick={() => window.open(result.pdfUrl)}>
+                <FileText className="w-4 h-4 group-hover:text-accent transition-colors" /> Download PDF Brief
               </Button>
-              <Button className="btn-premium-primary !h-24 !rounded-[2.5rem] gap-5 text-[14px] uppercase tracking-[0.3em] font-black group shadow-[0_20px_50px_-10px_rgba(207,160,82,0.4)] transition-all" onClick={() => setStep(5)}>
-                <Calendar className="w-6 h-6 group-hover:scale-125 transition-transform" /> Book A-Z Strategy Session
+              <Button className="btn-premium-primary !h-16 !rounded-xl gap-4 text-[11px] uppercase tracking-[0.2em] font-black group shadow-xl" onClick={() => setStep(5)}>
+                <Calendar className="w-4 h-4 group-hover:scale-110 transition-transform" /> Book Strategy Session
               </Button>
             </div>
           </motion.div>
         )}
 
         {step === 5 && (
-           <motion.div key="step5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col items-center justify-center text-center py-32">
-             <div className="w-32 h-32 rounded-full bg-emerald-500/10 border-4 border-emerald-500/30 flex items-center justify-center mb-12 shadow-[0_0_80px_-10px_rgba(16,185,129,0.3)]">
-               <CheckCircle2 className="w-16 h-16 text-emerald-500" />
+           <motion.div key="step5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col items-center justify-center text-center py-24">
+             <div className="w-24 h-24 rounded-full bg-emerald-500/10 border-2 border-emerald-500/30 flex items-center justify-center mb-8 shadow-xl">
+               <CheckCircle2 className="w-12 h-12 text-emerald-500" />
              </div>
-             <h3 className={cn("text-5xl font-serif mb-8 italic tracking-tight", textPrimary)}>Secure Line Established.</h3>
-             <p className={cn("text-2xl font-light leading-relaxed mb-20 max-w-xl", textSecondary)}>Our senior advisory lead will contact you personally within 4 hours to initiate your private review session.</p>
-             <button onClick={() => setStep(1)} className="btn-premium-outline !px-16 !py-6 rounded-[2rem] text-[14px] uppercase tracking-[0.3em] font-black hover:bg-accent hover:text-black transition-all">Terminate Secure Intake</button>
+             <h3 className={cn("text-3xl font-serif mb-6 italic tracking-tight", textPrimary)}>Line Established.</h3>
+             <p className={cn("text-lg font-light leading-relaxed mb-16 max-w-md", textSecondary)}>Our advisory lead will contact you personally within 4 hours to initiate your review session.</p>
+             <button onClick={() => setStep(1)} className="btn-premium-outline !px-12 !py-5 rounded-xl text-[12px] uppercase tracking-[0.2em] font-black">Close Intake</button>
            </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="text-center mt-auto pt-16 border-t-2" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-        <span className={cn("text-[12px] font-mono uppercase tracking-[0.4em] font-black", textMuted)}>Verified Trusted Intake Process · PRIVATE & CONFIDENTIAL · NRI Trust Advisory Firm</span>
+      <div className="text-center mt-auto pt-12">
+        <span className={cn("text-[10px] font-mono uppercase tracking-[0.3em] font-black", textMuted)}>Verified Trusted Intake Process · PRIVATE · NRI Trust</span>
       </div>
     </div>
   );
