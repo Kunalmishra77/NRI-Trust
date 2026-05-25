@@ -2,9 +2,11 @@
   "version": 2,
   "buildCommand": "npx vite build",
   "outputDirectory": "dist",
-  "framework": null,
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/api/assessment", "destination": "/api/index.ts" },
+    { "source": "/api/health", "destination": "/api/index.ts" },
+    { "source": "/api/leads", "destination": "/api/index.ts" },
+    { "source": "/api/assessment/:id/pdf", "destination": "/api/index.ts" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

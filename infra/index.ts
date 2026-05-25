@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// 1. DIRECT API TEST - If this fails, Express is not working correctly
+// 1. DIRECT API TEST
 app.get("/api/direct-health", (_req, res) => {
   res.json({ status: "ok", source: "index.ts" });
 });
@@ -37,32 +37,45 @@ app.use((req, res, next) => {
   next();
 });
 
-(async () => {
-  // 2. Register other API routes
-  const server = await registerRoutes(app);
-
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
-    res.status(status).json({ message });
-  });
-
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
+// For Vercel, we need to handle the route registration slightly differently
+// to ensure it happens before the function returns.
+let routesRegistered = false;
+async function ensureRoutes(req: Request, res: Response, next: NextFunction) {
+  if (!routesRegistered) {
+    await registerRoutes(app);
+    routesRegistered = true;
   }
+  next();
+}
 
-  const port = parseInt(process.env.PORT || '5000', 10);
-  if (process.env.VERCEL) {
-    return;
-  }
-  server.listen({
-    port,
-    host: "0.0.0.0",
-  }, () => {
-    log(`serving on port ${port}`);
-  });
-})();
+app.use("/api", ensureRoutes);
 
+// Exporting the app for Vercel
 export default app;
+
+// Local development listener
+if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
+  (async () => {
+    const server = await registerRoutes(app);
+
+    app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+      const status = err.status || err.statusCode || 500;
+      const message = err.message || "Internal Server Error";
+      res.status(status).json({ message });
+    });
+
+    if (app.get("env") === "development") {
+      await setupVite(app, server);
+    } else {
+      serveStatic(app);
+    }
+
+    const port = parseInt(process.env.PORT || '5000', 10);
+    server.listen({
+      port,
+      host: "0.0.0.0",
+    }, () => {
+      log(`serving on port ${port}`);
+    });
+  })();
+}
