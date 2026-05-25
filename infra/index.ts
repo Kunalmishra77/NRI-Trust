@@ -8,26 +8,29 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Initialize the app immediately
-(async () => {
-  await registerRoutes(app);
+// IMPORTANT: Register routes synchronously for Vercel Serverless
+registerRoutes(app);
 
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
-    res.status(status).json({ message });
-  });
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+  const status = err.status || err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  res.status(status).json({ message });
+});
 
-  if (app.get("env") === "development") {
-    const server = createServer(app);
-    await setupVite(app, server);
-    const port = parseInt(process.env.PORT || '5000', 10);
-    server.listen(port, "0.0.0.0", () => log(`serving on port ${port}`));
-  } else if (!process.env.VERCEL) {
-    serveStatic(app);
-    const port = parseInt(process.env.PORT || '5000', 10);
-    app.listen(port, "0.0.0.0", () => log(`serving on port ${port}`));
-  }
-})();
-
+// For Vercel
 export default app;
+
+// Local development listener
+if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
+  const port = parseInt(process.env.PORT || '5000', 10);
+  const server = createServer(app);
+  
+  (async () => {
+    if (app.get("env") === "development") {
+      await setupVite(app, server);
+    } else {
+      serveStatic(app);
+    }
+    server.listen(port, "0.0.0.0", () => log(`serving on port ${port}`));
+  })();
+}

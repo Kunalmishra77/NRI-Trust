@@ -4,23 +4,21 @@ import { calculateAssessment } from "../shared/assessment-engine";
 import PDFDocument from "pdfkit";
 import { pool } from "./db";
 
-export async function registerRoutes(app: Express) {
+// Synchronous registration to ensure Vercel loads routes immediately
+export function registerRoutes(app: Express) {
   const apiRouter = Router();
 
   console.log("INTERNAL: Registering API routes...");
 
-  // 1. HARDENED HEALTH CHECK - Tests DB connectivity
   apiRouter.get("/health", async (_req, res) => {
     try {
       const dbCheck = await pool.query('SELECT NOW()');
       res.json({ 
         status: "ok", 
         db: "connected", 
-        timestamp: dbCheck.rows[0].now,
-        env: process.env.NODE_ENV 
+        timestamp: dbCheck.rows[0].now
       });
     } catch (err: any) {
-      console.error("DB_HEALTH_CHECK_FAILED:", err.message);
       res.status(500).json({ 
         status: "error", 
         db: "failed", 
@@ -39,7 +37,6 @@ export async function registerRoutes(app: Express) {
 
       const result = calculateAssessment({...answers, name});
 
-      // Save to storage
       const assessment = await storage.createAssessment({
         name,
         email,
@@ -63,12 +60,8 @@ export async function registerRoutes(app: Express) {
         }
       });
     } catch (error: any) {
-      console.error("API_ASSESSMENT_ERROR:", error);
-      res.status(500).json({ 
-        success: false, 
-        error: "Internal processing failure",
-        details: error.message 
-      });
+      console.error("API_ASSESSMENT_ERROR:", error.message);
+      res.status(500).json({ success: false, error: error.message });
     }
   });
 
@@ -77,17 +70,16 @@ export async function registerRoutes(app: Express) {
       const assessment = await storage.getAssessment(req.params.id);
       
       if (!assessment) {
-        return res.status(404).send("Assessment record not found. Please re-run the assessment.");
+        return res.status(404).send("Assessment not found");
       }
 
       const result = calculateAssessment({...assessment.data.answers, name: assessment.name});
       const doc = new PDFDocument({ margin: 60, size: 'A4', bufferPages: true });
 
       res.setHeader('Content-Type', 'application/pdf');
-      res.setHeader('Content-Disposition', `attachment; filename=NRI_Brief_${assessment.name.replace(/\s+/g, '_')}.pdf`);
+      res.setHeader('Content-Disposition', `attachment; filename=NRI_Brief.pdf`);
       doc.pipe(res);
 
-      // PDF Content
       doc.rect(0, 0, 595.28, 120).fill('#0A0F0D');
       doc.fillColor('#CFA052').font('Times-Bold').fontSize(30).text('NRI TRUST', 60, 40);
       doc.fillColor('#FFFFFF').fontSize(11).font('Helvetica-Bold').text('STRICTLY CONFIDENTIAL ADVISORY BRIEF', 300, 48, { align: 'right' });
@@ -98,8 +90,7 @@ export async function registerRoutes(app: Express) {
       doc.end();
 
     } catch (error: any) {
-      console.error("PDF_GEN_ERROR:", error);
-      res.status(500).send("Failed to generate PDF.");
+      res.status(500).send("PDF Generation Failed");
     }
   });
 
