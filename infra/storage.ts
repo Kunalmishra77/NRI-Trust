@@ -1,7 +1,6 @@
-import { randomUUID } from "crypto";
-
-// Relative import to avoid alias resolution issues in node/tsx
-import { type User, type InsertUser, type Assessment, type InsertAssessment } from "../shared/schema";
+import { type User, type InsertUser, type Assessment, type InsertAssessment, users, assessments } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -12,47 +11,31 @@ export interface IStorage {
   getAssessment(id: string): Promise<Assessment | undefined>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
-  private assessments: Map<string, Assessment>;
-
-  constructor() {
-    this.users = new Map();
-    this.assessments = new Map();
-  }
-
+export class DatabaseStorage implements IStorage {
   async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
+    const [user] = await db.insert(users).values(insertUser).returning();
     return user;
   }
 
   async createAssessment(insertAssessment: InsertAssessment): Promise<Assessment> {
-    const id = randomUUID();
-    const assessment: Assessment = { 
-      ...insertAssessment, 
-      id, 
-      createdAt: new Date(),
-      data: insertAssessment.data as any
-    };
-    this.assessments.set(id, assessment);
+    const [assessment] = await db.insert(assessments).values(insertAssessment).returning();
     return assessment;
   }
 
   async getAssessment(id: string): Promise<Assessment | undefined> {
-    return this.assessments.get(id);
+    const [assessment] = await db.select().from(assessments).where(eq(assessments.id, id));
+    return assessment;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
