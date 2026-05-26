@@ -1,103 +1,99 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { Router } from "express";
-import { storage } from "./storage";
-import { calculateAssessment } from "../shared/assessment-engine";
+import { sql, eq } from "drizzle-orm";
+import { pgTable, text, varchar, integer, timestamp, jsonb } from "drizzle-orm/pg-core";
+import { drizzle } from 'drizzle-orm/node-postgres';
+import pg from 'pg';
 import PDFDocument from "pdfkit";
-import { pool } from "./db";
+import { calculateAssessment } from "../shared/assessment-engine";
+
+// --- INLINE SCHEMA & DB (Fixed Vercel Module Resolution) ---
+
+export const users = pgTable("users", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  username: text("username").notNull().unique(),
+  password: text("password").notNull(),
+});
+
+export const assessments = pgTable("assessments", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  country: text("country").notNull(),
+  parentLocation: text("parent_location"),
+  persona: text("persona").notNull(),
+  riskScore: integer("risk_score").notNull(),
+  data: jsonb("data").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+const rawUrl = process.env.DATABASE_URL;
+if (!rawUrl) throw new Error("DATABASE_URL is missing.");
+const cleanUrl = rawUrl.replace(/[\n\r"'\s]/g, '');
+
+const pool = new pg.Pool({
+  connectionString: cleanUrl,
+  ssl: { rejectUnauthorized: false },
+  max: 1, // Only 1 connection per serverless instance
+  connectionTimeoutMillis: 10000,
+});
+
+const db = drizzle(pool);
+
+// --- APP LOGIC ---
 
 const app = express();
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// 1. HARDENED HEALTH CHECK
 app.get("/api/health", async (_req, res) => {
-  const dbUrlPreview = process.env.DATABASE_URL ? (process.env.DATABASE_URL.slice(0, 20) + "...") : "MISSING";
   try {
-    const client = await pool.connect();
-    const dbCheck = await client.query('SELECT NOW()');
-    client.release();
-    res.json({ 
-      status: "ok", 
-      db: "connected", 
-      url_preview: dbUrlPreview,
-      timestamp: dbCheck.rows[0].now
-    });
+    const dbCheck = await pool.query('SELECT NOW()');
+    res.json({ status: "ok", db: "connected", time: dbCheck.rows[0].now });
   } catch (err: any) {
-    console.error("DB_HEALTH_CHECK_FAILED:", err.message);
-    res.status(200).json({ 
-      status: "degraded", 
-      db: "offline", 
-      url_preview: dbUrlPreview,
-      reason: err.message
-    });
+    res.status(200).json({ status: "degraded", db: "offline", reason: err.message });
   }
 });
 
-// 2. ASSESSMENT ENGINE
 app.post("/api/assessment", async (req, res) => {
   try {
     const { name, email, country, parentLocation, answers } = req.body;
-    
-    if (!name || !email || !answers) {
-      return res.status(400).json({ success: false, error: "Missing required fields" });
-    }
+    if (!name || !email || !answers) return res.status(400).json({ error: "Missing fields" });
 
     const result = calculateAssessment({...answers, name});
 
-    let assessment;
+    let assessmentId = "temp-" + Date.now();
     try {
-      assessment = await storage.createAssessment({
+      const [inserted] = await db.insert(assessments).values({
         name,
         email,
         country: country || "Other",
         parentLocation: parentLocation || "",
         persona: result.persona,
         riskScore: result.score,
-        data: {
-          answers,
-          flags: result.flags,
-          urgency: result.urgency
-        }
-      });
+        data: { answers, flags: result.flags, urgency: result.urgency }
+      }).returning();
+      assessmentId = inserted.id;
     } catch (dbErr: any) {
-      console.error("DB_ERROR_FAILOVER:", dbErr.message);
-      return res.json({ 
-        success: true, 
-        assessmentId: "temp-" + Date.now(),
-        offline: true,
-        result: {
-          ...result,
-          pdfUrl: "#"
-        }
-      });
+      console.error("DB_SAVE_FAIL:", dbErr.message);
     }
 
     res.json({ 
       success: true, 
-      assessmentId: assessment.id,
-      result: {
-        ...result,
-        pdfUrl: `/api/assessment/${assessment.id}/pdf`
-      }
+      assessmentId,
+      result: { ...result, pdfUrl: assessmentId.startsWith("temp") ? "#" : `/api/assessment/${assessmentId}/pdf` }
     });
   } catch (error: any) {
-    console.error("API_ASSESSMENT_ERROR:", error.message);
-    res.status(200).json({ success: false, error: error.message });
+    res.status(500).json({ error: error.message });
   }
 });
 
-// 3. PDF GENERATION
 app.get("/api/assessment/:id/pdf", async (req, res) => {
   try {
-    const assessment = await storage.getAssessment(req.params.id);
-    
-    if (!assessment) {
-      return res.status(404).send("Assessment not found or database unreachable.");
-    }
+    const [assessment] = await db.select().from(assessments).where(eq(assessments.id, req.params.id));
+    if (!assessment) return res.status(404).send("Record not found");
 
-    const result = calculateAssessment({...assessment.data.answers, name: assessment.name});
-    const doc = new PDFDocument({ margin: 60, size: 'A4', bufferPages: true });
+    const result = calculateAssessment({...((assessment.data as any).answers), name: assessment.name});
+    const doc = new PDFDocument({ margin: 60, size: 'A4' });
 
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', `attachment; filename=NRI_Brief.pdf`);
@@ -105,20 +101,15 @@ app.get("/api/assessment/:id/pdf", async (req, res) => {
 
     doc.rect(0, 0, 595.28, 120).fill('#0A0F0D');
     doc.fillColor('#CFA052').font('Times-Bold').fontSize(30).text('NRI TRUST', 60, 40);
-    doc.fillColor('#FFFFFF').fontSize(11).font('Helvetica-Bold').text('STRICTLY CONFIDENTIAL ADVISORY BRIEF', 300, 48, { align: 'right' });
-    doc.fillColor('#0A0F0D').font('Times-Bold').fontSize(16).text('PRINCIPAL PROFILE:', 60, 160);
+    doc.fillColor('#FFFFFF').fontSize(11).font('Helvetica-Bold').text('CONFIDENTIAL ADVISORY BRIEF', 300, 48, { align: 'right' });
+    doc.fillColor('#0A0F0D').font('Times-Bold').fontSize(16).text('PRINCIPAL:', 60, 160);
     doc.font('Helvetica-Bold').fontSize(26).text(assessment.name.toUpperCase(), 60, 185);
     doc.moveDown(2);
-    doc.font('Times-Roman').fontSize(12).fillColor('#333333').text(result.fullSummary.replace(/\*\*(.*?)\*\*/g, '$1'), { lineGap: 6, align: 'justify', width: 475 });
+    doc.font('Times-Roman').fontSize(12).fillColor('#333333').text(result.fullSummary.replace(/\*\*(.*?)\*\*/g, '$1'), { lineGap: 6, width: 475 });
     doc.end();
-
   } catch (error: any) {
-    res.status(500).send("PDF Generation Failed");
+    res.status(500).send("PDF Fail");
   }
-});
-
-app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-  res.status(200).json({ error: "System Error", message: err.message });
 });
 
 export default app;
