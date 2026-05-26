@@ -2,37 +2,26 @@ import express from "express";
 import { createClient } from '@supabase/supabase-js';
 import PDFDocument from "pdfkit";
 import { calculateAssessment } from "../shared/assessment-engine";
+import { sendEmail, getUserTemplate, getAdvisorTemplate } from "./email-service";
 
-// --- SUPABASE CONFIG ---
 const supabaseUrl = "https://sxvbtiajmtxlmetutvrw.supabase.co";
-// Using SERVICE ROLE key for server-side elevated access
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4dmJ0aWFqbXR4bG1ldHV0dnJ3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTc0NzQ1MiwiZXhwIjoyMDk1MzIzNDUyfQ.4oJiMllIxhehsORA7kWE_sLd3dBl95oZnYfkiwhlYqY";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4dmJ0aWFqbXR4bG1ldHV0dnJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk3NDc0NTIsImV4cCI6MjA5NTMyMzQ1Mn0.UcXQZicWRhfPP03Eapv0h9RVfp6lVpEV-Whq001FQIw";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// 1. HEALTH CHECK (REST API based)
 app.get("/api/health", async (_req, res) => {
   try {
     const { data, error } = await supabase.from('assessments').select('id').limit(1);
     if (error) throw error;
-    res.json({ 
-      status: "ok", 
-      api: "connected", 
-      message: "Supabase Data API is reachable" 
-    });
+    res.json({ status: "ok", api: "connected", email_active: !!process.env.GMAIL_USER });
   } catch (err: any) {
-    res.status(200).json({ 
-      status: "degraded", 
-      api: "error", 
-      reason: err.message 
-    });
+    res.status(200).json({ status: "degraded", api: "error", reason: err.message });
   }
 });
 
-// 2. ASSESSMENT ENGINE
 app.post("/api/assessment", async (req, res) => {
   try {
     const { name, email, country, parentLocation, answers } = req.body;
@@ -40,7 +29,7 @@ app.post("/api/assessment", async (req, res) => {
 
     const result = calculateAssessment({...answers, name});
 
-    // Save via REST API
+    // 1. Save to Supabase
     const { data: inserted, error } = await supabase
       .from('assessments')
       .insert([
@@ -58,6 +47,30 @@ app.post("/api/assessment", async (req, res) => {
 
     const assessmentId = error ? ("temp-" + Date.now()) : inserted[0].id;
 
+    // 2. TRIGGER EMAILS (Fire and forget in background)
+    if (!error) {
+      // To User
+      sendEmail({
+        to: email,
+        subject: "Confidential Brief: Your NRI Family Protection Analysis",
+        html: getUserTemplate(name, result.fullSummary)
+      });
+
+      // To Advisor/Owner
+      sendEmail({
+        to: process.env.ADVISOR_EMAIL || "aiagentix2025@gmail.com",
+        subject: `[${result.persona}] New High-Intent Lead: ${name}`,
+        html: getAdvisorTemplate({
+          persona: result.persona,
+          name,
+          email,
+          country,
+          summary: result.fullSummary,
+          flags: result.flags
+        })
+      });
+    }
+
     res.json({ 
       success: true, 
       assessmentId,
@@ -71,7 +84,6 @@ app.post("/api/assessment", async (req, res) => {
   }
 });
 
-// 3. PDF GENERATION
 app.get("/api/assessment/:id/pdf", async (req, res) => {
   try {
     const { data: assessment, error } = await supabase
