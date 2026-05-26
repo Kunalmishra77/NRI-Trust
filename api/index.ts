@@ -10,8 +10,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// 1. HARDENED HEALTH CHECK - Will NOT crash if DB is down
+// 1. HARDENED HEALTH CHECK
 app.get("/api/health", async (_req, res) => {
+  const dbUrlPreview = process.env.DATABASE_URL ? (process.env.DATABASE_URL.slice(0, 20) + "...") : "MISSING";
   try {
     const client = await pool.connect();
     const dbCheck = await client.query('SELECT NOW()');
@@ -19,6 +20,7 @@ app.get("/api/health", async (_req, res) => {
     res.json({ 
       status: "ok", 
       db: "connected", 
+      url_preview: dbUrlPreview,
       timestamp: dbCheck.rows[0].now
     });
   } catch (err: any) {
@@ -26,14 +28,13 @@ app.get("/api/health", async (_req, res) => {
     res.status(200).json({ 
       status: "degraded", 
       db: "offline", 
-      reason: err.message,
-      check_port: "5433",
-      ip: "76.13.250.173"
+      url_preview: dbUrlPreview,
+      reason: err.message
     });
   }
 });
 
-// 2. ASSESSMENT ENGINE - Error handling to prevent 500
+// 2. ASSESSMENT ENGINE
 app.post("/api/assessment", async (req, res) => {
   try {
     const { name, email, country, parentLocation, answers } = req.body;
@@ -60,15 +61,14 @@ app.post("/api/assessment", async (req, res) => {
         }
       });
     } catch (dbErr: any) {
-      console.error("CRITICAL: Database offline, returning transient result", dbErr.message);
-      // Fallback: Return result without saving if DB is down to prevent 500 error
+      console.error("DB_ERROR_FAILOVER:", dbErr.message);
       return res.json({ 
         success: true, 
-        assessmentId: "offline-" + Date.now(),
+        assessmentId: "temp-" + Date.now(),
         offline: true,
         result: {
           ...result,
-          pdfUrl: "#" // PDF won't work without DB ID
+          pdfUrl: "#"
         }
       });
     }
@@ -83,7 +83,7 @@ app.post("/api/assessment", async (req, res) => {
     });
   } catch (error: any) {
     console.error("API_ASSESSMENT_ERROR:", error.message);
-    res.status(200).json({ success: false, error: "Assessment logic failure: " + error.message });
+    res.status(200).json({ success: false, error: error.message });
   }
 });
 
@@ -93,7 +93,7 @@ app.get("/api/assessment/:id/pdf", async (req, res) => {
     const assessment = await storage.getAssessment(req.params.id);
     
     if (!assessment) {
-      return res.status(404).send("Assessment record not found or database is unreachable.");
+      return res.status(404).send("Assessment not found or database unreachable.");
     }
 
     const result = calculateAssessment({...assessment.data.answers, name: assessment.name});
@@ -113,7 +113,7 @@ app.get("/api/assessment/:id/pdf", async (req, res) => {
     doc.end();
 
   } catch (error: any) {
-    res.status(500).send("PDF Generation Failed: Database connection timed out.");
+    res.status(500).send("PDF Generation Failed");
   }
 });
 
