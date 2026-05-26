@@ -1,35 +1,104 @@
 import express from "express";
-import pg from 'pg';
+import { createClient } from '@supabase/supabase-js';
+import PDFDocument from "pdfkit";
+import { calculateAssessment } from "../shared/assessment-engine";
+
+// --- SUPABASE CONFIG ---
+const supabaseUrl = "https://sxvbtiajmtxlmetutvrw.supabase.co";
+// Using SERVICE ROLE key for server-side elevated access
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4dmJ0aWFqbXR4bG1ldHV0dnJ3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTc0NzQ1MiwiZXhwIjoyMDk1MzIzNDUyfQ.4oJiMllIxhehsORA7kWE_sLd3dBl95oZnYfkiwhlYqY";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-const rawUrl = process.env.DATABASE_URL;
-const cleanUrl = rawUrl ? rawUrl.replace(/[\n\r"'\s]/g, '') : "";
-
-const pool = new pg.Pool({
-  connectionString: cleanUrl,
-  ssl: { rejectUnauthorized: false },
-  connectionTimeoutMillis: 5000,
-});
-
-app.get("/api/health", async (req, res) => {
+// 1. HEALTH CHECK (REST API based)
+app.get("/api/health", async (_req, res) => {
   try {
-    const client = await pool.connect();
-    const result = await client.query('SELECT NOW()');
-    client.release();
+    const { data, error } = await supabase.from('assessments').select('id').limit(1);
+    if (error) throw error;
     res.json({ 
       status: "ok", 
-      db: "connected", 
-      time: result.rows[0].now 
+      api: "connected", 
+      message: "Supabase Data API is reachable" 
     });
   } catch (err: any) {
-    res.json({ 
-      status: "error", 
-      message: "Database connection failed",
-      reason: err.message,
-      url_debug: cleanUrl.slice(0, 15) + "..."
+    res.status(200).json({ 
+      status: "degraded", 
+      api: "error", 
+      reason: err.message 
     });
+  }
+});
+
+// 2. ASSESSMENT ENGINE
+app.post("/api/assessment", async (req, res) => {
+  try {
+    const { name, email, country, parentLocation, answers } = req.body;
+    if (!name || !email || !answers) return res.status(400).json({ error: "Missing fields" });
+
+    const result = calculateAssessment({...answers, name});
+
+    // Save via REST API
+    const { data: inserted, error } = await supabase
+      .from('assessments')
+      .insert([
+        {
+          name,
+          email,
+          country: country || "Other",
+          parent_location: parentLocation || "",
+          persona: result.persona,
+          risk_score: result.score,
+          data: { answers, flags: result.flags, urgency: result.urgency }
+        }
+      ])
+      .select();
+
+    const assessmentId = error ? ("temp-" + Date.now()) : inserted[0].id;
+
+    res.json({ 
+      success: true, 
+      assessmentId,
+      result: { 
+        ...result, 
+        pdfUrl: assessmentId.startsWith("temp") ? "#" : `/api/assessment/${assessmentId}/pdf` 
+      }
+    });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 3. PDF GENERATION
+app.get("/api/assessment/:id/pdf", async (req, res) => {
+  try {
+    const { data: assessment, error } = await supabase
+      .from('assessments')
+      .select('*')
+      .eq('id', req.params.id)
+      .single();
+
+    if (error || !assessment) return res.status(404).send("Brief not found");
+
+    const result = calculateAssessment({...(assessment.data.answers), name: assessment.name});
+    const doc = new PDFDocument({ margin: 60, size: 'A4' });
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename=NRI_Brief.pdf`);
+    doc.pipe(res);
+
+    doc.rect(0, 0, 595.28, 120).fill('#0A0F0D');
+    doc.fillColor('#CFA052').font('Times-Bold').fontSize(30).text('NRI TRUST', 60, 40);
+    doc.fillColor('#FFFFFF').fontSize(11).font('Helvetica-Bold').text('STRICTLY CONFIDENTIAL BRIEF', 300, 48, { align: 'right' });
+    doc.fillColor('#0A0F0D').font('Times-Bold').fontSize(16).text('PRINCIPAL:', 60, 160);
+    doc.font('Helvetica-Bold').fontSize(26).text(assessment.name.toUpperCase(), 60, 185);
+    doc.moveDown(2);
+    doc.font('Times-Roman').fontSize(12).fillColor('#333333').text(result.fullSummary.replace(/\*\*(.*?)\*\*/g, '$1'), { lineGap: 6, width: 475 });
+    doc.end();
+  } catch (error: any) {
+    res.status(500).send("PDF Fail");
   }
 });
 
