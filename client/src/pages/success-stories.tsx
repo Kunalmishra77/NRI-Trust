@@ -103,7 +103,8 @@ export default function SuccessStories() {
                 variants={elegantFadeUp}
                 className="group flex flex-col h-full premium-card bg-white/[0.02] border border-white/5 hover:border-accent/30 transition-all duration-700 overflow-hidden shadow-2xl"
               >
-                <div className="p-10 md:p-16 flex flex-col h-full">
+                {/* RESPONSIVE-ONLY: Reduced padding from p-10 to p-6 on mobile */}
+                <div className="p-6 md:p-10 lg:p-16 flex flex-col h-full">
                   <div className="flex justify-between items-start mb-12">
                     <span className="px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-[12px] font-mono text-accent font-bold uppercase tracking-widest">
                       {item.category}

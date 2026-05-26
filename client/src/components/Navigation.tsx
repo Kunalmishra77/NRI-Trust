@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Shield, Menu, X, Lock, Landmark, Scale, Home, Heart, FileText, Trophy, Zap, ArrowRight } from "lucide-react";
+import { Shield, Menu, X, Landmark, Scale, Home, Heart, FileText, Trophy, Zap, ArrowRight } from "lucide-react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import {
   NavigationMenu,
@@ -150,12 +150,6 @@ export default function Navigation() {
 
           {/* Desktop actions */}
           <div className="flex items-center gap-4 lg:gap-8">
-            <Link href="/portal">
-              <button className={`hidden lg:flex items-center gap-2 font-mono text-[14px] uppercase tracking-[0.15em] whitespace-nowrap transition-colors font-bold ${isScrolled ? "text-[#1A1A1A]/60 hover:text-accent" : "text-white/60 hover:text-accent"}`}>
-                <Lock className="w-4 h-4" />
-                Client Portal
-              </button>
-            </Link>
             <Link href="/contact" className="hidden lg:block">
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(212,175,55,0.3)" }}
@@ -283,13 +277,6 @@ export default function Navigation() {
                       <ArrowRight className="w-4 h-4 text-[#1A1A1A]/20 group-hover:text-accent transition-colors" />
                     </button>
                   ))}
-                  <button
-                    onClick={() => go("/portal")}
-                    className="w-full flex items-center gap-2 py-3.5 px-4 rounded-xl hover:bg-accent/5 transition-colors group"
-                  >
-                    <Lock className="w-4 h-4 text-accent" />
-                    <span className="text-[14px] font-bold text-accent uppercase tracking-widest">Client Portal</span>
-                  </button>
                 </div>
               </div>
 

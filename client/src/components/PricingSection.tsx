@@ -57,7 +57,8 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
 
  return (
   <section id="pricing" className={cn(
-    "py-32 md:py-48 relative overflow-hidden transition-colors duration-500",
+    /* RESPONSIVE-ONLY: Scaled vertical padding — 16 mobile, 32 tablet, 48 desktop */
+    "py-16 md:py-32 lg:py-48 relative overflow-hidden transition-colors duration-500",
     theme === 'light' ? "section-light" : "section-dark"
   )}>
    {/* ─── BACKGROUND LAYERS ─── */}
@@ -76,12 +77,13 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
 
    <div className="max-container relative z-10">
     {/* ─── HEADING ─── */}
+    {/* RESPONSIVE-ONLY: Reduced mb on mobile */}
     <motion.div
      initial="hidden"
      whileInView="visible"
      viewport={{ once: true, margin: "-100px" }}
      variants={elegantFadeUp}
-     className="text-center mb-24 md:mb-32"
+     className="text-center mb-10 md:mb-24 lg:mb-32"
     >
      <div className="flex items-center justify-center gap-4 mb-8">
       <div className="h-[1px] w-12 bg-accent/40" />
@@ -104,12 +106,13 @@ export default function PricingSection({ theme = 'dark' }: { theme?: 'dark' | 'l
     </motion.div>
 
     {/* ─── CARDS GRID ─── */}
+    {/* RESPONSIVE-ONLY: Added md:grid-cols-2 so tablets see 2 columns */}
     <motion.div
      initial="hidden"
      whileInView="visible"
      viewport={{ once: true, margin: "-50px" }}
      variants={luxuryStagger}
-     className="grid lg:grid-cols-3 gap-8 lg:gap-10 mb-24 lg:mb-40 perspective-container"
+     className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-12 md:mb-24 lg:mb-40 perspective-container"
     >
      {tiers.map((tier, index) => (
       <motion.div

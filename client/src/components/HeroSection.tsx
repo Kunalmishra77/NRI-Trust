@@ -186,7 +186,7 @@ export default function HeroSection() {
               className="flex items-center gap-3 mb-6"
             >
               <Shield className="w-4 h-4 text-[#d4af37]/80 shrink-0" />
-              <span className="text-[12px] font-mono font-bold uppercase tracking-[0.08em] sm:tracking-[0.25em] text-[#d4af37]/80">
+              <span className="text-[14px] font-mono font-bold uppercase tracking-[0.08em] sm:tracking-[0.25em] text-[#d4af37]/80">
                 India's Most Trusted NRI Family Protection Platform
               </span>
             </motion.div>
